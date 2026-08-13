@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Archivo de código fuente src/Motor/Primitivos/Escena.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d5a/_escena_8hpp_source.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Escena.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;../Inputs/Botones.hpp&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;CEPool.hpp&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">//shaders y tilemap mover el source a motor/mapas</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;../../Juego/objetos/TileMap.hpp&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include&lt;vector&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include&lt;map&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>CE</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html">   27</a></span>    <span class="keyword">class </span><a class="code hl_class" href="../../d0/d51/class_c_e_1_1_escena.html">Escena</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">typedef</span> std::map&lt;sf::Keyboard::Scancode,std::string&gt; HashBotones;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a393c41fc5ec98438bd854d893767f15e">   34</a></span>            <span class="keyword">virtual</span> <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#a393c41fc5ec98438bd854d893767f15e">~Escena</a>(){};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#aa5b1d1ee11f920a6034208aa3813f346">   40</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#aa5b1d1ee11f920a6034208aa3813f346">onInit</a>()=0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#acd29ab05b7d32581bcfbd634be4db0d8">   46</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#acd29ab05b7d32581bcfbd634be4db0d8">onFinal</a>()=0;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#adafabc6e0e86440d3b71a780bf3cdc31">   53</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#adafabc6e0e86440d3b71a780bf3cdc31">onUpdate</a>(<span class="keywordtype">float</span> dt)=0;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a18a0d78ee0f9dbedc51f105ade30bfb4">   60</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#a18a0d78ee0f9dbedc51f105ade30bfb4">onInputs</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d0/dc8/class_c_e_1_1_botones.html">CE::Botones</a>&amp; accion)=0;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a2c0c5cac03eda5887fd7ad760cd0157b">   66</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#a2c0c5cac03eda5887fd7ad760cd0157b">onRender</a>()=0;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            </div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a86a6f993844de886879a3562378d49b7">   73</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#a86a6f993844de886879a3562378d49b7">registrarBotones</a>(sf::Keyboard::Scancode boton, <span class="keyword">const</span> std::string &amp;accion)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a933c65a0647ff8b8c793fc18e8e145ee">botones</a>[boton]=accion;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            }</div>
+</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            </div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#ae19da6f6a5c932fdda676eaacda683a0">   82</a></span>            HashBotones &amp;<a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#ae19da6f6a5c932fdda676eaacda683a0">getBotones</a>()</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a933c65a0647ff8b8c793fc18e8e145ee">botones</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            }</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            </div>
+<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a36fa3e07118825511b84f40f60b64e6c">   91</a></span>            <a class="code hl_class" href="../../d0/d8e/class_c_e_1_1_pool.html">Pool</a>&amp; <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#a36fa3e07118825511b84f40f60b64e6c">getPool</a>()</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#ac2d0293c81e5b4e19f63f2fe4bf8b381">objetos</a>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            }</div>
+</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            std::vector&lt;sf::Keyboard::Scancode&gt; </div>
+<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a4a93f12159b3472a3721ab376ef81beb">  101</a></span>            <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#a4a93f12159b3472a3721ab376ef81beb">getBotonesRegistrados</a>()</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                std::vector&lt;sf::Keyboard::Scancode&gt; b;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                b.reserve(<a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a933c65a0647ff8b8c793fc18e8e145ee">botones</a>.size());</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                <span class="keywordflow">for</span>(<span class="keyword">auto</span> k = <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a933c65a0647ff8b8c793fc18e8e145ee">botones</a>.begin();k!=<a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a933c65a0647ff8b8c793fc18e8e145ee">botones</a>.end();k++)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                    b.emplace_back(k-&gt;first);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                <span class="keywordflow">return</span> b;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            }</div>
+</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a82db80b9c8ed4e76056110cbedaf393a">  117</a></span>            <span class="keyword">virtual</span> std::shared_ptr&lt;IVJ::Entidad&gt; <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#a82db80b9c8ed4e76056110cbedaf393a">getJugador</a>(){<span class="keywordflow">return</span> <span class="keyword">nullptr</span>;}</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#ad0ceb8522279c223ea147fa51e0b9925">  123</a></span>            std::vector&lt;IVJ::TileMap&gt;&amp; <a class="code hl_function" href="../../d0/d51/class_c_e_1_1_escena.html#ad0ceb8522279c223ea147fa51e0b9925">getTileMapsLayers</a>()  {<span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a75a607e8c850d3db009c627812d6a88a">tiles_layers</a>;};</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a933c65a0647ff8b8c793fc18e8e145ee">  127</a></span>            HashBotones <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a933c65a0647ff8b8c793fc18e8e145ee">botones</a>;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a29db91b535a4461ba82109d120a9da40">  130</a></span>            HashBotones <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a29db91b535a4461ba82109d120a9da40">gui</a>;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a026461cac225411f9ed6f908821d7e36">  133</a></span>            std::string <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a026461cac225411f9ed6f908821d7e36">nombre</a>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#ac2d0293c81e5b4e19f63f2fe4bf8b381">  137</a></span>            <a class="code hl_class" href="../../d0/d8e/class_c_e_1_1_pool.html">Pool</a> <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#ac2d0293c81e5b4e19f63f2fe4bf8b381">objetos</a>{100};</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="../../d0/d51/class_c_e_1_1_escena.html#a75a607e8c850d3db009c627812d6a88a">  140</a></span>            std::vector&lt;IVJ::TileMap&gt; <a class="code hl_variable" href="../../d0/d51/class_c_e_1_1_escena.html#a75a607e8c850d3db009c627812d6a88a">tiles_layers</a>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    };</div>
+</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>}</div>
+<div class="ttc" id="aclass_c_e_1_1_botones_html"><div class="ttname"><a href="../../d0/dc8/class_c_e_1_1_botones.html">CE::Botones</a></div><div class="ttdoc">Encapsula la configuración de un botón/tecla con su tipo de acción.</div><div class="ttdef"><b>Definition</b> Botones.hpp:19</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html">CE::Escena</a></div><div class="ttdoc">Clase base abstracta para las escenas del juego.</div><div class="ttdef"><b>Definition</b> Escena.hpp:28</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a026461cac225411f9ed6f908821d7e36"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a026461cac225411f9ed6f908821d7e36">CE::Escena::nombre</a></div><div class="ttdeci">std::string nombre</div><div class="ttdoc">Nombre/identificador de la escena.</div><div class="ttdef"><b>Definition</b> Escena.hpp:133</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a18a0d78ee0f9dbedc51f105ade30bfb4"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a18a0d78ee0f9dbedc51f105ade30bfb4">CE::Escena::onInputs</a></div><div class="ttdeci">virtual void onInputs(const CE::Botones &amp;accion)=0</div><div class="ttdoc">Procesa entrada de botones mapeados.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a29db91b535a4461ba82109d120a9da40"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a29db91b535a4461ba82109d120a9da40">CE::Escena::gui</a></div><div class="ttdeci">HashBotones gui</div><div class="ttdoc">Mapeo de botones GUI (interfaz gráfica).</div><div class="ttdef"><b>Definition</b> Escena.hpp:130</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a2c0c5cac03eda5887fd7ad760cd0157b"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a2c0c5cac03eda5887fd7ad760cd0157b">CE::Escena::onRender</a></div><div class="ttdeci">virtual void onRender()=0</div><div class="ttdoc">Renderiza la escena.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a36fa3e07118825511b84f40f60b64e6c"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a36fa3e07118825511b84f40f60b64e6c">CE::Escena::getPool</a></div><div class="ttdeci">Pool &amp; getPool()</div><div class="ttdoc">Obtiene el pool de objetos de la escena.</div><div class="ttdef"><b>Definition</b> Escena.hpp:91</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a393c41fc5ec98438bd854d893767f15e"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a393c41fc5ec98438bd854d893767f15e">CE::Escena::~Escena</a></div><div class="ttdeci">virtual ~Escena()</div><div class="ttdoc">Destructor virtual.</div><div class="ttdef"><b>Definition</b> Escena.hpp:34</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a4a93f12159b3472a3721ab376ef81beb"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a4a93f12159b3472a3721ab376ef81beb">CE::Escena::getBotonesRegistrados</a></div><div class="ttdeci">std::vector&lt; sf::Keyboard::Scancode &gt; getBotonesRegistrados()</div><div class="ttdoc">Obtiene todas las teclas registradas como vector.</div><div class="ttdef"><b>Definition</b> Escena.hpp:101</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a75a607e8c850d3db009c627812d6a88a"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a75a607e8c850d3db009c627812d6a88a">CE::Escena::tiles_layers</a></div><div class="ttdeci">std::vector&lt; IVJ::TileMap &gt; tiles_layers</div><div class="ttdoc">Vector de tilemaps con múltiples capas.</div><div class="ttdef"><b>Definition</b> Escena.hpp:140</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a82db80b9c8ed4e76056110cbedaf393a"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a82db80b9c8ed4e76056110cbedaf393a">CE::Escena::getJugador</a></div><div class="ttdeci">virtual std::shared_ptr&lt; IVJ::Entidad &gt; getJugador()</div><div class="ttdoc">Obtiene la entidad del jugador de la escena.</div><div class="ttdef"><b>Definition</b> Escena.hpp:117</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a86a6f993844de886879a3562378d49b7"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a86a6f993844de886879a3562378d49b7">CE::Escena::registrarBotones</a></div><div class="ttdeci">void registrarBotones(sf::Keyboard::Scancode boton, const std::string &amp;accion)</div><div class="ttdoc">Registra un mapeo de tecla a acción.</div><div class="ttdef"><b>Definition</b> Escena.hpp:73</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_a933c65a0647ff8b8c793fc18e8e145ee"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#a933c65a0647ff8b8c793fc18e8e145ee">CE::Escena::botones</a></div><div class="ttdeci">HashBotones botones</div><div class="ttdoc">Mapeo de botones a nombres de acciones (público para acceso directo).</div><div class="ttdef"><b>Definition</b> Escena.hpp:127</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_aa5b1d1ee11f920a6034208aa3813f346"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#aa5b1d1ee11f920a6034208aa3813f346">CE::Escena::onInit</a></div><div class="ttdeci">virtual void onInit()=0</div><div class="ttdoc">Inicializa la escena (se llama al cargarla).</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_ac2d0293c81e5b4e19f63f2fe4bf8b381"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#ac2d0293c81e5b4e19f63f2fe4bf8b381">CE::Escena::objetos</a></div><div class="ttdeci">Pool objetos</div><div class="ttdoc">Pool de objetos de la escena (capacidad: 100 objetos).</div><div class="ttdef"><b>Definition</b> Escena.hpp:137</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_acd29ab05b7d32581bcfbd634be4db0d8"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#acd29ab05b7d32581bcfbd634be4db0d8">CE::Escena::onFinal</a></div><div class="ttdeci">virtual void onFinal()=0</div><div class="ttdoc">Limpia la escena (se llama al descargarla).</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_ad0ceb8522279c223ea147fa51e0b9925"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#ad0ceb8522279c223ea147fa51e0b9925">CE::Escena::getTileMapsLayers</a></div><div class="ttdeci">std::vector&lt; IVJ::TileMap &gt; &amp; getTileMapsLayers()</div><div class="ttdoc">Obtiene todas las capas de tilemaps.</div><div class="ttdef"><b>Definition</b> Escena.hpp:123</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_adafabc6e0e86440d3b71a780bf3cdc31"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#adafabc6e0e86440d3b71a780bf3cdc31">CE::Escena::onUpdate</a></div><div class="ttdeci">virtual void onUpdate(float dt)=0</div><div class="ttdoc">Actualiza la lógica de la escena.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_escena_html_ae19da6f6a5c932fdda676eaacda683a0"><div class="ttname"><a href="../../d0/d51/class_c_e_1_1_escena.html#ae19da6f6a5c932fdda676eaacda683a0">CE::Escena::getBotones</a></div><div class="ttdeci">HashBotones &amp; getBotones()</div><div class="ttdoc">Obtiene el mapeo de botones a acciones.</div><div class="ttdef"><b>Definition</b> Escena.hpp:82</div></div>
+<div class="ttc" id="aclass_c_e_1_1_pool_html"><div class="ttname"><a href="../../d0/d8e/class_c_e_1_1_pool.html">CE::Pool</a></div><div class="ttdoc">Gestiona un pool de objetos del juego con tamaño dinámico.</div><div class="ttdef"><b>Definition</b> CEPool.hpp:16</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>Motor</b></li><li class="navelem"><b>Primitivos</b></li><li class="navelem"><b>Escena.hpp</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

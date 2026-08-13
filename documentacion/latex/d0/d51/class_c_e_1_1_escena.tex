@@ -1,0 +1,274 @@
+\doxysection{Referencia de la clase CE::\+Escena}
+\hypertarget{class_c_e_1_1_escena}{}\label{class_c_e_1_1_escena}\index{CE::Escena@{CE::Escena}}
+
+
+Clase base abstracta para las escenas del juego.  
+
+
+
+
+{\ttfamily \+\#include $<$Escena.\+hpp$>$}
+
+Diagrama de herencia de CE::\+Escena\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d0/d51/class_c_e_1_1_escena}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_escena_a393c41fc5ec98438bd854d893767f15e}\label{class_c_e_1_1_escena_a393c41fc5ec98438bd854d893767f15e} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Escena} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_escena_aa5b1d1ee11f920a6034208aa3813f346}{on\+Init}} ()=0
+\begin{DoxyCompactList}\small\item\em Inicializa la escena (se llama al cargarla). \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_escena_acd29ab05b7d32581bcfbd634be4db0d8}{on\+Final}} ()=0
+\begin{DoxyCompactList}\small\item\em Limpia la escena (se llama al descargarla). \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_escena_adafabc6e0e86440d3b71a780bf3cdc31}{on\+Update}} (float dt)=0
+\begin{DoxyCompactList}\small\item\em Actualiza la lógica de la escena. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_escena_a18a0d78ee0f9dbedc51f105ade30bfb4}{on\+Inputs}} (const \doxymbox{\hyperlink{class_c_e_1_1_botones}{CE::\+\+Botones}} \&accion)=0
+\begin{DoxyCompactList}\small\item\em Procesa entrada de botones mapeados. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_escena_a2c0c5cac03eda5887fd7ad760cd0157b}{on\+Render}} ()=0
+\begin{DoxyCompactList}\small\item\em Renderiza la escena. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_escena_a86a6f993844de886879a3562378d49b7}{registrar\+Botones}} (sf::\+\+Keyboard::\+\+Scancode boton, const std::\+string \&accion)
+\begin{DoxyCompactList}\small\item\em Registra un mapeo de tecla a acción. \end{DoxyCompactList}\item 
+Hash\+Botones \& \doxymbox{\hyperlink{class_c_e_1_1_escena_ae19da6f6a5c932fdda676eaacda683a0}{get\+Botones}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el mapeo de botones a acciones. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_pool}{Pool}} \& \doxymbox{\hyperlink{class_c_e_1_1_escena_a36fa3e07118825511b84f40f60b64e6c}{get\+Pool}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el pool de objetos de la escena. \end{DoxyCompactList}\item 
+std::\+vector$<$ sf::\+\+Keyboard::\+\+Scancode $>$ \doxymbox{\hyperlink{class_c_e_1_1_escena_a4a93f12159b3472a3721ab376ef81beb}{get\+Botones\+Registrados}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene todas las teclas registradas como vector. \end{DoxyCompactList}\item 
+virtual std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{IVJ::\+\+Entidad}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_escena_a82db80b9c8ed4e76056110cbedaf393a}{get\+Jugador}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la entidad del jugador de la escena. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_i_v_j_1_1_tile_map}{IVJ::\+\+Tile\+Map}} $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_escena_ad0ceb8522279c223ea147fa51e0b9925}{get\+Tile\+Maps\+Layers}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene todas las capas de tilemaps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_escena_a933c65a0647ff8b8c793fc18e8e145ee}\label{class_c_e_1_1_escena_a933c65a0647ff8b8c793fc18e8e145ee} 
+Hash\+Botones {\bfseries botones}
+\begin{DoxyCompactList}\small\item\em Mapeo de botones a nombres de acciones (público para acceso directo). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_escena_a29db91b535a4461ba82109d120a9da40}\label{class_c_e_1_1_escena_a29db91b535a4461ba82109d120a9da40} 
+Hash\+Botones {\bfseries gui}
+\begin{DoxyCompactList}\small\item\em Mapeo de botones GUI (interfaz gráfica). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_escena_a026461cac225411f9ed6f908821d7e36}\label{class_c_e_1_1_escena_a026461cac225411f9ed6f908821d7e36} 
+std::\+string {\bfseries nombre}
+\begin{DoxyCompactList}\small\item\em Nombre/\+identificador de la escena. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_escena_ac2d0293c81e5b4e19f63f2fe4bf8b381}\label{class_c_e_1_1_escena_ac2d0293c81e5b4e19f63f2fe4bf8b381} 
+\doxymbox{\hyperlink{class_c_e_1_1_pool}{Pool}} {\bfseries objetos} \{100\}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_c_e_1_1_pool}{Pool} de objetos de la escena (capacidad:\+ 100 objetos). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_escena_a75a607e8c850d3db009c627812d6a88a}\label{class_c_e_1_1_escena_a75a607e8c850d3db009c627812d6a88a} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_i_v_j_1_1_tile_map}{IVJ::\+\+Tile\+Map}} $>$ {\bfseries tiles\+\_\+layers}
+\begin{DoxyCompactList}\small\item\em Vector de tilemaps con múltiples capas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base abstracta para las escenas del juego. 
+
+Define la interfaz que deben implementar todas las escenas del juego. Una escena contiene lógica específica, objetos, tilemaps y mapeos de entrada.
+
+Características:\+
+\begin{DoxyItemize}
+\item \doxylink{class_c_e_1_1_pool}{Pool} de objetos para gestión de entidades
+\item Sistema de mapeo de botones a acciones
+\item Soporte para tilemaps con múltiples capas
+\item Hooks del ciclo de vida (init, update, render, cleanup)
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Nota}
+Las subclases deben implementar todos los métodos virtuales puros 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_escena_doc-func-members}
+\Hypertarget{class_c_e_1_1_escena_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_escena_ae19da6f6a5c932fdda676eaacda683a0}\index{CE::Escena@{CE::Escena}!getBotones@{getBotones}}
+\index{getBotones@{getBotones}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{getBotones()}{getBotones()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_ae19da6f6a5c932fdda676eaacda683a0} 
+Hash\+Botones \& CE::\+\+Escena::\+get\+Botones (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene el mapeo de botones a acciones. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al mapa de botones 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_escena_a4a93f12159b3472a3721ab376ef81beb}\index{CE::Escena@{CE::Escena}!getBotonesRegistrados@{getBotonesRegistrados}}
+\index{getBotonesRegistrados@{getBotonesRegistrados}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{getBotonesRegistrados()}{getBotonesRegistrados()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_a4a93f12159b3472a3721ab376ef81beb} 
+std::\+vector$<$ sf::\+\+Keyboard::\+\+Scancode $>$ CE::\+\+Escena::\+get\+Botones\+Registrados (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene todas las teclas registradas como vector. 
+
+\begin{DoxyReturn}{Devuelve}
+Vector con los escancodes de todas las teclas registradas 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_escena_a82db80b9c8ed4e76056110cbedaf393a}\index{CE::Escena@{CE::Escena}!getJugador@{getJugador}}
+\index{getJugador@{getJugador}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{getJugador()}{getJugador()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_a82db80b9c8ed4e76056110cbedaf393a} 
+virtual std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{IVJ::\+\+Entidad}} $>$ CE::\+\+Escena::\+get\+Jugador (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Obtiene la entidad del jugador de la escena. 
+
+\begin{DoxyReturn}{Devuelve}
+Puntero compartido a la entidad del jugador (nullptr por defecto) 
+\end{DoxyReturn}
+\begin{DoxyNote}{Nota}
+Puede ser sobrescrito por subclases 
+\end{DoxyNote}
+\Hypertarget{class_c_e_1_1_escena_a36fa3e07118825511b84f40f60b64e6c}\index{CE::Escena@{CE::Escena}!getPool@{getPool}}
+\index{getPool@{getPool}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{getPool()}{getPool()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_a36fa3e07118825511b84f40f60b64e6c} 
+\doxymbox{\hyperlink{class_c_e_1_1_pool}{Pool}} \& CE::\+\+Escena::\+get\+Pool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene el pool de objetos de la escena. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al pool de objetos 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_escena_ad0ceb8522279c223ea147fa51e0b9925}\index{CE::Escena@{CE::Escena}!getTileMapsLayers@{getTileMapsLayers}}
+\index{getTileMapsLayers@{getTileMapsLayers}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{getTileMapsLayers()}{getTileMapsLayers()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_ad0ceb8522279c223ea147fa51e0b9925} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_i_v_j_1_1_tile_map}{IVJ::\+\+Tile\+Map}} $>$ \& CE::\+\+Escena::\+get\+Tile\+Maps\+Layers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene todas las capas de tilemaps. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al vector de tilemaps 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_escena_acd29ab05b7d32581bcfbd634be4db0d8}\index{CE::Escena@{CE::Escena}!onFinal@{onFinal}}
+\index{onFinal@{onFinal}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{onFinal()}{onFinal()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_acd29ab05b7d32581bcfbd634be4db0d8} 
+virtual void CE::\+\+Escena::\+on\+Final (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Limpia la escena (se llama al descargarla). 
+
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_escena___init_a9e34891eb0c29ee0f94ae42709e969ed}{IVJ::\+\+Escena\+\_\+\+Init}}.
+
+\Hypertarget{class_c_e_1_1_escena_aa5b1d1ee11f920a6034208aa3813f346}\index{CE::Escena@{CE::Escena}!onInit@{onInit}}
+\index{onInit@{onInit}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{onInit()}{onInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_aa5b1d1ee11f920a6034208aa3813f346} 
+virtual void CE::\+\+Escena::\+on\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Inicializa la escena (se llama al cargarla). 
+
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_escena___init_a6366fe6f7add02b7a8c3fd49d4d716ac}{IVJ::\+\+Escena\+\_\+\+Init}}.
+
+\Hypertarget{class_c_e_1_1_escena_a18a0d78ee0f9dbedc51f105ade30bfb4}\index{CE::Escena@{CE::Escena}!onInputs@{onInputs}}
+\index{onInputs@{onInputs}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{onInputs()}{onInputs()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_a18a0d78ee0f9dbedc51f105ade30bfb4} 
+virtual void CE::\+\+Escena::\+on\+Inputs (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_botones}{CE::\+\+Botones}} \&}]{accion}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Procesa entrada de botones mapeados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em accion} & Botón presionado con sus propiedades \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_escena___init_a3b90ceee33b2c707b0d32d947392ee01}{IVJ::\+\+Escena\+\_\+\+Init}}.
+
+\Hypertarget{class_c_e_1_1_escena_a2c0c5cac03eda5887fd7ad760cd0157b}\index{CE::Escena@{CE::Escena}!onRender@{onRender}}
+\index{onRender@{onRender}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{onRender()}{onRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_a2c0c5cac03eda5887fd7ad760cd0157b} 
+virtual void CE::\+\+Escena::\+on\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Renderiza la escena. 
+
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_escena___init_a6aa996aab0344ec9572db32f1550e68d}{IVJ::\+\+Escena\+\_\+\+Init}}.
+
+\Hypertarget{class_c_e_1_1_escena_adafabc6e0e86440d3b71a780bf3cdc31}\index{CE::Escena@{CE::Escena}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_adafabc6e0e86440d3b71a780bf3cdc31} 
+virtual void CE::\+\+Escena::\+on\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Actualiza la lógica de la escena. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_escena___init_a0ab19a7a814ee8b22882ee4863f532ee}{IVJ::\+\+Escena\+\_\+\+Init}}.
+
+\Hypertarget{class_c_e_1_1_escena_a86a6f993844de886879a3562378d49b7}\index{CE::Escena@{CE::Escena}!registrarBotones@{registrarBotones}}
+\index{registrarBotones@{registrarBotones}!CE::Escena@{CE::Escena}}
+\doxysubsubsection{\texorpdfstring{registrarBotones()}{registrarBotones()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_escena_a86a6f993844de886879a3562378d49b7} 
+void CE::\+\+Escena::\+registrar\+Botones (\begin{DoxyParamCaption}\item[{sf::\+\+Keyboard::\+\+Scancode}]{boton}{, }\item[{const std::\+string \&}]{accion}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Registra un mapeo de tecla a acción. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em boton} & Escancode de SFML de la tecla \\
+\hline
+{\em accion} & Nombre textual de la acción asignada \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada del siguiente archivo:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Primitivos/\+Escena.\+hpp\end{DoxyCompactItemize}

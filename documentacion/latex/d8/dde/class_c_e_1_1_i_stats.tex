@@ -1,0 +1,76 @@
+\doxysection{Referencia de la clase CE::\+IStats}
+\hypertarget{class_c_e_1_1_i_stats}{}\label{class_c_e_1_1_i_stats}\index{CE::IStats@{CE::IStats}}
+
+
+Componente de estadísticas RPG de la entidad.  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+IStats\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d8/dde/class_c_e_1_1_i_stats}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_stats_af1913411388640d0720c8711b1a80d8a}\label{class_c_e_1_1_i_stats_af1913411388640d0720c8711b1a80d8a} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+IStats} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_i_stats_adab0c7ac5bd828e7685d038160a523c0}{clonar}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_stats_a625e407da0b2e7d3897bf20d6b496619}\label{class_c_e_1_1_i_stats_a625e407da0b2e7d3897bf20d6b496619} 
+int {\bfseries hp}
+\begin{DoxyCompactList}\small\item\em Puntos de vida actuales (8 bits = 0-\/255 máximo). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_stats_afa142b9529211e7e154304af4fcf6cca}\label{class_c_e_1_1_i_stats_afa142b9529211e7e154304af4fcf6cca} 
+int {\bfseries hp\+\_\+max}
+\begin{DoxyCompactList}\small\item\em Puntos de vida máximos. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_stats_ab4c3505b04244947e3dd99d0b2c8c6ff}\label{class_c_e_1_1_i_stats_ab4c3505b04244947e3dd99d0b2c8c6ff} 
+int {\bfseries str}
+\begin{DoxyCompactList}\small\item\em Estadística de fuerza (daño base). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_stats_a2cb04bc8a116a6d8657a94e17d71ca70}\label{class_c_e_1_1_i_stats_a2cb04bc8a116a6d8657a94e17d71ca70} 
+int {\bfseries def}
+\begin{DoxyCompactList}\small\item\em Estadística de defensa (reducción de daño). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_stats_a3e60df199ba267411e9ba6da524335af}\label{class_c_e_1_1_i_stats_a3e60df199ba267411e9ba6da524335af} 
+int {\bfseries agi}
+\begin{DoxyCompactList}\small\item\em Estadística de agilidad (velocidad y evasión). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_stats_a57d5740b417dcc72b9781bd06743e015}\label{class_c_e_1_1_i_stats_a57d5740b417dcc72b9781bd06743e015} 
+bool {\bfseries congelar} \{false\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente de estadísticas RPG de la entidad. 
+
+Almacena valores de 8 bits (0-\/255) para típicas estadísticas de juegos RPG:\+ salud, fuerza, defensa, agilidad, etc. 
+
+\label{class_c_e_1_1_i_stats_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_stats_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_stats_adab0c7ac5bd828e7685d038160a523c0}\index{CE::IStats@{CE::IStats}!clonar@{clonar}}
+\index{clonar@{clonar}!CE::IStats@{CE::IStats}}
+\doxysubsubsection{\texorpdfstring{clonar()}{clonar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_stats_adab0c7ac5bd828e7685d038160a523c0} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ CE::\+\+IStats::\+clonar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\end{DoxyCompactItemize}

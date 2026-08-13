@@ -1,0 +1,211 @@
+\doxysection{Referencia de la clase CE::\+Camara}
+\hypertarget{class_c_e_1_1_camara}{}\label{class_c_e_1_1_camara}\index{CE::Camara@{CE::Camara}}
+
+
+Clase base abstracta para cámaras de juego que gestiona la vista.  
+
+
+
+
+{\ttfamily \+\#include $<$Camaras.\+hpp$>$}
+
+Diagrama de herencia de CE::\+Camara\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d4/d62/class_c_e_1_1_camara}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_camara_a61830b58bbd970a2b21a92a344173462}{Camara}} (float x, float y, float w, float h)
+\begin{DoxyCompactList}\small\item\em Constructor con coordenadas y dimensiones como floats. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_camara_a0856eeb85ce360d4f39c868d27b63f4b}{Camara}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&pos, const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&dim)
+\begin{DoxyCompactList}\small\item\em Constructor con vectores de posición y dimensión. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_camara_ad70b88819bbf0a2231c42b0af816ed28}\label{class_c_e_1_1_camara_ad70b88819bbf0a2231c42b0af816ed28} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Camara} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_i_transform}{ITransform}} \& \doxymbox{\hyperlink{class_c_e_1_1_camara_a63e6ed28da30ef2eb0c6472074f65907}{get\+Transformada}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el componente de transformación de la cámara. \end{DoxyCompactList}\item 
+sf::\+\+View \& \doxymbox{\hyperlink{class_c_e_1_1_camara_aebb0b2a0eeea49c218b715dfd5683c05}{get\+View}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la vista SFML de la cámara. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_camara_a36096a4de196b1b71f2e49f10804332d}{lock\+En\+Objeto}} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ \&obj)
+\begin{DoxyCompactList}\small\item\em Vincula el seguimiento de cámara a un objeto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_camara_a1727c000d45f89c72398a6c3b7b776b9}{set\+View\+Size}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Establece el tamaño de la vista de cámara. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_camara_ad151bfbeac578095a496deb00adc1d89}{on\+Update}} (float dt)
+\begin{DoxyCompactList}\small\item\em Actualiza la cámara. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_camara_a1b3ce17c8b81599ebcf3b9d105f135c7}\label{class_c_e_1_1_camara_a1b3ce17c8b81599ebcf3b9d105f135c7} 
+float {\bfseries cam\+\_\+width}
+\begin{DoxyCompactList}\small\item\em Ancho de la vista de cámara en píxeles. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_camara_a2bc975c52b571464574b6fe110325f3d}\label{class_c_e_1_1_camara_a2bc975c52b571464574b6fe110325f3d} 
+float {\bfseries cam\+\_\+height}
+\begin{DoxyCompactList}\small\item\em Alto de la vista de cámara en píxeles. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_camara_ae74fb39f17fe12bfb4648ff6e6862186}\label{class_c_e_1_1_camara_ae74fb39f17fe12bfb4648ff6e6862186} 
+std::\+string {\bfseries nombre}
+\begin{DoxyCompactList}\small\item\em Nombre/\+identificador de la cámara. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_camara_a71be0c219b8a4c593310ef8cd46bda81}\label{class_c_e_1_1_camara_a71be0c219b8a4c593310ef8cd46bda81} 
+bool {\bfseries esta\+\_\+activa}
+\begin{DoxyCompactList}\small\item\em Bandera que indica si la cámara está activa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_camara_a13f77bb6338cce16849d9c981f468562}\label{class_c_e_1_1_camara_a13f77bb6338cce16849d9c981f468562} 
+static int {\bfseries num\+\_\+camaras} =0
+\begin{DoxyCompactList}\small\item\em Contador estático de cámaras totales. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_camara_a7f4e7b32444973b0c1ba3c8b38395221}\label{class_c_e_1_1_camara_a7f4e7b32444973b0c1ba3c8b38395221} 
+std::\+shared\+\_\+ptr$<$ sf::\+\+View $>$ {\bfseries m\+\_\+view}
+\begin{DoxyCompactList}\small\item\em Vista SFML compartida. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_camara_a5a9bd087c872697a4a70cbee7d015b10}\label{class_c_e_1_1_camara_a5a9bd087c872697a4a70cbee7d015b10} 
+std::\+weak\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ {\bfseries m\+\_\+lock\+Obj}
+\begin{DoxyCompactList}\small\item\em Referencia débil al objeto siendo seguido (evita ciclos). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_camara_ae44c37293684069afb1a9bf12049d4a8}\label{class_c_e_1_1_camara_ae44c37293684069afb1a9bf12049d4a8} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_transform}{ITransform}} $>$ {\bfseries m\+\_\+transform}
+\begin{DoxyCompactList}\small\item\em Componente de transformación (posición, velocidad, rotación). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base abstracta para cámaras de juego que gestiona la vista. 
+
+Implementa una cámara que puede seguir objetos y está vinculada a un view de SFML. Proporciona transformación (posición, rotación) y métodos de actualización virtual para permitir diferentes estrategias de movimiento (fija, seguimiento, LERP, etc).
+
+\begin{DoxyNote}{Nota}
+Utiliza weak\+\_\+ptr para evitar referencias circulares con el objeto seguido 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_camara_doc-constructors}
+\Hypertarget{class_c_e_1_1_camara_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_camara_a61830b58bbd970a2b21a92a344173462}\index{CE::Camara@{CE::Camara}!Camara@{Camara}}
+\index{Camara@{Camara}!CE::Camara@{CE::Camara}}
+\doxysubsubsection{\texorpdfstring{Camara()}{Camara()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_camara_a61830b58bbd970a2b21a92a344173462} 
+CE::\+\+Camara::\+\+Camara (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{w}{, }\item[{float}]{h}{}\end{DoxyParamCaption})}
+
+
+
+Constructor con coordenadas y dimensiones como floats. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x} & Posición inicial en X \\
+\hline
+{\em y} & Posición inicial en Y \\
+\hline
+{\em w} & Ancho de la vista de cámara \\
+\hline
+{\em h} & Alto de la vista de cámara \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_camara_a0856eeb85ce360d4f39c868d27b63f4b}\index{CE::Camara@{CE::Camara}!Camara@{Camara}}
+\index{Camara@{Camara}!CE::Camara@{CE::Camara}}
+\doxysubsubsection{\texorpdfstring{Camara()}{Camara()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_camara_a0856eeb85ce360d4f39c868d27b63f4b} 
+CE::\+\+Camara::\+\+Camara (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&}]{pos}{, }\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&}]{dim}{}\end{DoxyParamCaption})}
+
+
+
+Constructor con vectores de posición y dimensión. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pos} & Posición inicial como \doxylink{class_c_e_1_1_vector2_d}{Vector2D} \\
+\hline
+{\em dim} & Dimensión como \doxylink{class_c_e_1_1_vector2_d}{Vector2D} (ancho, alto) \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_camara_doc-func-members}
+\Hypertarget{class_c_e_1_1_camara_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_camara_a63e6ed28da30ef2eb0c6472074f65907}\index{CE::Camara@{CE::Camara}!getTransformada@{getTransformada}}
+\index{getTransformada@{getTransformada}!CE::Camara@{CE::Camara}}
+\doxysubsubsection{\texorpdfstring{getTransformada()}{getTransformada()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_camara_a63e6ed28da30ef2eb0c6472074f65907} 
+\doxymbox{\hyperlink{class_c_e_1_1_i_transform}{ITransform}} \& CE::\+\+Camara::\+get\+Transformada (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Obtiene el componente de transformación de la cámara. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a \doxylink{class_c_e_1_1_i_transform}{ITransform} 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_camara_aebb0b2a0eeea49c218b715dfd5683c05}\index{CE::Camara@{CE::Camara}!getView@{getView}}
+\index{getView@{getView}!CE::Camara@{CE::Camara}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_camara_aebb0b2a0eeea49c218b715dfd5683c05} 
+sf::\+\+View \& CE::\+\+Camara::\+get\+View (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Obtiene la vista SFML de la cámara. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia constante a sf::\+\+View 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_camara_a36096a4de196b1b71f2e49f10804332d}\index{CE::Camara@{CE::Camara}!lockEnObjeto@{lockEnObjeto}}
+\index{lockEnObjeto@{lockEnObjeto}!CE::Camara@{CE::Camara}}
+\doxysubsubsection{\texorpdfstring{lockEnObjeto()}{lockEnObjeto()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_camara_a36096a4de196b1b71f2e49f10804332d} 
+void CE::\+\+Camara::\+lock\+En\+Objeto (\begin{DoxyParamCaption}\item[{const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ \&}]{obj}{}\end{DoxyParamCaption})}
+
+
+
+Vincula el seguimiento de cámara a un objeto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em obj} & Puntero compartido al objeto a seguir\\
+\hline
+\end{DoxyParams}
+La cámara seguirá la posición de este objeto según su implementación de on\+Update (fija, cuadro limitante, LERP, etc). \Hypertarget{class_c_e_1_1_camara_ad151bfbeac578095a496deb00adc1d89}\index{CE::Camara@{CE::Camara}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!CE::Camara@{CE::Camara}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_camara_ad151bfbeac578095a496deb00adc1d89} 
+void CE::\+\+Camara::\+on\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Actualiza la cámara. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos\\
+\hline
+\end{DoxyParams}
+Por defecto no realiza cambios. Las subclases sobrescriben para implementar seguimiento del objeto vinculado. 
+
+Reimplementado en \doxymbox{\hyperlink{class_c_e_1_1_camara_cuadro_a4bc8cc1bf4f44be954f91e0b7c9d4423}{CE::\+\+Camara\+Cuadro}}, \doxymbox{\hyperlink{class_c_e_1_1_camara_l_e_r_p_a60b57c4ad9690f04a2063cc17ced5f72}{CE::\+\+Camara\+LERP}} y \doxymbox{\hyperlink{class_c_e_1_1_camara_snap_ventana_aade19538b7e59ba42c365635aadbdb8a}{CE::\+\+Camara\+Snap\+Ventana}}.
+
+\Hypertarget{class_c_e_1_1_camara_a1727c000d45f89c72398a6c3b7b776b9}\index{CE::Camara@{CE::Camara}!setViewSize@{setViewSize}}
+\index{setViewSize@{setViewSize}!CE::Camara@{CE::Camara}}
+\doxysubsubsection{\texorpdfstring{setViewSize()}{setViewSize()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_camara_a1727c000d45f89c72398a6c3b7b776b9} 
+void CE::\+\+Camara::\+set\+View\+Size (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Establece el tamaño de la vista de cámara. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x} & Nuevo ancho \\
+\hline
+{\em y} & Nuevo alto \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Camaras/\+Camaras.\+hpp\item 
+src/\+\+Motor/\+\+Camaras/\+Camaras.\+cpp\end{DoxyCompactItemize}

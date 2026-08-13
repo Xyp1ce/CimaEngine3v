@@ -1,0 +1,228 @@
+\doxysection{imgui\+\_\+impl\+\_\+vulkan.\+h}
+\hypertarget{imgui__impl__vulkan_8h_source}{}\label{imgui__impl__vulkan_8h_source}\index{build/\_deps/imgui-\/src/backends/imgui\_impl\_vulkan.h@{build/\_deps/imgui-\/src/backends/imgui\_impl\_vulkan.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ dear\ imgui:\ Renderer\ Backend\ for\ Vulkan}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ This\ needs\ to\ be\ used\ along\ with\ a\ Platform\ Backend\ (e.g.\ GLFW,\ SDL,\ Win32,\ custom..)}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Implemented\ features:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ [!]\ Renderer:\ User\ texture\ binding.\ Use\ 'VkDescriptorSet'\ as\ ImTextureID.\ Call\ ImGui\_ImplVulkan\_AddTexture()\ to\ register\ one.\ Read\ the\ FAQ\ about\ ImTextureID!\ See\ https://github.com/ocornut/imgui/pull/914\ for\ discussions.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ [X]\ Renderer:\ Large\ meshes\ support\ (64k+\ vertices)\ even\ with\ 16-\/bit\ indices\ (ImGuiBackendFlags\_RendererHasVtxOffset).}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ [X]\ Renderer:\ Expose\ selected\ render\ state\ for\ draw\ callbacks\ to\ use.\ Access\ in\ '(ImGui\_ImplXXXX\_RenderState*)GetPlatformIO().Renderer\_RenderState'.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ [x]\ Renderer:\ Multi-\/viewport\ /\ platform\ windows.\ With\ issues\ (flickering\ when\ creating\ a\ new\ viewport).}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ The\ aim\ of\ imgui\_impl\_vulkan.h/.cpp\ is\ to\ be\ usable\ in\ your\ engine\ without\ any\ modification.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ IF\ YOU\ FEEL\ YOU\ NEED\ TO\ MAKE\ ANY\ CHANGE\ TO\ THIS\ CODE,\ please\ share\ them\ and\ your\ feedback\ at\ https://github.com/ocornut/imgui/}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ You\ can\ use\ unmodified\ imgui\_impl\_*\ files\ in\ your\ project.\ See\ examples/\ folder\ for\ examples\ of\ using\ this.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Prefer\ including\ the\ entire\ imgui/\ repository\ into\ your\ project\ (either\ as\ a\ copy\ or\ as\ a\ submodule),\ and\ only\ build\ the\ backends\ you\ need.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Learn\ about\ Dear\ ImGui:}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ -\/\ FAQ\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ https://dearimgui.com/faq}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ -\/\ Getting\ Started\ \ \ \ \ \ https://dearimgui.com/getting-\/started}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ -\/\ Documentation\ \ \ \ \ \ \ \ https://dearimgui.com/docs\ (same\ as\ your\ local\ docs/\ folder).}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ -\/\ Introduction,\ links\ and\ more\ at\ the\ top\ of\ imgui.cpp}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Important\ note\ to\ the\ reader\ who\ wish\ to\ integrate\ imgui\_impl\_vulkan.cpp/.h\ in\ their\ own\ engine/app.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ -\/\ Common\ ImGui\_ImplVulkan\_XXX\ functions\ and\ structures\ are\ used\ to\ interface\ with\ imgui\_impl\_vulkan.cpp/.h.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \ \ You\ will\ use\ those\ if\ you\ want\ to\ use\ this\ rendering\ backend\ in\ your\ engine/app.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ -\/\ Helper\ ImGui\_ImplVulkanH\_XXX\ functions\ and\ structures\ are\ only\ used\ by\ this\ example\ (main.cpp)\ and\ by}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ \ \ the\ backend\ itself\ (imgui\_impl\_vulkan.cpp),\ but\ should\ PROBABLY\ NOT\ be\ used\ by\ your\ own\ engine/app\ code.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Read\ comments\ in\ imgui\_impl\_vulkan.h.}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ IMGUI\_DISABLE}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}imgui.h"{}}\ \ \ \ \ \ \textcolor{comment}{//\ IMGUI\_IMPL\_API}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ [Configuration]\ in\ order\ to\ use\ a\ custom\ Vulkan\ function\ loader:}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ (1)\ You'll\ need\ to\ disable\ default\ Vulkan\ function\ prototypes.}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ \ \ \ \ We\ provide\ a\ '\#define\ IMGUI\_IMPL\_VULKAN\_NO\_PROTOTYPES'\ convenience\ configuration\ flag.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ \ \ \ \ In\ order\ to\ make\ sure\ this\ is\ visible\ from\ the\ imgui\_impl\_vulkan.cpp\ compilation\ unit:}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ \ \ \ \ -\/\ Add\ '\#define\ IMGUI\_IMPL\_VULKAN\_NO\_PROTOTYPES'\ in\ your\ imconfig.h\ file}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ \ \ \ \ -\/\ Or\ as\ a\ compilation\ flag\ in\ your\ build\ system}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ \ \ \ \ -\/\ Or\ uncomment\ here\ (not\ recommended\ because\ you'd\ be\ modifying\ imgui\ sources!)}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ \ \ \ \ -\/\ Do\ not\ simply\ add\ it\ in\ a\ .cpp\ file!}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ (2)\ Call\ ImGui\_ImplVulkan\_LoadFunctions()\ before\ ImGui\_ImplVulkan\_Init()\ with\ your\ custom\ function.}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ If\ you\ have\ no\ idea\ what\ this\ is,\ leave\ it\ alone!}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\#define\ IMGUI\_IMPL\_VULKAN\_NO\_PROTOTYPES}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ Convenience\ support\ for\ Volk}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ (you\ can\ also\ technically\ use\ IMGUI\_IMPL\_VULKAN\_NO\_PROTOTYPES\ +\ wrap\ Volk\ via\ ImGui\_ImplVulkan\_LoadFunctions().)}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\#define\ IMGUI\_IMPL\_VULKAN\_USE\_VOLK}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#if\ defined(IMGUI\_IMPL\_VULKAN\_NO\_PROTOTYPES)\ \&\&\ !defined(VK\_NO\_PROTOTYPES)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#if\ defined(VK\_USE\_PLATFORM\_WIN32\_KHR)\ \&\&\ !defined(NOMINMAX)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ NOMINMAX}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ Vulkan\ includes}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#ifdef\ IMGUI\_IMPL\_VULKAN\_USE\_VOLK}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ <volk.h>}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#include\ <vulkan/vulkan.h>}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#if\ defined(VK\_VERSION\_1\_3)\ ||\ defined(VK\_KHR\_dynamic\_rendering)}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ IMGUI\_IMPL\_VULKAN\_HAS\_DYNAMIC\_RENDERING}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ Current\ version\ of\ the\ backend\ use\ 1\ descriptor\ for\ the\ font\ atlas\ +\ as\ many\ as\ additional\ calls\ done\ to\ ImGui\_ImplVulkan\_AddTexture().}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ It\ is\ expected\ that\ as\ early\ as\ Q1\ 2025\ the\ backend\ will\ use\ a\ few\ more\ descriptors.\ Use\ this\ value\ +\ number\ of\ desired\ calls\ to\ ImGui\_ImplVulkan\_AddTexture().}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ IMGUI\_IMPL\_VULKAN\_MINIMUM\_IMAGE\_SAMPLER\_POOL\_SIZE\ \ \ (1)\ \ \ \ \ }\textcolor{comment}{//\ Minimum\ per\ atlas}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ Initialization\ data,\ for\ ImGui\_ImplVulkan\_Init()}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ [Please\ zero-\/clear\ before\ use!]}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ -\/\ About\ descriptor\ pool:}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ \ \ -\/\ A\ VkDescriptorPool\ should\ be\ created\ with\ VK\_DESCRIPTOR\_POOL\_CREATE\_FREE\_DESCRIPTOR\_SET\_BIT,}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ \ \ \ \ and\ must\ contain\ a\ pool\ size\ large\ enough\ to\ hold\ a\ small\ number\ of\ VK\_DESCRIPTOR\_TYPE\_COMBINED\_IMAGE\_SAMPLER\ descriptors.}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ \ \ -\/\ As\ an\ convenience,\ by\ setting\ DescriptorPoolSize\ >\ 0\ the\ backend\ will\ create\ one\ for\ you.}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ -\/\ About\ dynamic\ rendering:}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ \ \ -\/\ When\ using\ dynamic\ rendering,\ set\ UseDynamicRendering=true\ and\ fill\ PipelineRenderingCreateInfo\ structure.}}
+\DoxyCodeLine{00077\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_im_gui___impl_vulkan___init_info}{ImGui\_ImplVulkan\_InitInfo}}}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ApiVersion;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fill\ with\ API\ version\ of\ Instance,\ e.g.\ VK\_API\_VERSION\_1\_3\ or\ your\ value\ of\ VkApplicationInfo::apiVersion.\ May\ be\ lower\ than\ header\ version\ (VK\_HEADER\_VERSION\_COMPLETE)}}
+\DoxyCodeLine{00080\ \ \ \ \ VkInstance\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Instance;}
+\DoxyCodeLine{00081\ \ \ \ \ VkPhysicalDevice\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PhysicalDevice;}
+\DoxyCodeLine{00082\ \ \ \ \ VkDevice\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Device;}
+\DoxyCodeLine{00083\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QueueFamily;}
+\DoxyCodeLine{00084\ \ \ \ \ VkQueue\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Queue;}
+\DoxyCodeLine{00085\ \ \ \ \ VkDescriptorPool\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DescriptorPool;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ See\ requirements\ in\ note\ above;\ ignored\ if\ using\ DescriptorPoolSize\ >\ 0}}
+\DoxyCodeLine{00086\ \ \ \ \ VkRenderPass\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RenderPass;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ignored\ if\ using\ dynamic\ rendering}}
+\DoxyCodeLine{00087\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MinImageCount;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ >=\ 2}}
+\DoxyCodeLine{00088\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImageCount;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ >=\ MinImageCount}}
+\DoxyCodeLine{00089\ \ \ \ \ VkSampleCountFlagBits\ \ \ \ \ \ \ \ \ \ \ MSAASamples;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0\ defaults\ to\ VK\_SAMPLE\_COUNT\_1\_BIT}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ (Optional)}}
+\DoxyCodeLine{00092\ \ \ \ \ VkPipelineCache\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PipelineCache;}
+\DoxyCodeLine{00093\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subpass;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ (Optional)\ Set\ to\ create\ internal\ descriptor\ pool\ instead\ of\ using\ DescriptorPool}}
+\DoxyCodeLine{00096\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DescriptorPoolSize;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ (Optional)\ Dynamic\ Rendering}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ Need\ to\ explicitly\ enable\ VK\_KHR\_dynamic\_rendering\ extension\ to\ use\ this,\ even\ for\ Vulkan\ 1.3.}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UseDynamicRendering;}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#ifdef\ IMGUI\_IMPL\_VULKAN\_HAS\_DYNAMIC\_RENDERING}}
+\DoxyCodeLine{00102\ \ \ \ \ VkPipelineRenderingCreateInfoKHR\ PipelineRenderingCreateInfo;}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ (Optional)\ Allocation,\ Debugging}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{const}\ VkAllocationCallbacks*\ \ \ \ Allocator;}
+\DoxyCodeLine{00107\ \ \ \ \ void\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*CheckVkResultFn)(VkResult\ err);}
+\DoxyCodeLine{00108\ \ \ \ \ VkDeviceSize\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MinAllocationSize;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Minimum\ allocation\ size.\ Set\ to\ 1024*1024\ to\ satisfy\ zealous\ best\ practices\ validation\ layer\ and\ waste\ a\ little\ memory.}}
+\DoxyCodeLine{00109\ \};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ Follow\ "{}Getting\ Started"{}\ link\ and\ check\ examples/\ folder\ to\ learn\ about\ using\ backends!}}
+\DoxyCodeLine{00112\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_Init(\doxymbox{\hyperlink{struct_im_gui___impl_vulkan___init_info}{ImGui\_ImplVulkan\_InitInfo}}*\ info);}
+\DoxyCodeLine{00113\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_Shutdown();}
+\DoxyCodeLine{00114\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_NewFrame();}
+\DoxyCodeLine{00115\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_RenderDrawData(\doxymbox{\hyperlink{struct_im_draw_data}{ImDrawData}}*\ draw\_data,\ VkCommandBuffer\ command\_buffer,\ VkPipeline\ pipeline\ =\ VK\_NULL\_HANDLE);}
+\DoxyCodeLine{00116\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_CreateFontsTexture();}
+\DoxyCodeLine{00117\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_DestroyFontsTexture();}
+\DoxyCodeLine{00118\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_SetMinImageCount(uint32\_t\ min\_image\_count);\ \textcolor{comment}{//\ To\ override\ MinImageCount\ after\ initialization\ (e.g.\ if\ swap\ chain\ is\ recreated)}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{comment}{//\ Register\ a\ texture\ (VkDescriptorSet\ ==\ ImTextureID)}}
+\DoxyCodeLine{00121\ \textcolor{comment}{//\ FIXME:\ This\ is\ experimental\ in\ the\ sense\ that\ we\ are\ unsure\ how\ to\ best\ design/tackle\ this\ problem}}
+\DoxyCodeLine{00122\ \textcolor{comment}{//\ Please\ post\ to\ https://github.com/ocornut/imgui/pull/914\ if\ you\ have\ suggestions.}}
+\DoxyCodeLine{00123\ IMGUI\_IMPL\_API\ VkDescriptorSet\ \ ImGui\_ImplVulkan\_AddTexture(VkSampler\ sampler,\ VkImageView\ image\_view,\ VkImageLayout\ image\_layout);}
+\DoxyCodeLine{00124\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_RemoveTexture(VkDescriptorSet\ descriptor\_set);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{comment}{//\ Optional:\ load\ Vulkan\ functions\ with\ a\ custom\ function\ loader}}
+\DoxyCodeLine{00127\ \textcolor{comment}{//\ This\ is\ only\ useful\ with\ IMGUI\_IMPL\_VULKAN\_NO\_PROTOTYPES\ /\ VK\_NO\_PROTOTYPES}}
+\DoxyCodeLine{00128\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkan\_LoadFunctions(uint32\_t\ api\_version,\ PFN\_vkVoidFunction(*loader\_func)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ function\_name,\ \textcolor{keywordtype}{void}*\ user\_data),\ \textcolor{keywordtype}{void}*\ user\_data\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ [BETA]\ Selected\ render\ state\ data\ shared\ with\ callbacks.}}
+\DoxyCodeLine{00131\ \textcolor{comment}{//\ This\ is\ temporarily\ stored\ in\ GetPlatformIO().Renderer\_RenderState\ during\ the\ ImGui\_ImplVulkan\_RenderDrawData()\ call.}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ (Please\ open\ an\ issue\ if\ you\ feel\ you\ need\ access\ to\ more\ data)}}
+\DoxyCodeLine{00133\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_im_gui___impl_vulkan___render_state}{ImGui\_ImplVulkan\_RenderState}}}
+\DoxyCodeLine{00134\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ VkCommandBuffer\ \ \ \ \ CommandBuffer;}
+\DoxyCodeLine{00136\ \ \ \ \ VkPipeline\ \ \ \ \ \ \ \ \ \ Pipeline;}
+\DoxyCodeLine{00137\ \ \ \ \ VkPipelineLayout\ \ \ \ PipelineLayout;}
+\DoxyCodeLine{00138\ \};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00141\ \textcolor{comment}{//\ Internal\ /\ Miscellaneous\ Vulkan\ Helpers}}
+\DoxyCodeLine{00142\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00143\ \textcolor{comment}{//\ Used\ by\ example's\ main.cpp.\ Used\ by\ multi-\/viewport\ features.\ PROBABLY\ NOT\ used\ by\ your\ own\ engine/app.}}
+\DoxyCodeLine{00144\ \textcolor{comment}{//}}
+\DoxyCodeLine{00145\ \textcolor{comment}{//\ You\ probably\ do\ NOT\ need\ to\ use\ or\ care\ about\ those\ functions.}}
+\DoxyCodeLine{00146\ \textcolor{comment}{//\ Those\ functions\ only\ exist\ because:}}
+\DoxyCodeLine{00147\ \textcolor{comment}{//\ \ \ 1)\ they\ facilitate\ the\ readability\ and\ maintenance\ of\ the\ multiple\ main.cpp\ examples\ files.}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ \ \ 2)\ the\ multi-\/viewport\ /\ platform\ window\ implementation\ needs\ them\ internally.}}
+\DoxyCodeLine{00149\ \textcolor{comment}{//\ Generally\ we\ avoid\ exposing\ any\ kind\ of\ superfluous\ high-\/level\ helpers\ in\ the\ backends,}}
+\DoxyCodeLine{00150\ \textcolor{comment}{//\ but\ it\ is\ too\ much\ code\ to\ duplicate\ everywhere\ so\ we\ exceptionally\ expose\ them.}}
+\DoxyCodeLine{00151\ \textcolor{comment}{//}}
+\DoxyCodeLine{00152\ \textcolor{comment}{//\ Your\ engine/app\ will\ likely\ \_already\_\ have\ code\ to\ setup\ all\ that\ stuff\ (swap\ chain,}}
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ render\ pass,\ frame\ buffers,\ etc.).\ You\ may\ read\ this\ code\ if\ you\ are\ curious,\ but}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ it\ is\ recommended\ you\ use\ you\ own\ custom\ tailored\ code\ to\ do\ equivalent\ work.}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//}}
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ We\ don't\ provide\ a\ strong\ guarantee\ that\ we\ won't\ change\ those\ functions\ API.}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//}}
+\DoxyCodeLine{00158\ \textcolor{comment}{//\ The\ ImGui\_ImplVulkanH\_XXX\ functions\ should\ NOT\ interact\ with\ any\ of\ the\ state\ used}}
+\DoxyCodeLine{00159\ \textcolor{comment}{//\ by\ the\ regular\ ImGui\_ImplVulkan\_XXX\ functions).}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_im_gui___impl_vulkan_h___frame}{ImGui\_ImplVulkanH\_Frame}};}
+\DoxyCodeLine{00163\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_im_gui___impl_vulkan_h___window}{ImGui\_ImplVulkanH\_Window}};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{comment}{//\ Helpers}}
+\DoxyCodeLine{00166\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkanH\_CreateOrResizeWindow(VkInstance\ instance,\ VkPhysicalDevice\ physical\_device,\ VkDevice\ device,\ \doxymbox{\hyperlink{struct_im_gui___impl_vulkan_h___window}{ImGui\_ImplVulkanH\_Window}}*\ wd,\ uint32\_t\ queue\_family,\ \textcolor{keyword}{const}\ VkAllocationCallbacks*\ allocator,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ uint32\_t\ min\_image\_count);}
+\DoxyCodeLine{00167\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkanH\_DestroyWindow(VkInstance\ instance,\ VkDevice\ device,\ \doxymbox{\hyperlink{struct_im_gui___impl_vulkan_h___window}{ImGui\_ImplVulkanH\_Window}}*\ wd,\ \textcolor{keyword}{const}\ VkAllocationCallbacks*\ allocator);}
+\DoxyCodeLine{00168\ IMGUI\_IMPL\_API\ VkSurfaceFormatKHR\ \ \ ImGui\_ImplVulkanH\_SelectSurfaceFormat(VkPhysicalDevice\ physical\_device,\ VkSurfaceKHR\ surface,\ \textcolor{keyword}{const}\ VkFormat*\ request\_formats,\ \textcolor{keywordtype}{int}\ request\_formats\_count,\ VkColorSpaceKHR\ request\_color\_space);}
+\DoxyCodeLine{00169\ IMGUI\_IMPL\_API\ VkPresentModeKHR\ \ \ \ \ ImGui\_ImplVulkanH\_SelectPresentMode(VkPhysicalDevice\ physical\_device,\ VkSurfaceKHR\ surface,\ \textcolor{keyword}{const}\ VkPresentModeKHR*\ request\_modes,\ \textcolor{keywordtype}{int}\ request\_modes\_count);}
+\DoxyCodeLine{00170\ IMGUI\_IMPL\_API\ VkPhysicalDevice\ \ \ \ \ ImGui\_ImplVulkanH\_SelectPhysicalDevice(VkInstance\ instance);}
+\DoxyCodeLine{00171\ IMGUI\_IMPL\_API\ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkanH\_SelectQueueFamilyIndex(VkPhysicalDevice\ physical\_device);}
+\DoxyCodeLine{00172\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui\_ImplVulkanH\_GetMinImageCountFromPresentMode(VkPresentModeKHR\ present\_mode);}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{comment}{//\ Helper\ structure\ to\ hold\ the\ data\ needed\ by\ one\ rendering\ frame}}
+\DoxyCodeLine{00175\ \textcolor{comment}{//\ (Used\ by\ example's\ main.cpp.\ Used\ by\ multi-\/viewport\ features.\ Probably\ NOT\ used\ by\ your\ own\ engine/app.)}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ [Please\ zero-\/clear\ before\ use!]}}
+\DoxyCodeLine{00177\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_im_gui___impl_vulkan_h___frame}{ImGui\_ImplVulkanH\_Frame}}}
+\DoxyCodeLine{00178\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ VkCommandPool\ \ \ \ \ \ \ CommandPool;}
+\DoxyCodeLine{00180\ \ \ \ \ VkCommandBuffer\ \ \ \ \ CommandBuffer;}
+\DoxyCodeLine{00181\ \ \ \ \ VkFence\ \ \ \ \ \ \ \ \ \ \ \ \ Fence;}
+\DoxyCodeLine{00182\ \ \ \ \ VkImage\ \ \ \ \ \ \ \ \ \ \ \ \ Backbuffer;}
+\DoxyCodeLine{00183\ \ \ \ \ VkImageView\ \ \ \ \ \ \ \ \ BackbufferView;}
+\DoxyCodeLine{00184\ \ \ \ \ VkFramebuffer\ \ \ \ \ \ \ Framebuffer;}
+\DoxyCodeLine{00185\ \};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_im_gui___impl_vulkan_h___frame_semaphores}{ImGui\_ImplVulkanH\_FrameSemaphores}}}
+\DoxyCodeLine{00188\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ VkSemaphore\ \ \ \ \ \ \ \ \ ImageAcquiredSemaphore;}
+\DoxyCodeLine{00190\ \ \ \ \ VkSemaphore\ \ \ \ \ \ \ \ \ RenderCompleteSemaphore;}
+\DoxyCodeLine{00191\ \};}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \textcolor{comment}{//\ Helper\ structure\ to\ hold\ the\ data\ needed\ by\ one\ rendering\ context\ into\ one\ OS\ window}}
+\DoxyCodeLine{00194\ \textcolor{comment}{//\ (Used\ by\ example's\ main.cpp.\ Used\ by\ multi-\/viewport\ features.\ Probably\ NOT\ used\ by\ your\ own\ engine/app.)}}
+\DoxyCodeLine{00195\ \textcolor{keyword}{struct\ }ImGui\_ImplVulkanH\_Window}
+\DoxyCodeLine{00196\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Width;}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Height;}
+\DoxyCodeLine{00199\ \ \ \ \ VkSwapchainKHR\ \ \ \ \ \ Swapchain;}
+\DoxyCodeLine{00200\ \ \ \ \ VkSurfaceKHR\ \ \ \ \ \ \ \ Surface;}
+\DoxyCodeLine{00201\ \ \ \ \ VkSurfaceFormatKHR\ \ SurfaceFormat;}
+\DoxyCodeLine{00202\ \ \ \ \ VkPresentModeKHR\ \ \ \ PresentMode;}
+\DoxyCodeLine{00203\ \ \ \ \ VkRenderPass\ \ \ \ \ \ \ \ RenderPass;}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UseDynamicRendering;}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ClearEnable;}
+\DoxyCodeLine{00206\ \ \ \ \ VkClearValue\ \ \ \ \ \ \ \ ClearValue;}
+\DoxyCodeLine{00207\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ FrameIndex;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Current\ frame\ being\ rendered\ to\ (0\ <=\ FrameIndex\ <\ FrameInFlightCount)}}
+\DoxyCodeLine{00208\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ ImageCount;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ simultaneous\ in-\/flight\ frames\ (returned\ by\ vkGetSwapchainImagesKHR,\ usually\ derived\ from\ min\_image\_count)}}
+\DoxyCodeLine{00209\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ SemaphoreCount;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ simultaneous\ in-\/flight\ frames\ +\ 1,\ to\ be\ able\ to\ use\ it\ in\ vkAcquireNextImageKHR}}
+\DoxyCodeLine{00210\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ SemaphoreIndex;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Current\ set\ of\ swapchain\ wait\ semaphores\ we're\ using\ (needs\ to\ be\ distinct\ from\ per\ frame\ data)}}
+\DoxyCodeLine{00211\ \ \ \ \ \doxymbox{\hyperlink{struct_im_vector}{ImVector<ImGui\_ImplVulkanH\_Frame>}}\ \ \ \ \ \ \ \ \ \ \ Frames;}
+\DoxyCodeLine{00212\ \ \ \ \ \doxymbox{\hyperlink{struct_im_vector}{ImVector<ImGui\_ImplVulkanH\_FrameSemaphores>}}\ FrameSemaphores;}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ ImGui\_ImplVulkanH\_Window()}
+\DoxyCodeLine{00215\ \ \ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ memset((\textcolor{keywordtype}{void}*)\textcolor{keyword}{this},\ 0,\ \textcolor{keyword}{sizeof}(*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ PresentMode\ =\ (VkPresentModeKHR)\string~0;\ \ \ \ \ \textcolor{comment}{//\ Ensure\ we\ get\ an\ error\ if\ user\ doesn't\ set\ this.}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ ClearEnable\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00219\ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \};}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \#ifndef\ IMGUI\_DISABLE}}
+
+\end{DoxyCode}

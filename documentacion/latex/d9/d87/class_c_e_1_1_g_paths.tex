@@ -1,0 +1,126 @@
+\doxysection{Referencia de la clase CE::\+GPaths}
+\hypertarget{class_c_e_1_1_g_paths}{}\label{class_c_e_1_1_g_paths}\index{CE::GPaths@{CE::GPaths}}
+
+
+Panel de Im\+Gui para editar trayectorias/\+paths de entidades.  
+
+
+
+
+{\ttfamily \+\#include $<$GPaths.\+hpp$>$}
+
+Diagrama de herencia de CE::\+GPaths\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d87/class_c_e_1_1_g_paths}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_g_paths_a09a0f4b46e1787d1822478bc7e794fa9}\label{class_c_e_1_1_g_paths_a09a0f4b46e1787d1822478bc7e794fa9} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+GPaths} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_paths_a07dc157215c2cc2eba220af0871a7700}{On\+Init}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&des) override
+\begin{DoxyCompactList}\small\item\em Inicializa el panel de paths. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_paths_a00f4ba6e3b429268e559e823c569e366}{On\+Update}} (float dt) override
+\begin{DoxyCompactList}\small\item\em Actualiza el panel de paths cada frame. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_paths_af057dc9b153acd197fe95dd75f6f65b4}{On\+Render}} (void) override
+\begin{DoxyCompactList}\small\item\em Renderiza el editor de paths en Im\+Gui. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_paths_a60e08b66d7bc3842e38ed15baebc3658}{set\+Objeto\+Select}} (\doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} \texorpdfstring{$\ast$}{*}ref)
+\begin{DoxyCompactList}\small\item\em Establece el objeto cuyas trayectorias se editan. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_g_layer}{CE::\+\+GLayer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+GLayer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Panel de Im\+Gui para editar trayectorias/\+paths de entidades. 
+
+Proporciona interfaz de edición visual para componentes \doxylink{class_c_e_1_1_i_paths}{IPaths}, permitiendo crear y modificar curvas Bézier para que los objetos sigan trayectorias predefinidas.
+
+\begin{DoxyNote}{Nota}
+Derivada de \doxylink{class_c_e_1_1_g_layer}{GLayer} para integración en sistema GUI del motor 
+
+Trabajo en tándem con \doxylink{class_c_e_1_1_g_propiedades}{GPropiedades} para selección de objetos 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_g_paths_doc-func-members}
+\Hypertarget{class_c_e_1_1_g_paths_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_g_paths_a07dc157215c2cc2eba220af0871a7700}\index{CE::GPaths@{CE::GPaths}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!CE::GPaths@{CE::GPaths}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_paths_a07dc157215c2cc2eba220af0871a7700} 
+void CE::\+\+GPaths::\+\+On\+Init (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{des}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inicializa el panel de paths. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em des} & Configuración del motor \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_paths_af057dc9b153acd197fe95dd75f6f65b4}\index{CE::GPaths@{CE::GPaths}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!CE::GPaths@{CE::GPaths}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_paths_af057dc9b153acd197fe95dd75f6f65b4} 
+void CE::\+\+GPaths::\+\+On\+Render (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderiza el editor de paths en Im\+Gui. 
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_paths_a00f4ba6e3b429268e559e823c569e366}\index{CE::GPaths@{CE::GPaths}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CE::GPaths@{CE::GPaths}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_paths_a00f4ba6e3b429268e559e823c569e366} 
+void CE::\+\+GPaths::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Actualiza el panel de paths cada frame. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_paths_a60e08b66d7bc3842e38ed15baebc3658}\index{CE::GPaths@{CE::GPaths}!setObjetoSelect@{setObjetoSelect}}
+\index{setObjetoSelect@{setObjetoSelect}!CE::GPaths@{CE::GPaths}}
+\doxysubsubsection{\texorpdfstring{setObjetoSelect()}{setObjetoSelect()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_paths_a60e08b66d7bc3842e38ed15baebc3658} 
+void CE::\+\+GPaths::\+set\+Objeto\+Select (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} \texorpdfstring{$\ast$}{*}}]{ref}{}\end{DoxyParamCaption})}
+
+
+
+Establece el objeto cuyas trayectorias se editan. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ref} & Puntero al objeto a editar (nullptr para desseleccionar) \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+GUI/\+GPaths.\+hpp\item 
+src/\+\+Motor/\+\+GUI/\+GPaths.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,153 @@
+\doxysection{Referencia de la clase CE::\+Gestor\+Escenas}
+\hypertarget{class_c_e_1_1_gestor_escenas}{}\label{class_c_e_1_1_gestor_escenas}\index{CE::GestorEscenas@{CE::GestorEscenas}}
+
+
+Gestor singleton de escenas del juego con transiciones dinámicas.  
+
+
+
+
+{\ttfamily \+\#include $<$Gestor\+Escenas.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_a77acb2cea9cc8d234fd62fdb07d4a366}{registrar\+Escena}} (const std::\+string \&key, const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_escena}{Escena}} $>$ \&escena)
+\begin{DoxyCompactList}\small\item\em Registra una nueva escena en el gestor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_afb1c2fbfe235a6201c284189e8c64794}{cambiar\+Escena}} (const std::\+string \&key)
+\begin{DoxyCompactList}\small\item\em Cambia a una escena registrada. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_a2ae735ba5e161920823b186e5330bedb}{cambiar\+Escenay\+Eliminar}} (const std::\+string \&key, bool eliminar=false)
+\begin{DoxyCompactList}\small\item\em Cambia a una escena con opción de limpiar la anterior. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_escena}{Escena}} \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_a51243e3bc8c8e98c5732bcf532e1505c}{get\+Escena\+Actual}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la escena actualmente activa. \end{DoxyCompactList}\item 
+HEscenas \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_a6676125a3f4fd87b6e107b3c1a513c71}{get\+Todas\+Escenas}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene todas las escenas registradas. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_ad1171f2eb9f39cfb253999a3eff6367a}{get\+Keys}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene los identificadores de todas las escenas registradas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas}{Gestor\+Escenas}} \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_aa6541d1bd9369d0ca439a336616871cc}{Get}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la instancia singleton del gestor de escenas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Gestor singleton de escenas del juego con transiciones dinámicas. 
+
+Administra el registro, almacenamiento y cambio de escenas del juego. Mantiene la escena actual activa y permite transiciones entre escenas con opción de limpiar memoria de la escena anterior.
+
+\begin{DoxyNote}{Nota}
+Patrón Singleton -\/ instancia única a través de \doxylink{class_c_e_1_1_gestor_escenas_aa6541d1bd9369d0ca439a336616871cc}{Get()} 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_gestor_escenas_doc-func-members}
+\Hypertarget{class_c_e_1_1_gestor_escenas_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_gestor_escenas_afb1c2fbfe235a6201c284189e8c64794}\index{CE::GestorEscenas@{CE::GestorEscenas}!cambiarEscena@{cambiarEscena}}
+\index{cambiarEscena@{cambiarEscena}!CE::GestorEscenas@{CE::GestorEscenas}}
+\doxysubsubsection{\texorpdfstring{cambiarEscena()}{cambiarEscena()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_escenas_afb1c2fbfe235a6201c284189e8c64794} 
+void CE::\+\+Gestor\+Escenas::\+cambiar\+Escena (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Cambia a una escena registrada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador de la escena destino\\
+\hline
+\end{DoxyParams}
+Activa la escena especificada. La escena anterior se mantiene en memoria. \Hypertarget{class_c_e_1_1_gestor_escenas_a2ae735ba5e161920823b186e5330bedb}\index{CE::GestorEscenas@{CE::GestorEscenas}!cambiarEscenayEliminar@{cambiarEscenayEliminar}}
+\index{cambiarEscenayEliminar@{cambiarEscenayEliminar}!CE::GestorEscenas@{CE::GestorEscenas}}
+\doxysubsubsection{\texorpdfstring{cambiarEscenayEliminar()}{cambiarEscenayEliminar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_escenas_a2ae735ba5e161920823b186e5330bedb} 
+void CE::\+\+Gestor\+Escenas::\+cambiar\+Escenay\+Eliminar (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{bool}]{eliminar}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Cambia a una escena con opción de limpiar la anterior. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador de la escena destino \\
+\hline
+{\em eliminar} & true para liberar la escena anterior, false para mantenerla \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_gestor_escenas_aa6541d1bd9369d0ca439a336616871cc}\index{CE::GestorEscenas@{CE::GestorEscenas}!Get@{Get}}
+\index{Get@{Get}!CE::GestorEscenas@{CE::GestorEscenas}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_escenas_aa6541d1bd9369d0ca439a336616871cc} 
+\doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas}{Gestor\+Escenas}} \& CE::\+\+Gestor\+Escenas::\+\+Get (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtiene la instancia singleton del gestor de escenas. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al gestor único 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_escenas_a51243e3bc8c8e98c5732bcf532e1505c}\index{CE::GestorEscenas@{CE::GestorEscenas}!getEscenaActual@{getEscenaActual}}
+\index{getEscenaActual@{getEscenaActual}!CE::GestorEscenas@{CE::GestorEscenas}}
+\doxysubsubsection{\texorpdfstring{getEscenaActual()}{getEscenaActual()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_escenas_a51243e3bc8c8e98c5732bcf532e1505c} 
+\doxymbox{\hyperlink{class_c_e_1_1_escena}{Escena}} \& CE::\+\+Gestor\+Escenas::\+get\+Escena\+Actual (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtiene la escena actualmente activa. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a la escena actual 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_escenas_ad1171f2eb9f39cfb253999a3eff6367a}\index{CE::GestorEscenas@{CE::GestorEscenas}!getKeys@{getKeys}}
+\index{getKeys@{getKeys}!CE::GestorEscenas@{CE::GestorEscenas}}
+\doxysubsubsection{\texorpdfstring{getKeys()}{getKeys()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_escenas_ad1171f2eb9f39cfb253999a3eff6367a} 
+std::\+vector$<$ std::\+string $>$ CE::\+\+Gestor\+Escenas::\+get\+Keys (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene los identificadores de todas las escenas registradas. 
+
+\begin{DoxyReturn}{Devuelve}
+Vector con todas las claves de escenas 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_escenas_a6676125a3f4fd87b6e107b3c1a513c71}\index{CE::GestorEscenas@{CE::GestorEscenas}!getTodasEscenas@{getTodasEscenas}}
+\index{getTodasEscenas@{getTodasEscenas}!CE::GestorEscenas@{CE::GestorEscenas}}
+\doxysubsubsection{\texorpdfstring{getTodasEscenas()}{getTodasEscenas()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_escenas_a6676125a3f4fd87b6e107b3c1a513c71} 
+HEscenas \& CE::\+\+Gestor\+Escenas::\+get\+Todas\+Escenas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene todas las escenas registradas. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al mapa de escenas 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_escenas_a77acb2cea9cc8d234fd62fdb07d4a366}\index{CE::GestorEscenas@{CE::GestorEscenas}!registrarEscena@{registrarEscena}}
+\index{registrarEscena@{registrarEscena}!CE::GestorEscenas@{CE::GestorEscenas}}
+\doxysubsubsection{\texorpdfstring{registrarEscena()}{registrarEscena()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_escenas_a77acb2cea9cc8d234fd62fdb07d4a366} 
+void CE::\+\+Gestor\+Escenas::\+registrar\+Escena (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_escena}{Escena}} $>$ \&}]{escena}{}\end{DoxyParamCaption})}
+
+
+
+Registra una nueva escena en el gestor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador único de la escena \\
+\hline
+{\em escena} & Puntero compartido a la escena a registrar\\
+\hline
+\end{DoxyParams}
+La escena se almacena pero no se activa hasta llamar a \doxylink{class_c_e_1_1_gestor_escenas_afb1c2fbfe235a6201c284189e8c64794}{cambiar\+Escena()}. 
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Primitivos/\+Gestor\+Escenas.\+hpp\item 
+src/\+\+Motor/\+\+Primitivos/\+Gestor\+Escenas.\+cpp\end{DoxyCompactItemize}

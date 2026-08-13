@@ -1,0 +1,55 @@
+\doxysection{GLogger.\+hpp}
+\hypertarget{_g_logger_8hpp_source}{}\label{_g_logger_8hpp_source}\index{src/Motor/GUI/GLogger.hpp@{src/Motor/GUI/GLogger.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}GLayer.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../Utils/Lista.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <utility>}\ \textcolor{comment}{//pair}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <imgui.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }GLogger\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_g_layer}{GLayer}}}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{Niveles}}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafaba4b5ffcdaf38ce4d463171f5c977c5ab3}{LOG}}=0,\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafabaeded50d942c7c2d37d09ba8241ff017f}{LOG\_DEBUG}},\ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafaba4490aa3d29644e716440fada68f54032}{LOG\_ERROR}},\ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafabaf535e1bf740aa6b65982c6354288e10f}{LOG\_SEVERO}}\ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger}{GLogger}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_ad03dc82fdf51eb5ccfba271923185ba6}{Get}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a189a6c2c8555c850962627a26c96f5a9}{\string~GLogger}}()\textcolor{keyword}{\ override}\{\};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a8f08d680ff6833b8237f571bcc7ed518}{OnInit}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{MotorConfig}}\&\ des)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_af25510b53af35054c7a1f1e53375f5b5}{OnUpdate}}(\textcolor{keywordtype}{float}\ dt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a218031378b57c1d80a5781d3ab03477b}{OnRender}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_add3ff621b6c79013c6ba0e440df0fec0}{agregarLog}}(\textcolor{keyword}{const}\ std::string\&\ log,\doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{Niveles}}\ n);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_im_vec4}{ImVec4}}\ nivelColores(\doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{Niveles}}\ n);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ nivelToString(\doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{Niveles}}\ n);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger}{GLogger}}();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_lista}{Lista<std::pair<std::string,Niveles>}}>\ queue;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_c_e_1_1_g_logger}{GLogger}}\ *instancia\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ m\_sfps;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{MotorConfig}}\ m\_config;}
+\DoxyCodeLine{00099\ \ \ \ \ \};}
+\DoxyCodeLine{00100\ \}}
+
+\end{DoxyCode}

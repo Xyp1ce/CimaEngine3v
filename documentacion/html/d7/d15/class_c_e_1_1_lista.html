@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la plantilla de la clase CE::Lista&lt; T &gt;</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d7/d15/class_c_e_1_1_lista.html','../../','dd/dd8/class_c_e_1_1_lista-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la plantilla de la clase CE::Lista&lt; T &gt;</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="../../d7/d15/class_c_e_1_1_lista.html" title="Lista doblemente enlazada template con patrón iterador.">Lista</a> doblemente enlazada template con patrón iterador.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../de/dce/_lista_8hpp_source.html">Lista.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de herencia de CE::Lista&lt; T &gt;</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="../../d7/d15/class_c_e_1_1_lista.png" usemap="#CE_3A_3ALista_3C_20T_20_3E_map" alt=""/>
+  <map id="CE_3A_3ALista_3C_20T_20_3E_map" name="CE_3A_3ALista_3C_20T_20_3E_map">
+<area href="../../df/d28/class_c_e_1_1_i_iterador.html" title="Interfaz template para iteración sobre contenedores." alt="CE::IIterador&lt; T &gt;" shape="rect" coords="0,0,158,24"/>
+<area href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html" title="Interfaz template para manipulación de datos en contenedores." alt="CE::IManipularDatos&lt; T &gt;" shape="rect" coords="168,0,326,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a3a274a39f6114ab7ed2d47575505c662" id="r_a3a274a39f6114ab7ed2d47575505c662"><td class="memItemLeft"><a id="a3a274a39f6114ab7ed2d47575505c662" name="a3a274a39f6114ab7ed2d47575505c662"></a>
+&#160;</td><td class="memItemRight"><b>Lista</b> ()</td></tr>
+<tr class="memdesc:a3a274a39f6114ab7ed2d47575505c662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor por defecto - crea lista vacía. <br /></td></tr>
+<tr class="memitem:acb0443735ba1ee5906a75e719de75b19" id="r_acb0443735ba1ee5906a75e719de75b19"><td class="memItemLeft">T *&#160;</td><td class="memItemRight"><a class="el" href="#acb0443735ba1ee5906a75e719de75b19">iterInicio</a> ()</td></tr>
+<tr class="memdesc:acb0443735ba1ee5906a75e719de75b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mueve iterador al inicio y retorna puntero al dato.  <br /></td></tr>
+<tr class="memitem:a3779e4ab20f27a2308bdcdc70ecc1329" id="r_a3779e4ab20f27a2308bdcdc70ecc1329"><td class="memItemLeft">T *&#160;</td><td class="memItemRight"><a class="el" href="#a3779e4ab20f27a2308bdcdc70ecc1329">iterFinal</a> ()</td></tr>
+<tr class="memdesc:a3779e4ab20f27a2308bdcdc70ecc1329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mueve iterador al final y retorna puntero al dato.  <br /></td></tr>
+<tr class="memitem:ab6a3f1e76103704afe86365acfefbaea" id="r_ab6a3f1e76103704afe86365acfefbaea"><td class="memItemLeft">T *&#160;</td><td class="memItemRight"><a class="el" href="#ab6a3f1e76103704afe86365acfefbaea">iterActual</a> ()</td></tr>
+<tr class="memdesc:ab6a3f1e76103704afe86365acfefbaea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna puntero al dato actual sin mover iterador.  <br /></td></tr>
+<tr class="memitem:a93d3b09cba613b737ce7eac43729ab0b" id="r_a93d3b09cba613b737ce7eac43729ab0b"><td class="memItemLeft">T *&#160;</td><td class="memItemRight"><a class="el" href="#a93d3b09cba613b737ce7eac43729ab0b">iterSiguiente</a> ()</td></tr>
+<tr class="memdesc:a93d3b09cba613b737ce7eac43729ab0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza el iterador al siguiente nodo.  <br /></td></tr>
+<tr class="memitem:aaf4202f53ec896644f7bbe4b876acef6" id="r_aaf4202f53ec896644f7bbe4b876acef6"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aaf4202f53ec896644f7bbe4b876acef6">iterTermino</a> () const</td></tr>
+<tr class="memdesc:aaf4202f53ec896644f7bbe4b876acef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica si iteración ha terminado.  <br /></td></tr>
+<tr class="memitem:ac1a5c03b9683492851a00f8160ae6264" id="r_ac1a5c03b9683492851a00f8160ae6264"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac1a5c03b9683492851a00f8160ae6264">agregarDato</a> (const T &amp;d)</td></tr>
+<tr class="memdesc:ac1a5c03b9683492851a00f8160ae6264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un elemento al final de la lista.  <br /></td></tr>
+<tr class="memitem:a932ee647f56c1966260ffe92e083f9e8" id="r_a932ee647f56c1966260ffe92e083f9e8"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#a932ee647f56c1966260ffe92e083f9e8">eliminarDato</a> (int id)</td></tr>
+<tr class="memdesc:a932ee647f56c1966260ffe92e083f9e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina elemento en posición específica.  <br /></td></tr>
+<tr class="memitem:a61208ae1463db7d058a26b418d869b53" id="r_a61208ae1463db7d058a26b418d869b53"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#a61208ae1463db7d058a26b418d869b53">popDato</a> ()</td></tr>
+<tr class="memdesc:a61208ae1463db7d058a26b418d869b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina y retorna el último elemento.  <br /></td></tr>
+<tr class="memitem:ae0b144daf515db9b21a1868010f3fab2" id="r_ae0b144daf515db9b21a1868010f3fab2"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#ae0b144daf515db9b21a1868010f3fab2">popFrontDato</a> ()</td></tr>
+<tr class="memdesc:ae0b144daf515db9b21a1868010f3fab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina y retorna el primer elemento.  <br /></td></tr>
+<tr class="memitem:a96ac972c296efc9e1f8db687d9258670" id="r_a96ac972c296efc9e1f8db687d9258670"><td class="memItemLeft">unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a96ac972c296efc9e1f8db687d9258670">getSize</a> () const</td></tr>
+<tr class="memdesc:a96ac972c296efc9e1f8db687d9258670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el número de elementos en la lista.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class CE::Lista&lt; T &gt;</div><p><a class="el" href="../../d7/d15/class_c_e_1_1_lista.html" title="Lista doblemente enlazada template con patrón iterador.">Lista</a> doblemente enlazada template con patrón iterador. </p>
+<p>Implementa una lista enlazada genérica que actúa como pila/cola en operaciones de eliminación (pop) pero como lista en inserción (append). Implementa los patrones <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html" title="Interfaz template para iteración sobre contenedores.">IIterador</a> e <a class="el" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html" title="Interfaz template para manipulación de datos en contenedores.">IManipularDatos</a>.</p>
+<p>Características:</p><ul>
+<li>Inserción en O(1) al final</li>
+<li>Eliminación en O(1) desde inicio/final</li>
+<li>Eliminación en O(n) desde posición arbitraria</li>
+<li>Iteración bidireccional</li>
+<li>Gestión automática de memoria con shared_ptr</li>
+</ul>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Tipo de elementos almacenados </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="ac1a5c03b9683492851a00f8160ae6264" name="ac1a5c03b9683492851a00f8160ae6264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1a5c03b9683492851a00f8160ae6264">&#9670;&#160;</a></span>agregarDato()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::agregarDato </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;</td>          <td class="paramname"><span class="paramname"><em>d</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Agrega un elemento al final de la lista. </p>
+<p>Implementación de agregarDato - Agrega dato al final (O(1)).</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>Referencia constante al elemento a agregar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementa <a class="el" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a6898c3d1fc22006c3d8365d8ca26332f">CE::IManipularDatos&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a932ee647f56c1966260ffe92e083f9e8" name="a932ee647f56c1966260ffe92e083f9e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a932ee647f56c1966260ffe92e083f9e8">&#9670;&#160;</a></span>eliminarDato()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::eliminarDato </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Elimina elemento en posición específica. </p>
+<p>Implementación de eliminarDato - Elimina en posición id (O(n)).</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Índice del elemento (0 = inicio, size-1 = final) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Copia del elemento eliminado </dd></dl>
+
+<p>Implementa <a class="el" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#abcd0ea71969dde05f752535f1ed5b2f5">CE::IManipularDatos&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a96ac972c296efc9e1f8db687d9258670" name="a96ac972c296efc9e1f8db687d9258670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ac972c296efc9e1f8db687d9258670">&#9670;&#160;</a></span>getSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::getSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene el número de elementos en la lista. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Tamaño actual de la lista </dd></dl>
+
+</div>
+</div>
+<a id="ab6a3f1e76103704afe86365acfefbaea" name="ab6a3f1e76103704afe86365acfefbaea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a3f1e76103704afe86365acfefbaea">&#9670;&#160;</a></span>iterActual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T * <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::iterActual </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna puntero al dato actual sin mover iterador. </p>
+<p>Implementación de iterActual.</p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al dato del nodo actual </dd></dl>
+
+<p>Implementa <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html#a03626272fab97999cd038e693a3085ca">CE::IIterador&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a3779e4ab20f27a2308bdcdc70ecc1329" name="a3779e4ab20f27a2308bdcdc70ecc1329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3779e4ab20f27a2308bdcdc70ecc1329">&#9670;&#160;</a></span>iterFinal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T * <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::iterFinal </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mueve iterador al final y retorna puntero al dato. </p>
+<p>Implementación de iterFinal.</p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al dato del último nodo </dd></dl>
+
+<p>Implementa <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html#aa5d764da7b0c7538f37c41c6eb675612">CE::IIterador&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="acb0443735ba1ee5906a75e719de75b19" name="acb0443735ba1ee5906a75e719de75b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0443735ba1ee5906a75e719de75b19">&#9670;&#160;</a></span>iterInicio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T * <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::iterInicio </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mueve iterador al inicio y retorna puntero al dato. </p>
+<p>Implementación de iterInicio.</p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al dato del primer nodo </dd></dl>
+
+<p>Implementa <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html#a688fd4df583c36dd1fdb9a5ffe030ed5">CE::IIterador&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a93d3b09cba613b737ce7eac43729ab0b" name="a93d3b09cba613b737ce7eac43729ab0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93d3b09cba613b737ce7eac43729ab0b">&#9670;&#160;</a></span>iterSiguiente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T * <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::iterSiguiente </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Avanza el iterador al siguiente nodo. </p>
+<p>Implementación de iterSiguiente.</p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al dato del siguiente nodo </dd></dl>
+
+<p>Implementa <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html#a7aff9318dd7b0bcc27112fd7bd21f224">CE::IIterador&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="aaf4202f53ec896644f7bbe4b876acef6" name="aaf4202f53ec896644f7bbe4b876acef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf4202f53ec896644f7bbe4b876acef6">&#9670;&#160;</a></span>iterTermino()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::iterTermino </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifica si iteración ha terminado. </p>
+<p>Implementación de iterTermino.</p>
+<dl class="section return"><dt>Devuelve</dt><dd>true si el iterador es nullptr, false en caso contrario </dd></dl>
+
+<p>Implementa <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html#a10d95ddf7c07185feb11bf452986a781">CE::IIterador&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a61208ae1463db7d058a26b418d869b53" name="a61208ae1463db7d058a26b418d869b53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61208ae1463db7d058a26b418d869b53">&#9670;&#160;</a></span>popDato()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::popDato </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Elimina y retorna el último elemento. </p>
+<p>Implementación de popDato - Elimina del final (O(1)).</p>
+<dl class="section return"><dt>Devuelve</dt><dd>Copia del elemento del final removido </dd></dl>
+
+<p>Implementa <a class="el" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a6e003e13fd28e423c607e4a7a61b5df9">CE::IManipularDatos&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="ae0b144daf515db9b21a1868010f3fab2" name="ae0b144daf515db9b21a1868010f3fab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b144daf515db9b21a1868010f3fab2">&#9670;&#160;</a></span>popFrontDato()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html">CE::Lista</a>&lt; T &gt;::popFrontDato </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Elimina y retorna el primer elemento. </p>
+<p>Implementación de popFrontDato - Elimina del inicio (O(1)).</p>
+<dl class="section return"><dt>Devuelve</dt><dd>Copia del elemento del inicio removido </dd></dl>
+
+<p>Implementa <a class="el" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a2c60ce683e56191cce1faa92ac2f441d">CE::IManipularDatos&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li>src/Motor/Utils/<a class="el" href="../../de/dce/_lista_8hpp_source.html">Lista.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../d7/d15/class_c_e_1_1_lista.html">Lista</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

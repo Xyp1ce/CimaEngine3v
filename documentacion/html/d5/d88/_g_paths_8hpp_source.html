@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Archivo de código fuente src/Motor/GUI/GPaths.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d5/d88/_g_paths_8hpp_source.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">GPaths.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;../GUI/GLayer.hpp&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;../Utils/Utils.hpp&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../Primitivos/Objetos.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>CE</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../d9/d87/class_c_e_1_1_g_paths.html">   19</a></span>    <span class="keyword">class </span><a class="code hl_class" href="../../d9/d87/class_c_e_1_1_g_paths.html">GPaths</a> : <span class="keyword">public</span> <a class="code hl_class" href="../../d8/df9/class_c_e_1_1_g_layer.html">GLayer</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../d9/d87/class_c_e_1_1_g_paths.html#a09a0f4b46e1787d1822478bc7e794fa9">   23</a></span>            <a class="code hl_function" href="../../d9/d87/class_c_e_1_1_g_paths.html#a09a0f4b46e1787d1822478bc7e794fa9">~GPaths</a>()<span class="keyword"> override </span>{};</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d87/class_c_e_1_1_g_paths.html#a07dc157215c2cc2eba220af0871a7700">OnInit</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d4/d9f/struct_c_e_1_1_motor_config.html">MotorConfig</a>&amp; des) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d87/class_c_e_1_1_g_paths.html#a00f4ba6e3b429268e559e823c569e366">OnUpdate</a>(<span class="keywordtype">float</span> dt) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d87/class_c_e_1_1_g_paths.html#af057dc9b153acd197fe95dd75f6f65b4">OnRender</a>(<span class="keywordtype">void</span>) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/d87/class_c_e_1_1_g_paths.html#a60e08b66d7bc3842e38ed15baebc3658">setObjetoSelect</a>(<a class="code hl_class" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> *ref);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_class" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a>* objeto_select{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    };</div>
+</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="ttc" id="aclass_c_e_1_1_g_layer_html"><div class="ttname"><a href="../../d8/df9/class_c_e_1_1_g_layer.html">CE::GLayer</a></div><div class="ttdoc">Clase base abstracta para capas de interfaz gráfica ImGui.</div><div class="ttdef"><b>Definition</b> GLayer.hpp:18</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_paths_html"><div class="ttname"><a href="../../d9/d87/class_c_e_1_1_g_paths.html">CE::GPaths</a></div><div class="ttdoc">Panel de ImGui para editar trayectorias/paths de entidades.</div><div class="ttdef"><b>Definition</b> GPaths.hpp:20</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_paths_html_a00f4ba6e3b429268e559e823c569e366"><div class="ttname"><a href="../../d9/d87/class_c_e_1_1_g_paths.html#a00f4ba6e3b429268e559e823c569e366">CE::GPaths::OnUpdate</a></div><div class="ttdeci">void OnUpdate(float dt) override</div><div class="ttdoc">Actualiza el panel de paths cada frame.</div><div class="ttdef"><b>Definition</b> GPaths.cpp:15</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_paths_html_a07dc157215c2cc2eba220af0871a7700"><div class="ttname"><a href="../../d9/d87/class_c_e_1_1_g_paths.html#a07dc157215c2cc2eba220af0871a7700">CE::GPaths::OnInit</a></div><div class="ttdeci">void OnInit(const MotorConfig &amp;des) override</div><div class="ttdoc">Inicializa el panel de paths.</div><div class="ttdef"><b>Definition</b> GPaths.cpp:11</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_paths_html_a09a0f4b46e1787d1822478bc7e794fa9"><div class="ttname"><a href="../../d9/d87/class_c_e_1_1_g_paths.html#a09a0f4b46e1787d1822478bc7e794fa9">CE::GPaths::~GPaths</a></div><div class="ttdeci">~GPaths() override</div><div class="ttdoc">Destructor virtual.</div><div class="ttdef"><b>Definition</b> GPaths.hpp:23</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_paths_html_a60e08b66d7bc3842e38ed15baebc3658"><div class="ttname"><a href="../../d9/d87/class_c_e_1_1_g_paths.html#a60e08b66d7bc3842e38ed15baebc3658">CE::GPaths::setObjetoSelect</a></div><div class="ttdeci">void setObjetoSelect(Objeto *ref)</div><div class="ttdoc">Establece el objeto cuyas trayectorias se editan.</div><div class="ttdef"><b>Definition</b> GPaths.cpp:93</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_paths_html_af057dc9b153acd197fe95dd75f6f65b4"><div class="ttname"><a href="../../d9/d87/class_c_e_1_1_g_paths.html#af057dc9b153acd197fe95dd75f6f65b4">CE::GPaths::OnRender</a></div><div class="ttdeci">void OnRender(void) override</div><div class="ttdoc">Renderiza el editor de paths en ImGui.</div><div class="ttdef"><b>Definition</b> GPaths.cpp:58</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html">CE::Objeto</a></div><div class="ttdoc">Clase base para objetos del juego implementando patrón de arquitectura basada en componentes.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:23</div></div>
+<div class="ttc" id="astruct_c_e_1_1_motor_config_html"><div class="ttname"><a href="../../d4/d9f/struct_c_e_1_1_motor_config.html">CE::MotorConfig</a></div><div class="ttdoc">Estructura de configuración para inicialización del motor.</div><div class="ttdef"><b>Definition</b> Utils.hpp:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>Motor</b></li><li class="navelem"><b>GUI</b></li><li class="navelem"><b>GPaths.hpp</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

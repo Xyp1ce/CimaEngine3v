@@ -1,0 +1,39 @@
+\doxysection{Input\+Buffer.\+hpp}
+\hypertarget{_input_buffer_8hpp_source}{}\label{_input_buffer_8hpp_source}\index{src/Motor/Inputs/InputBuffer.hpp@{src/Motor/Inputs/InputBuffer.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a359e1b03010be1f0b7e98961f605bc12}{InputBuffer}}}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a359e1b03010be1f0b7e98961f605bc12}{InputBuffer}}(\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a96209604255b53e531428a710a571004}{size}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a427305a139b755b18901858459d438c9}{pushData}}(std::optional<sf::Event>\&\ evento);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ std::optional<sf::Event>\&\ \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_acc17187d3d38ba30d23b0725861917e5}{popData}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a9dbdaf238a3ea911d9c24b30e1341617}{clearData}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::optional<sf::Event>>\ buffer;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tope;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ salir;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ele\{0\};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a96209604255b53e531428a710a571004}{size}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a22d83583484d3f77a94894b187cd52dd}{estaVacio}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ ele==0;\}}
+\DoxyCodeLine{00066\ \ \ \ \ \};}
+\DoxyCodeLine{00067\ \}}
+\DoxyCodeLine{00068\ }
+
+\end{DoxyCode}

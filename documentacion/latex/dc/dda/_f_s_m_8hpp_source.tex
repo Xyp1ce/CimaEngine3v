@@ -1,0 +1,29 @@
+\doxysection{FSM.\+hpp}
+\hypertarget{_f_s_m_8hpp_source}{}\label{_f_s_m_8hpp_source}\index{src/Juego/Maquinas/FSM.hpp@{src/Juego/Maquinas/FSM.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../Componentes/IJComponentes.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../objetos/Entidad.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }IVJ}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{Entidad}};\ \textcolor{comment}{//referencia\ circular}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_i_v_j_1_1_f_s_m}{FSM}}}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_i_v_j_1_1_f_s_m}{\string~FSM}}()=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_i_v_j_1_1_f_s_m}{FSM}}*\ onInputs(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_c_e_1_1_i_control}{CE::IControl}}\&\ control)=0;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ onEntrar(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{Entidad}}\&\ obj)=0;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ onSalir(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{Entidad}}\&\ obj)=0;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ onUpdate(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{Entidad}}\&\ obj,\textcolor{keywordtype}{float}\ dt)=0;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ getNombre()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ nombre;\}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ nombre;}
+\DoxyCodeLine{00021\ \ \ \ \ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}

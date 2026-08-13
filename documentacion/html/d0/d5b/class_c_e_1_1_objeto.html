@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la clase CE::Objeto</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d0/d5b/class_c_e_1_1_objeto.html','../../','d6/d0a/class_c_e_1_1_objeto-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la clase CE::Objeto<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Clase base para objetos del juego implementando patrón de arquitectura basada en componentes.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d6/da1/_objetos_8hpp_source.html">Objetos.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de herencia de CE::Objeto</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="../../d0/d5b/class_c_e_1_1_objeto.png" usemap="#CE_3A_3AObjeto_map" alt=""/>
+  <map id="CE_3A_3AObjeto_map" name="CE_3A_3AObjeto_map">
+<area href="../../d6/d2a/class_i_v_j_1_1_entidad.html" alt="IVJ::Entidad" shape="rect" coords="0,112,109,136"/>
+<area href="../../dd/d79/class_i_v_j_1_1_figuras.html" alt="IVJ::Figuras" shape="rect" coords="119,112,228,136"/>
+<area href="../../db/dea/class_i_v_j_1_1_texto.html" alt="IVJ::Texto" shape="rect" coords="238,112,347,136"/>
+<area href="../../db/d39/class_i_v_j_1_1_circulo.html" alt="IVJ::Circulo" shape="rect" coords="59,168,168,192"/>
+<area href="../../d0/d8d/class_i_v_j_1_1_rectangulo.html" alt="IVJ::Rectangulo" shape="rect" coords="178,168,287,192"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a793a85a23db0c4eb1fa670d8ff2ae9de" id="r_a793a85a23db0c4eb1fa670d8ff2ae9de"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> ()</td></tr>
+<tr class="memdesc:a793a85a23db0c4eb1fa670d8ff2ae9de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor del objeto.  <br /></td></tr>
+<tr class="memitem:a2af16628b26453655fc36b8b53ef890e" id="r_a2af16628b26453655fc36b8b53ef890e"><td class="memItemLeft"><a id="a2af16628b26453655fc36b8b53ef890e" name="a2af16628b26453655fc36b8b53ef890e"></a>
+&#160;</td><td class="memItemRight"><b>Objeto</b> (const Objeto &amp;cpy)</td></tr>
+<tr class="memitem:aea8a6075ed915033270b355a40175de4" id="r_aea8a6075ed915033270b355a40175de4"><td class="memItemLeft"><a id="aea8a6075ed915033270b355a40175de4" name="aea8a6075ed915033270b355a40175de4"></a>
+virtual&#160;</td><td class="memItemRight"><b>~Objeto</b> ()=default</td></tr>
+<tr class="memdesc:aea8a6075ed915033270b355a40175de4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor virtual por defecto. <br /></td></tr>
+<tr class="memitem:aeffb214a8635a1e923b4b8950e058448" id="r_aeffb214a8635a1e923b4b8950e058448"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aeffb214a8635a1e923b4b8950e058448">draw</a> (sf::RenderTarget &amp;target, sf::RenderStates state) const override</td></tr>
+<tr class="memdesc:aeffb214a8635a1e923b4b8950e058448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementa la interfaz Drawable de SFML.  <br /></td></tr>
+<tr class="memitem:a09986c4049ef07edb43dd7ab09f3c4a2" id="r_a09986c4049ef07edb43dd7ab09f3c4a2"><td class="memItemLeft"><a class="el" href="#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a09986c4049ef07edb43dd7ab09f3c4a2">addComponente</a> (const std::shared_ptr&lt; <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">IComponentes</a> &gt; &amp;componnentes)</td></tr>
+<tr class="memdesc:a09986c4049ef07edb43dd7ab09f3c4a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjunta un componente compartido al objeto.  <br /></td></tr>
+<tr class="memitem:a751b86f19453847dc163bba4484efd72" id="r_a751b86f19453847dc163bba4484efd72"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:a751b86f19453847dc163bba4484efd72 template"><td class="memItemLeft"><a class="el" href="#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a751b86f19453847dc163bba4484efd72">copyComponente</a> (const T *componnentes)</td></tr>
+<tr class="memdesc:a751b86f19453847dc163bba4484efd72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copia un componente existente y lo adjunta al objeto.  <br /></td></tr>
+<tr class="memitem:ae8a9e934b1053695637a0703bd4fd5ca" id="r_ae8a9e934b1053695637a0703bd4fd5ca"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:ae8a9e934b1053695637a0703bd4fd5ca template"><td class="memItemLeft">T *&#160;</td><td class="memItemRight"><a class="el" href="#ae8a9e934b1053695637a0703bd4fd5ca">getComponente</a> () const</td></tr>
+<tr class="memdesc:ae8a9e934b1053695637a0703bd4fd5ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene un componente del objeto por tipo.  <br /></td></tr>
+<tr class="memitem:a759a596392fb9637d92e00bb4e67958e" id="r_a759a596392fb9637d92e00bb4e67958e"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:a759a596392fb9637d92e00bb4e67958e template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a759a596392fb9637d92e00bb4e67958e">tieneComponente</a> () const</td></tr>
+<tr class="memdesc:a759a596392fb9637d92e00bb4e67958e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica si el objeto tiene un componente de tipo específico.  <br /></td></tr>
+<tr class="memitem:afd5af934bb57487ab0daae12dfc40b9e" id="r_afd5af934bb57487ab0daae12dfc40b9e"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="../../d2/d35/class_c_e_1_1_i_nombre.html">INombre</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afd5af934bb57487ab0daae12dfc40b9e">getNombre</a> ()</td></tr>
+<tr class="memdesc:afd5af934bb57487ab0daae12dfc40b9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el componente de nombre del objeto.  <br /></td></tr>
+<tr class="memitem:ae8265ac7b7cd59607d1538ff0672f690" id="r_ae8265ac7b7cd59607d1538ff0672f690"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="../../d5/d49/class_c_e_1_1_i_transform.html">ITransform</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ae8265ac7b7cd59607d1538ff0672f690">getTransformada</a> ()</td></tr>
+<tr class="memdesc:ae8265ac7b7cd59607d1538ff0672f690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el componente de transformación del objeto.  <br /></td></tr>
+<tr class="memitem:ae07978f665ca78002b0e506298689c4f" id="r_ae07978f665ca78002b0e506298689c4f"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="../../d8/dde/class_c_e_1_1_i_stats.html">IStats</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ae07978f665ca78002b0e506298689c4f">getStats</a> ()</td></tr>
+<tr class="memdesc:ae07978f665ca78002b0e506298689c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el componente de estadísticas del objeto.  <br /></td></tr>
+<tr class="memitem:aa0c3894b9c171ac56bd459fe02427c9e" id="r_aa0c3894b9c171ac56bd459fe02427c9e"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aa0c3894b9c171ac56bd459fe02427c9e">estaVivo</a> () const</td></tr>
+<tr class="memdesc:aa0c3894b9c171ac56bd459fe02427c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica si el objeto está vivo.  <br /></td></tr>
+<tr class="memitem:a85862966bc0de5f37ce974c6e4ed2a08" id="r_a85862966bc0de5f37ce974c6e4ed2a08"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">IComponentes</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a85862966bc0de5f37ce974c6e4ed2a08">getListaComponentes</a> ()</td></tr>
+<tr class="memdesc:a85862966bc0de5f37ce974c6e4ed2a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la lista completa de componentes del objeto.  <br /></td></tr>
+<tr class="memitem:a33ebaf3ad78581b9c53063fb9d9eb687" id="r_a33ebaf3ad78581b9c53063fb9d9eb687"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a33ebaf3ad78581b9c53063fb9d9eb687">setPosicion</a> (float x, float y)</td></tr>
+<tr class="memdesc:a33ebaf3ad78581b9c53063fb9d9eb687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece la posición del objeto.  <br /></td></tr>
+<tr class="memitem:a7018b9059b915f5cbd8220e0a1ffe6c3" id="r_a7018b9059b915f5cbd8220e0a1ffe6c3"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a7018b9059b915f5cbd8220e0a1ffe6c3">onUpdate</a> (float dt)=0</td></tr>
+<tr class="memdesc:a7018b9059b915f5cbd8220e0a1ffe6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza la lógica del objeto cada frame.  <br /></td></tr>
+<tr class="memitem:a7f135c51c29e55edde75fe06fe8e7e88" id="r_a7f135c51c29e55edde75fe06fe8e7e88"><td class="memItemLeft">virtual std::string&#160;</td><td class="memItemRight"><a class="el" href="#a7f135c51c29e55edde75fe06fe8e7e88">toString</a> ()</td></tr>
+<tr class="memdesc:a7f135c51c29e55edde75fe06fe8e7e88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene representación textual del objeto.  <br /></td></tr>
+<tr class="memitem:afc0a3a20e13e5a06995ee108e921aba0" id="r_afc0a3a20e13e5a06995ee108e921aba0"><td class="memItemLeft"><a id="afc0a3a20e13e5a06995ee108e921aba0" name="afc0a3a20e13e5a06995ee108e921aba0"></a>
+virtual void&#160;</td><td class="memItemRight"><b>inputFSM</b> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Métodos públicos estáticos</h2></td></tr>
+<tr class="memitem:ae84599a22595f74df40c93a3241795aa" id="r_ae84599a22595f74df40c93a3241795aa"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#ae84599a22595f74df40c93a3241795aa">getNumObjetos</a> ()</td></tr>
+<tr class="memdesc:ae84599a22595f74df40c93a3241795aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el número total de objetos creados.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Atributos protegidos</h2></td></tr>
+<tr class="memitem:ae88ba1dbc425eee527da8ea49acd5202" id="r_ae88ba1dbc425eee527da8ea49acd5202"><td class="memItemLeft"><a id="ae88ba1dbc425eee527da8ea49acd5202" name="ae88ba1dbc425eee527da8ea49acd5202"></a>
+std::shared_ptr&lt; <a class="el" href="../../d2/d35/class_c_e_1_1_i_nombre.html">INombre</a> &gt;&#160;</td><td class="memItemRight"><b>nombre</b></td></tr>
+<tr class="memdesc:ae88ba1dbc425eee527da8ea49acd5202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Componente de nombre del objeto. <br /></td></tr>
+<tr class="memitem:a1d889a6e49c5fcc9dffc0dda66738d5f" id="r_a1d889a6e49c5fcc9dffc0dda66738d5f"><td class="memItemLeft"><a id="a1d889a6e49c5fcc9dffc0dda66738d5f" name="a1d889a6e49c5fcc9dffc0dda66738d5f"></a>
+std::shared_ptr&lt; <a class="el" href="../../d5/d49/class_c_e_1_1_i_transform.html">ITransform</a> &gt;&#160;</td><td class="memItemRight"><b>transform</b></td></tr>
+<tr class="memdesc:a1d889a6e49c5fcc9dffc0dda66738d5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Componente de transformación (posición, velocidad, rotación). <br /></td></tr>
+<tr class="memitem:ad0035a54234514bc42c7c44da7627e55" id="r_ad0035a54234514bc42c7c44da7627e55"><td class="memItemLeft"><a id="ad0035a54234514bc42c7c44da7627e55" name="ad0035a54234514bc42c7c44da7627e55"></a>
+std::shared_ptr&lt; <a class="el" href="../../d8/dde/class_c_e_1_1_i_stats.html">IStats</a> &gt;&#160;</td><td class="memItemRight"><b>stats</b></td></tr>
+<tr class="memdesc:ad0035a54234514bc42c7c44da7627e55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Componente de estadísticas (salud, fuerza, etc). <br /></td></tr>
+<tr class="memitem:ae97dce229f2bab88d027889cc25d9848" id="r_ae97dce229f2bab88d027889cc25d9848"><td class="memItemLeft"><a id="ae97dce229f2bab88d027889cc25d9848" name="ae97dce229f2bab88d027889cc25d9848"></a>
+std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">IComponentes</a> &gt; &gt;&#160;</td><td class="memItemRight"><b>componentes</b></td></tr>
+<tr class="memdesc:ae97dce229f2bab88d027889cc25d9848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenedor de componentes adjuntos al objeto. <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Clase base para objetos del juego implementando patrón de arquitectura basada en componentes. </p>
+<p>Hereda de sf::Drawable y sf::Transformable de SFML para integración con el sistema de renderizado. Utiliza composición de componentes (<a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html" title="Clase base abstracta para todos los componentes de entidades.">IComponentes</a>) para definir comportamiento y propiedades.</p>
+<p>Características principales:</p><ul>
+<li>Sistema de componentes genéricos adjuntables en runtime</li>
+<li>Detección dinámica de componentes por tipo (RTTI)</li>
+<li>Contador estático de objetos activos</li>
+<li>Componentes principales preestablecidos: Nombre, Transformación, Estadísticas</li>
+</ul>
+<dl class="section note"><dt>Nota</dt><dd>Las subclases deben implementar <a class="el" href="#a7018b9059b915f5cbd8220e0a1ffe6c3" title="Actualiza la lógica del objeto cada frame.">onUpdate(float dt)</a> para lógica de actualización </dd></dl>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentación de constructores y destructores</h2>
+<a id="a793a85a23db0c4eb1fa670d8ff2ae9de" name="a793a85a23db0c4eb1fa670d8ff2ae9de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a793a85a23db0c4eb1fa670d8ff2ae9de">&#9670;&#160;</a></span>Objeto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CE::Objeto::Objeto </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor del objeto. </p>
+<p>Inicializa el objeto con componentes básicos (nombre, transformación, estadísticas) e incrementa el contador global de objetos. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="a09986c4049ef07edb43dd7ab09f3c4a2" name="a09986c4049ef07edb43dd7ab09f3c4a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09986c4049ef07edb43dd7ab09f3c4a2">&#9670;&#160;</a></span>addComponente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> &amp; CE::Objeto::addComponente </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">IComponentes</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>componnentes</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adjunta un componente compartido al objeto. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">componnentes</td><td>Puntero compartido al componente a agregar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia al objeto para encadenamiento (fluent interface)</dd></dl>
+<p>Los componentes se almacenan en un contenedor y se pueden recuperar por tipo usando <a class="el" href="#ae8a9e934b1053695637a0703bd4fd5ca" title="Obtiene un componente del objeto por tipo.">getComponente&lt;T&gt;()</a>. </p>
+
+</div>
+</div>
+<a id="a751b86f19453847dc163bba4484efd72" name="a751b86f19453847dc163bba4484efd72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a751b86f19453847dc163bba4484efd72">&#9670;&#160;</a></span>copyComponente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> &amp; CE::Objeto::copyComponente </td>
+          <td>(</td>
+          <td class="paramtype">const T *</td>          <td class="paramname"><span class="paramname"><em>componnentes</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copia un componente existente y lo adjunta al objeto. </p>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Tipo de componente (debe derivar de <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html" title="Clase base abstracta para todos los componentes de entidades.">IComponentes</a>) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">componnentes</td><td>Puntero al componente a copiar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia al objeto para encadenamiento (fluent interface)</dd></dl>
+<p>Realiza una copia profunda del componente y lo agrega a la lista. </p>
+
+</div>
+</div>
+<a id="aeffb214a8635a1e923b4b8950e058448" name="aeffb214a8635a1e923b4b8950e058448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeffb214a8635a1e923b4b8950e058448">&#9670;&#160;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Objeto::draw </td>
+          <td>(</td>
+          <td class="paramtype">sf::RenderTarget &amp;</td>          <td class="paramname"><span class="paramname"><em>target</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::RenderStates</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementa la interfaz Drawable de SFML. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>Target de renderizado de SFML (ventana o textura) </td></tr>
+    <tr><td class="paramname">state</td><td>Estados de renderizado de SFML (shader, blend, transform) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa0c3894b9c171ac56bd459fe02427c9e" name="aa0c3894b9c171ac56bd459fe02427c9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0c3894b9c171ac56bd459fe02427c9e">&#9670;&#160;</a></span>estaVivo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CE::Objeto::estaVivo </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifica si el objeto está vivo. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>true si hp &gt; 0, false en caso contrario </dd></dl>
+
+</div>
+</div>
+<a id="ae8a9e934b1053695637a0703bd4fd5ca" name="ae8a9e934b1053695637a0703bd4fd5ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8a9e934b1053695637a0703bd4fd5ca">&#9670;&#160;</a></span>getComponente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T * CE::Objeto::getComponente </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene un componente del objeto por tipo. </p>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Tipo de componente a buscar (debe derivar de <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html" title="Clase base abstracta para todos los componentes de entidades.">IComponentes</a>) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al componente si existe, nullptr en caso contrario</dd></dl>
+<p>Utiliza RTTI (dynamic_cast) para encontrar el primer componente del tipo especificado. Es seguro en tiempo de compilación con static_assert. </p>
+
+</div>
+</div>
+<a id="a85862966bc0de5f37ce974c6e4ed2a08" name="a85862966bc0de5f37ce974c6e4ed2a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85862966bc0de5f37ce974c6e4ed2a08">&#9670;&#160;</a></span>getListaComponentes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">IComponentes</a> &gt; &gt; &amp; CE::Objeto::getListaComponentes </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene la lista completa de componentes del objeto. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector de componentes compartidos </dd></dl>
+
+</div>
+</div>
+<a id="afd5af934bb57487ab0daae12dfc40b9e" name="afd5af934bb57487ab0daae12dfc40b9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd5af934bb57487ab0daae12dfc40b9e">&#9670;&#160;</a></span>getNombre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="../../d2/d35/class_c_e_1_1_i_nombre.html">INombre</a> &gt; CE::Objeto::getNombre </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene el componente de nombre del objeto. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero compartido al componente <a class="el" href="../../d2/d35/class_c_e_1_1_i_nombre.html" title="Componente que almacena el nombre/identificador de una entidad.">INombre</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae84599a22595f74df40c93a3241795aa" name="ae84599a22595f74df40c93a3241795aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae84599a22595f74df40c93a3241795aa">&#9670;&#160;</a></span>getNumObjetos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CE::Objeto::getNumObjetos </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene el número total de objetos creados. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Contador de objetos activos globales </dd></dl>
+
+</div>
+</div>
+<a id="ae07978f665ca78002b0e506298689c4f" name="ae07978f665ca78002b0e506298689c4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae07978f665ca78002b0e506298689c4f">&#9670;&#160;</a></span>getStats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="../../d8/dde/class_c_e_1_1_i_stats.html">IStats</a> &gt; &amp; CE::Objeto::getStats </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene el componente de estadísticas del objeto. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia al puntero compartido del componente <a class="el" href="../../d8/dde/class_c_e_1_1_i_stats.html" title="Componente de estadísticas RPG de la entidad.">IStats</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae8265ac7b7cd59607d1538ff0672f690" name="ae8265ac7b7cd59607d1538ff0672f690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8265ac7b7cd59607d1538ff0672f690">&#9670;&#160;</a></span>getTransformada()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="../../d5/d49/class_c_e_1_1_i_transform.html">ITransform</a> &gt; &amp; CE::Objeto::getTransformada </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene el componente de transformación del objeto. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia al puntero compartido del componente <a class="el" href="../../d5/d49/class_c_e_1_1_i_transform.html" title="Componente de transformación que almacena posición, velocidad y rotación.">ITransform</a> </dd></dl>
+
+</div>
+</div>
+<a id="a7018b9059b915f5cbd8220e0a1ffe6c3" name="a7018b9059b915f5cbd8220e0a1ffe6c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7018b9059b915f5cbd8220e0a1ffe6c3">&#9670;&#160;</a></span>onUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CE::Objeto::onUpdate </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Actualiza la lógica del objeto cada frame. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>Delta time (tiempo transcurrido en segundos) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Nota</dt><dd>Método virtual puro - debe ser implementado por subclases </dd></dl>
+
+<p>Implementado en <a class="el" href="../../db/d39/class_i_v_j_1_1_circulo.html#a0fc786b279f7b8d4e1b70c1eb00d4692">IVJ::Circulo</a>, <a class="el" href="../../d6/d2a/class_i_v_j_1_1_entidad.html#a4fe15970acf1635c6e372a6c90ab80bd">IVJ::Entidad</a>, <a class="el" href="../../d0/d8d/class_i_v_j_1_1_rectangulo.html#a0d9056a4b25a305eaaee73ee8542ff83">IVJ::Rectangulo</a> y <a class="el" href="../../db/dea/class_i_v_j_1_1_texto.html#ab4a6bb6d97f2679e12fc90cf47a8e76a">IVJ::Texto</a>.</p>
+
+</div>
+</div>
+<a id="a33ebaf3ad78581b9c53063fb9d9eb687" name="a33ebaf3ad78581b9c53063fb9d9eb687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ebaf3ad78581b9c53063fb9d9eb687">&#9670;&#160;</a></span>setPosicion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Objeto::setPosicion </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece la posición del objeto. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Coordenada X en píxeles </td></tr>
+    <tr><td class="paramname">y</td><td>Coordenada Y en píxeles </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a759a596392fb9637d92e00bb4e67958e" name="a759a596392fb9637d92e00bb4e67958e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a759a596392fb9637d92e00bb4e67958e">&#9670;&#160;</a></span>tieneComponente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CE::Objeto::tieneComponente </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifica si el objeto tiene un componente de tipo específico. </p>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Tipo de componente a buscar (debe derivar de <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html" title="Clase base abstracta para todos los componentes de entidades.">IComponentes</a>) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si el componente existe, false en caso contrario</dd></dl>
+<p>Método auxiliar para verificación sin obtener el componente. </p>
+
+</div>
+</div>
+<a id="a7f135c51c29e55edde75fe06fe8e7e88" name="a7f135c51c29e55edde75fe06fe8e7e88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f135c51c29e55edde75fe06fe8e7e88">&#9670;&#160;</a></span>toString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string CE::Objeto::toString </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene representación textual del objeto. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Cadena con el nombre del objeto </dd></dl>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada de los siguientes archivos:<ul>
+<li>src/Motor/Primitivos/<a class="el" href="../../d6/da1/_objetos_8hpp_source.html">Objetos.hpp</a></li>
+<li>src/Motor/Primitivos/<b>Objetos.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

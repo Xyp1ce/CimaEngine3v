@@ -1,0 +1,138 @@
+\doxysection{Referencia de la clase CE::\+Pool}
+\hypertarget{class_c_e_1_1_pool}{}\label{class_c_e_1_1_pool}\index{CE::Pool@{CE::Pool}}
+
+
+Gestiona un pool de objetos del juego con tamaño dinámico.  
+
+
+
+
+{\ttfamily \+\#include $<$CEPool.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_pool_a24eb47d0f1cd2eca677e76ad1589cc98}{Pool}} (int size)
+\begin{DoxyCompactList}\small\item\em Constructor del pool. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_pool_aa76de037a66d62d3b4ca81f5cd957ddf}{agregar\+Pool}} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ \&obj)
+\begin{DoxyCompactList}\small\item\em Agrega un objeto al pool. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_pool_af146ff0522fda2e459278c19206ec56b}\label{class_c_e_1_1_pool_af146ff0522fda2e459278c19206ec56b} 
+void {\bfseries borrar\+Pool} ()
+\begin{DoxyCompactList}\small\item\em Limpia todos los objetos del pool. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_pool_a349e7e7717ad221da974e80117c0bddb}{operator\+[$\,$]\+}} (std::\+size\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em Acceso mutable a un objeto por índice. \end{DoxyCompactList}\item 
+const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_pool_a1aa04280ebed6bde193ea9758e4396be}{operator\+[$\,$]\+}} (std::\+size\+\_\+t idx) const
+\begin{DoxyCompactList}\small\item\em Acceso constante a un objeto por índice. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_pool_ac5e1ff2af9986bfb39d251174704203a}{get\+Pool}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la lista completa de objetos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_pool_a18ac3ac9aa43b28a243d47655e554d82}\label{class_c_e_1_1_pool_a18ac3ac9aa43b28a243d47655e554d82} 
+int {\bfseries max\+\_\+size}
+\begin{DoxyCompactList}\small\item\em Tamaño máximo sugerido del pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Gestiona un pool de objetos del juego con tamaño dinámico. 
+
+Implementa un contenedor para almacenar y acceder a objetos compartidos. Actúa como un administrador de recursos para una colección de entidades.
+
+\begin{DoxyNote}{Nota}
+El tamaño puede exceder max\+\_\+size dinámicamente (no es una restricción dura) 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_pool_doc-constructors}
+\Hypertarget{class_c_e_1_1_pool_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_pool_a24eb47d0f1cd2eca677e76ad1589cc98}\index{CE::Pool@{CE::Pool}!Pool@{Pool}}
+\index{Pool@{Pool}!CE::Pool@{CE::Pool}}
+\doxysubsubsection{\texorpdfstring{Pool()}{Pool()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_pool_a24eb47d0f1cd2eca677e76ad1589cc98} 
+CE::\+\+Pool::\+\+Pool (\begin{DoxyParamCaption}\item[{int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Constructor del pool. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em size} & Tamaño inicial/\+máximo sugerido del pool \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_pool_doc-func-members}
+\Hypertarget{class_c_e_1_1_pool_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_pool_aa76de037a66d62d3b4ca81f5cd957ddf}\index{CE::Pool@{CE::Pool}!agregarPool@{agregarPool}}
+\index{agregarPool@{agregarPool}!CE::Pool@{CE::Pool}}
+\doxysubsubsection{\texorpdfstring{agregarPool()}{agregarPool()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_pool_aa76de037a66d62d3b4ca81f5cd957ddf} 
+void CE::\+\+Pool::\+agregar\+Pool (\begin{DoxyParamCaption}\item[{const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ \&}]{obj}{}\end{DoxyParamCaption})}
+
+
+
+Agrega un objeto al pool. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em obj} & Puntero compartido al objeto a agregar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_pool_ac5e1ff2af9986bfb39d251174704203a}\index{CE::Pool@{CE::Pool}!getPool@{getPool}}
+\index{getPool@{getPool}!CE::Pool@{CE::Pool}}
+\doxysubsubsection{\texorpdfstring{getPool()}{getPool()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_pool_ac5e1ff2af9986bfb39d251174704203a} 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ $>$ \& CE::\+\+Pool::\+get\+Pool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene la lista completa de objetos. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al vector de objetos 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_pool_a349e7e7717ad221da974e80117c0bddb}\index{CE::Pool@{CE::Pool}!operator\+[]\+@{operator[]}}
+\index{operator\+[]\+@{operator[]}!CE::Pool@{CE::Pool}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_pool_a349e7e7717ad221da974e80117c0bddb} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ \& CE::\+\+Pool::\+operator\+[$\,$]\+ (\begin{DoxyParamCaption}\item[{std::\+size\+\_\+t}]{idx}{}\end{DoxyParamCaption})}
+
+
+
+Acceso mutable a un objeto por índice. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em idx} & Índice del objeto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al puntero compartido 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_pool_a1aa04280ebed6bde193ea9758e4396be}\index{CE::Pool@{CE::Pool}!operator\+[]\+@{operator[]}}
+\index{operator\+[]\+@{operator[]}!CE::Pool@{CE::Pool}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_pool_a1aa04280ebed6bde193ea9758e4396be} 
+const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} $>$ \& CE::\+\+Pool::\+operator\+[$\,$]\+ (\begin{DoxyParamCaption}\item[{std::\+size\+\_\+t}]{idx}{}\end{DoxyParamCaption}) const}
+
+
+
+Acceso constante a un objeto por índice. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em idx} & Índice del objeto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia constante al puntero compartido 
+\end{DoxyReturn}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Primitivos/\+CEPool.\+hpp\item 
+src/\+\+Motor/\+\+Primitivos/\+CEPool.\+cpp\end{DoxyCompactItemize}

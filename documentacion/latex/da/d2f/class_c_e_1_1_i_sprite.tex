@@ -1,0 +1,118 @@
+\doxysection{Referencia de la clase CE::\+ISprite}
+\hypertarget{class_c_e_1_1_i_sprite}{}\label{class_c_e_1_1_i_sprite}\index{CE::ISprite@{CE::ISprite}}
+
+
+Componente de sprite para renderizar gráficos 2D.  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+ISprite\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{da/d2f/class_c_e_1_1_i_sprite}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_i_sprite_a12190145f66e32198a59a09980bcf291}{ISprite}} (const sf::\+\+Texture \&textura, float escala)
+\begin{DoxyCompactList}\small\item\em Constructor simple con escala uniforme. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_i_sprite_a8f31af8225612effa7c430b77b9a370f}{ISprite}} (const sf::\+\+Texture \&textura, int w, int h, float escala)
+\begin{DoxyCompactList}\small\item\em Constructor con dimensiones específicas. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_sprite_a1b1201a7355dccf8b98582c4af2100d3}\label{class_c_e_1_1_i_sprite_a1b1201a7355dccf8b98582c4af2100d3} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+ISprite} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_i_sprite_aa3f6d27aad66e29282ae9571daeb8ca7}{clonar}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_sprite_a94aa6731a16ad7bdb7a24f00eec068fe}\label{class_c_e_1_1_i_sprite_a94aa6731a16ad7bdb7a24f00eec068fe} 
+sf::\+\+Sprite {\bfseries m\+\_\+sprite}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_c_e_1_1_objeto}{Objeto} sprite SFML para renderizado. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_sprite_a35801ed675e8a5c92eb9cd8b2b27a05b}\label{class_c_e_1_1_i_sprite_a35801ed675e8a5c92eb9cd8b2b27a05b} 
+int {\bfseries width}
+\begin{DoxyCompactList}\small\item\em Ancho del sprite en píxeles. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_sprite_a2b396346f03908f7cabdef4f4b367b58}\label{class_c_e_1_1_i_sprite_a2b396346f03908f7cabdef4f4b367b58} 
+int {\bfseries height}
+\begin{DoxyCompactList}\small\item\em Alto del sprite en píxeles. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_sprite_a136979f415c21dd039324807e9867312}\label{class_c_e_1_1_i_sprite_a136979f415c21dd039324807e9867312} 
+float {\bfseries escala}
+\begin{DoxyCompactList}\small\item\em Factor de escala aplicado al sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente de sprite para renderizar gráficos 2D. 
+
+Almacena un sprite SFML con textura, dimensiones y escala. Proporciona dos constructores:\+ uno con escala simple y otro con ancho/\+alto. 
+
+\label{class_c_e_1_1_i_sprite_doc-constructors}
+\Hypertarget{class_c_e_1_1_i_sprite_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_i_sprite_a12190145f66e32198a59a09980bcf291}\index{CE::ISprite@{CE::ISprite}!ISprite@{ISprite}}
+\index{ISprite@{ISprite}!CE::ISprite@{CE::ISprite}}
+\doxysubsubsection{\texorpdfstring{ISprite()}{ISprite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_sprite_a12190145f66e32198a59a09980bcf291} 
+CE::\+\+ISprite::\+\+ISprite (\begin{DoxyParamCaption}\item[{const sf::\+\+Texture \&}]{textura}{, }\item[{float}]{escala}{}\end{DoxyParamCaption})}
+
+
+
+Constructor simple con escala uniforme. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em textura} & Referencia a la textura SFML \\
+\hline
+{\em escala} & Factor de escala (1.\+0 = tamaño original) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_i_sprite_a8f31af8225612effa7c430b77b9a370f}\index{CE::ISprite@{CE::ISprite}!ISprite@{ISprite}}
+\index{ISprite@{ISprite}!CE::ISprite@{CE::ISprite}}
+\doxysubsubsection{\texorpdfstring{ISprite()}{ISprite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_sprite_a8f31af8225612effa7c430b77b9a370f} 
+CE::\+\+ISprite::\+\+ISprite (\begin{DoxyParamCaption}\item[{const sf::\+\+Texture \&}]{textura}{, }\item[{int}]{w}{, }\item[{int}]{h}{, }\item[{float}]{escala}{}\end{DoxyParamCaption})}
+
+
+
+Constructor con dimensiones específicas. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em textura} & Referencia a la textura SFML \\
+\hline
+{\em w} & Ancho deseado del sprite en píxeles \\
+\hline
+{\em h} & Alto deseado del sprite en píxeles \\
+\hline
+{\em escala} & Factor de escala adicional \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_i_sprite_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_sprite_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_sprite_aa3f6d27aad66e29282ae9571daeb8ca7}\index{CE::ISprite@{CE::ISprite}!clonar@{clonar}}
+\index{clonar@{clonar}!CE::ISprite@{CE::ISprite}}
+\doxysubsubsection{\texorpdfstring{clonar()}{clonar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_sprite_aa3f6d27aad66e29282ae9571daeb8ca7} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ CE::\+\+ISprite::\+clonar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+cpp\end{DoxyCompactItemize}

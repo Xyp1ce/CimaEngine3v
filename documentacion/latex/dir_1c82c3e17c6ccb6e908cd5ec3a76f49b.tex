@@ -1,0 +1,46 @@
+\doxysection{Referencia del directorio build/\+\+\_\+deps/\+imgui-\/src/\+examples/\+example\+\_\+sdl2\+\_\+sdlrenderer2}
+\hypertarget{dir_1c82c3e17c6ccb6e908cd5ec3a76f49b}{}\label{dir_1c82c3e17c6ccb6e908cd5ec3a76f49b}\index{Referencia del directorio build/\_deps/imgui-\/src/examples/example\_sdl2\_sdlrenderer2@{Referencia del directorio build/\_deps/imgui-\/src/examples/example\_sdl2\_sdlrenderer2}}
+
+
+\doxysubsection{Descripción detallada}
+\hypertarget{dir_1c82c3e17c6ccb6e908cd5ec3a76f49b_autotoc_md206}{}\doxysubsection{\texorpdfstring{How to Build}{How to Build}}\label{dir_1c82c3e17c6ccb6e908cd5ec3a76f49b_autotoc_md206}
+
+\begin{DoxyItemize}
+\item On Windows with Visual Studio\textquotesingle{}s CLI
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{set\ SDL2\_DIR=path\_to\_your\_sdl2\_folder}
+\DoxyCodeLine{cl\ /Zi\ /MD\ /utf-\/8\ /I..\ /I..\(\backslash\)..\ /I\%SDL2\_DIR\%\(\backslash\)include\ main.cpp\ ..\(\backslash\)..\(\backslash\)backends\(\backslash\)imgui\_impl\_sdl2.cpp\ ..\(\backslash\)..\(\backslash\)backends\(\backslash\)imgui\_impl\_sdlrenderer2.cpp\ ..\(\backslash\)..\(\backslash\)imgui*.cpp\ /FeDebug/example\_sdl2\_sdlrenderer.exe\ /FoDebug/\ /link\ /libpath:\%SDL2\_DIR\%\(\backslash\)lib\(\backslash\)x86\ SDL2.lib\ SDL2main.lib\ /subsystem:console}
+\DoxyCodeLine{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\string^\ include\ paths\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\string^\ source\ files\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\string^\ output\ exe\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\string^\ output\ dir\ \ \string^\string^\ libraries}
+\DoxyCodeLine{\#\ or\ for\ 64-\/bit:}
+\DoxyCodeLine{cl\ /Zi\ /MD\ /utf-\/8\ /I..\ /I..\(\backslash\)..\ /I\%SDL2\_DIR\%\(\backslash\)include\ main.cpp\ ..\(\backslash\)..\(\backslash\)backends\(\backslash\)imgui\_impl\_sdl2.cpp\ ..\(\backslash\)..\(\backslash\)backends\(\backslash\)imgui\_impl\_sdlrenderer2.cpp\ ..\(\backslash\)..\(\backslash\)imgui*.cpp\ /FeDebug/example\_sdl2\_sdlrenderer.exe\ /FoDebug/\ /link\ /libpath:\%SDL2\_DIR\%\(\backslash\)lib\(\backslash\)x64\ SDL2.lib\ SDL2main.lib\ /subsystem:console}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item On Linux and similar Unixes
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{c++\ \`{}sdl2-\/config\ -\/-\/cflags`\ -\/I\ ..\ -\/I\ ../..\ main.cpp\ ../../backends/imgui\_impl\_sdl2.cpp\ ../../backends/imgui\_impl\_sdlrenderer2.cpp\ ../../imgui*.cpp\ \`{}sdl2-\/config\ -\/-\/libs`\ -\/lGL}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item On Mac OS X
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{brew\ install\ sdl2}
+\DoxyCodeLine{c++\ \`{}sdl2-\/config\ -\/-\/cflags`\ -\/I\ ..\ -\/I\ ../..\ main.cpp\ ../../backends/imgui\_impl\_sdl2.cpp\ ../../backends/imgui\_impl\_sdlrenderer2.cpp\ ../../imgui*.cpp\ \`{}sdl2-\/config\ -\/-\/libs`\ -\/framework\ OpenGl}
+
+\end{DoxyCode}
+ 

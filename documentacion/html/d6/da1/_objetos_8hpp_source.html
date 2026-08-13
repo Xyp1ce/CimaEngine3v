@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Archivo de código fuente src/Motor/Primitivos/Objetos.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d6/da1/_objetos_8hpp_source.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Objetos.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;../Componentes/IComponentes.hpp&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>CE</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html">   22</a></span><span class="keyword">class </span><a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> : <span class="keyword">public</span> sf::Drawable, <span class="keyword">public</span> sf::Transformable</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a>(<span class="keyword">const</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> &amp;cpy);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#aea8a6075ed915033270b355a40175de4">   35</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#aea8a6075ed915033270b355a40175de4">~Objeto</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#aeffb214a8635a1e923b4b8950e058448">draw</a>(sf::RenderTarget &amp;target, sf::RenderStates state) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> &amp;<a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a09986c4049ef07edb43dd7ab09f3c4a2">addComponente</a>(<span class="keyword">const</span> std::shared_ptr&lt;IComponentes&gt; &amp;componnentes);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#a751b86f19453847dc163bba4484efd72">   62</a></span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a793a85a23db0c4eb1fa670d8ff2ae9de">Objeto</a> &amp;<a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a751b86f19453847dc163bba4484efd72">copyComponente</a>(<span class="keyword">const</span> T *componnentes)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">auto</span> copia = std::make_shared&lt;T&gt;(*componnentes);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae97dce229f2bab88d027889cc25d9848">componentes</a>.push_back(copia);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae8a9e934b1053695637a0703bd4fd5ca">   77</a></span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; T *<a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae8a9e934b1053695637a0703bd4fd5ca">getComponente</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keyword">static_assert</span>(std::is_base_of&lt;IComponentes, T&gt;::value, <span class="stringliteral">&quot;Solo derivados de IComponentes&quot;</span>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;c : <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae97dce229f2bab88d027889cc25d9848">componentes</a>)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            T *comp = <span class="keyword">dynamic_cast&lt;</span>T *<span class="keyword">&gt;</span>(c.get());</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">if</span> (comp)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keywordflow">return</span> comp;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    };</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#a759a596392fb9637d92e00bb4e67958e">   96</a></span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a759a596392fb9637d92e00bb4e67958e">tieneComponente</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keyword">static_assert</span>(std::is_base_of&lt;IComponentes, T&gt;::value, <span class="stringliteral">&quot;Solo derivados de IComponentes&quot;</span>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;c : <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae97dce229f2bab88d027889cc25d9848">componentes</a>)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            T *comp = <span class="keyword">dynamic_cast&lt;</span>T *<span class="keyword">&gt;</span>(c.get());</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordflow">if</span> (comp)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    };</div>
+</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span></div>
+<div class="foldopen" id="foldopen00112" data-start="{" data-end="}">
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae84599a22595f74df40c93a3241795aa">  112</a></span>    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae84599a22595f74df40c93a3241795aa">getNumObjetos</a>()</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">return</span> num_objetos;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span></div>
+<div class="foldopen" id="foldopen00121" data-start="{" data-end="}">
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#afd5af934bb57487ab0daae12dfc40b9e">  121</a></span>    std::shared_ptr&lt;INombre&gt; <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#afd5af934bb57487ab0daae12dfc40b9e">getNombre</a>()</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae88ba1dbc425eee527da8ea49acd5202">nombre</a>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    }</div>
+</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span></div>
+<div class="foldopen" id="foldopen00130" data-start="{" data-end="}">
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae8265ac7b7cd59607d1538ff0672f690">  130</a></span>    std::shared_ptr&lt;ITransform&gt; &amp;<a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae8265ac7b7cd59607d1538ff0672f690">getTransformada</a>()</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#a1d889a6e49c5fcc9dffc0dda66738d5f">transform</a>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    }</div>
+</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span></div>
+<div class="foldopen" id="foldopen00139" data-start="{" data-end="}">
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae07978f665ca78002b0e506298689c4f">  139</a></span>    std::shared_ptr&lt;IStats&gt; &amp;<a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae07978f665ca78002b0e506298689c4f">getStats</a>()</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ad0035a54234514bc42c7c44da7627e55">stats</a>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    }</div>
+</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span></div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#aa0c3894b9c171ac56bd459fe02427c9e">  148</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#aa0c3894b9c171ac56bd459fe02427c9e">estaVivo</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ad0035a54234514bc42c7c44da7627e55">stats</a>-&gt;hp &gt; 0;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    }</div>
+</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span></div>
+<div class="foldopen" id="foldopen00157" data-start="{" data-end="}">
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#a85862966bc0de5f37ce974c6e4ed2a08">  157</a></span>    std::vector&lt;std::shared_ptr&lt;IComponentes&gt;&gt; &amp;<a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a85862966bc0de5f37ce974c6e4ed2a08">getListaComponentes</a>()</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    {</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae97dce229f2bab88d027889cc25d9848">componentes</a>;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
+</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a33ebaf3ad78581b9c53063fb9d9eb687">setPosicion</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#a7018b9059b915f5cbd8220e0a1ffe6c3">  174</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a7018b9059b915f5cbd8220e0a1ffe6c3">onUpdate</a>(<span class="keywordtype">float</span> dt) = 0;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span></div>
+<div class="foldopen" id="foldopen00180" data-start="{" data-end="}">
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#a7f135c51c29e55edde75fe06fe8e7e88">  180</a></span>    <span class="keyword">virtual</span> std::string <a class="code hl_function" href="../../d0/d5b/class_c_e_1_1_objeto.html#a7f135c51c29e55edde75fe06fe8e7e88">toString</a>()</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae88ba1dbc425eee527da8ea49acd5202">nombre</a>-&gt;nombre;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    }</div>
+</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="comment">// PATCH</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> inputFSM() {};</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> num_objetos;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae88ba1dbc425eee527da8ea49acd5202">  194</a></span>    std::shared_ptr&lt;INombre&gt; <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae88ba1dbc425eee527da8ea49acd5202">nombre</a>;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#a1d889a6e49c5fcc9dffc0dda66738d5f">  197</a></span>    std::shared_ptr&lt;ITransform&gt; <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#a1d889a6e49c5fcc9dffc0dda66738d5f">transform</a>;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#ad0035a54234514bc42c7c44da7627e55">  200</a></span>    std::shared_ptr&lt;IStats&gt; <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ad0035a54234514bc42c7c44da7627e55">stats</a>;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae97dce229f2bab88d027889cc25d9848">  203</a></span>    std::vector&lt;std::shared_ptr&lt;IComponentes&gt;&gt; <a class="code hl_variable" href="../../d0/d5b/class_c_e_1_1_objeto.html#ae97dce229f2bab88d027889cc25d9848">componentes</a>;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>};</div>
+</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>} <span class="comment">// namespace CE</span></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a09986c4049ef07edb43dd7ab09f3c4a2"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a09986c4049ef07edb43dd7ab09f3c4a2">CE::Objeto::addComponente</a></div><div class="ttdeci">Objeto &amp; addComponente(const std::shared_ptr&lt; IComponentes &gt; &amp;componnentes)</div><div class="ttdoc">Adjunta un componente compartido al objeto.</div><div class="ttdef"><b>Definition</b> Objetos.cpp:27</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a1d889a6e49c5fcc9dffc0dda66738d5f"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a1d889a6e49c5fcc9dffc0dda66738d5f">CE::Objeto::transform</a></div><div class="ttdeci">std::shared_ptr&lt; ITransform &gt; transform</div><div class="ttdoc">Componente de transformación (posición, velocidad, rotación).</div><div class="ttdef"><b>Definition</b> Objetos.hpp:197</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a33ebaf3ad78581b9c53063fb9d9eb687"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a33ebaf3ad78581b9c53063fb9d9eb687">CE::Objeto::setPosicion</a></div><div class="ttdeci">void setPosicion(float x, float y)</div><div class="ttdoc">Establece la posición del objeto.</div><div class="ttdef"><b>Definition</b> Objetos.cpp:20</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a7018b9059b915f5cbd8220e0a1ffe6c3"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a7018b9059b915f5cbd8220e0a1ffe6c3">CE::Objeto::onUpdate</a></div><div class="ttdeci">virtual void onUpdate(float dt)=0</div><div class="ttdoc">Actualiza la lógica del objeto cada frame.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a751b86f19453847dc163bba4484efd72"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a751b86f19453847dc163bba4484efd72">CE::Objeto::copyComponente</a></div><div class="ttdeci">Objeto &amp; copyComponente(const T *componnentes)</div><div class="ttdoc">Copia un componente existente y lo adjunta al objeto.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:62</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a759a596392fb9637d92e00bb4e67958e"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a759a596392fb9637d92e00bb4e67958e">CE::Objeto::tieneComponente</a></div><div class="ttdeci">bool tieneComponente() const</div><div class="ttdoc">Verifica si el objeto tiene un componente de tipo específico.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:96</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a793a85a23db0c4eb1fa670d8ff2ae9de"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a793a85a23db0c4eb1fa670d8ff2ae9de">CE::Objeto::Objeto</a></div><div class="ttdeci">Objeto()</div><div class="ttdoc">Constructor del objeto.</div><div class="ttdef"><b>Definition</b> Objetos.cpp:6</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a7f135c51c29e55edde75fe06fe8e7e88"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a7f135c51c29e55edde75fe06fe8e7e88">CE::Objeto::toString</a></div><div class="ttdeci">virtual std::string toString()</div><div class="ttdoc">Obtiene representación textual del objeto.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:180</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_a85862966bc0de5f37ce974c6e4ed2a08"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#a85862966bc0de5f37ce974c6e4ed2a08">CE::Objeto::getListaComponentes</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; IComponentes &gt; &gt; &amp; getListaComponentes()</div><div class="ttdoc">Obtiene la lista completa de componentes del objeto.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:157</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_aa0c3894b9c171ac56bd459fe02427c9e"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#aa0c3894b9c171ac56bd459fe02427c9e">CE::Objeto::estaVivo</a></div><div class="ttdeci">bool estaVivo() const</div><div class="ttdoc">Verifica si el objeto está vivo.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:148</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_ad0035a54234514bc42c7c44da7627e55"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#ad0035a54234514bc42c7c44da7627e55">CE::Objeto::stats</a></div><div class="ttdeci">std::shared_ptr&lt; IStats &gt; stats</div><div class="ttdoc">Componente de estadísticas (salud, fuerza, etc).</div><div class="ttdef"><b>Definition</b> Objetos.hpp:200</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_ae07978f665ca78002b0e506298689c4f"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#ae07978f665ca78002b0e506298689c4f">CE::Objeto::getStats</a></div><div class="ttdeci">std::shared_ptr&lt; IStats &gt; &amp; getStats()</div><div class="ttdoc">Obtiene el componente de estadísticas del objeto.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:139</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_ae8265ac7b7cd59607d1538ff0672f690"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#ae8265ac7b7cd59607d1538ff0672f690">CE::Objeto::getTransformada</a></div><div class="ttdeci">std::shared_ptr&lt; ITransform &gt; &amp; getTransformada()</div><div class="ttdoc">Obtiene el componente de transformación del objeto.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:130</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_ae84599a22595f74df40c93a3241795aa"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#ae84599a22595f74df40c93a3241795aa">CE::Objeto::getNumObjetos</a></div><div class="ttdeci">static int getNumObjetos()</div><div class="ttdoc">Obtiene el número total de objetos creados.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:112</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_ae88ba1dbc425eee527da8ea49acd5202"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#ae88ba1dbc425eee527da8ea49acd5202">CE::Objeto::nombre</a></div><div class="ttdeci">std::shared_ptr&lt; INombre &gt; nombre</div><div class="ttdoc">Componente de nombre del objeto.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:194</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_ae8a9e934b1053695637a0703bd4fd5ca"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#ae8a9e934b1053695637a0703bd4fd5ca">CE::Objeto::getComponente</a></div><div class="ttdeci">T * getComponente() const</div><div class="ttdoc">Obtiene un componente del objeto por tipo.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:77</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_ae97dce229f2bab88d027889cc25d9848"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#ae97dce229f2bab88d027889cc25d9848">CE::Objeto::componentes</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; IComponentes &gt; &gt; componentes</div><div class="ttdoc">Contenedor de componentes adjuntos al objeto.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:203</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_aea8a6075ed915033270b355a40175de4"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#aea8a6075ed915033270b355a40175de4">CE::Objeto::~Objeto</a></div><div class="ttdeci">virtual ~Objeto()=default</div><div class="ttdoc">Destructor virtual por defecto.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_aeffb214a8635a1e923b4b8950e058448"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#aeffb214a8635a1e923b4b8950e058448">CE::Objeto::draw</a></div><div class="ttdeci">void draw(sf::RenderTarget &amp;target, sf::RenderStates state) const override</div><div class="ttdoc">Implementa la interfaz Drawable de SFML.</div><div class="ttdef"><b>Definition</b> Objetos.cpp:33</div></div>
+<div class="ttc" id="aclass_c_e_1_1_objeto_html_afd5af934bb57487ab0daae12dfc40b9e"><div class="ttname"><a href="../../d0/d5b/class_c_e_1_1_objeto.html#afd5af934bb57487ab0daae12dfc40b9e">CE::Objeto::getNombre</a></div><div class="ttdeci">std::shared_ptr&lt; INombre &gt; getNombre()</div><div class="ttdoc">Obtiene el componente de nombre del objeto.</div><div class="ttdef"><b>Definition</b> Objetos.hpp:121</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>Motor</b></li><li class="navelem"><b>Primitivos</b></li><li class="navelem"><b>Objetos.hpp</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

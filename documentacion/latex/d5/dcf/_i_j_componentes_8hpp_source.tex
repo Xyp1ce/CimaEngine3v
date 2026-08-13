@@ -1,0 +1,134 @@
+\doxysection{IJComponentes.\+hpp}
+\hypertarget{_i_j_componentes_8hpp_source}{}\label{_i_j_componentes_8hpp_source}\index{src/Juego/Componentes/IJComponentes.hpp@{src/Juego/Componentes/IJComponentes.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../../Motor/Componentes/IComponentes.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../../Motor/Primitivos/Objetos.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../Maquinas/FSM.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Motor/Primitivos/CEPool.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Motor/Utils/Vector2D.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <Juego/Figuras/Figuras.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }IVJ}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_i_v_j_1_1_f_s_m}{FSM}};\ \textcolor{comment}{//\ refefencia\ circular}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Maquina\ estado\ componente}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }IMaquinaEstado\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::IComponentes}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{explicit}\ IMaquinaEstado();}
+\DoxyCodeLine{00016\ \ \ \ \ \string~IMaquinaEstado()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ std::shared\_ptr<IComponentes>\ clonar()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<IMaquinaEstado>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00021\ \ \ \ \ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ std::shared\_ptr<FSM>\ fsm;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ congelar\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ practica\ de\ camaras\ o\ también\ para\ debug}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }ITriangulo\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::IComponentes}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{explicit}\ ITriangulo(\textcolor{keywordtype}{float}\ r,\ \textcolor{keywordtype}{float}\ ang);}
+\DoxyCodeLine{00033\ \ \ \ \ \string~ITriangulo()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00034\ \ \ \ \ std::shared\_ptr<IComponentes>\ clonar()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<ITriangulo>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00037\ \ \ \ \ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ sf::CircleShape\ tri\_shape;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ angulo;}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ componente\ QUEST\ con\ un\ arreglo\ de\ int\ de\ 8\ bit}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }IRayo\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::IComponentes}}}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{explicit}\ IRayo(\doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::Vector2D}}\ \&pos,\ \textcolor{keywordtype}{float}\ \&sig,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ magnitud\ =\ 1.f);}
+\DoxyCodeLine{00049\ \ \ \ \ \string~IRayo()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00050\ \ \ \ \ std::shared\_ptr<IComponentes>\ clonar()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<IRayo>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00053\ \ \ \ \ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{float}\ magnitud;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ \&dir;}
+\DoxyCodeLine{00058\ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::Vector2D}}\ \&lp1;}
+\DoxyCodeLine{00059\ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::Vector2D}}\ lp2;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::Vector2D}}\ \&getP1()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::Vector2D}}\ \&getP2();}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{float}\ getMagnitud()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00065\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ magnitud;}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }IInteractuable\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::IComponentes}}}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ IInteractuable()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~IInteractuable()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ onInteractuar(\doxymbox{\hyperlink{class_c_e_1_1_objeto}{CE::Objeto}}\ \&obj)\ =\ 0;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ std::shared\_ptr<IComponentes>\ clonar()\ \textcolor{keyword}{const\ override}\ =\ 0;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ interactuado\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00081\ \};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{class\ }IIndicador\ :\ \textcolor{keyword}{public}\ IInteractuable}
+\DoxyCodeLine{00084\ \{}
+\DoxyCodeLine{00085\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{explicit}\ IIndicador(\textcolor{keyword}{const}\ sf::Texture\ \&ref,\ \textcolor{keywordtype}{float}\ escala,\ \doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{Entidad}}\ *p,\ \textcolor{keyword}{const}\ sf::Color\ \&c);}
+\DoxyCodeLine{00087\ \ \ \ \ \string~IIndicador()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ onInteractuar(\doxymbox{\hyperlink{class_c_e_1_1_objeto}{CE::Objeto}}\ \&obj)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ onRender();}
+\DoxyCodeLine{00090\ \ \ \ \ std::shared\_ptr<IComponentes>\ clonar()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00091\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00093\ \ \ \ \ \};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00096\ \ \ \ \ sf::Sprite\ sprite;}
+\DoxyCodeLine{00097\ \ \ \ \ sf::Shader\ shader;}
+\DoxyCodeLine{00098\ \ \ \ \ sf::Color\ color;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{float}\ escala;}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_activo\{0\};}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{bool}\ activo\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00104\ \ \ \ \ \doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{Entidad}}\ *parent;}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{keyword}{class\ }IDialogo\ :\ \textcolor{keyword}{public}\ IInteractuable}
+\DoxyCodeLine{00108\ \{}
+\DoxyCodeLine{00109\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00110\ \ \ \ \ IDialogo();}
+\DoxyCodeLine{00111\ \ \ \ \ \string~IDialogo()\ \{\};}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ onInteractuar(\doxymbox{\hyperlink{class_c_e_1_1_objeto}{CE::Objeto}}\ \&obj)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ onRender();}
+\DoxyCodeLine{00114\ \ \ \ \ std::shared\_ptr<IComponentes>\ clonar()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00115\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00117\ \ \ \ \ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00120\ \ \ \ \ std::wstring\ agregarSaltoLinea(\textcolor{keyword}{const}\ std::wstring\ \&str,\ \textcolor{keywordtype}{size\_t}\ max\_len);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00123\ \ \ \ \ std::wstring\ texto;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{int}\ id\_texto;}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{bool}\ activo\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00126\ \};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \}\ \textcolor{comment}{//\ namespace\ IVJ}}
+
+\end{DoxyCode}

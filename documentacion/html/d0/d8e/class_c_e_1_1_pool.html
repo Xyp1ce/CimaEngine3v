@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la clase CE::Pool</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d0/d8e/class_c_e_1_1_pool.html','../../','d4/dbe/class_c_e_1_1_pool-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la clase CE::Pool</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestiona un pool de objetos del juego con tamaño dinámico.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d9/dff/_c_e_pool_8hpp_source.html">CEPool.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a24eb47d0f1cd2eca677e76ad1589cc98" id="r_a24eb47d0f1cd2eca677e76ad1589cc98"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a24eb47d0f1cd2eca677e76ad1589cc98">Pool</a> (int size)</td></tr>
+<tr class="memdesc:a24eb47d0f1cd2eca677e76ad1589cc98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor del pool.  <br /></td></tr>
+<tr class="memitem:aa76de037a66d62d3b4ca81f5cd957ddf" id="r_aa76de037a66d62d3b4ca81f5cd957ddf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa76de037a66d62d3b4ca81f5cd957ddf">agregarPool</a> (const std::shared_ptr&lt; <a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> &gt; &amp;obj)</td></tr>
+<tr class="memdesc:aa76de037a66d62d3b4ca81f5cd957ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un objeto al pool.  <br /></td></tr>
+<tr class="memitem:af146ff0522fda2e459278c19206ec56b" id="r_af146ff0522fda2e459278c19206ec56b"><td class="memItemLeft"><a id="af146ff0522fda2e459278c19206ec56b" name="af146ff0522fda2e459278c19206ec56b"></a>
+void&#160;</td><td class="memItemRight"><b>borrarPool</b> ()</td></tr>
+<tr class="memdesc:af146ff0522fda2e459278c19206ec56b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpia todos los objetos del pool. <br /></td></tr>
+<tr class="memitem:a349e7e7717ad221da974e80117c0bddb" id="r_a349e7e7717ad221da974e80117c0bddb"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a349e7e7717ad221da974e80117c0bddb">operator[]</a> (std::size_t idx)</td></tr>
+<tr class="memdesc:a349e7e7717ad221da974e80117c0bddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acceso mutable a un objeto por índice.  <br /></td></tr>
+<tr class="memitem:a1aa04280ebed6bde193ea9758e4396be" id="r_a1aa04280ebed6bde193ea9758e4396be"><td class="memItemLeft">const std::shared_ptr&lt; <a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a1aa04280ebed6bde193ea9758e4396be">operator[]</a> (std::size_t idx) const</td></tr>
+<tr class="memdesc:a1aa04280ebed6bde193ea9758e4396be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acceso constante a un objeto por índice.  <br /></td></tr>
+<tr class="memitem:ac5e1ff2af9986bfb39d251174704203a" id="r_ac5e1ff2af9986bfb39d251174704203a"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ac5e1ff2af9986bfb39d251174704203a">getPool</a> ()</td></tr>
+<tr class="memdesc:ac5e1ff2af9986bfb39d251174704203a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la lista completa de objetos.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos públicos</h2></td></tr>
+<tr class="memitem:a18ac3ac9aa43b28a243d47655e554d82" id="r_a18ac3ac9aa43b28a243d47655e554d82"><td class="memItemLeft"><a id="a18ac3ac9aa43b28a243d47655e554d82" name="a18ac3ac9aa43b28a243d47655e554d82"></a>
+int&#160;</td><td class="memItemRight"><b>max_size</b></td></tr>
+<tr class="memdesc:a18ac3ac9aa43b28a243d47655e554d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tamaño máximo sugerido del pool. <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Gestiona un pool de objetos del juego con tamaño dinámico. </p>
+<p>Implementa un contenedor para almacenar y acceder a objetos compartidos. Actúa como un administrador de recursos para una colección de entidades.</p>
+<dl class="section note"><dt>Nota</dt><dd>El tamaño puede exceder max_size dinámicamente (no es una restricción dura) </dd></dl>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentación de constructores y destructores</h2>
+<a id="a24eb47d0f1cd2eca677e76ad1589cc98" name="a24eb47d0f1cd2eca677e76ad1589cc98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24eb47d0f1cd2eca677e76ad1589cc98">&#9670;&#160;</a></span>Pool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CE::Pool::Pool </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor del pool. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Tamaño inicial/máximo sugerido del pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="aa76de037a66d62d3b4ca81f5cd957ddf" name="aa76de037a66d62d3b4ca81f5cd957ddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa76de037a66d62d3b4ca81f5cd957ddf">&#9670;&#160;</a></span>agregarPool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Pool::agregarPool </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>obj</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un objeto al pool. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Puntero compartido al objeto a agregar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac5e1ff2af9986bfb39d251174704203a" name="ac5e1ff2af9986bfb39d251174704203a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5e1ff2af9986bfb39d251174704203a">&#9670;&#160;</a></span>getPool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> &gt; &gt; &amp; CE::Pool::getPool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene la lista completa de objetos. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable al vector de objetos </dd></dl>
+
+</div>
+</div>
+<a id="a349e7e7717ad221da974e80117c0bddb" name="a349e7e7717ad221da974e80117c0bddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a349e7e7717ad221da974e80117c0bddb">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> &gt; &amp; CE::Pool::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>idx</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acceso mutable a un objeto por índice. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td>Índice del objeto </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable al puntero compartido </dd></dl>
+
+</div>
+</div>
+<a id="a1aa04280ebed6bde193ea9758e4396be" name="a1aa04280ebed6bde193ea9758e4396be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aa04280ebed6bde193ea9758e4396be">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::shared_ptr&lt; <a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html">Objeto</a> &gt; &amp; CE::Pool::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>idx</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acceso constante a un objeto por índice. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td>Índice del objeto </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia constante al puntero compartido </dd></dl>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada de los siguientes archivos:<ul>
+<li>src/Motor/Primitivos/<a class="el" href="../../d9/dff/_c_e_pool_8hpp_source.html">CEPool.hpp</a></li>
+<li>src/Motor/Primitivos/<b>CEPool.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../d0/d8e/class_c_e_1_1_pool.html">Pool</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

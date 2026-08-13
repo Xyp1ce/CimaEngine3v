@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Archivo de código fuente src/Motor/Camaras/CamarasGestor.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d6/d8a/_camaras_gestor_8hpp_source.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">CamarasGestor.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;Camaras.hpp&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>CE</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html">   17</a></span>    <span class="keyword">class </span><a class="code hl_class" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html">GestorCamaras</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keyword">static</span> <a class="code hl_class" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html">GestorCamaras</a>&amp; <a class="code hl_function" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a6533e353c57b15f1a8e458b40a579965">Get</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a49cbdddb5e3e4b95135210dcd5af5cd4">agregarCamara</a>(<span class="keyword">const</span> std::shared_ptr&lt;Camara&gt;&amp; nueva);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#aa565c704a680b9e52d0524da117cb6ba">setCamaraActiva</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a27cedeb119fe884dd946da08bd3a9d02">onUpdateCamaras</a>(<span class="keywordtype">float</span> dt);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#ac92e4f2f74a769e1355e2b3aa064dc34">onRenderCamara</a>(sf::RenderTexture &amp;tex);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#aa34486a89a5e1ca28ae9ef170ad7e960">   56</a></span>            [[nodiscard]]<a class="code hl_class" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a>&amp; <a class="code hl_function" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#aa34486a89a5e1ca28ae9ef170ad7e960">getCamaraActiva</a>()</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                <span class="keywordflow">return</span> *m_camaraActiva.lock();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            }</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a27bec2d26c19415701dacd6a1dd15801">   66</a></span>            [[nodiscard]]<a class="code hl_class" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a>&amp; <a class="code hl_function" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a27bec2d26c19415701dacd6a1dd15801">getCamara</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                <span class="keywordflow">return</span> *m_listaCamaras[id];</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            }</div>
+</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a2f2ba9b8489b99be721141ac9edeccd3">   75</a></span>            [[nodiscard]]std::vector&lt;std::shared_ptr&lt;Camara&gt;&gt;&amp; <a class="code hl_function" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a2f2ba9b8489b99be721141ac9edeccd3">getListaCamaras</a>()</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                <span class="keywordflow">return</span> m_listaCamaras;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            }</div>
+</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keyword">static</span> <span class="keyword">inline</span> <a class="code hl_class" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html">GestorCamaras</a>* instancia = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            std::weak_ptr&lt;Camara&gt; m_camaraActiva;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            std::vector&lt;std::shared_ptr&lt;Camara&gt;&gt; m_listaCamaras;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    };</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html">CE::Camara</a></div><div class="ttdoc">Clase base abstracta para cámaras de juego que gestiona la vista.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:20</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html">CE::GestorCamaras</a></div><div class="ttdoc">Gestor singleton para administración de múltiples cámaras.</div><div class="ttdef"><b>Definition</b> CamarasGestor.hpp:18</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html_a27bec2d26c19415701dacd6a1dd15801"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a27bec2d26c19415701dacd6a1dd15801">CE::GestorCamaras::getCamara</a></div><div class="ttdeci">Camara &amp; getCamara(int id)</div><div class="ttdoc">Obtiene una cámara por su índice.</div><div class="ttdef"><b>Definition</b> CamarasGestor.hpp:66</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html_a27cedeb119fe884dd946da08bd3a9d02"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a27cedeb119fe884dd946da08bd3a9d02">CE::GestorCamaras::onUpdateCamaras</a></div><div class="ttdeci">void onUpdateCamaras(float dt)</div><div class="ttdoc">Actualiza todas las cámaras.</div><div class="ttdef"><b>Definition</b> CamarasGestor.cpp:25</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html_a2f2ba9b8489b99be721141ac9edeccd3"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a2f2ba9b8489b99be721141ac9edeccd3">CE::GestorCamaras::getListaCamaras</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Camara &gt; &gt; &amp; getListaCamaras()</div><div class="ttdoc">Obtiene la lista completa de cámaras.</div><div class="ttdef"><b>Definition</b> CamarasGestor.hpp:75</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html_a49cbdddb5e3e4b95135210dcd5af5cd4"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a49cbdddb5e3e4b95135210dcd5af5cd4">CE::GestorCamaras::agregarCamara</a></div><div class="ttdeci">void agregarCamara(const std::shared_ptr&lt; Camara &gt; &amp;nueva)</div><div class="ttdoc">Agrega una nueva cámara al gestor.</div><div class="ttdef"><b>Definition</b> CamarasGestor.cpp:12</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html_a6533e353c57b15f1a8e458b40a579965"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#a6533e353c57b15f1a8e458b40a579965">CE::GestorCamaras::Get</a></div><div class="ttdeci">static GestorCamaras &amp; Get()</div><div class="ttdoc">Obtiene la instancia singleton del gestor de cámaras.</div><div class="ttdef"><b>Definition</b> CamarasGestor.cpp:6</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html_aa34486a89a5e1ca28ae9ef170ad7e960"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#aa34486a89a5e1ca28ae9ef170ad7e960">CE::GestorCamaras::getCamaraActiva</a></div><div class="ttdeci">Camara &amp; getCamaraActiva()</div><div class="ttdoc">Obtiene la cámara actualmente activa.</div><div class="ttdef"><b>Definition</b> CamarasGestor.hpp:56</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html_aa565c704a680b9e52d0524da117cb6ba"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#aa565c704a680b9e52d0524da117cb6ba">CE::GestorCamaras::setCamaraActiva</a></div><div class="ttdeci">void setCamaraActiva(int id)</div><div class="ttdoc">Establece cuál cámara es la activa.</div><div class="ttdef"><b>Definition</b> CamarasGestor.cpp:16</div></div>
+<div class="ttc" id="aclass_c_e_1_1_gestor_camaras_html_ac92e4f2f74a769e1355e2b3aa064dc34"><div class="ttname"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html#ac92e4f2f74a769e1355e2b3aa064dc34">CE::GestorCamaras::onRenderCamara</a></div><div class="ttdeci">void onRenderCamara(sf::RenderTexture &amp;tex)</div><div class="ttdoc">Renderiza en una textura usando la cámara activa.</div><div class="ttdef"><b>Definition</b> CamarasGestor.cpp:30</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>Motor</b></li><li class="navelem"><b>Camaras</b></li><li class="navelem"><b>CamarasGestor.hpp</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

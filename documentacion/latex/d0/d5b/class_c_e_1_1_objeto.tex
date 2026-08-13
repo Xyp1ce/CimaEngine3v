@@ -1,0 +1,348 @@
+\doxysection{Referencia de la clase CE::\+Objeto}
+\hypertarget{class_c_e_1_1_objeto}{}\label{class_c_e_1_1_objeto}\index{CE::Objeto@{CE::Objeto}}
+
+
+Clase base para objetos del juego implementando patrón de arquitectura basada en componentes.  
+
+
+
+
+{\ttfamily \+\#include $<$Objetos.\+hpp$>$}
+
+Diagrama de herencia de CE::\+Objeto\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{d0/d5b/class_c_e_1_1_objeto}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}{Objeto}} ()
+\begin{DoxyCompactList}\small\item\em Constructor del objeto. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_objeto_a2af16628b26453655fc36b8b53ef890e}\label{class_c_e_1_1_objeto_a2af16628b26453655fc36b8b53ef890e} 
+{\bfseries Objeto} (const Objeto \&cpy)
+\item 
+\Hypertarget{class_c_e_1_1_objeto_aea8a6075ed915033270b355a40175de4}\label{class_c_e_1_1_objeto_aea8a6075ed915033270b355a40175de4} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Objeto} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_objeto_aeffb214a8635a1e923b4b8950e058448}{draw}} (sf::\+\+Render\+Target \&target, sf::\+\+Render\+States state) const override
+\begin{DoxyCompactList}\small\item\em Implementa la interfaz Drawable de SFML. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}{Objeto}} \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_a09986c4049ef07edb43dd7ab09f3c4a2}{add\+Componente}} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \&componnentes)
+\begin{DoxyCompactList}\small\item\em Adjunta un componente compartido al objeto. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\\doxymbox{\hyperlink{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}{Objeto}} \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_a751b86f19453847dc163bba4484efd72}{copy\+Componente}} (const T \texorpdfstring{$\ast$}{*}componnentes)
+\begin{DoxyCompactList}\small\item\em Copia un componente existente y lo adjunta al objeto. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\T \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae8a9e934b1053695637a0703bd4fd5ca}{get\+Componente}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene un componente del objeto por tipo. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\bool \doxymbox{\hyperlink{class_c_e_1_1_objeto_a759a596392fb9637d92e00bb4e67958e}{tiene\+Componente}} () const
+\begin{DoxyCompactList}\small\item\em Verifica si el objeto tiene un componente de tipo específico. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_nombre}{INombre}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_objeto_afd5af934bb57487ab0daae12dfc40b9e}{get\+Nombre}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el componente de nombre del objeto. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_transform}{ITransform}} $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae8265ac7b7cd59607d1538ff0672f690}{get\+Transformada}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el componente de transformación del objeto. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_stats}{IStats}} $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae07978f665ca78002b0e506298689c4f}{get\+Stats}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el componente de estadísticas del objeto. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_e_1_1_objeto_aa0c3894b9c171ac56bd459fe02427c9e}{esta\+Vivo}} () const
+\begin{DoxyCompactList}\small\item\em Verifica si el objeto está vivo. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_a85862966bc0de5f37ce974c6e4ed2a08}{get\+Lista\+Componentes}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la lista completa de componentes del objeto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_objeto_a33ebaf3ad78581b9c53063fb9d9eb687}{set\+Posicion}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Establece la posición del objeto. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_objeto_a7018b9059b915f5cbd8220e0a1ffe6c3}{on\+Update}} (float dt)=0
+\begin{DoxyCompactList}\small\item\em Actualiza la lógica del objeto cada frame. \end{DoxyCompactList}\item 
+virtual std::\+string \doxymbox{\hyperlink{class_c_e_1_1_objeto_a7f135c51c29e55edde75fe06fe8e7e88}{to\+String}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene representación textual del objeto. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_objeto_afc0a3a20e13e5a06995ee108e921aba0}\label{class_c_e_1_1_objeto_afc0a3a20e13e5a06995ee108e921aba0} 
+virtual void {\bfseries input\+FSM} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static int \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae84599a22595f74df40c93a3241795aa}{get\+Num\+Objetos}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el número total de objetos creados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_objeto_ae88ba1dbc425eee527da8ea49acd5202}\label{class_c_e_1_1_objeto_ae88ba1dbc425eee527da8ea49acd5202} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_nombre}{INombre}} $>$ {\bfseries nombre}
+\begin{DoxyCompactList}\small\item\em Componente de nombre del objeto. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_objeto_a1d889a6e49c5fcc9dffc0dda66738d5f}\label{class_c_e_1_1_objeto_a1d889a6e49c5fcc9dffc0dda66738d5f} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_transform}{ITransform}} $>$ {\bfseries transform}
+\begin{DoxyCompactList}\small\item\em Componente de transformación (posición, velocidad, rotación). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_objeto_ad0035a54234514bc42c7c44da7627e55}\label{class_c_e_1_1_objeto_ad0035a54234514bc42c7c44da7627e55} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_stats}{IStats}} $>$ {\bfseries stats}
+\begin{DoxyCompactList}\small\item\em Componente de estadísticas (salud, fuerza, etc). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_objeto_ae97dce229f2bab88d027889cc25d9848}\label{class_c_e_1_1_objeto_ae97dce229f2bab88d027889cc25d9848} 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ $>$ {\bfseries componentes}
+\begin{DoxyCompactList}\small\item\em Contenedor de componentes adjuntos al objeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base para objetos del juego implementando patrón de arquitectura basada en componentes. 
+
+Hereda de sf::\+\+Drawable y sf::\+\+Transformable de SFML para integración con el sistema de renderizado. Utiliza composición de componentes (\doxylink{class_c_e_1_1_i_componentes}{IComponentes}) para definir comportamiento y propiedades.
+
+Características principales:\+
+\begin{DoxyItemize}
+\item Sistema de componentes genéricos adjuntables en runtime
+\item Detección dinámica de componentes por tipo (RTTI)
+\item Contador estático de objetos activos
+\item Componentes principales preestablecidos:\+ Nombre, Transformación, Estadísticas
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Nota}
+Las subclases deben implementar \doxylink{class_c_e_1_1_objeto_a7018b9059b915f5cbd8220e0a1ffe6c3}{on\+Update(float dt)} para lógica de actualización 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_objeto_doc-constructors}
+\Hypertarget{class_c_e_1_1_objeto_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}\index{CE::Objeto@{CE::Objeto}!Objeto@{Objeto}}
+\index{Objeto@{Objeto}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{Objeto()}{Objeto()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de} 
+CE::\+\+Objeto::\+\+Objeto (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor del objeto. 
+
+Inicializa el objeto con componentes básicos (nombre, transformación, estadísticas) e incrementa el contador global de objetos. 
+
+\label{class_c_e_1_1_objeto_doc-func-members}
+\Hypertarget{class_c_e_1_1_objeto_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_objeto_a09986c4049ef07edb43dd7ab09f3c4a2}\index{CE::Objeto@{CE::Objeto}!addComponente@{addComponente}}
+\index{addComponente@{addComponente}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{addComponente()}{addComponente()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_a09986c4049ef07edb43dd7ab09f3c4a2} 
+\doxymbox{\hyperlink{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}{Objeto}} \& CE::\+\+Objeto::\+add\+Componente (\begin{DoxyParamCaption}\item[{const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \&}]{componnentes}{}\end{DoxyParamCaption})}
+
+
+
+Adjunta un componente compartido al objeto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em componnentes} & Puntero compartido al componente a agregar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia al objeto para encadenamiento (fluent interface)
+\end{DoxyReturn}
+Los componentes se almacenan en un contenedor y se pueden recuperar por tipo usando \doxylink{class_c_e_1_1_objeto_ae8a9e934b1053695637a0703bd4fd5ca}{get\+Componente$<$\+T$>$()}. \Hypertarget{class_c_e_1_1_objeto_a751b86f19453847dc163bba4484efd72}\index{CE::Objeto@{CE::Objeto}!copyComponente@{copyComponente}}
+\index{copyComponente@{copyComponente}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{copyComponente()}{copyComponente()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_a751b86f19453847dc163bba4484efd72} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}{Objeto}} \& CE::\+\+Objeto::\+copy\+Componente (\begin{DoxyParamCaption}\item[{const T \texorpdfstring{$\ast$}{*}}]{componnentes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copia un componente existente y lo adjunta al objeto. 
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de componente (debe derivar de \doxylink{class_c_e_1_1_i_componentes}{IComponentes}) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parámetros}
+{\em componnentes} & Puntero al componente a copiar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia al objeto para encadenamiento (fluent interface)
+\end{DoxyReturn}
+Realiza una copia profunda del componente y lo agrega a la lista. \Hypertarget{class_c_e_1_1_objeto_aeffb214a8635a1e923b4b8950e058448}\index{CE::Objeto@{CE::Objeto}!draw@{draw}}
+\index{draw@{draw}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_aeffb214a8635a1e923b4b8950e058448} 
+void CE::\+\+Objeto::\+draw (\begin{DoxyParamCaption}\item[{sf::\+\+Render\+Target \&}]{target}{, }\item[{sf::\+\+Render\+States}]{state}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Implementa la interfaz Drawable de SFML. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em target} & Target de renderizado de SFML (ventana o textura) \\
+\hline
+{\em state} & Estados de renderizado de SFML (shader, blend, transform) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_objeto_aa0c3894b9c171ac56bd459fe02427c9e}\index{CE::Objeto@{CE::Objeto}!estaVivo@{estaVivo}}
+\index{estaVivo@{estaVivo}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{estaVivo()}{estaVivo()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_aa0c3894b9c171ac56bd459fe02427c9e} 
+bool CE::\+\+Objeto::\+esta\+Vivo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica si el objeto está vivo. 
+
+\begin{DoxyReturn}{Devuelve}
+true si hp \texorpdfstring{$>$}{>} 0, false en caso contrario 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_objeto_ae8a9e934b1053695637a0703bd4fd5ca}\index{CE::Objeto@{CE::Objeto}!getComponente@{getComponente}}
+\index{getComponente@{getComponente}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{getComponente()}{getComponente()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_ae8a9e934b1053695637a0703bd4fd5ca} 
+template$<$typename T$>$ \\
+T \texorpdfstring{$\ast$}{*} CE::\+\+Objeto::\+get\+Componente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene un componente del objeto por tipo. 
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de componente a buscar (debe derivar de \doxylink{class_c_e_1_1_i_componentes}{IComponentes}) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Devuelve}
+Puntero al componente si existe, nullptr en caso contrario
+\end{DoxyReturn}
+Utiliza RTTI (dynamic\+\_\+cast) para encontrar el primer componente del tipo especificado. Es seguro en tiempo de compilación con static\+\_\+assert. \Hypertarget{class_c_e_1_1_objeto_a85862966bc0de5f37ce974c6e4ed2a08}\index{CE::Objeto@{CE::Objeto}!getListaComponentes@{getListaComponentes}}
+\index{getListaComponentes@{getListaComponentes}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{getListaComponentes()}{getListaComponentes()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_a85862966bc0de5f37ce974c6e4ed2a08} 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ $>$ \& CE::\+\+Objeto::\+get\+Lista\+Componentes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene la lista completa de componentes del objeto. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia al vector de componentes compartidos 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_objeto_afd5af934bb57487ab0daae12dfc40b9e}\index{CE::Objeto@{CE::Objeto}!getNombre@{getNombre}}
+\index{getNombre@{getNombre}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{getNombre()}{getNombre()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_afd5af934bb57487ab0daae12dfc40b9e} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_nombre}{INombre}} $>$ CE::\+\+Objeto::\+get\+Nombre (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene el componente de nombre del objeto. 
+
+\begin{DoxyReturn}{Devuelve}
+Puntero compartido al componente \doxylink{class_c_e_1_1_i_nombre}{INombre} 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_objeto_ae84599a22595f74df40c93a3241795aa}\index{CE::Objeto@{CE::Objeto}!getNumObjetos@{getNumObjetos}}
+\index{getNumObjetos@{getNumObjetos}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{getNumObjetos()}{getNumObjetos()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_ae84599a22595f74df40c93a3241795aa} 
+int CE::\+\+Objeto::\+get\+Num\+Objetos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Obtiene el número total de objetos creados. 
+
+\begin{DoxyReturn}{Devuelve}
+Contador de objetos activos globales 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_objeto_ae07978f665ca78002b0e506298689c4f}\index{CE::Objeto@{CE::Objeto}!getStats@{getStats}}
+\index{getStats@{getStats}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{getStats()}{getStats()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_ae07978f665ca78002b0e506298689c4f} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_stats}{IStats}} $>$ \& CE::\+\+Objeto::\+get\+Stats (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene el componente de estadísticas del objeto. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia al puntero compartido del componente \doxylink{class_c_e_1_1_i_stats}{IStats} 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_objeto_ae8265ac7b7cd59607d1538ff0672f690}\index{CE::Objeto@{CE::Objeto}!getTransformada@{getTransformada}}
+\index{getTransformada@{getTransformada}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{getTransformada()}{getTransformada()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_ae8265ac7b7cd59607d1538ff0672f690} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_transform}{ITransform}} $>$ \& CE::\+\+Objeto::\+get\+Transformada (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene el componente de transformación del objeto. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia al puntero compartido del componente \doxylink{class_c_e_1_1_i_transform}{ITransform} 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_objeto_a7018b9059b915f5cbd8220e0a1ffe6c3}\index{CE::Objeto@{CE::Objeto}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_a7018b9059b915f5cbd8220e0a1ffe6c3} 
+virtual void CE::\+\+Objeto::\+on\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Actualiza la lógica del objeto cada frame. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time (tiempo transcurrido en segundos) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_circulo_a0fc786b279f7b8d4e1b70c1eb00d4692}{IVJ::\+\+Circulo}}, \doxymbox{\hyperlink{class_i_v_j_1_1_entidad_a4fe15970acf1635c6e372a6c90ab80bd}{IVJ::\+\+Entidad}}, \doxymbox{\hyperlink{class_i_v_j_1_1_rectangulo_a0d9056a4b25a305eaaee73ee8542ff83}{IVJ::\+\+Rectangulo}} y \doxymbox{\hyperlink{class_i_v_j_1_1_texto_ab4a6bb6d97f2679e12fc90cf47a8e76a}{IVJ::\+\+Texto}}.
+
+\Hypertarget{class_c_e_1_1_objeto_a33ebaf3ad78581b9c53063fb9d9eb687}\index{CE::Objeto@{CE::Objeto}!setPosicion@{setPosicion}}
+\index{setPosicion@{setPosicion}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{setPosicion()}{setPosicion()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_a33ebaf3ad78581b9c53063fb9d9eb687} 
+void CE::\+\+Objeto::\+set\+Posicion (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Establece la posición del objeto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x} & Coordenada X en píxeles \\
+\hline
+{\em y} & Coordenada Y en píxeles \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_objeto_a759a596392fb9637d92e00bb4e67958e}\index{CE::Objeto@{CE::Objeto}!tieneComponente@{tieneComponente}}
+\index{tieneComponente@{tieneComponente}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{tieneComponente()}{tieneComponente()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_a759a596392fb9637d92e00bb4e67958e} 
+template$<$typename T$>$ \\
+bool CE::\+\+Objeto::\+tiene\+Componente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica si el objeto tiene un componente de tipo específico. 
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de componente a buscar (debe derivar de \doxylink{class_c_e_1_1_i_componentes}{IComponentes}) \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Devuelve}
+true si el componente existe, false en caso contrario
+\end{DoxyReturn}
+Método auxiliar para verificación sin obtener el componente. \Hypertarget{class_c_e_1_1_objeto_a7f135c51c29e55edde75fe06fe8e7e88}\index{CE::Objeto@{CE::Objeto}!toString@{toString}}
+\index{toString@{toString}!CE::Objeto@{CE::Objeto}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_objeto_a7f135c51c29e55edde75fe06fe8e7e88} 
+virtual std::\+string CE::\+\+Objeto::\+to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Obtiene representación textual del objeto. 
+
+\begin{DoxyReturn}{Devuelve}
+Cadena con el nombre del objeto 
+\end{DoxyReturn}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Primitivos/\+Objetos.\+hpp\item 
+src/\+\+Motor/\+\+Primitivos/\+Objetos.\+cpp\end{DoxyCompactItemize}

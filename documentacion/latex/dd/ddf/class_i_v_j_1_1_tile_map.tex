@@ -1,0 +1,47 @@
+\doxysection{Referencia de la clase IVJ::\+Tile\+Map}
+\hypertarget{class_i_v_j_1_1_tile_map}{}\label{class_i_v_j_1_1_tile_map}\index{IVJ::TileMap@{IVJ::TileMap}}
+Diagrama de herencia de IVJ::\+Tile\+Map\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dd/ddf/class_i_v_j_1_1_tile_map}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_a7fa7d69b9f9b64ed0dccb6144b58e82a}\label{class_i_v_j_1_1_tile_map_a7fa7d69b9f9b64ed0dccb6144b58e82a} 
+bool {\bfseries load\+Tile\+Map} (const std::\+string \&atlas\+\_\+path)
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_a500b9d90f903f1cc542b3247c8f520e6}\label{class_i_v_j_1_1_tile_map_a500b9d90f903f1cc542b3247c8f520e6} 
+bool {\bfseries load\+Tile\+Map} (const std::\+string \&atlas\+\_\+path, \doxymbox{\hyperlink{class_c_e_1_1_pool}{CE::\+\+Pool}} \&objetos)
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_a65dd588ae85be03c8992e20fe41b5a59}\label{class_i_v_j_1_1_tile_map_a65dd588ae85be03c8992e20fe41b5a59} 
+bool {\bfseries load\+Tile\+Map} (const std::\+string \&atlas\+\_\+path, \doxymbox{\hyperlink{class_c_e_1_1_pool}{CE::\+\+Pool}} \&objetos, const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::\+\+Vector2D}} pos\+\_\+init)
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_ac2dcbcba9592c43f83cdf82900dda3c7}\label{class_i_v_j_1_1_tile_map_ac2dcbcba9592c43f83cdf82900dda3c7} 
+virtual void {\bfseries draw} (sf::\+\+Render\+Target \&target, sf::\+\+Render\+States state) const
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_a17fcef2a7b3d9309891a1c0e9f916469}\label{class_i_v_j_1_1_tile_map_a17fcef2a7b3d9309891a1c0e9f916469} 
+bool {\bfseries load\+Tile\+Map\+Shaders} (const std::\+string \&vert, const std::\+string \&frag)
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_a2a7d340caba007116897888ae4dfce9a}\label{class_i_v_j_1_1_tile_map_a2a7d340caba007116897888ae4dfce9a} 
+\doxymbox{\hyperlink{class_c_e_1_1_i_shader}{CE::\+\+IShader}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Tilemap\+Shader} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_a4b336da9691732f85dda26d3254310c8}\label{class_i_v_j_1_1_tile_map_a4b336da9691732f85dda26d3254310c8} 
+sf::\+\+Vertex\+Array {\bfseries tiles\+\_\+vertex}
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_a6880b6739b702d44e8a8e1dffcde16e4}\label{class_i_v_j_1_1_tile_map_a6880b6739b702d44e8a8e1dffcde16e4} 
+sf::\+\+Texture {\bfseries atlas\+\_\+texture}
+\item 
+\Hypertarget{class_i_v_j_1_1_tile_map_a33cc61addc4409b84378d02f2018f5bb}\label{class_i_v_j_1_1_tile_map_a33cc61addc4409b84378d02f2018f5bb} 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_shader}{CE::\+\+IShader}} $>$ {\bfseries tilemap\+\_\+shader}
+\end{DoxyCompactItemize}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Juego/\+objetos/\+Tile\+Map.\+hpp\item 
+src/\+\+Juego/\+objetos/\+Tile\+Map.\+cpp\end{DoxyCompactItemize}

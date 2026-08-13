@@ -1,0 +1,130 @@
+\doxysection{Referencia de la clase CE::\+IRespawn}
+\hypertarget{class_c_e_1_1_i_respawn}{}\label{class_c_e_1_1_i_respawn}\index{CE::IRespawn@{CE::IRespawn}}
+
+
+Componente para gestionar generación de entidades (spawning).  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+IRespawn\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{da/d77/class_c_e_1_1_i_respawn}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_i_respawn_add0aa0e333e6f9ee9f656fe97db04a04}{IRespawn}} (std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ $>$ \&lista\+\_\+comp, int max)
+\begin{DoxyCompactList}\small\item\em Constructor del respawn con lista de componentes. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_i_respawn_a223240d8c2a8d109d26d68afc51666eb}{IRespawn}} (int max, int w, int h, \doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{IVJ::\+\+Entidad}} \texorpdfstring{$\ast$}{*}pre)
+\begin{DoxyCompactList}\small\item\em Constructor del respawn con prefab de entidad. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_i_respawn_a05f9fbe3476ee2a68ca67645b6279d01}{clonar}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_respawn_a07657a7288b01a23d47c085483aa195e}\label{class_c_e_1_1_i_respawn_a07657a7288b01a23d47c085483aa195e} 
+int {\bfseries timer\+\_\+actual}
+\begin{DoxyCompactList}\small\item\em Contador de frames actual en el temporizador de spawn. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_respawn_ab9d3450a1ce039dc9b2775fbe898a210}\label{class_c_e_1_1_i_respawn_ab9d3450a1ce039dc9b2775fbe898a210} 
+int {\bfseries timer\+\_\+maximo}
+\begin{DoxyCompactList}\small\item\em Intervalo de frames entre spawns. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_respawn_a3a7a717230ba06a55b24cd45e815774b}\label{class_c_e_1_1_i_respawn_a3a7a717230ba06a55b24cd45e815774b} 
+int {\bfseries num\+\_\+objetos}
+\begin{DoxyCompactList}\small\item\em Número de entidades generadas actualmente. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_respawn_a9a5bb30c0419372c8f25938f7dde934c}\label{class_c_e_1_1_i_respawn_a9a5bb30c0419372c8f25938f7dde934c} 
+\doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{IVJ::\+\+Entidad}} \texorpdfstring{$\ast$}{*} {\bfseries prefab}
+\begin{DoxyCompactList}\small\item\em Puntero a entidad prefab para duplicar. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_respawn_a177fbcc3e43196331d526dfa99b9cdec}\label{class_c_e_1_1_i_respawn_a177fbcc3e43196331d526dfa99b9cdec} 
+int {\bfseries width}
+\begin{DoxyCompactList}\small\item\em Ancho del área de spawn en píxeles. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_respawn_a164bcc8d4ea56194f9d567dc189ccf16}\label{class_c_e_1_1_i_respawn_a164bcc8d4ea56194f9d567dc189ccf16} 
+int {\bfseries height}
+\begin{DoxyCompactList}\small\item\em Alto del área de spawn en píxeles. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_respawn_afcdc2efd45a781da7834907c76503229}\label{class_c_e_1_1_i_respawn_afcdc2efd45a781da7834907c76503229} 
+int {\bfseries curr\+\_\+spawn} \{0\}
+\begin{DoxyCompactList}\small\item\em Contador de spawns actuales. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_respawn_ae470544d8236b9b7b6a09d453bb2ef8b}\label{class_c_e_1_1_i_respawn_ae470544d8236b9b7b6a09d453bb2ef8b} 
+int {\bfseries max\+\_\+spawn}
+\begin{DoxyCompactList}\small\item\em Máximo número de spawns permitidos. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_respawn_aa20425a9251d6526f0378459c53ff6e6}\label{class_c_e_1_1_i_respawn_aa20425a9251d6526f0378459c53ff6e6} 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ $>$ {\bfseries componentes}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_c_e_1_1_lista}{Lista} de componentes para cada entidad generada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente para gestionar generación de entidades (spawning). 
+
+Maneja la aparición periódica de nuevas entidades (enemigos, items) en un área. Proporciona dos modos:\+ por lista de componentes o prefab de entidad. 
+
+\label{class_c_e_1_1_i_respawn_doc-constructors}
+\Hypertarget{class_c_e_1_1_i_respawn_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_i_respawn_add0aa0e333e6f9ee9f656fe97db04a04}\index{CE::IRespawn@{CE::IRespawn}!IRespawn@{IRespawn}}
+\index{IRespawn@{IRespawn}!CE::IRespawn@{CE::IRespawn}}
+\doxysubsubsection{\texorpdfstring{IRespawn()}{IRespawn()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_respawn_add0aa0e333e6f9ee9f656fe97db04a04} 
+CE::\+\+IRespawn::\+\+IRespawn (\begin{DoxyParamCaption}\item[{std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ $>$ \&}]{lista\+\_\+comp}{, }\item[{int}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Constructor del respawn con lista de componentes. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em lista\+\_\+comp} & \doxylink{class_c_e_1_1_lista}{Lista} de componentes para cada entidad generada \\
+\hline
+{\em max} & Número máximo de entidades a generar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_i_respawn_a223240d8c2a8d109d26d68afc51666eb}\index{CE::IRespawn@{CE::IRespawn}!IRespawn@{IRespawn}}
+\index{IRespawn@{IRespawn}!CE::IRespawn@{CE::IRespawn}}
+\doxysubsubsection{\texorpdfstring{IRespawn()}{IRespawn()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_respawn_a223240d8c2a8d109d26d68afc51666eb} 
+CE::\+\+IRespawn::\+\+IRespawn (\begin{DoxyParamCaption}\item[{int}]{max}{, }\item[{int}]{w}{, }\item[{int}]{h}{, }\item[{\doxymbox{\hyperlink{class_i_v_j_1_1_entidad}{IVJ::\+\+Entidad}} \texorpdfstring{$\ast$}{*}}]{pre}{}\end{DoxyParamCaption})}
+
+
+
+Constructor del respawn con prefab de entidad. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em max} & Número máximo de entidades a generar \\
+\hline
+{\em w} & Ancho del área de spawn en píxeles \\
+\hline
+{\em h} & Alto del área de spawn en píxeles \\
+\hline
+{\em pre} & Puntero a entidad prefab a duplicar \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_i_respawn_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_respawn_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_respawn_a05f9fbe3476ee2a68ca67645b6279d01}\index{CE::IRespawn@{CE::IRespawn}!clonar@{clonar}}
+\index{clonar@{clonar}!CE::IRespawn@{CE::IRespawn}}
+\doxysubsubsection{\texorpdfstring{clonar()}{clonar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_respawn_a05f9fbe3476ee2a68ca67645b6279d01} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ CE::\+\+IRespawn::\+clonar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,85 @@
+\doxysection{Referencia de la clase CE::\+Motor}
+\hypertarget{class_c_e_1_1_motor}{}\label{class_c_e_1_1_motor}\index{CE::Motor@{CE::Motor}}
+
+
+Controlador principal del motor de juego que orquesta el ciclo de juego.  
+
+
+
+
+{\ttfamily \+\#include $<$Motor.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_motor_ae0f4defc3da18a6cf79cff5a0ff790a0}{Motor}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&config, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_game_layer}{Game\+Layer}} $>$ ref)
+\begin{DoxyCompactList}\small\item\em Constructor del motor. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_c_e_1_1_motor_ac2d86957143d37c299790008693c8736}{On\+Run}} (void)
+\begin{DoxyCompactList}\small\item\em Inicia la ejecución del bucle principal del motor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Controlador principal del motor de juego que orquesta el ciclo de juego. 
+
+Esta clase es responsable de:\+
+\begin{DoxyItemize}
+\item Inicializar el motor con la configuración proporcionada
+\item Ejecutar el bucle principal de juego (game loop)
+\item Procesar eventos de entrada del usuario
+\item Actualizar la lógica del juego
+\item Renderizar la escena actual
+\item Gestionar las capas de interfaz gráfica (GUI)
+\end{DoxyItemize}
+
+El motor utiliza un patrón singleton implícito a través de la inyección de dependencias, permitiendo múltiples instancias pero típicamente una sola activa. 
+
+\label{class_c_e_1_1_motor_doc-constructors}
+\Hypertarget{class_c_e_1_1_motor_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_motor_ae0f4defc3da18a6cf79cff5a0ff790a0}\index{CE::Motor@{CE::Motor}!Motor@{Motor}}
+\index{Motor@{Motor}!CE::Motor@{CE::Motor}}
+\doxysubsubsection{\texorpdfstring{Motor()}{Motor()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_motor_ae0f4defc3da18a6cf79cff5a0ff790a0} 
+CE::\+\+Motor::\+\+Motor (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{config}{, }\item[{std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_game_layer}{Game\+Layer}} $>$}]{ref}{}\end{DoxyParamCaption})}
+
+
+
+Constructor del motor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em config} & Configuración del motor (dimensiones de ventana, título, delta time) \\
+\hline
+{\em ref} & Puntero único a la capa de juego que gestiona la lógica principal \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_motor_doc-func-members}
+\Hypertarget{class_c_e_1_1_motor_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_motor_ac2d86957143d37c299790008693c8736}\index{CE::Motor@{CE::Motor}!OnRun@{OnRun}}
+\index{OnRun@{OnRun}!CE::Motor@{CE::Motor}}
+\doxysubsubsection{\texorpdfstring{OnRun()}{OnRun()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_motor_ac2d86957143d37c299790008693c8736} 
+int CE::\+\+Motor::\+\+On\+Run (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Inicia la ejecución del bucle principal del motor. 
+
+\begin{DoxyReturn}{Devuelve}
+Código de salida de la aplicación (0 = éxito)
+\end{DoxyReturn}
+Este método contiene el bucle principal del juego que:\+
+\begin{DoxyEnumerate}
+\item Procesa eventos de entrada
+\item Actualiza la lógica del juego
+\item Renderiza la escena
+\item Actualiza capas GUI 
+\end{DoxyEnumerate}
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+Motor.\+hpp\item 
+src/\+\+Motor/\+Motor.\+cpp\end{DoxyCompactItemize}

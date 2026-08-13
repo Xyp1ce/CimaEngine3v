@@ -1,0 +1,35 @@
+\doxysection{Juego.\+hpp}
+\hypertarget{_juego_8hpp_source}{}\label{_juego_8hpp_source}\index{src/Juego/Juego.hpp@{src/Juego/Juego.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include"{}../Motor/App/ALayer.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\#include\ "{}../Motor/Primitivos/Objetos.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../Motor/Primitivos/Escena.hpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }IVJ}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{class\ }Juego:\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer}{CE::GameLayer}}}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ Juego();}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \string~Juego()\textcolor{keyword}{override}\{\};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_juego_a2b9832d2d42a1f24ec98674aee4ef60b}{OnInit}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_juego_aae7369e18a96fbd0075662c76d6c92f5}{OnInputs}}(std::optional<sf::Event>\&\ eventos)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_juego_aae7369e18a96fbd0075662c76d6c92f5}{OnInputs}}(\doxymbox{\hyperlink{class_c_e_1_1_input_buffer}{CE::InputBuffer}}\&\ buffer)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_juego_aae7369e18a96fbd0075662c76d6c92f5}{OnInputs}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_juego_ab03ea71614092bd4d4a5bea74f90c43e}{OnUpdate}}(\textcolor{keywordtype}{float}\ dt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_juego_ae01681faaeddabd7d010d26a4be8b0ad}{OnRender}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::vector<std::shared\_ptr<CE::Objeto>>\ objetos;}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//CE::Pool\ pool\{1000\};}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_escena}{CE::Escena}}*\ escena\_actual;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<Entidad>\ jugador;}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+
+\end{DoxyCode}

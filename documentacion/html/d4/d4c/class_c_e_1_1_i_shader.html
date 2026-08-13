@@ -1,0 +1,569 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la clase CE::IShader</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d4/d4c/class_c_e_1_1_i_shader.html','../../','d9/d82/class_c_e_1_1_i_shader-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la clase CE::IShader</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Componente para aplicar efectos de shader (GLSL) a una entidad.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../df/d4b/_i_componentes_8hpp_source.html">IComponentes.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de herencia de CE::IShader</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="../../d4/d4c/class_c_e_1_1_i_shader.png" usemap="#CE_3A_3AIShader_map" alt=""/>
+  <map id="CE_3A_3AIShader_map" name="CE_3A_3AIShader_map">
+<area href="../../db/d58/class_c_e_1_1_i_componentes.html" title="Clase base abstracta para todos los componentes de entidades." alt="CE::IComponentes" shape="rect" coords="0,0,114,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Tipos públicos</h2></td></tr>
+<tr class="memitem:a6fc55d4bf0759d72c0b1360125a5463a" id="r_a6fc55d4bf0759d72c0b1360125a5463a"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463a">ShaderVars</a> { <br />
+&#160;&#160;<a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463aae738c26bf4ce1037fa81b039a915cbf6">FLOAT</a>
+, <a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463aadd7222e7029b92693a7f0d900c070d5e">VEC2F</a>
+, <a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463aa18814f886cf9f30ca199c1e81900fa03">VEC3F</a>
+, <a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463aa4bf4a3b0dd50ca982c6d8f671593cbe9">VEC4F</a>
+, <br />
+&#160;&#160;<a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463aa3540dd38f032c05d25340fa4ce9a1d15">MAT3</a>
+, <a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463aa3fd683d85fe04a4496d7f525182cd7f9">MAT4</a>
+, <a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463aa9ed6f50f63c3af102f036468321d142b">TEX</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a6fc55d4bf0759d72c0b1360125a5463a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipos de variables/uniforms soportados por el shader.  <a href="#a6fc55d4bf0759d72c0b1360125a5463a">Más...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a7518b1b84278bcb26a5e84b2c25e373c" id="r_a7518b1b84278bcb26a5e84b2c25e373c"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a7518b1b84278bcb26a5e84b2c25e373c">IShader</a> (const std::string &amp;vert, const std::string &amp;frag)</td></tr>
+<tr class="memdesc:a7518b1b84278bcb26a5e84b2c25e373c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor del componente shader.  <br /></td></tr>
+<tr class="memitem:aefeec8b59ba3a25a88df9b00b0102a64" id="r_aefeec8b59ba3a25a88df9b00b0102a64"><td class="memItemLeft"><a id="aefeec8b59ba3a25a88df9b00b0102a64" name="aefeec8b59ba3a25a88df9b00b0102a64"></a>
+&#160;</td><td class="memItemRight"><b>~IShader</b> () override</td></tr>
+<tr class="memdesc:aefeec8b59ba3a25a88df9b00b0102a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor virtual. <br /></td></tr>
+<tr class="memitem:aee785fb4644ebc4b1e95a906fa7047d3" id="r_aee785fb4644ebc4b1e95a906fa7047d3"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">IComponentes</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aee785fb4644ebc4b1e95a906fa7047d3">clonar</a> () const override</td></tr>
+<tr class="memitem:a431f574ecf7aa35f560bc178ba3cda49" id="r_a431f574ecf7aa35f560bc178ba3cda49"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a431f574ecf7aa35f560bc178ba3cda49">setEscalar</a> (const std::string &amp;key, float *valor)</td></tr>
+<tr class="memdesc:a431f574ecf7aa35f560bc178ba3cda49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece un uniform escalar (float).  <br /></td></tr>
+<tr class="memitem:a193c139fa3ada1fce908196368376005" id="r_a193c139fa3ada1fce908196368376005"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a193c139fa3ada1fce908196368376005">setVector2</a> (const std::string &amp;key, sf::Vector2f *valor)</td></tr>
+<tr class="memdesc:a193c139fa3ada1fce908196368376005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece un uniform de vector 2D.  <br /></td></tr>
+<tr class="memitem:a3aa32e26dc4280ca681c52e22e601685" id="r_a3aa32e26dc4280ca681c52e22e601685"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3aa32e26dc4280ca681c52e22e601685">setVector3</a> (const std::string &amp;key, sf::Vector3f *valor)</td></tr>
+<tr class="memdesc:a3aa32e26dc4280ca681c52e22e601685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece un uniform de vector 3D.  <br /></td></tr>
+<tr class="memitem:ad2b1cbe57aac2faa20ec336a75f55148" id="r_ad2b1cbe57aac2faa20ec336a75f55148"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad2b1cbe57aac2faa20ec336a75f55148">setVector4</a> (const std::string &amp;key, sf::Glsl::Vec4 *valor)</td></tr>
+<tr class="memdesc:ad2b1cbe57aac2faa20ec336a75f55148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece un uniform de vector 4D.  <br /></td></tr>
+<tr class="memitem:ab09ef6b114c94bb4e9eaad8a17b7a81e" id="r_ab09ef6b114c94bb4e9eaad8a17b7a81e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab09ef6b114c94bb4e9eaad8a17b7a81e">setMat3</a> (const std::string &amp;key, sf::Glsl::Mat3 *valor)</td></tr>
+<tr class="memdesc:ab09ef6b114c94bb4e9eaad8a17b7a81e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece un uniform de matriz 3x3.  <br /></td></tr>
+<tr class="memitem:a5032db08370e9f4498133bc974ae967a" id="r_a5032db08370e9f4498133bc974ae967a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5032db08370e9f4498133bc974ae967a">setMat4</a> (const std::string &amp;key, sf::Glsl::Mat4 *valor)</td></tr>
+<tr class="memdesc:a5032db08370e9f4498133bc974ae967a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece un uniform de matriz 4x4.  <br /></td></tr>
+<tr class="memitem:aedafce567f64386e0f059516b977d3e1" id="r_aedafce567f64386e0f059516b977d3e1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aedafce567f64386e0f059516b977d3e1">setTextura</a> (const std::string &amp;key, sf::Texture *valor)</td></tr>
+<tr class="memdesc:aedafce567f64386e0f059516b977d3e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece un uniform de textura.  <br /></td></tr>
+<tr class="memitem:abc68e259ad997e4acf0631b3c44f6cc1" id="r_abc68e259ad997e4acf0631b3c44f6cc1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abc68e259ad997e4acf0631b3c44f6cc1">cambiarShader</a> (const std::string &amp;vert, const std::string &amp;frag)</td></tr>
+<tr class="memdesc:abc68e259ad997e4acf0631b3c44f6cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia el programa de shader por otro.  <br /></td></tr>
+<tr class="inherit_header pub_methods_class_c_e_1_1_i_componentes"><td colspan="2">Métodos públicos heredados de <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">CE::IComponentes</a></td></tr>
+<tr class="memitem:ab4959eda2e34d0853f9d2466872a3bb6 pub_methods_class_c_e_1_1_i_componentes" id="r_ab4959eda2e34d0853f9d2466872a3bb6"><td class="memItemLeft">
+virtual&#160;</td><td class="memItemRight"><b>~IComponentes</b> ()</td></tr>
+<tr class="memdesc:ab4959eda2e34d0853f9d2466872a3bb6 pub_methods_class_c_e_1_1_i_componentes"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor virtual por defecto. <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos públicos</h2></td></tr>
+<tr class="memitem:acd8d3be5bf35f2c6996455b950aaf8a3" id="r_acd8d3be5bf35f2c6996455b950aaf8a3"><td class="memItemLeft"><a id="acd8d3be5bf35f2c6996455b950aaf8a3" name="acd8d3be5bf35f2c6996455b950aaf8a3"></a>
+sf::Shader&#160;</td><td class="memItemRight"><b>m_shader</b></td></tr>
+<tr class="memdesc:acd8d3be5bf35f2c6996455b950aaf8a3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/d5b/class_c_e_1_1_objeto.html" title="Clase base para objetos del juego implementando patrón de arquitectura basada en componentes.">Objeto</a> shader SFML compilado. <br /></td></tr>
+<tr class="memitem:a9e2cb6cc6151cf32575cc32ca09aa0ac" id="r_a9e2cb6cc6151cf32575cc32ca09aa0ac"><td class="memItemLeft"><a id="a9e2cb6cc6151cf32575cc32ca09aa0ac" name="a9e2cb6cc6151cf32575cc32ca09aa0ac"></a>
+std::string&#160;</td><td class="memItemRight"><b>m_fragshaderFile</b></td></tr>
+<tr class="memdesc:a9e2cb6cc6151cf32575cc32ca09aa0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ruta del archivo fragment shader. <br /></td></tr>
+<tr class="memitem:ac412150f486990419cecfa6b37b88b85" id="r_ac412150f486990419cecfa6b37b88b85"><td class="memItemLeft"><a id="ac412150f486990419cecfa6b37b88b85" name="ac412150f486990419cecfa6b37b88b85"></a>
+std::string&#160;</td><td class="memItemRight"><b>m_vertshaderFile</b></td></tr>
+<tr class="memdesc:ac412150f486990419cecfa6b37b88b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ruta del archivo vertex shader. <br /></td></tr>
+<tr class="memitem:a54c35f4c7b6cb6009bedde71e41bbd5a" id="r_a54c35f4c7b6cb6009bedde71e41bbd5a"><td class="memItemLeft"><a id="a54c35f4c7b6cb6009bedde71e41bbd5a" name="a54c35f4c7b6cb6009bedde71e41bbd5a"></a>
+std::map&lt; std::string, std::pair&lt; <a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463a">IShader::ShaderVars</a>, void * &gt; &gt;&#160;</td><td class="memItemRight"><b>m_vars</b></td></tr>
+<tr class="memdesc:a54c35f4c7b6cb6009bedde71e41bbd5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mapa de uniforms con tipo y puntero a valor (type erasure). <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Componente para aplicar efectos de shader (GLSL) a una entidad. </p>
+<p>Gestiona un shader SFML con uniforms variables. Permite establecer parámetros del shader como colores, tiempos, vectores y matrices.</p>
+<dl class="section note"><dt>Nota</dt><dd>Los uniforms se almacenan como void* con tipo erasure para flexibilidad </dd></dl>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentación de las enumeraciones miembro de la clase</h2>
+<a id="a6fc55d4bf0759d72c0b1360125a5463a" name="a6fc55d4bf0759d72c0b1360125a5463a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc55d4bf0759d72c0b1360125a5463a">&#9670;&#160;</a></span>ShaderVars</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a6fc55d4bf0759d72c0b1360125a5463a">CE::IShader::ShaderVars</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tipos de variables/uniforms soportados por el shader. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="a6fc55d4bf0759d72c0b1360125a5463aae738c26bf4ce1037fa81b039a915cbf6" name="a6fc55d4bf0759d72c0b1360125a5463aae738c26bf4ce1037fa81b039a915cbf6"></a>FLOAT&#160;</td><td class="fielddoc"><p>Variable de punto flotante (float). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6fc55d4bf0759d72c0b1360125a5463aadd7222e7029b92693a7f0d900c070d5e" name="a6fc55d4bf0759d72c0b1360125a5463aadd7222e7029b92693a7f0d900c070d5e"></a>VEC2F&#160;</td><td class="fielddoc"><p>Vector de 2D (sf::Vector2f). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6fc55d4bf0759d72c0b1360125a5463aa18814f886cf9f30ca199c1e81900fa03" name="a6fc55d4bf0759d72c0b1360125a5463aa18814f886cf9f30ca199c1e81900fa03"></a>VEC3F&#160;</td><td class="fielddoc"><p>Vector de 3D (sf::Vector3f). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6fc55d4bf0759d72c0b1360125a5463aa4bf4a3b0dd50ca982c6d8f671593cbe9" name="a6fc55d4bf0759d72c0b1360125a5463aa4bf4a3b0dd50ca982c6d8f671593cbe9"></a>VEC4F&#160;</td><td class="fielddoc"><p>Vector de 4D (sf::Glsl::Vec4). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6fc55d4bf0759d72c0b1360125a5463aa3540dd38f032c05d25340fa4ce9a1d15" name="a6fc55d4bf0759d72c0b1360125a5463aa3540dd38f032c05d25340fa4ce9a1d15"></a>MAT3&#160;</td><td class="fielddoc"><p>Matriz 3x3 (sf::Glsl::Mat3). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6fc55d4bf0759d72c0b1360125a5463aa3fd683d85fe04a4496d7f525182cd7f9" name="a6fc55d4bf0759d72c0b1360125a5463aa3fd683d85fe04a4496d7f525182cd7f9"></a>MAT4&#160;</td><td class="fielddoc"><p>Matriz 4x4 (sf::Glsl::Mat4). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6fc55d4bf0759d72c0b1360125a5463aa9ed6f50f63c3af102f036468321d142b" name="a6fc55d4bf0759d72c0b1360125a5463aa9ed6f50f63c3af102f036468321d142b"></a>TEX&#160;</td><td class="fielddoc"><p>Textura (sf::Texture). </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentación de constructores y destructores</h2>
+<a id="a7518b1b84278bcb26a5e84b2c25e373c" name="a7518b1b84278bcb26a5e84b2c25e373c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7518b1b84278bcb26a5e84b2c25e373c">&#9670;&#160;</a></span>IShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CE::IShader::IShader </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>vert</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>frag</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor del componente shader. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vert</td><td>Ruta al archivo de vertex shader </td></tr>
+    <tr><td class="paramname">frag</td><td>Ruta al archivo de fragment shader </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="abc68e259ad997e4acf0631b3c44f6cc1" name="abc68e259ad997e4acf0631b3c44f6cc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc68e259ad997e4acf0631b3c44f6cc1">&#9670;&#160;</a></span>cambiarShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::IShader::cambiarShader </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>vert</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>frag</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cambia el programa de shader por otro. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vert</td><td>Ruta al nuevo vertex shader </td></tr>
+    <tr><td class="paramname">frag</td><td>Ruta al nuevo fragment shader </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aee785fb4644ebc4b1e95a906fa7047d3" name="aee785fb4644ebc4b1e95a906fa7047d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee785fb4644ebc4b1e95a906fa7047d3">&#9670;&#160;</a></span>clonar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">IComponentes</a> &gt; CE::IShader::clonar </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementa <a class="el" href="../../db/d58/class_c_e_1_1_i_componentes.html">CE::IComponentes</a>.</p>
+
+</div>
+</div>
+<a id="a431f574ecf7aa35f560bc178ba3cda49" name="a431f574ecf7aa35f560bc178ba3cda49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a431f574ecf7aa35f560bc178ba3cda49">&#9670;&#160;</a></span>setEscalar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::IShader::setEscalar </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece un uniform escalar (float). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Nombre del uniform en el shader </td></tr>
+    <tr><td class="paramname">valor</td><td>Puntero al valor float </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab09ef6b114c94bb4e9eaad8a17b7a81e" name="ab09ef6b114c94bb4e9eaad8a17b7a81e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab09ef6b114c94bb4e9eaad8a17b7a81e">&#9670;&#160;</a></span>setMat3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::IShader::setMat3 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Glsl::Mat3 *</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece un uniform de matriz 3x3. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Nombre del uniform en el shader </td></tr>
+    <tr><td class="paramname">valor</td><td>Puntero a sf::Glsl::Mat3 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5032db08370e9f4498133bc974ae967a" name="a5032db08370e9f4498133bc974ae967a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5032db08370e9f4498133bc974ae967a">&#9670;&#160;</a></span>setMat4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::IShader::setMat4 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Glsl::Mat4 *</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece un uniform de matriz 4x4. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Nombre del uniform en el shader </td></tr>
+    <tr><td class="paramname">valor</td><td>Puntero a sf::Glsl::Mat4 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aedafce567f64386e0f059516b977d3e1" name="aedafce567f64386e0f059516b977d3e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedafce567f64386e0f059516b977d3e1">&#9670;&#160;</a></span>setTextura()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::IShader::setTextura </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Texture *</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece un uniform de textura. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Nombre del uniform en el shader </td></tr>
+    <tr><td class="paramname">valor</td><td>Puntero a sf::Texture </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a193c139fa3ada1fce908196368376005" name="a193c139fa3ada1fce908196368376005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a193c139fa3ada1fce908196368376005">&#9670;&#160;</a></span>setVector2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::IShader::setVector2 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Vector2f *</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece un uniform de vector 2D. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Nombre del uniform en el shader </td></tr>
+    <tr><td class="paramname">valor</td><td>Puntero a sf::Vector2f </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3aa32e26dc4280ca681c52e22e601685" name="a3aa32e26dc4280ca681c52e22e601685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aa32e26dc4280ca681c52e22e601685">&#9670;&#160;</a></span>setVector3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::IShader::setVector3 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Vector3f *</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece un uniform de vector 3D. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Nombre del uniform en el shader </td></tr>
+    <tr><td class="paramname">valor</td><td>Puntero a sf::Vector3f </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad2b1cbe57aac2faa20ec336a75f55148" name="ad2b1cbe57aac2faa20ec336a75f55148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2b1cbe57aac2faa20ec336a75f55148">&#9670;&#160;</a></span>setVector4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::IShader::setVector4 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Glsl::Vec4 *</td>          <td class="paramname"><span class="paramname"><em>valor</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece un uniform de vector 4D. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Nombre del uniform en el shader </td></tr>
+    <tr><td class="paramname">valor</td><td>Puntero a sf::Glsl::Vec4 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada de los siguientes archivos:<ul>
+<li>src/Motor/Componentes/<a class="el" href="../../df/d4b/_i_componentes_8hpp_source.html">IComponentes.hpp</a></li>
+<li>src/Motor/Componentes/<b>IComponentes.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../d4/d4c/class_c_e_1_1_i_shader.html">IShader</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+\doxysection{Referencia de la clase CE::\+IComponentes}
+\hypertarget{class_c_e_1_1_i_componentes}{}\label{class_c_e_1_1_i_componentes}\index{CE::IComponentes@{CE::IComponentes}}
+
+
+Clase base abstracta para todos los componentes de entidades.  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+IComponentes\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{db/d58/class_c_e_1_1_i_componentes}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_componentes_ab4959eda2e34d0853f9d2466872a3bb6}\label{class_c_e_1_1_i_componentes_ab4959eda2e34d0853f9d2466872a3bb6} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_componentes_a636d4a2d9ef1d501dd28bae321381abe}\label{class_c_e_1_1_i_componentes_a636d4a2d9ef1d501dd28bae321381abe} 
+virtual std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ {\bfseries clonar} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base abstracta para todos los componentes de entidades. 
+
+Define la interfaz principal para el sistema de componentes. Todos los componentes derivados heredan de esta clase y se pueden adjuntar a objetos (\doxylink{class_c_e_1_1_objeto}{Objeto}) para proporcionar funcionalidad específica (transformación, renderizado, estadísticas, etc).
+
+El motor utiliza un patrón de arquitectura basada en componentes (ECS -\/ Entity Component System) para máxima flexibilidad y composición. 
+
+La documentación de esta clase está generada del siguiente archivo:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\end{DoxyCompactItemize}

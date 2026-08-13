@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la clase CE::GestorCamaras</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('dc/d24/class_c_e_1_1_gestor_camaras.html','../../','d7/d16/class_c_e_1_1_gestor_camaras-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la clase CE::GestorCamaras</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestor singleton para administración de múltiples cámaras.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d6/d8a/_camaras_gestor_8hpp_source.html">CamarasGestor.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a49cbdddb5e3e4b95135210dcd5af5cd4" id="r_a49cbdddb5e3e4b95135210dcd5af5cd4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a49cbdddb5e3e4b95135210dcd5af5cd4">agregarCamara</a> (const std::shared_ptr&lt; <a class="el" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a> &gt; &amp;nueva)</td></tr>
+<tr class="memdesc:a49cbdddb5e3e4b95135210dcd5af5cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega una nueva cámara al gestor.  <br /></td></tr>
+<tr class="memitem:aa565c704a680b9e52d0524da117cb6ba" id="r_aa565c704a680b9e52d0524da117cb6ba"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa565c704a680b9e52d0524da117cb6ba">setCamaraActiva</a> (int id)</td></tr>
+<tr class="memdesc:aa565c704a680b9e52d0524da117cb6ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece cuál cámara es la activa.  <br /></td></tr>
+<tr class="memitem:a27cedeb119fe884dd946da08bd3a9d02" id="r_a27cedeb119fe884dd946da08bd3a9d02"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a27cedeb119fe884dd946da08bd3a9d02">onUpdateCamaras</a> (float dt)</td></tr>
+<tr class="memdesc:a27cedeb119fe884dd946da08bd3a9d02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza todas las cámaras.  <br /></td></tr>
+<tr class="memitem:ac92e4f2f74a769e1355e2b3aa064dc34" id="r_ac92e4f2f74a769e1355e2b3aa064dc34"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac92e4f2f74a769e1355e2b3aa064dc34">onRenderCamara</a> (sf::RenderTexture &amp;tex)</td></tr>
+<tr class="memdesc:ac92e4f2f74a769e1355e2b3aa064dc34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renderiza en una textura usando la cámara activa.  <br /></td></tr>
+<tr class="memitem:aa34486a89a5e1ca28ae9ef170ad7e960" id="r_aa34486a89a5e1ca28ae9ef170ad7e960"><td class="memItemLeft"><a class="el" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#aa34486a89a5e1ca28ae9ef170ad7e960">getCamaraActiva</a> ()</td></tr>
+<tr class="memdesc:aa34486a89a5e1ca28ae9ef170ad7e960"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la cámara actualmente activa.  <br /></td></tr>
+<tr class="memitem:a27bec2d26c19415701dacd6a1dd15801" id="r_a27bec2d26c19415701dacd6a1dd15801"><td class="memItemLeft"><a class="el" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a27bec2d26c19415701dacd6a1dd15801">getCamara</a> (int id)</td></tr>
+<tr class="memdesc:a27bec2d26c19415701dacd6a1dd15801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene una cámara por su índice.  <br /></td></tr>
+<tr class="memitem:a2f2ba9b8489b99be721141ac9edeccd3" id="r_a2f2ba9b8489b99be721141ac9edeccd3"><td class="memItemLeft">std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a2f2ba9b8489b99be721141ac9edeccd3">getListaCamaras</a> ()</td></tr>
+<tr class="memdesc:a2f2ba9b8489b99be721141ac9edeccd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la lista completa de cámaras.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Métodos públicos estáticos</h2></td></tr>
+<tr class="memitem:a6533e353c57b15f1a8e458b40a579965" id="r_a6533e353c57b15f1a8e458b40a579965"><td class="memItemLeft">static <a class="el" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html">GestorCamaras</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a6533e353c57b15f1a8e458b40a579965">Get</a> ()</td></tr>
+<tr class="memdesc:a6533e353c57b15f1a8e458b40a579965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la instancia singleton del gestor de cámaras.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Gestor singleton para administración de múltiples cámaras. </p>
+<p>Mantiene una colección de cámaras, designa cuál es la activa y orquesta su actualización y renderizado. Permite cambiar cámaras en tiempo de ejecución.</p>
+<dl class="section note"><dt>Nota</dt><dd>Patrón Singleton - instancia única a través de <a class="el" href="#a6533e353c57b15f1a8e458b40a579965" title="Obtiene la instancia singleton del gestor de cámaras.">Get()</a> </dd>
+<dd>
+Usa weak_ptr para la cámara activa para permitir eliminación externa </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="a49cbdddb5e3e4b95135210dcd5af5cd4" name="a49cbdddb5e3e4b95135210dcd5af5cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49cbdddb5e3e4b95135210dcd5af5cd4">&#9670;&#160;</a></span>agregarCamara()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::GestorCamaras::agregarCamara </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>nueva</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega una nueva cámara al gestor. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nueva</td><td>Puntero compartido a la cámara a agregar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6533e353c57b15f1a8e458b40a579965" name="a6533e353c57b15f1a8e458b40a579965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6533e353c57b15f1a8e458b40a579965">&#9670;&#160;</a></span>Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d24/class_c_e_1_1_gestor_camaras.html">GestorCamaras</a> &amp; CE::GestorCamaras::Get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene la instancia singleton del gestor de cámaras. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable al gestor único </dd></dl>
+
+</div>
+</div>
+<a id="a27bec2d26c19415701dacd6a1dd15801" name="a27bec2d26c19415701dacd6a1dd15801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27bec2d26c19415701dacd6a1dd15801">&#9670;&#160;</a></span>getCamara()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a> &amp; CE::GestorCamaras::getCamara </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene una cámara por su índice. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Índice en la lista de cámaras </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable a la cámara </dd></dl>
+
+</div>
+</div>
+<a id="aa34486a89a5e1ca28ae9ef170ad7e960" name="aa34486a89a5e1ca28ae9ef170ad7e960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa34486a89a5e1ca28ae9ef170ad7e960">&#9670;&#160;</a></span>getCamaraActiva()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a> &amp; CE::GestorCamaras::getCamaraActiva </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene la cámara actualmente activa. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable a la cámara activa</dd></dl>
+<dl class="section warning"><dt>Atención</dt><dd>Puede lanzar excepción si la cámara activa fue eliminada externamente </dd></dl>
+
+</div>
+</div>
+<a id="a2f2ba9b8489b99be721141ac9edeccd3" name="a2f2ba9b8489b99be721141ac9edeccd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f2ba9b8489b99be721141ac9edeccd3">&#9670;&#160;</a></span>getListaCamaras()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d4/d62/class_c_e_1_1_camara.html">Camara</a> &gt; &gt; &amp; CE::GestorCamaras::getListaCamaras </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene la lista completa de cámaras. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable al vector de cámaras </dd></dl>
+
+</div>
+</div>
+<a id="ac92e4f2f74a769e1355e2b3aa064dc34" name="ac92e4f2f74a769e1355e2b3aa064dc34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac92e4f2f74a769e1355e2b3aa064dc34">&#9670;&#160;</a></span>onRenderCamara()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::GestorCamaras::onRenderCamara </td>
+          <td>(</td>
+          <td class="paramtype">sf::RenderTexture &amp;</td>          <td class="paramname"><span class="paramname"><em>tex</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renderiza en una textura usando la cámara activa. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tex</td><td>Referencia a la textura de renderizado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a27cedeb119fe884dd946da08bd3a9d02" name="a27cedeb119fe884dd946da08bd3a9d02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27cedeb119fe884dd946da08bd3a9d02">&#9670;&#160;</a></span>onUpdateCamaras()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::GestorCamaras::onUpdateCamaras </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualiza todas las cámaras. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>Delta time en segundos </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa565c704a680b9e52d0524da117cb6ba" name="aa565c704a680b9e52d0524da117cb6ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa565c704a680b9e52d0524da117cb6ba">&#9670;&#160;</a></span>setCamaraActiva()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::GestorCamaras::setCamaraActiva </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece cuál cámara es la activa. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Índice de la cámara en la lista </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada de los siguientes archivos:<ul>
+<li>src/Motor/Camaras/<a class="el" href="../../d6/d8a/_camaras_gestor_8hpp_source.html">CamarasGestor.hpp</a></li>
+<li>src/Motor/Camaras/<b>CamarasGestor.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../dc/d24/class_c_e_1_1_gestor_camaras.html">GestorCamaras</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

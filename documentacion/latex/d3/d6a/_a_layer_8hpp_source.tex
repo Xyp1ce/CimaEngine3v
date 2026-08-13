@@ -1,0 +1,36 @@
+\doxysection{ALayer.\+hpp}
+\hypertarget{_a_layer_8hpp_source}{}\label{_a_layer_8hpp_source}\index{src/Motor/App/ALayer.hpp@{src/Motor/App/ALayer.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../Inputs/InputBuffer.hpp"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_game_layer}{GameLayer}}}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_aec7c729a4f2f997452da937be115a39a}{\string~GameLayer}}()\{\};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a377756b0e2ba0dbbefd1fdebc09f5e1a}{OnInit}}(\textcolor{keywordtype}{void})\{\};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a410dee1c9af17fb73ede6767e9805bc1}{EstaCorriendo}}(\textcolor{keywordtype}{void})\{\textcolor{keywordflow}{return}\ !\doxymbox{\hyperlink{class_c_e_1_1_game_layer_a504a58a42a86d7c5c06445308fe9a6e9}{termino}};\};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_afd1110a9d5ac5d3831e05b87dd4f1da8}{OnInputs}}(std::optional<sf::Event>\&\ eventos)=0;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a3078e33661546d0dec04dd831215cbca}{OnInputs}}(\doxymbox{\hyperlink{class_c_e_1_1_input_buffer}{InputBuffer}}\&\ in\_buffer)=0;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a04ef1c3b4c271ed27aa74bb65edb7dff}{OnInputs}}()=0;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a8454bfacf849027ceaa2e904a47e54a8}{OnUpdate}}(\textcolor{keywordtype}{float}\ dt)=0;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a36785531dba2e09839a0387b8fa94d09}{OnRender}}()\{\};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a504a58a42a86d7c5c06445308fe9a6e9}{termino}};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//sf::Event\ trigger\_evento;}}
+\DoxyCodeLine{00080\ \ \ \ \ \};}
+\DoxyCodeLine{00081\ \}}
+
+\end{DoxyCode}

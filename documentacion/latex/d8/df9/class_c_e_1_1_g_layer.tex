@@ -1,0 +1,107 @@
+\doxysection{Referencia de la clase CE::\+GLayer}
+\hypertarget{class_c_e_1_1_g_layer}{}\label{class_c_e_1_1_g_layer}\index{CE::GLayer@{CE::GLayer}}
+
+
+Clase base abstracta para capas de interfaz gráfica Im\+Gui.  
+
+
+
+
+{\ttfamily \+\#include $<$GLayer.\+hpp$>$}
+
+Diagrama de herencia de CE::\+GLayer\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.517615cm]{d8/df9/class_c_e_1_1_g_layer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_g_layer_aa990b548c9007899b3133f4e5501aea7}\label{class_c_e_1_1_g_layer_aa990b548c9007899b3133f4e5501aea7} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+GLayer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df}{On\+Init}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&des)=0
+\begin{DoxyCompactList}\small\item\em Inicializa la capa GUI. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6}{On\+Update}} (float dt)=0
+\begin{DoxyCompactList}\small\item\em Actualiza la lógica de la capa. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1}{On\+Render}} (void)=0
+\begin{DoxyCompactList}\small\item\em Renderiza la capa en Im\+Gui. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base abstracta para capas de interfaz gráfica Im\+Gui. 
+
+Define la interfaz mínima que deben implementar todas las capas GUI del motor. Las capas se apilan en un vector y se actualizan/\+renderizan secuencialmente cada frame.
+
+Las capas típicas incluyen:\+ dock (información), logger (logs), viewport, propiedades de objetos, lista de objetos, etc. 
+
+\label{class_c_e_1_1_g_layer_doc-func-members}
+\Hypertarget{class_c_e_1_1_g_layer_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df}\index{CE::GLayer@{CE::GLayer}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!CE::GLayer@{CE::GLayer}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df} 
+virtual void CE::\+\+GLayer::\+\+On\+Init (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{des}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Inicializa la capa GUI. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em des} & Configuración del motor (resolución, etc) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_c_e_1_1_g_dock_a32a4016d6a467a4d5b625df4a1f175db}{CE::\+\+GDock}}, \doxymbox{\hyperlink{class_c_e_1_1_g_lista_objetos_a3c874b3357b2276ea97812936be23c20}{CE::\+\+GLista\+Objetos}}, \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a8f08d680ff6833b8237f571bcc7ed518}{CE::\+\+GLogger}}, \doxymbox{\hyperlink{class_c_e_1_1_g_paths_a07dc157215c2cc2eba220af0871a7700}{CE::\+\+GPaths}}, \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a8a1fb9e8a58421ab1f1a1801312100af}{CE::\+\+GPropiedades}} y \doxymbox{\hyperlink{class_c_e_1_1_g_viewport_a4aa1d254ad2d5ef1d34c639b029880bf}{CE::\+\+GViewport}}.
+
+\Hypertarget{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1}\index{CE::GLayer@{CE::GLayer}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!CE::GLayer@{CE::GLayer}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1} 
+virtual void CE::\+\+GLayer::\+\+On\+Render (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Renderiza la capa en Im\+Gui. 
+
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_c_e_1_1_g_dock_ad0b714227808dc6bf7ec9f22c688af53}{CE::\+\+GDock}}, \doxymbox{\hyperlink{class_c_e_1_1_g_lista_objetos_a1307b2bfc3810b93dee3d703464ee478}{CE::\+\+GLista\+Objetos}}, \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a218031378b57c1d80a5781d3ab03477b}{CE::\+\+GLogger}}, \doxymbox{\hyperlink{class_c_e_1_1_g_paths_af057dc9b153acd197fe95dd75f6f65b4}{CE::\+\+GPaths}}, \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a0b9923e5c4ba540061fd94d12457997f}{CE::\+\+GPropiedades}} y \doxymbox{\hyperlink{class_c_e_1_1_g_viewport_af1ac469b7be385545b6bd0219a34cd8b}{CE::\+\+GViewport}}.
+
+\Hypertarget{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6}\index{CE::GLayer@{CE::GLayer}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CE::GLayer@{CE::GLayer}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6} 
+virtual void CE::\+\+GLayer::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Actualiza la lógica de la capa. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_c_e_1_1_g_dock_a783e6b50e5a3a39810e08b0dc9d50922}{CE::\+\+GDock}}, \doxymbox{\hyperlink{class_c_e_1_1_g_lista_objetos_ac1adbac93d3343fd19634f2a4437febe}{CE::\+\+GLista\+Objetos}}, \doxymbox{\hyperlink{class_c_e_1_1_g_logger_af25510b53af35054c7a1f1e53375f5b5}{CE::\+\+GLogger}}, \doxymbox{\hyperlink{class_c_e_1_1_g_paths_a00f4ba6e3b429268e559e823c569e366}{CE::\+\+GPaths}}, \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a7bd037ab9b8b77193a289e58247a20f8}{CE::\+\+GPropiedades}} y \doxymbox{\hyperlink{class_c_e_1_1_g_viewport_a9a8d88d63786d7d2b013220337f1a3fd}{CE::\+\+GViewport}}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+GUI/\+GLayer.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,145 @@
+\doxysection{Referencia de la clase CE::\+Botones}
+\hypertarget{class_c_e_1_1_botones}{}\label{class_c_e_1_1_botones}\index{CE::Botones@{CE::Botones}}
+
+
+Encapsula la configuración de un botón/\+tecla con su tipo de acción.  
+
+
+
+
+{\ttfamily \+\#include $<$Botones.\+hpp$>$}
+
+\doxysubsubsection*{Tipos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}\label{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac} 
+enum class \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{Tipo\+Accion}} \{ {\bfseries On\+Press}
+, {\bfseries On\+Release}
+, {\bfseries None}
+ \}
+\begin{DoxyCompactList}\small\item\em Tipos de eventos de acción que puede generar un botón. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_botones_aea3d5a5723b3146ef691d2bb5660bb88}{Botones}} (const std::\+string \&nombre, const \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{Tipo\+Accion}} \&tipo, const sf::\+\+Keyboard::\+\+Scancode \&scan)
+\begin{DoxyCompactList}\small\item\em Constructor del botón. \end{DoxyCompactList}\item 
+const std::\+string \doxymbox{\hyperlink{class_c_e_1_1_botones_aaaf939a30757c2606bd8f4df6704f399}{get\+Nombre}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el nombre/\+identificador del botón. \end{DoxyCompactList}\item 
+const std::\+string \doxymbox{\hyperlink{class_c_e_1_1_botones_a3456aecfd8b33c618cb11f89bdcb268b}{get\+Tipo\+String}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el tipo de acción como cadena de texto. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{Tipo\+Accion}} \& \doxymbox{\hyperlink{class_c_e_1_1_botones_ae7475d780e7060cbd650395e388b6001}{get\+Tipo}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el tipo de acción como enumeración. \end{DoxyCompactList}\item 
+const std::\+string \doxymbox{\hyperlink{class_c_e_1_1_botones_ab6ac5c27c56bde98c22f3a5939f57f8a}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene representación textual completa del botón. \end{DoxyCompactList}\item 
+const sf::\+\+Keyboard::\+\+Scancode \& \doxymbox{\hyperlink{class_c_e_1_1_botones_af58682d2c4e1711c7e9674f52dc28447}{get\+Scancode}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el escancode de la tecla SFML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Encapsula la configuración de un botón/\+tecla con su tipo de acción. 
+
+Representa un mapeo entre una tecla del teclado y una acción de entrada específica. Cada botón está identificado por un nombre, tiene un tipo de acción (Al presionar o al liberar) y está asociado a un escancode SFML.
+
+\begin{DoxyNote}{Nota}
+Los escancodes permiten mapeo independiente del idioma del teclado 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_botones_doc-constructors}
+\Hypertarget{class_c_e_1_1_botones_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_botones_aea3d5a5723b3146ef691d2bb5660bb88}\index{CE::Botones@{CE::Botones}!Botones@{Botones}}
+\index{Botones@{Botones}!CE::Botones@{CE::Botones}}
+\doxysubsubsection{\texorpdfstring{Botones()}{Botones()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_botones_aea3d5a5723b3146ef691d2bb5660bb88} 
+CE::\+\+Botones::\+\+Botones (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{nombre}{, }\item[{const \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{Tipo\+Accion}} \&}]{tipo}{, }\item[{const sf::\+\+Keyboard::\+\+Scancode \&}]{scan}{}\end{DoxyParamCaption})}
+
+
+
+Constructor del botón. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em nombre} & Identificador textual del botón (ej:\+ "{}saltar"{}, "{}atacar"{}) \\
+\hline
+{\em tipo} & Tipo de acción (On\+Press, On\+Release) \\
+\hline
+{\em scan} & Escancode de SFML de la tecla asociada \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_botones_doc-func-members}
+\Hypertarget{class_c_e_1_1_botones_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_botones_aaaf939a30757c2606bd8f4df6704f399}\index{CE::Botones@{CE::Botones}!getNombre@{getNombre}}
+\index{getNombre@{getNombre}!CE::Botones@{CE::Botones}}
+\doxysubsubsection{\texorpdfstring{getNombre()}{getNombre()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_botones_aaaf939a30757c2606bd8f4df6704f399} 
+const std::\+string CE::\+\+Botones::\+get\+Nombre (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el nombre/\+identificador del botón. 
+
+\begin{DoxyReturn}{Devuelve}
+Nombre del botón como cadena constante 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_botones_af58682d2c4e1711c7e9674f52dc28447}\index{CE::Botones@{CE::Botones}!getScancode@{getScancode}}
+\index{getScancode@{getScancode}!CE::Botones@{CE::Botones}}
+\doxysubsubsection{\texorpdfstring{getScancode()}{getScancode()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_botones_af58682d2c4e1711c7e9674f52dc28447} 
+const sf::\+\+Keyboard::\+\+Scancode \& CE::\+\+Botones::\+get\+Scancode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el escancode de la tecla SFML. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia constante al sf::\+\+Keyboard::\+\+Scancode 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_botones_ae7475d780e7060cbd650395e388b6001}\index{CE::Botones@{CE::Botones}!getTipo@{getTipo}}
+\index{getTipo@{getTipo}!CE::Botones@{CE::Botones}}
+\doxysubsubsection{\texorpdfstring{getTipo()}{getTipo()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_botones_ae7475d780e7060cbd650395e388b6001} 
+const \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{Botones::\+\+Tipo\+Accion}} \& CE::\+\+Botones::\+get\+Tipo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el tipo de acción como enumeración. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia constante al \doxylink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{Tipo\+Accion} del botón 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_botones_a3456aecfd8b33c618cb11f89bdcb268b}\index{CE::Botones@{CE::Botones}!getTipoString@{getTipoString}}
+\index{getTipoString@{getTipoString}!CE::Botones@{CE::Botones}}
+\doxysubsubsection{\texorpdfstring{getTipoString()}{getTipoString()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_botones_a3456aecfd8b33c618cb11f89bdcb268b} 
+const std::\+string CE::\+\+Botones::\+get\+Tipo\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el tipo de acción como cadena de texto. 
+
+\begin{DoxyReturn}{Devuelve}
+Representación textual del tipo de acción ("{}\+On\+Press"{}, "{}\+On\+Release"{}, "{}\+None"{}) 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_botones_ab6ac5c27c56bde98c22f3a5939f57f8a}\index{CE::Botones@{CE::Botones}!toString@{toString}}
+\index{toString@{toString}!CE::Botones@{CE::Botones}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_botones_ab6ac5c27c56bde98c22f3a5939f57f8a} 
+const std::\+string CE::\+\+Botones::\+to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene representación textual completa del botón. 
+
+\begin{DoxyReturn}{Devuelve}
+Cadena con formato:\+ "{}nombre:\+ tipo"{} 
+\end{DoxyReturn}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Inputs/\+Botones.\+hpp\item 
+src/\+\+Motor/\+\+Inputs/\+Botones.\+cpp\end{DoxyCompactItemize}

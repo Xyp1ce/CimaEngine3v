@@ -1,0 +1,115 @@
+\doxysection{Referencia de la clase CE::\+Input\+Buffer}
+\hypertarget{class_c_e_1_1_input_buffer}{}\label{class_c_e_1_1_input_buffer}\index{CE::InputBuffer@{CE::InputBuffer}}
+
+
+Buffer circular para almacenar eventos de entrada de SFML.  
+
+
+
+
+{\ttfamily \+\#include $<$Input\+Buffer.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a359e1b03010be1f0b7e98961f605bc12}{Input\+Buffer}} (int size)
+\begin{DoxyCompactList}\small\item\em Constructor del buffer circular. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a427305a139b755b18901858459d438c9}{push\+Data}} (std::\+optional$<$ sf::\+\+Event $>$ \&evento)
+\begin{DoxyCompactList}\small\item\em Agrega un evento al final de la cola. \end{DoxyCompactList}\item 
+std::\+optional$<$ sf::\+\+Event $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_acc17187d3d38ba30d23b0725861917e5}{pop\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Extrae y retorna el evento del inicio de la cola. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_input_buffer_a9dbdaf238a3ea911d9c24b30e1341617}\label{class_c_e_1_1_input_buffer_a9dbdaf238a3ea911d9c24b30e1341617} 
+void {\bfseries clear\+Data} ()
+\begin{DoxyCompactList}\small\item\em Limpia todos los eventos del buffer. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_e_1_1_input_buffer_a22d83583484d3f77a94894b187cd52dd}{esta\+Vacio}} () const
+\begin{DoxyCompactList}\small\item\em Verifica si el buffer está vacío. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_input_buffer_a96209604255b53e531428a710a571004}\label{class_c_e_1_1_input_buffer_a96209604255b53e531428a710a571004} 
+const int {\bfseries size}
+\begin{DoxyCompactList}\small\item\em Tamaño/\+capacidad máxima del buffer (constante). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Buffer circular para almacenar eventos de entrada de SFML. 
+
+Implementa una cola FIFO (First-\/\+In-\/\+First-\/\+Out) para procesar eventos de entrada de manera asincrónica. Los eventos se insertan desde el procesador de eventos del sistema y se consumen por la lógica de juego.
+
+\begin{DoxyNote}{Nota}
+Capacidad:\+ especificada en constructor 
+
+Soporta std::\+optional$<$sf::\+\+Event$>$ para manejar ausencia de eventos 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_input_buffer_doc-constructors}
+\Hypertarget{class_c_e_1_1_input_buffer_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_input_buffer_a359e1b03010be1f0b7e98961f605bc12}\index{CE::InputBuffer@{CE::InputBuffer}!InputBuffer@{InputBuffer}}
+\index{InputBuffer@{InputBuffer}!CE::InputBuffer@{CE::InputBuffer}}
+\doxysubsubsection{\texorpdfstring{InputBuffer()}{InputBuffer()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_input_buffer_a359e1b03010be1f0b7e98961f605bc12} 
+CE::\+\+Input\+Buffer::\+\+Input\+Buffer (\begin{DoxyParamCaption}\item[{int}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor del buffer circular. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em size} & Capacidad máxima del buffer (número de eventos) \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_input_buffer_doc-func-members}
+\Hypertarget{class_c_e_1_1_input_buffer_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_input_buffer_a22d83583484d3f77a94894b187cd52dd}\index{CE::InputBuffer@{CE::InputBuffer}!estaVacio@{estaVacio}}
+\index{estaVacio@{estaVacio}!CE::InputBuffer@{CE::InputBuffer}}
+\doxysubsubsection{\texorpdfstring{estaVacio()}{estaVacio()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_input_buffer_a22d83583484d3f77a94894b187cd52dd} 
+bool CE::\+\+Input\+Buffer::\+esta\+Vacio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica si el buffer está vacío. 
+
+\begin{DoxyReturn}{Devuelve}
+true si no hay eventos en el buffer, false en caso contrario 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_input_buffer_acc17187d3d38ba30d23b0725861917e5}\index{CE::InputBuffer@{CE::InputBuffer}!popData@{popData}}
+\index{popData@{popData}!CE::InputBuffer@{CE::InputBuffer}}
+\doxysubsubsection{\texorpdfstring{popData()}{popData()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_input_buffer_acc17187d3d38ba30d23b0725861917e5} 
+std::\+optional$<$ sf::\+\+Event $>$ \& CE::\+\+Input\+Buffer::\+pop\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Extrae y retorna el evento del inicio de la cola. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia a evento opcional (frente de la cola) 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_input_buffer_a427305a139b755b18901858459d438c9}\index{CE::InputBuffer@{CE::InputBuffer}!pushData@{pushData}}
+\index{pushData@{pushData}!CE::InputBuffer@{CE::InputBuffer}}
+\doxysubsubsection{\texorpdfstring{pushData()}{pushData()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_input_buffer_a427305a139b755b18901858459d438c9} 
+void CE::\+\+Input\+Buffer::\+push\+Data (\begin{DoxyParamCaption}\item[{std::\+optional$<$ sf::\+\+Event $>$ \&}]{evento}{}\end{DoxyParamCaption})}
+
+
+
+Agrega un evento al final de la cola. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em evento} & Referencia al evento opcional de SFML a almacenar \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Inputs/\+Input\+Buffer.\+hpp\item 
+src/\+\+Motor/\+\+Inputs/\+Input\+Buffer.\+cpp\end{DoxyCompactItemize}

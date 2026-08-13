@@ -1,0 +1,31 @@
+\doxysection{imgui-\/\+SFML\+\_\+export.h}
+\hypertarget{imgui-_s_f_m_l__export_8h_source}{}\label{imgui-_s_f_m_l__export_8h_source}\index{build/\_deps/imgui-\/sfml-\/src/imgui-\/SFML\_export.h@{build/\_deps/imgui-\/sfml-\/src/imgui-\/SFML\_export.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ IMGUI\_SFML\_EXPORT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ IMGUI\_SFML\_EXPORT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#if\ IMGUI\_SFML\_SHARED\_LIB}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#if\ \_WIN32}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifdef\ IMGUI\_SFML\_EXPORTS}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ IMGUI\_SFML\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ IMGUI\_API\ \ \ \ \ \ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ IMGUI\_SFML\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ IMGUI\_API\ \ \ \ \ \ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#elif\ \_\_GNUC\_\_\ >=\ 4}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ IMGUI\_SFML\_API\ \_\_attribute\_\_((visibility("{}default"{})))}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ IMGUI\_API\ \ \ \ \ \ \_\_attribute\_\_((visibility("{}default"{})))}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ IMGUI\_SFML\_API}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ IMGUI\_API}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ IMGUI\_SFML\_API}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ IMGUI\_API}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

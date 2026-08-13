@@ -1,0 +1,140 @@
+\doxysection{imgui-\/\+SFML.h}
+\hypertarget{imgui-_s_f_m_l_8h_source}{}\label{imgui-_s_f_m_l_8h_source}\index{build/\_deps/imgui-\/sfml-\/src/imgui-\/SFML.h@{build/\_deps/imgui-\/sfml-\/src/imgui-\/SFML.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ IMGUI\_SFML\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ IMGUI\_SFML\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Color.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Rect.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SFML/System/Time.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SFML/System/Vector2.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Window/Joystick.hpp>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}imgui-\/SFML\_export.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }Event;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }RenderTarget;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }RenderTexture;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }RenderWindow;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }Sprite;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }Texture;}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }Window;}
+\DoxyCodeLine{00023\ \}\ \textcolor{comment}{//\ namespace\ sf}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }ImGui}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }SFML}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ [[nodiscard]]\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{bool}\ Init(sf::RenderWindow\&\ window,\ \textcolor{keywordtype}{bool}\ loadDefaultFont\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00030\ [[nodiscard]]\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{bool}\ Init(sf::Window\&\ window,\ sf::RenderTarget\&\ target,\ \textcolor{keywordtype}{bool}\ loadDefaultFont\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00031\ [[nodiscard]]\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{bool}\ Init(sf::Window\&\ window,\ \textcolor{keyword}{const}\ sf::Vector2f\&\ displaySize,\ \textcolor{keywordtype}{bool}\ loadDefaultFont\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetCurrentWindow(\textcolor{keyword}{const}\ sf::Window\&\ window);}
+\DoxyCodeLine{00034\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ ProcessEvent(\textcolor{keyword}{const}\ sf::Window\&\ window,\ \textcolor{keyword}{const}\ sf::Event\&\ event);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Update(sf::RenderWindow\&\ window,\ sf::Time\ dt);}
+\DoxyCodeLine{00037\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Update(sf::Window\&\ window,\ sf::RenderTarget\&\ target,\ sf::Time\ dt);}
+\DoxyCodeLine{00038\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Update(\textcolor{keyword}{const}\ sf::Vector2i\&\ mousePos,\ \textcolor{keyword}{const}\ sf::Vector2f\&\ displaySize,\ sf::Time\ dt);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Render(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00041\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Render(sf::RenderTarget\&\ target);}
+\DoxyCodeLine{00042\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Render();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Shutdown(\textcolor{keyword}{const}\ sf::Window\&\ window);}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Shuts\ down\ all\ ImGui\ contexts}}
+\DoxyCodeLine{00046\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Shutdown();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ [[nodiscard]]\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{bool}\ UpdateFontTexture();}
+\DoxyCodeLine{00049\ IMGUI\_SFML\_API\ std::optional<sf::Texture>\&\ GetFontTexture();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ joystick\ functions}}
+\DoxyCodeLine{00052\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetActiveJoystickId(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ joystickId);}
+\DoxyCodeLine{00053\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetJoystickDPadThreshold(\textcolor{keywordtype}{float}\ threshold);}
+\DoxyCodeLine{00054\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetJoystickLStickThreshold(\textcolor{keywordtype}{float}\ threshold);}
+\DoxyCodeLine{00055\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetJoystickRStickThreshold(\textcolor{keywordtype}{float}\ threshold);}
+\DoxyCodeLine{00056\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetJoystickLTriggerThreshold(\textcolor{keywordtype}{float}\ threshold);}
+\DoxyCodeLine{00057\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetJoystickRTriggerThreshold(\textcolor{keywordtype}{float}\ threshold);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetJoystickMapping(\textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ joystickButton);}
+\DoxyCodeLine{00060\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetDPadXAxis(sf::Joystick::Axis\ dPadXAxis,\ \textcolor{keywordtype}{bool}\ inverted\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00061\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetDPadYAxis(sf::Joystick::Axis\ dPadYAxis,\ \textcolor{keywordtype}{bool}\ inverted\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00062\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetLStickXAxis(sf::Joystick::Axis\ lStickXAxis,\ \textcolor{keywordtype}{bool}\ inverted\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00063\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetLStickYAxis(sf::Joystick::Axis\ lStickYAxis,\ \textcolor{keywordtype}{bool}\ inverted\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00064\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetRStickXAxis(sf::Joystick::Axis\ rStickXAxis,\ \textcolor{keywordtype}{bool}\ inverted\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00065\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetRStickYAxis(sf::Joystick::Axis\ rStickYAxis,\ \textcolor{keywordtype}{bool}\ inverted\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00066\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetLTriggerAxis(sf::Joystick::Axis\ lTriggerAxis);}
+\DoxyCodeLine{00067\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ SetRTriggerAxis(sf::Joystick::Axis\ rTriggerAxis);}
+\DoxyCodeLine{00068\ \}\ \textcolor{comment}{//\ end\ of\ namespace\ SFML}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ custom\ SFML\ overloads\ for\ ImGui\ widgets}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ Image\ overloads\ for\ sf::Texture}}
+\DoxyCodeLine{00073\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Image(\textcolor{keyword}{const}\ sf::Texture\&\ texture,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ tintColor\ \ \ =\ sf::Color::White,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ borderColor\ =\ sf::Color::Transparent);}
+\DoxyCodeLine{00076\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Image(\textcolor{keyword}{const}\ sf::Texture\&\ \ texture,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\&\ size,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ tintColor\ \ \ =\ sf::Color::White,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ borderColor\ =\ sf::Color::Transparent);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ Image\ overloads\ for\ sf::RenderTexture}}
+\DoxyCodeLine{00082\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Image(\textcolor{keyword}{const}\ sf::RenderTexture\&\ texture,}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ \ \ \ \ \ tintColor\ \ \ =\ sf::Color::White,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ \ \ \ \ \ borderColor\ =\ sf::Color::Transparent);}
+\DoxyCodeLine{00085\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Image(\textcolor{keyword}{const}\ sf::RenderTexture\&\ texture,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\&\ \ \ \ \ \ size,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ \ \ \ \ \ tintColor\ \ \ =\ sf::Color::White,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ \ \ \ \ \ borderColor\ =\ sf::Color::Transparent);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{//\ Image\ overloads\ for\ sf::Sprite}}
+\DoxyCodeLine{00091\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Image(\textcolor{keyword}{const}\ sf::Sprite\&\ sprite,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ tintColor\ \ \ =\ sf::Color::White,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ borderColor\ =\ sf::Color::Transparent);}
+\DoxyCodeLine{00094\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ Image(\textcolor{keyword}{const}\ sf::Sprite\&\ \ \ sprite,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\&\ size,}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ tintColor\ \ \ =\ sf::Color::White,}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ borderColor\ =\ sf::Color::Transparent);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ ImageButton\ overloads\ for\ sf::Texture}}
+\DoxyCodeLine{00100\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{bool}\ ImageButton(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Texture\&\ \ texture,}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\&\ size,}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ bgColor\ \ \ =\ sf::Color::Transparent,}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ tintColor\ =\ sf::Color::White);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ ImageButton\ overloads\ for\ sf::RenderTexture}}
+\DoxyCodeLine{00107\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{bool}\ ImageButton(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::RenderTexture\&\ texture,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\&\ \ \ \ \ \ size,}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ \ \ \ \ \ bgColor\ \ \ =\ sf::Color::Transparent,}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ \ \ \ \ \ tintColor\ =\ sf::Color::White);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{comment}{//\ ImageButton\ overloads\ for\ sf::Sprite}}
+\DoxyCodeLine{00114\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{bool}\ ImageButton(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Sprite\&\ \ \ sprite,}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\&\ size,}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ bgColor\ \ \ =\ sf::Color::Transparent,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ tintColor\ =\ sf::Color::White);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{comment}{//\ Draw\_list\ overloads.\ All\ positions\ are\ in\ relative\ coordinates\ (relative\ to\ top-\/left\ of\ the}}
+\DoxyCodeLine{00121\ \textcolor{comment}{//\ current\ window)}}
+\DoxyCodeLine{00122\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ DrawLine(\textcolor{keyword}{const}\ sf::Vector2f\&\ a,\ \textcolor{keyword}{const}\ sf::Vector2f\&\ b,\ \textcolor{keyword}{const}\ sf::Color\&\ col,\ \textcolor{keywordtype}{float}\ thickness\ =\ 1.0f);}
+\DoxyCodeLine{00123\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ DrawRect(\textcolor{keyword}{const}\ sf::FloatRect\&\ rect,}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ \ color,}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rounding\ \ \ \ \ \ \ \ \ =\ 0.0f,}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rounding\_corners\ =\ 0x0F,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thickness\ \ \ \ \ \ \ \ =\ 1.0f);}
+\DoxyCodeLine{00128\ IMGUI\_SFML\_API\ \textcolor{keywordtype}{void}\ DrawRectFilled(\textcolor{keyword}{const}\ sf::FloatRect\&\ rect,}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\&\ \ \ \ \ color,}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rounding\ \ \ \ \ \ \ \ \ =\ 0.0f,}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rounding\_corners\ =\ 0x0F);}
+\DoxyCodeLine{00132\ \}\ \textcolor{comment}{//\ end\ of\ namespace\ ImGui}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \#\ IMGUI\_SFML\_H}}
+
+\end{DoxyCode}

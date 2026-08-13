@@ -1,0 +1,48 @@
+\doxysection{Render.\+hpp}
+\hypertarget{_render_8hpp_source}{}\label{_render_8hpp_source}\index{src/Motor/Render/Render.hpp@{src/Motor/Render/Render.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../Utils/Utils.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include<memory>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }Render}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Render\&\ \doxymbox{\hyperlink{class_c_e_1_1_render_a9519eb30b9ef017fe1328bb80d0a5c3e}{Get}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_render_aa3111682c4537c086a2615575b368ac8}{Terminar}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_render_af37925b0b70f3d399a91b5c7f64f30a9}{CrearVentana}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{MotorConfig}}\&\ motor\_info);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_render_afd766763de232cf86215c0c9ed5f9b17}{AutoResizeTextura}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ w,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_render_abec2fe91f751c2c8a17ba3877bc2914a}{AddToDraw}}(\textcolor{keyword}{const}\ sf::Drawable\ \&obj);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_render_abec2fe91f751c2c8a17ba3877bc2914a}{AddToDraw}}(\textcolor{keyword}{const}\ sf::Drawable\ \&obj,\ sf::RenderStates\ shader);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_render_abf5b9fe4a25e73e9ebd93f871a0071b1}{OnClearColor}}(\textcolor{keyword}{const}\ sf::Color\&\ clear);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_render_ae757ef0ff39c466c62e3123782955693}{OnDisplayTextura}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_render_ab3180d783dd683d443f0a63badc5d9e3}{OnDisplayVentana}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ \doxymbox{\hyperlink{class_c_e_1_1_render_a7a6d5a2f410c44d73671d12b9ca80742}{GetVentana}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ sf::RenderTexture\&\ \doxymbox{\hyperlink{class_c_e_1_1_render_a5631ebf11fa83961df9966e58f9546af}{GetTextura}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ Render()=\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<sf::RenderWindow>\ r\_ventana;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<sf::RenderTexture>\ r\_textura;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ Render*\ instancia\ =\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00102\ \ \ \ \ \};}
+\DoxyCodeLine{00103\ \}}
+
+\end{DoxyCode}

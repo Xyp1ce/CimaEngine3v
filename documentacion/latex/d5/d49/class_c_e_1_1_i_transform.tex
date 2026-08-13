@@ -1,0 +1,100 @@
+\doxysection{Referencia de la clase CE::\+ITransform}
+\hypertarget{class_c_e_1_1_i_transform}{}\label{class_c_e_1_1_i_transform}\index{CE::ITransform@{CE::ITransform}}
+
+
+Componente de transformación que almacena posición, velocidad y rotación.  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+ITransform\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d5/d49/class_c_e_1_1_i_transform}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_transform_a30b75c66342b9ad6a2bc77342e260e8d}\label{class_c_e_1_1_i_transform_a30b75c66342b9ad6a2bc77342e260e8d} 
+{\bfseries ITransform} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto (posición 0,0, velocidad 0,0, ángulo 0). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_i_transform_a18568cb7af4a0098d66d4de376bba019}{ITransform}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&pos, const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&vel, float ang)
+\begin{DoxyCompactList}\small\item\em Constructor con parámetros iniciales. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_transform_a283c64a03eec04c148184184dfba5a03}\label{class_c_e_1_1_i_transform_a283c64a03eec04c148184184dfba5a03} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+ITransform} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_i_transform_af5a3ec604f798f324bdf1795480f6886}{clonar}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_transform_a89513a65dcac89c1af14bc5d14683a28}\label{class_c_e_1_1_i_transform_a89513a65dcac89c1af14bc5d14683a28} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} {\bfseries posicion}
+\begin{DoxyCompactList}\small\item\em Posición actual de la entidad. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_transform_a1264cb692e6e41bb90c46edbfb1d4f79}\label{class_c_e_1_1_i_transform_a1264cb692e6e41bb90c46edbfb1d4f79} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} {\bfseries pos\+\_\+prev}
+\begin{DoxyCompactList}\small\item\em Posición anterior (frame anterior) para detección de cambios. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_transform_aa7edb1a168d4437978968b892da17553}\label{class_c_e_1_1_i_transform_aa7edb1a168d4437978968b892da17553} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} {\bfseries velocidad}
+\begin{DoxyCompactList}\small\item\em Velocidad de la entidad (píxeles/\+segundo). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_transform_a1d345c931d1b08959655db1003233b48}\label{class_c_e_1_1_i_transform_a1d345c931d1b08959655db1003233b48} 
+float {\bfseries angulo}
+\begin{DoxyCompactList}\small\item\em Ángulo de rotación en grados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente de transformación que almacena posición, velocidad y rotación. 
+
+Gestiona la transformación espacial de la entidad incluyendo posición, velocidad para física y ángulo de rotación. 
+
+\label{class_c_e_1_1_i_transform_doc-constructors}
+\Hypertarget{class_c_e_1_1_i_transform_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_i_transform_a18568cb7af4a0098d66d4de376bba019}\index{CE::ITransform@{CE::ITransform}!ITransform@{ITransform}}
+\index{ITransform@{ITransform}!CE::ITransform@{CE::ITransform}}
+\doxysubsubsection{\texorpdfstring{ITransform()}{ITransform()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_transform_a18568cb7af4a0098d66d4de376bba019} 
+CE::\+\+ITransform::\+\+ITransform (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&}]{pos}{, }\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&}]{vel}{, }\item[{float}]{ang}{}\end{DoxyParamCaption})}
+
+
+
+Constructor con parámetros iniciales. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pos} & Posición inicial de la entidad \\
+\hline
+{\em vel} & Velocidad inicial de la entidad \\
+\hline
+{\em ang} & Ángulo de rotación inicial en grados \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_i_transform_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_transform_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_transform_af5a3ec604f798f324bdf1795480f6886}\index{CE::ITransform@{CE::ITransform}!clonar@{clonar}}
+\index{clonar@{clonar}!CE::ITransform@{CE::ITransform}}
+\doxysubsubsection{\texorpdfstring{clonar()}{clonar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_transform_af5a3ec604f798f324bdf1795480f6886} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ CE::\+\+ITransform::\+clonar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+cpp\end{DoxyCompactItemize}

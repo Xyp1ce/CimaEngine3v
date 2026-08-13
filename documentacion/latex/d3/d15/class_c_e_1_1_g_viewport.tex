@@ -1,0 +1,107 @@
+\doxysection{Referencia de la clase CE::\+GViewport}
+\hypertarget{class_c_e_1_1_g_viewport}{}\label{class_c_e_1_1_g_viewport}\index{CE::GViewport@{CE::GViewport}}
+
+
+Panel de Im\+Gui que muestra información del viewport de juego.  
+
+
+
+
+{\ttfamily \+\#include $<$GViewport.\+hpp$>$}
+
+Diagrama de herencia de CE::\+GViewport\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d3/d15/class_c_e_1_1_g_viewport}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_g_viewport_a1d9be42ead42e211dae90ff8d7736259}\label{class_c_e_1_1_g_viewport_a1d9be42ead42e211dae90ff8d7736259} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+GViewport} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_viewport_a4aa1d254ad2d5ef1d34c639b029880bf}{On\+Init}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&des) override
+\begin{DoxyCompactList}\small\item\em Inicializa el panel viewport. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_viewport_a9a8d88d63786d7d2b013220337f1a3fd}{On\+Update}} (float dt) override
+\begin{DoxyCompactList}\small\item\em Actualiza el panel viewport cada frame. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_viewport_af1ac469b7be385545b6bd0219a34cd8b}{On\+Render}} (void) override
+\begin{DoxyCompactList}\small\item\em Renderiza el panel viewport en Im\+Gui. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_g_layer}{CE::\+\+GLayer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+GLayer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Panel de Im\+Gui que muestra información del viewport de juego. 
+
+Renderiza un panel mostrando las dimensiones actuales del viewport, útil para debug y verificación de resolución en tiempo real.
+
+\begin{DoxyNote}{Nota}
+Derivada de \doxylink{class_c_e_1_1_g_layer}{GLayer} para integración en sistema GUI del motor 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_g_viewport_doc-func-members}
+\Hypertarget{class_c_e_1_1_g_viewport_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_g_viewport_a4aa1d254ad2d5ef1d34c639b029880bf}\index{CE::GViewport@{CE::GViewport}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!CE::GViewport@{CE::GViewport}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_viewport_a4aa1d254ad2d5ef1d34c639b029880bf} 
+void CE::\+\+GViewport::\+\+On\+Init (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{des}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inicializa el panel viewport. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em des} & Configuración del motor (se extrae ancho y alto) \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_viewport_af1ac469b7be385545b6bd0219a34cd8b}\index{CE::GViewport@{CE::GViewport}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!CE::GViewport@{CE::GViewport}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_viewport_af1ac469b7be385545b6bd0219a34cd8b} 
+void CE::\+\+GViewport::\+\+On\+Render (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderiza el panel viewport en Im\+Gui. 
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_viewport_a9a8d88d63786d7d2b013220337f1a3fd}\index{CE::GViewport@{CE::GViewport}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CE::GViewport@{CE::GViewport}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_viewport_a9a8d88d63786d7d2b013220337f1a3fd} 
+void CE::\+\+GViewport::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Actualiza el panel viewport cada frame. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6}{CE::\+\+GLayer}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+GUI/\+GViewport.\+hpp\item 
+src/\+\+Motor/\+\+GUI/\+GViewport.\+cpp\end{DoxyCompactItemize}

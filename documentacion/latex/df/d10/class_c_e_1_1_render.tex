@@ -1,0 +1,183 @@
+\doxysection{Referencia de la clase CE::\+Render}
+\hypertarget{class_c_e_1_1_render}{}\label{class_c_e_1_1_render}\index{CE::Render@{CE::Render}}
+
+
+Gestor singleton del sistema de renderizado SFML.  
+
+
+
+
+{\ttfamily \+\#include $<$Render.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_render_af37925b0b70f3d399a91b5c7f64f30a9}{Crear\+Ventana}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&motor\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Crea la ventana de renderizado. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_render_afd766763de232cf86215c0c9ed5f9b17}{Auto\+Resize\+Textura}} (unsigned int w, unsigned int h)
+\begin{DoxyCompactList}\small\item\em Redimensiona la textura de renderizado. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_render_abec2fe91f751c2c8a17ba3877bc2914a}{Add\+To\+Draw}} (const sf::\+\+Drawable \&obj)
+\begin{DoxyCompactList}\small\item\em Agrega un objeto drawable a la cola de renderizado. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_render_a534b5a8ed2d1e295ca349e0bce2c665a}{Add\+To\+Draw}} (const sf::\+\+Drawable \&obj, sf::\+\+Render\+States shader)
+\begin{DoxyCompactList}\small\item\em Agrega un objeto drawable con estados de renderizado personalizados. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_render_abf5b9fe4a25e73e9ebd93f871a0071b1}{On\+Clear\+Color}} (const sf::\+\+Color \&clear)
+\begin{DoxyCompactList}\small\item\em Establece el color de limpieza de la ventana. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_render_ae757ef0ff39c466c62e3123782955693}\label{class_c_e_1_1_render_ae757ef0ff39c466c62e3123782955693} 
+void {\bfseries On\+Display\+Textura} (void)
+\begin{DoxyCompactList}\small\item\em Muestra/\+renderiza el contenido de la textura. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_render_ab3180d783dd683d443f0a63badc5d9e3}\label{class_c_e_1_1_render_ab3180d783dd683d443f0a63badc5d9e3} 
+void {\bfseries On\+Display\+Ventana} (void)
+\begin{DoxyCompactList}\small\item\em Intercambia buffers y muestra la ventana. \end{DoxyCompactList}\item 
+sf::\+\+Render\+Window \& \doxymbox{\hyperlink{class_c_e_1_1_render_a7a6d5a2f410c44d73671d12b9ca80742}{Get\+Ventana}} (void)
+\begin{DoxyCompactList}\small\item\em Obtiene la ventana de renderizado SFML. \end{DoxyCompactList}\item 
+sf::\+\+Render\+Texture \& \doxymbox{\hyperlink{class_c_e_1_1_render_a5631ebf11fa83961df9966e58f9546af}{Get\+Textura}} (void)
+\begin{DoxyCompactList}\small\item\em Obtiene la textura de renderizado SFML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static Render \& \doxymbox{\hyperlink{class_c_e_1_1_render_a9519eb30b9ef017fe1328bb80d0a5c3e}{Get}} (void)
+\begin{DoxyCompactList}\small\item\em Obtiene la instancia singleton del gestor de renderizado. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_render_aa3111682c4537c086a2615575b368ac8}\label{class_c_e_1_1_render_aa3111682c4537c086a2615575b368ac8} 
+static void {\bfseries Terminar} (void)
+\begin{DoxyCompactList}\small\item\em Limpia/\+termina el gestor y libera recursos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Gestor singleton del sistema de renderizado SFML. 
+
+Gestiona la creación y mantenimiento de ventana y textura de renderizado. Mantiene colas de objetos dibujables y coordina operaciones de renderizado.
+
+Soporta doble target:\+ Render\+Window (ventana del sistema) y Render\+Texture (textura para post-\/procesamiento o captura).
+
+\begin{DoxyNote}{Nota}
+Patrón Singleton -\/ instancia única a través de \doxylink{class_c_e_1_1_render_a9519eb30b9ef017fe1328bb80d0a5c3e}{Get()} 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_render_doc-func-members}
+\Hypertarget{class_c_e_1_1_render_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_render_abec2fe91f751c2c8a17ba3877bc2914a}\index{CE::Render@{CE::Render}!AddToDraw@{AddToDraw}}
+\index{AddToDraw@{AddToDraw}!CE::Render@{CE::Render}}
+\doxysubsubsection{\texorpdfstring{AddToDraw()}{AddToDraw()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_render_abec2fe91f751c2c8a17ba3877bc2914a} 
+void CE::\+\+Render::\+\+Add\+To\+Draw (\begin{DoxyParamCaption}\item[{const sf::\+\+Drawable \&}]{obj}{}\end{DoxyParamCaption})}
+
+
+
+Agrega un objeto drawable a la cola de renderizado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em obj} & Referencia constante al objeto drawable \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_render_a534b5a8ed2d1e295ca349e0bce2c665a}\index{CE::Render@{CE::Render}!AddToDraw@{AddToDraw}}
+\index{AddToDraw@{AddToDraw}!CE::Render@{CE::Render}}
+\doxysubsubsection{\texorpdfstring{AddToDraw()}{AddToDraw()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_render_a534b5a8ed2d1e295ca349e0bce2c665a} 
+void CE::\+\+Render::\+\+Add\+To\+Draw (\begin{DoxyParamCaption}\item[{const sf::\+\+Drawable \&}]{obj}{, }\item[{sf::\+\+Render\+States}]{shader}{}\end{DoxyParamCaption})}
+
+
+
+Agrega un objeto drawable con estados de renderizado personalizados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em obj} & Referencia constante al objeto drawable \\
+\hline
+{\em shader} & Estados de renderizado (shader, blend, transform) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_render_afd766763de232cf86215c0c9ed5f9b17}\index{CE::Render@{CE::Render}!AutoResizeTextura@{AutoResizeTextura}}
+\index{AutoResizeTextura@{AutoResizeTextura}!CE::Render@{CE::Render}}
+\doxysubsubsection{\texorpdfstring{AutoResizeTextura()}{AutoResizeTextura()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_render_afd766763de232cf86215c0c9ed5f9b17} 
+void CE::\+\+Render::\+\+Auto\+Resize\+Textura (\begin{DoxyParamCaption}\item[{unsigned int}]{w}{, }\item[{unsigned int}]{h}{}\end{DoxyParamCaption})}
+
+
+
+Redimensiona la textura de renderizado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em w} & Nuevo ancho \\
+\hline
+{\em h} & Nuevo alto \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_render_af37925b0b70f3d399a91b5c7f64f30a9}\index{CE::Render@{CE::Render}!CrearVentana@{CrearVentana}}
+\index{CrearVentana@{CrearVentana}!CE::Render@{CE::Render}}
+\doxysubsubsection{\texorpdfstring{CrearVentana()}{CrearVentana()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_render_af37925b0b70f3d399a91b5c7f64f30a9} 
+void CE::\+\+Render::\+\+Crear\+Ventana (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{motor\+\_\+info}{}\end{DoxyParamCaption})}
+
+
+
+Crea la ventana de renderizado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em motor\+\_\+info} & Configuración con dimensiones y título de ventana \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_render_a9519eb30b9ef017fe1328bb80d0a5c3e}\index{CE::Render@{CE::Render}!Get@{Get}}
+\index{Get@{Get}!CE::Render@{CE::Render}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_render_a9519eb30b9ef017fe1328bb80d0a5c3e} 
+Render \& CE::\+\+Render::\+\+Get (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtiene la instancia singleton del gestor de renderizado. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al renderizador único 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_render_a5631ebf11fa83961df9966e58f9546af}\index{CE::Render@{CE::Render}!GetTextura@{GetTextura}}
+\index{GetTextura@{GetTextura}!CE::Render@{CE::Render}}
+\doxysubsubsection{\texorpdfstring{GetTextura()}{GetTextura()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_render_a5631ebf11fa83961df9966e58f9546af} 
+sf::\+\+Render\+Texture \& CE::\+\+Render::\+\+Get\+Textura (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Obtiene la textura de renderizado SFML. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a Render\+Texture 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_render_a7a6d5a2f410c44d73671d12b9ca80742}\index{CE::Render@{CE::Render}!GetVentana@{GetVentana}}
+\index{GetVentana@{GetVentana}!CE::Render@{CE::Render}}
+\doxysubsubsection{\texorpdfstring{GetVentana()}{GetVentana()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_render_a7a6d5a2f410c44d73671d12b9ca80742} 
+sf::\+\+Render\+Window \& CE::\+\+Render::\+\+Get\+Ventana (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Obtiene la ventana de renderizado SFML. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a Render\+Window 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_render_abf5b9fe4a25e73e9ebd93f871a0071b1}\index{CE::Render@{CE::Render}!OnClearColor@{OnClearColor}}
+\index{OnClearColor@{OnClearColor}!CE::Render@{CE::Render}}
+\doxysubsubsection{\texorpdfstring{OnClearColor()}{OnClearColor()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_render_abf5b9fe4a25e73e9ebd93f871a0071b1} 
+void CE::\+\+Render::\+\+On\+Clear\+Color (\begin{DoxyParamCaption}\item[{const sf::\+\+Color \&}]{clear}{}\end{DoxyParamCaption})}
+
+
+
+Establece el color de limpieza de la ventana. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em clear} & Color SFML para limpiar fondo \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Render/\+Render.\+hpp\item 
+src/\+\+Motor/\+\+Render/\+Render.\+cpp\end{DoxyCompactItemize}

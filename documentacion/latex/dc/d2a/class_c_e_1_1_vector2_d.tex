@@ -1,0 +1,337 @@
+\doxysection{Referencia de la clase CE::\+Vector2D}
+\hypertarget{class_c_e_1_1_vector2_d}{}\label{class_c_e_1_1_vector2_d}\index{CE::Vector2D@{CE::Vector2D}}
+
+
+Clase para aritmética y geometría 2D.  
+
+
+
+
+{\ttfamily \+\#include $<$Vector2\+D.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}\label{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac} 
+{\bfseries Vector2D} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto (0, 0). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_afeeb54430a0742854e62fe3d8054f2c0}{Vector2D}} (const float x, const float y)
+\begin{DoxyCompactList}\small\item\em Constructor con coordenadas explícitas. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a1d4091e39b5d802d23a2b4f7a3f6245d}{Vector2D}} (const float v)
+\begin{DoxyCompactList}\small\item\em Constructor de valor uniforme. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a097557e2398e83bbbc353c92cb064098}{Vector2D}} (const sf::\+\+Vector2f \&cpy)
+\begin{DoxyCompactList}\small\item\em Constructor desde vector SFML. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a74080160e6650a25dc4ca6e7c22ec92a}{longitud}} () const
+\begin{DoxyCompactList}\small\item\em Calcula la longitud/\+magnitud del vector. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_aeb8758980b7f4f1ba1e4fe1e804a427e}{magnitud}} () const
+\begin{DoxyCompactList}\small\item\em Alias para \doxylink{class_c_e_1_1_vector2_d_a74080160e6650a25dc4ca6e7c22ec92a}{longitud()} -\/ obtiene magnitud. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a16e31cca39513ffa7f4dddc561990812}{distancia}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&o) const
+\begin{DoxyCompactList}\small\item\em Calcula distancia hacia otro vector. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \& \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a9377c2215d1b694d0a1cf443c1347a60}{normalizacion}} ()
+\begin{DoxyCompactList}\small\item\em Normaliza el vector a magnitud 1. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \& \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_ad285879e9871adcdb27bc172685a7be6}{escala}} (float s)
+\begin{DoxyCompactList}\small\item\em Escala el vector por un factor. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \& \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a6bcff6bc8d232c9e71bf16578c11d567}{suma}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&o)
+\begin{DoxyCompactList}\small\item\em Suma otro vector al presente. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \& \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a1ea6b1436f6ffc4f2f9ae106b762b63b}{resta}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&o)
+\begin{DoxyCompactList}\small\item\em Resta otro vector del presente. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a373e44e30334e78ac47018a26150274a}{operator==}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&v) const
+\begin{DoxyCompactList}\small\item\em Compara igualdad entre vectores. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_aa03ecd87f2aaddfbe4a12f527dd4979d}{operator+}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&v) const
+\begin{DoxyCompactList}\small\item\em Suma de vectores (crea nuevo vector). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a96b683ae9bba92b5f1f68f85d15bbb80}{operator-\/}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&v) const
+\begin{DoxyCompactList}\small\item\em Resta de vectores (crea nuevo vector). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a046686ffb660405415c4a6f33b52ae3e}{operator+=}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&v)
+\begin{DoxyCompactList}\small\item\em Suma en lugar (modificación en situ). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_vector2_d_a767bf22856e4a0134dcf15beccc68733}\label{class_c_e_1_1_vector2_d_a767bf22856e4a0134dcf15beccc68733} 
+float {\bfseries x}
+\begin{DoxyCompactList}\small\item\em Coordenada X. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_vector2_d_a1605b342aa8f402b8c44ff0a4f9a02f9}\label{class_c_e_1_1_vector2_d_a1605b342aa8f402b8c44ff0a4f9a02f9} 
+float {\bfseries y}
+\begin{DoxyCompactList}\small\item\em Coordenada Y. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Amigas}
+\begin{DoxyCompactItemize}
+\item 
+std::\+ostream \& \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a3042faf2fa1b8228cc82456632e02532}{operator$<$$<$}} (std::\+ostream \&os, const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&vec)
+\begin{DoxyCompactList}\small\item\em Salida de stream para impresión. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase para aritmética y geometría 2D. 
+
+Encapsula un vector 2D con operaciones comunes como magnitud, normalización, distancia y operadores algebraicos. Se integra con SFML permitiendo conversión desde/\+hacia sf::\+\+Vector2f.
+
+\begin{DoxyNote}{Nota}
+Coordenadas públicas (x, y) para acceso directo 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_vector2_d_doc-constructors}
+\Hypertarget{class_c_e_1_1_vector2_d_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_vector2_d_afeeb54430a0742854e62fe3d8054f2c0}\index{CE::Vector2D@{CE::Vector2D}!Vector2D@{Vector2D}}
+\index{Vector2D@{Vector2D}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{Vector2D()}{Vector2D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_afeeb54430a0742854e62fe3d8054f2c0} 
+CE::\+\+Vector2\+D::\+\+Vector2D (\begin{DoxyParamCaption}\item[{const float}]{x}{, }\item[{const float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Constructor con coordenadas explícitas. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x} & Coordenada X \\
+\hline
+{\em y} & Coordenada Y \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_vector2_d_a1d4091e39b5d802d23a2b4f7a3f6245d}\index{CE::Vector2D@{CE::Vector2D}!Vector2D@{Vector2D}}
+\index{Vector2D@{Vector2D}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{Vector2D()}{Vector2D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a1d4091e39b5d802d23a2b4f7a3f6245d} 
+CE::\+\+Vector2\+D::\+\+Vector2D (\begin{DoxyParamCaption}\item[{const float}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Constructor de valor uniforme. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em v} & Valor para ambas coordenadas (x=v, y=v) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_vector2_d_a097557e2398e83bbbc353c92cb064098}\index{CE::Vector2D@{CE::Vector2D}!Vector2D@{Vector2D}}
+\index{Vector2D@{Vector2D}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{Vector2D()}{Vector2D()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a097557e2398e83bbbc353c92cb064098} 
+CE::\+\+Vector2\+D::\+\+Vector2D (\begin{DoxyParamCaption}\item[{const sf::\+\+Vector2f \&}]{cpy}{}\end{DoxyParamCaption})}
+
+
+
+Constructor desde vector SFML. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cpy} & Vector sf::\+\+Vector2f a copiar \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_vector2_d_doc-func-members}
+\Hypertarget{class_c_e_1_1_vector2_d_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_vector2_d_a16e31cca39513ffa7f4dddc561990812}\index{CE::Vector2D@{CE::Vector2D}!distancia@{distancia}}
+\index{distancia@{distancia}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{distancia()}{distancia()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a16e31cca39513ffa7f4dddc561990812} 
+float CE::\+\+Vector2\+D::\+distancia (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&}]{o}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula distancia hacia otro vector. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em o} & Otro vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Distancia euclidiana entre los puntos 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_ad285879e9871adcdb27bc172685a7be6}\index{CE::Vector2D@{CE::Vector2D}!escala@{escala}}
+\index{escala@{escala}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{escala()}{escala()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_ad285879e9871adcdb27bc172685a7be6} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \& CE::\+\+Vector2\+D::\+escala (\begin{DoxyParamCaption}\item[{float}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Escala el vector por un factor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s} & Factor de escala \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia a este vector modificado (encadenamiento) 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_a74080160e6650a25dc4ca6e7c22ec92a}\index{CE::Vector2D@{CE::Vector2D}!longitud@{longitud}}
+\index{longitud@{longitud}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{longitud()}{longitud()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a74080160e6650a25dc4ca6e7c22ec92a} 
+float CE::\+\+Vector2\+D::\+longitud (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula la longitud/\+magnitud del vector. 
+
+\begin{DoxyReturn}{Devuelve}
+Magnitud como float (sqrt(x² + y²)) 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_aeb8758980b7f4f1ba1e4fe1e804a427e}\index{CE::Vector2D@{CE::Vector2D}!magnitud@{magnitud}}
+\index{magnitud@{magnitud}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{magnitud()}{magnitud()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_aeb8758980b7f4f1ba1e4fe1e804a427e} 
+float CE::\+\+Vector2\+D::\+magnitud (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Alias para \doxylink{class_c_e_1_1_vector2_d_a74080160e6650a25dc4ca6e7c22ec92a}{longitud()} -\/ obtiene magnitud. 
+
+\begin{DoxyReturn}{Devuelve}
+Magnitud del vector 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_a9377c2215d1b694d0a1cf443c1347a60}\index{CE::Vector2D@{CE::Vector2D}!normalizacion@{normalizacion}}
+\index{normalizacion@{normalizacion}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{normalizacion()}{normalizacion()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a9377c2215d1b694d0a1cf443c1347a60} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \& CE::\+\+Vector2\+D::\+normalizacion (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Normaliza el vector a magnitud 1. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia a este vector modificado (encadenamiento) 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_aa03ecd87f2aaddfbe4a12f527dd4979d}\index{CE::Vector2D@{CE::Vector2D}!operator+@{operator+}}
+\index{operator+@{operator+}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_aa03ecd87f2aaddfbe4a12f527dd4979d} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} CE::\+\+Vector2\+D::\+operator+ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&}]{v}{}\end{DoxyParamCaption}) const}
+
+
+
+Suma de vectores (crea nuevo vector). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em v} & Vector a sumar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nuevo vector resultado de la suma 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_a046686ffb660405415c4a6f33b52ae3e}\index{CE::Vector2D@{CE::Vector2D}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a046686ffb660405415c4a6f33b52ae3e} 
+void CE::\+\+Vector2\+D::\+operator+= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Suma en lugar (modificación en situ). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em v} & Vector a sumar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_vector2_d_a96b683ae9bba92b5f1f68f85d15bbb80}\index{CE::Vector2D@{CE::Vector2D}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a96b683ae9bba92b5f1f68f85d15bbb80} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} CE::\+\+Vector2\+D::\+operator-\/ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&}]{v}{}\end{DoxyParamCaption}) const}
+
+
+
+Resta de vectores (crea nuevo vector). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em v} & Vector a restar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nuevo vector resultado de la resta 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_a373e44e30334e78ac47018a26150274a}\index{CE::Vector2D@{CE::Vector2D}!operator==@{operator==}}
+\index{operator==@{operator==}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a373e44e30334e78ac47018a26150274a} 
+bool CE::\+\+Vector2\+D::\+operator== (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&}]{v}{}\end{DoxyParamCaption}) const}
+
+
+
+Compara igualdad entre vectores. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em v} & Vector a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si x e y son iguales 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_a1ea6b1436f6ffc4f2f9ae106b762b63b}\index{CE::Vector2D@{CE::Vector2D}!resta@{resta}}
+\index{resta@{resta}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{resta()}{resta()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a1ea6b1436f6ffc4f2f9ae106b762b63b} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \& CE::\+\+Vector2\+D::\+resta (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&}]{o}{}\end{DoxyParamCaption})}
+
+
+
+Resta otro vector del presente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em o} & Vector a restar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia a este vector modificado (encadenamiento) 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_vector2_d_a6bcff6bc8d232c9e71bf16578c11d567}\index{CE::Vector2D@{CE::Vector2D}!suma@{suma}}
+\index{suma@{suma}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{suma()}{suma()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a6bcff6bc8d232c9e71bf16578c11d567} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \& CE::\+\+Vector2\+D::\+suma (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&}]{o}{}\end{DoxyParamCaption})}
+
+
+
+Suma otro vector al presente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em o} & Vector a sumar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia a este vector modificado (encadenamiento) 
+\end{DoxyReturn}
+
+
+\label{class_c_e_1_1_vector2_d_doc-related-members}
+\Hypertarget{class_c_e_1_1_vector2_d_doc-related-members}
+\doxysubsection{Documentación de símbolos amigos y relacionados}
+\Hypertarget{class_c_e_1_1_vector2_d_a3042faf2fa1b8228cc82456632e02532}\index{CE::Vector2D@{CE::Vector2D}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!CE::Vector2D@{CE::Vector2D}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_vector2_d_a3042faf2fa1b8228cc82456632e02532} 
+std::\+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{, }\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d_a8f5cf1b4798fb5a841d62ccdd2313dac}{Vector2D}} \&}]{vec}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Salida de stream para impresión. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em os} & Stream de salida \\
+\hline
+{\em vec} & Vector a imprimir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia al stream 
+\end{DoxyReturn}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Utils/\+Vector2\+D.\+hpp\item 
+src/\+\+Motor/\+\+Utils/\+Vector2\+D.\+cpp\end{DoxyCompactItemize}

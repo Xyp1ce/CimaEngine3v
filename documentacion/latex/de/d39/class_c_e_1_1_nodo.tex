@@ -1,0 +1,80 @@
+\doxysection{Referencia de la plantilla de la clase CE::\+Nodo\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}}
+\hypertarget{class_c_e_1_1_nodo}{}\label{class_c_e_1_1_nodo}\index{CE::Nodo$<$ T $>$@{CE::Nodo$<$ T $>$}}
+
+
+\doxylink{class_c_e_1_1_nodo}{Nodo} para lista doblemente enlazada.  
+
+
+
+
+{\ttfamily \+\#include $<$Nodo.\+hpp$>$}
+
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_nodo_a9a293ed932f60e72e828c73678c14967}\label{class_c_e_1_1_nodo_a9a293ed932f60e72e828c73678c14967} 
+T {\bfseries dato}
+\begin{DoxyCompactList}\small\item\em Datos almacenados en el nodo. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_nodo_ad4d38c6095bccde7e077cb627cb0b964}\label{class_c_e_1_1_nodo_ad4d38c6095bccde7e077cb627cb0b964} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_nodo_a61803882669035bb2a96de461e84b872}{Nodo}}$<$ T $>$ $>$ {\bfseries m\+\_\+prev}
+\begin{DoxyCompactList}\small\item\em Puntero al nodo anterior en la lista. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_nodo_a270a4a7bcf370c15e2e1dfab82b5e474}\label{class_c_e_1_1_nodo_a270a4a7bcf370c15e2e1dfab82b5e474} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_nodo_a61803882669035bb2a96de461e84b872}{Nodo}}$<$ T $>$ $>$ {\bfseries m\+\_\+next}
+\begin{DoxyCompactList}\small\item\em Puntero al nodo siguiente en la lista. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_nodo_afccdf8f53a00a888b18127bd50f5bec8}\label{class_c_e_1_1_nodo_afccdf8f53a00a888b18127bd50f5bec8} 
+unsigned int {\bfseries size}
+\begin{DoxyCompactList}\small\item\em Campo de tamaño (posiblemente sin usar). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_nodo_a61803882669035bb2a96de461e84b872}{Nodo}} (T d)
+\begin{DoxyCompactList}\small\item\em Constructor protegido (solo amigos pueden crear). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Amigas}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_nodo_aaf51eba006c8c436041f4a80ac819c75}\label{class_c_e_1_1_nodo_aaf51eba006c8c436041f4a80ac819c75} 
+class {\bfseries Lista$<$ T $>$}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\subsubsection*{template$<$typename T$>$\newline
+class CE::\+\+Nodo$<$ T $>$}
+\doxylink{class_c_e_1_1_nodo}{Nodo} para lista doblemente enlazada. 
+
+Estructura que representa un nodo en una lista enlazada con punteros previo y siguiente. Tiene constructor protegido para ser usado únicamente por la clase amiga \doxylink{class_c_e_1_1_lista}{Lista$<$\+T$>$}.
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de datos almacenados en el nodo\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Nota}
+El constructor es protegido -\/ solo \doxylink{class_c_e_1_1_lista}{Lista$<$\+T$>$} puede crear nodos 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_nodo_doc-constructors}
+\Hypertarget{class_c_e_1_1_nodo_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_nodo_a61803882669035bb2a96de461e84b872}\index{CE::Nodo$<$ T $>$@{CE::Nodo$<$ T $>$}!Nodo@{Nodo}}
+\index{Nodo@{Nodo}!CE::Nodo$<$ T $>$@{CE::Nodo$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Nodo()}{Nodo()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_nodo_a61803882669035bb2a96de461e84b872} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_c_e_1_1_nodo}{CE::\+\+Nodo}}$<$ T $>$::\+\+Nodo (\begin{DoxyParamCaption}\item[{T}]{d}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Constructor protegido (solo amigos pueden crear). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em d} & Dato a almacenar en el nodo \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada del siguiente archivo:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Utils/\+Nodo.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,189 @@
+\doxysection{Referencia de la clase CE::\+Game\+Layer}
+\hypertarget{class_c_e_1_1_game_layer}{}\label{class_c_e_1_1_game_layer}\index{CE::GameLayer@{CE::GameLayer}}
+
+
+Clase base abstracta para la capa de lógica principal de juego.  
+
+
+
+
+{\ttfamily \+\#include $<$ALayer.\+hpp$>$}
+
+Diagrama de herencia de CE::\+Game\+Layer\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{da/d97/class_c_e_1_1_game_layer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_game_layer_aec7c729a4f2f997452da937be115a39a}\label{class_c_e_1_1_game_layer_aec7c729a4f2f997452da937be115a39a} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Game\+Layer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual de la capa de juego. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a377756b0e2ba0dbbefd1fdebc09f5e1a}{On\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Hook de inicialización llamado al inicio del motor. \end{DoxyCompactList}\item 
+virtual bool \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a410dee1c9af17fb73ede6767e9805bc1}{Esta\+Corriendo}} (void)
+\begin{DoxyCompactList}\small\item\em Verifica si la capa de juego sigue activa. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_game_layer_afd1110a9d5ac5d3831e05b87dd4f1da8}{On\+Inputs}} (std::\+optional$<$ sf::\+\+Event $>$ \&eventos)=0
+\begin{DoxyCompactList}\small\item\em Procesa eventos de SFML individuales. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a3078e33661546d0dec04dd831215cbca}{On\+Inputs}} (\doxymbox{\hyperlink{class_c_e_1_1_input_buffer}{Input\+Buffer}} \&in\+\_\+buffer)=0
+\begin{DoxyCompactList}\small\item\em Procesa el buffer completo de eventos acumulados. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a04ef1c3b4c271ed27aa74bb65edb7dff}{On\+Inputs}} ()=0
+\begin{DoxyCompactList}\small\item\em Procesa entrada sin parámetros (entrada continua como teclas sostenidas). \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a8454bfacf849027ceaa2e904a47e54a8}{On\+Update}} (float dt)=0
+\begin{DoxyCompactList}\small\item\em Actualiza la lógica de la capa de juego. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a36785531dba2e09839a0387b8fa94d09}{On\+Render}} ()
+\begin{DoxyCompactList}\small\item\em Hook de renderizado llamado cada frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_game_layer_a504a58a42a86d7c5c06445308fe9a6e9}\label{class_c_e_1_1_game_layer_a504a58a42a86d7c5c06445308fe9a6e9} 
+bool {\bfseries termino}
+\begin{DoxyCompactList}\small\item\em Bandera que indica si la capa debe terminar (false = continuar ejecutando). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base abstracta para la capa de lógica principal de juego. 
+
+Define la interfaz que debe implementar la capa de juego, permitiendo que el motor gestione el ciclo de vida de la aplicación. Proporciona puntos de enganche (hooks) para inicialización, procesamiento de entrada, actualización y renderizado.
+
+Las clases derivadas deben implementar:\+
+\begin{DoxyItemize}
+\item \doxylink{class_c_e_1_1_game_layer_a04ef1c3b4c271ed27aa74bb65edb7dff}{On\+Inputs()} en sus tres variantes para procesamiento de entrada flexible
+\item \doxylink{class_c_e_1_1_game_layer_a8454bfacf849027ceaa2e904a47e54a8}{On\+Update(float dt)} para lógica de actualización
+\item \doxylink{class_c_e_1_1_game_layer_a36785531dba2e09839a0387b8fa94d09}{On\+Render()} para renderizado (opcional) 
+\end{DoxyItemize}
+
+\label{class_c_e_1_1_game_layer_doc-func-members}
+\Hypertarget{class_c_e_1_1_game_layer_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_game_layer_a410dee1c9af17fb73ede6767e9805bc1}\index{CE::GameLayer@{CE::GameLayer}!EstaCorriendo@{EstaCorriendo}}
+\index{EstaCorriendo@{EstaCorriendo}!CE::GameLayer@{CE::GameLayer}}
+\doxysubsubsection{\texorpdfstring{EstaCorriendo()}{EstaCorriendo()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_game_layer_a410dee1c9af17fb73ede6767e9805bc1} 
+virtual bool CE::\+\+Game\+Layer::\+\+Esta\+Corriendo (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Verifica si la capa de juego sigue activa. 
+
+\begin{DoxyReturn}{Devuelve}
+true si el juego está corriendo, false si debe terminar 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_game_layer_a377756b0e2ba0dbbefd1fdebc09f5e1a}\index{CE::GameLayer@{CE::GameLayer}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!CE::GameLayer@{CE::GameLayer}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_game_layer_a377756b0e2ba0dbbefd1fdebc09f5e1a} 
+virtual void CE::\+\+Game\+Layer::\+\+On\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Hook de inicialización llamado al inicio del motor. 
+
+Las subclases pueden sobrescribir este método para realizar inicializaciones específicas de su lógica de juego. 
+
+Reimplementado en \doxymbox{\hyperlink{class_i_v_j_1_1_juego_a2b9832d2d42a1f24ec98674aee4ef60b}{IVJ::\+\+Juego}}.
+
+\Hypertarget{class_c_e_1_1_game_layer_a04ef1c3b4c271ed27aa74bb65edb7dff}\index{CE::GameLayer@{CE::GameLayer}!OnInputs@{OnInputs}}
+\index{OnInputs@{OnInputs}!CE::GameLayer@{CE::GameLayer}}
+\doxysubsubsection{\texorpdfstring{OnInputs()}{OnInputs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_game_layer_a04ef1c3b4c271ed27aa74bb65edb7dff} 
+virtual void CE::\+\+Game\+Layer::\+\+On\+Inputs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Procesa entrada sin parámetros (entrada continua como teclas sostenidas). 
+
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_juego_aae7369e18a96fbd0075662c76d6c92f5}{IVJ::\+\+Juego}}.
+
+\Hypertarget{class_c_e_1_1_game_layer_a3078e33661546d0dec04dd831215cbca}\index{CE::GameLayer@{CE::GameLayer}!OnInputs@{OnInputs}}
+\index{OnInputs@{OnInputs}!CE::GameLayer@{CE::GameLayer}}
+\doxysubsubsection{\texorpdfstring{OnInputs()}{OnInputs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_game_layer_a3078e33661546d0dec04dd831215cbca} 
+virtual void CE::\+\+Game\+Layer::\+\+On\+Inputs (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_e_1_1_input_buffer}{Input\+Buffer}} \&}]{in\+\_\+buffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Procesa el buffer completo de eventos acumulados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em in\+\_\+buffer} & Referencia al buffer de entrada circulante \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_juego_a455fbd2f1c537c4fefe22a2fcb7be209}{IVJ::\+\+Juego}}.
+
+\Hypertarget{class_c_e_1_1_game_layer_afd1110a9d5ac5d3831e05b87dd4f1da8}\index{CE::GameLayer@{CE::GameLayer}!OnInputs@{OnInputs}}
+\index{OnInputs@{OnInputs}!CE::GameLayer@{CE::GameLayer}}
+\doxysubsubsection{\texorpdfstring{OnInputs()}{OnInputs()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_game_layer_afd1110a9d5ac5d3831e05b87dd4f1da8} 
+virtual void CE::\+\+Game\+Layer::\+\+On\+Inputs (\begin{DoxyParamCaption}\item[{std::\+optional$<$ sf::\+\+Event $>$ \&}]{eventos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Procesa eventos de SFML individuales. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em eventos} & Referencia a evento opcional de SFML \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_juego_a75209868b481e607e0df394269a2af33}{IVJ::\+\+Juego}}.
+
+\Hypertarget{class_c_e_1_1_game_layer_a36785531dba2e09839a0387b8fa94d09}\index{CE::GameLayer@{CE::GameLayer}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!CE::GameLayer@{CE::GameLayer}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_game_layer_a36785531dba2e09839a0387b8fa94d09} 
+virtual void CE::\+\+Game\+Layer::\+\+On\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Hook de renderizado llamado cada frame. 
+
+Las subclases pueden sobrescribir este método para realizar renderizado específico. Por defecto no hace nada. 
+
+Reimplementado en \doxymbox{\hyperlink{class_i_v_j_1_1_juego_ae01681faaeddabd7d010d26a4be8b0ad}{IVJ::\+\+Juego}}.
+
+\Hypertarget{class_c_e_1_1_game_layer_a8454bfacf849027ceaa2e904a47e54a8}\index{CE::GameLayer@{CE::GameLayer}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CE::GameLayer@{CE::GameLayer}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_game_layer_a8454bfacf849027ceaa2e904a47e54a8} 
+virtual void CE::\+\+Game\+Layer::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Actualiza la lógica de la capa de juego. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time (tiempo transcurrido en segundos) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementado en \doxymbox{\hyperlink{class_i_v_j_1_1_juego_ab03ea71614092bd4d4a5bea74f90c43e}{IVJ::\+\+Juego}}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+App/\+ALayer.\+hpp\end{DoxyCompactItemize}

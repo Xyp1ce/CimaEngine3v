@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Archivo de código fuente src/Motor/GUI/GListaObjetos.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d9/d1f/_g_lista_objetos_8hpp_source.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">GListaObjetos.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;GLayer.hpp&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;GPropiedades.hpp&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>CE</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html">   18</a></span>    <span class="keyword">class </span><a class="code hl_class" href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html">GListaObjetos</a> : <span class="keyword">public</span> <a class="code hl_class" href="../../d8/df9/class_c_e_1_1_g_layer.html">GLayer</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#ad040d5cc33d054e28569237fb619badb">   22</a></span>            <a class="code hl_function" href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#ad040d5cc33d054e28569237fb619badb">~GListaObjetos</a>()<span class="keyword"> override </span>{};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#a3c874b3357b2276ea97812936be23c20">OnInit</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d4/d9f/struct_c_e_1_1_motor_config.html">MotorConfig</a>&amp; des)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#ac1adbac93d3343fd19634f2a4437febe">OnUpdate</a>(<span class="keywordtype">float</span> dt) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#a1307b2bfc3810b93dee3d703464ee478">OnRender</a>(<span class="keywordtype">void</span>) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <a class="code hl_class" href="../../d1/d3a/class_c_e_1_1_g_propiedades.html">GPropiedades</a> propiedades;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    };</div>
+</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+<div class="ttc" id="aclass_c_e_1_1_g_layer_html"><div class="ttname"><a href="../../d8/df9/class_c_e_1_1_g_layer.html">CE::GLayer</a></div><div class="ttdoc">Clase base abstracta para capas de interfaz gráfica ImGui.</div><div class="ttdef"><b>Definition</b> GLayer.hpp:18</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_lista_objetos_html"><div class="ttname"><a href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html">CE::GListaObjetos</a></div><div class="ttdoc">Panel de ImGui para listar y seleccionar objetos de la escena.</div><div class="ttdef"><b>Definition</b> GListaObjetos.hpp:19</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_lista_objetos_html_a1307b2bfc3810b93dee3d703464ee478"><div class="ttname"><a href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#a1307b2bfc3810b93dee3d703464ee478">CE::GListaObjetos::OnRender</a></div><div class="ttdeci">void OnRender(void) override</div><div class="ttdoc">Renderiza la lista de objetos y propiedades en ImGui.</div><div class="ttdef"><b>Definition</b> GListaObjetos.cpp:18</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_lista_objetos_html_a3c874b3357b2276ea97812936be23c20"><div class="ttname"><a href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#a3c874b3357b2276ea97812936be23c20">CE::GListaObjetos::OnInit</a></div><div class="ttdeci">void OnInit(const MotorConfig &amp;des) override</div><div class="ttdoc">Inicializa el panel de lista de objetos.</div><div class="ttdef"><b>Definition</b> GListaObjetos.cpp:10</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_lista_objetos_html_ac1adbac93d3343fd19634f2a4437febe"><div class="ttname"><a href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#ac1adbac93d3343fd19634f2a4437febe">CE::GListaObjetos::OnUpdate</a></div><div class="ttdeci">void OnUpdate(float dt) override</div><div class="ttdoc">Actualiza el panel cada frame.</div><div class="ttdef"><b>Definition</b> GListaObjetos.cpp:14</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_lista_objetos_html_ad040d5cc33d054e28569237fb619badb"><div class="ttname"><a href="../../dc/d0a/class_c_e_1_1_g_lista_objetos.html#ad040d5cc33d054e28569237fb619badb">CE::GListaObjetos::~GListaObjetos</a></div><div class="ttdeci">~GListaObjetos() override</div><div class="ttdoc">Destructor virtual.</div><div class="ttdef"><b>Definition</b> GListaObjetos.hpp:22</div></div>
+<div class="ttc" id="aclass_c_e_1_1_g_propiedades_html"><div class="ttname"><a href="../../d1/d3a/class_c_e_1_1_g_propiedades.html">CE::GPropiedades</a></div><div class="ttdoc">Inspector de propiedades para editar objetos y tilemaps en tiempo real.</div><div class="ttdef"><b>Definition</b> GPropiedades.hpp:30</div></div>
+<div class="ttc" id="astruct_c_e_1_1_motor_config_html"><div class="ttname"><a href="../../d4/d9f/struct_c_e_1_1_motor_config.html">CE::MotorConfig</a></div><div class="ttdoc">Estructura de configuración para inicialización del motor.</div><div class="ttdef"><b>Definition</b> Utils.hpp:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>Motor</b></li><li class="navelem"><b>GUI</b></li><li class="navelem"><b>GListaObjetos.hpp</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

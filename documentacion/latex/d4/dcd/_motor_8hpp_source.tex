@@ -1,0 +1,40 @@
+\doxysection{Motor.\+hpp}
+\hypertarget{_motor_8hpp_source}{}\label{_motor_8hpp_source}\index{src/Motor/Motor.hpp@{src/Motor/Motor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}App/ALayer.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}GUI/GLayer.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Utils/Utils.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include<memory>}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_motor_ae0f4defc3da18a6cf79cff5a0ff790a0}{Motor}}}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_motor_ae0f4defc3da18a6cf79cff5a0ff790a0}{Motor}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{MotorConfig}}\&\ config,std::unique\_ptr<GameLayer>\ ref);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_c_e_1_1_motor_ac2d86957143d37c299790008693c8736}{OnRun}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnInit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnEventFrame();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnUpdateFrame(\textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnRenderFrame();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{MotorConfig}}\ motor\_info;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<GameLayer>\ mi\_app;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GLayer>>\ gui\_layers;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_input_buffer}{InputBuffer}}\ inputbuffer\{32\};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \}}
+
+\end{DoxyCode}

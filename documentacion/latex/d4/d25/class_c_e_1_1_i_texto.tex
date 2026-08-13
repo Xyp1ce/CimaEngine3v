@@ -1,0 +1,86 @@
+\doxysection{Referencia de la clase CE::\+ITexto}
+\hypertarget{class_c_e_1_1_i_texto}{}\label{class_c_e_1_1_i_texto}\index{CE::ITexto@{CE::ITexto}}
+
+
+Componente para renderizar texto en la entidad.  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+ITexto\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d4/d25/class_c_e_1_1_i_texto}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_i_texto_a8b39a373bd37c5c8efd488d17e8a8137}{ITexto}} (const sf::\+\+Font \&font, const std::\+string \&texto)
+\begin{DoxyCompactList}\small\item\em Constructor del componente texto. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_texto_a373648b743ddf24f02b6913b54a61f76}\label{class_c_e_1_1_i_texto_a373648b743ddf24f02b6913b54a61f76} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+ITexto} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_i_texto_afe3b142ca17ec76b4622543c3622d821}{clonar}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_texto_a7a6f4a892507869f022b16bff96577a3}\label{class_c_e_1_1_i_texto_a7a6f4a892507869f022b16bff96577a3} 
+sf::\+\+Text {\bfseries m\+\_\+texto}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_c_e_1_1_objeto}{Objeto} de texto SFML que se renderiza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente para renderizar texto en la entidad. 
+
+Contiene un objeto sf::\+\+Text de SFML para mostrar texto renderizado en la posición de la entidad con la fuente especificada. 
+
+\label{class_c_e_1_1_i_texto_doc-constructors}
+\Hypertarget{class_c_e_1_1_i_texto_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_i_texto_a8b39a373bd37c5c8efd488d17e8a8137}\index{CE::ITexto@{CE::ITexto}!ITexto@{ITexto}}
+\index{ITexto@{ITexto}!CE::ITexto@{CE::ITexto}}
+\doxysubsubsection{\texorpdfstring{ITexto()}{ITexto()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_texto_a8b39a373bd37c5c8efd488d17e8a8137} 
+CE::\+\+ITexto::\+\+ITexto (\begin{DoxyParamCaption}\item[{const sf::\+\+Font \&}]{font}{, }\item[{const std::\+string \&}]{texto}{}\end{DoxyParamCaption})}
+
+
+
+Constructor del componente texto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em font} & Referencia a la fuente de SFML a usar \\
+\hline
+{\em texto} & Contenido textual inicial \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_i_texto_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_texto_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_texto_afe3b142ca17ec76b4622543c3622d821}\index{CE::ITexto@{CE::ITexto}!clonar@{clonar}}
+\index{clonar@{clonar}!CE::ITexto@{CE::ITexto}}
+\doxysubsubsection{\texorpdfstring{clonar()}{clonar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_texto_afe3b142ca17ec76b4622543c3622d821} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ CE::\+\+ITexto::\+clonar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+cpp\end{DoxyCompactItemize}

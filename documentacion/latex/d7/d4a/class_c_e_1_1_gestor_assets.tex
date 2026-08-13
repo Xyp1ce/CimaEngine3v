@@ -1,0 +1,224 @@
+\doxysection{Referencia de la clase CE::\+Gestor\+Assets}
+\hypertarget{class_c_e_1_1_gestor_assets}{}\label{class_c_e_1_1_gestor_assets}\index{CE::GestorAssets@{CE::GestorAssets}}
+
+
+Gestor singleton de recursos (fuentes, texturas, sonidos, música).  
+
+
+
+
+{\ttfamily \+\#include $<$Gestor\+Assets.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a1a9357c6cf76177086cafbda3f914609}{agregar\+Font}} (const std::\+string \&key, const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Carga una fuente de archivo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a790215e48b35e5d1f5a0accbcf62b83a}{agregar\+Textura}} (const std::\+string \&key, const std::\+string \&filepath, const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::\+\+Vector2D}} \&pos\+\_\+init, const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::\+\+Vector2D}} \&dim)
+\begin{DoxyCompactList}\small\item\em Carga una textura de archivo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_acf58c384baa8b2439a425d7675cef45d}{agregar\+Sonido}} (const std::\+string \&key, const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Carga un sonido de archivo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a3263d63bdb17466e6c6406467484a446}{agregar\+Musica}} (const std::\+string \&key, const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Carga música de archivo. \end{DoxyCompactList}\item 
+sf::\+\+Font \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a3f55d7e051c948f76862c4c534ea5bc3}{get\+Font}} (const std::\+string \&key)
+\begin{DoxyCompactList}\small\item\em Obtiene una fuente por clave. \end{DoxyCompactList}\item 
+sf::\+\+Texture \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a551984368de2deb87053b78a7672c04a}{get\+Textura}} (const std::\+string \&key)
+\begin{DoxyCompactList}\small\item\em Obtiene una textura por clave. \end{DoxyCompactList}\item 
+sf::\+\+Sound \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_af4eeb2d5a9228b033f9bf0d4ffb045ad}{get\+Sonido}} (const std::\+string \&key)
+\begin{DoxyCompactList}\small\item\em Obtiene un sonido por clave. \end{DoxyCompactList}\item 
+sf::\+\+Music \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a3e51de85a1c3c1d710456ba2255396a6}{get\+Musica}} (const std::\+string \&key)
+\begin{DoxyCompactList}\small\item\em Obtiene música por clave. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets}{Gestor\+Assets}} \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a4d4505e002928675fc030ea7947232b4}{Get}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la instancia singleton del gestor de assets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Gestor singleton de recursos (fuentes, texturas, sonidos, música). 
+
+Implementa un cargador y caché de recursos multimedia del juego. Utiliza punteros compartidos para gestión automática de memoria y almacena recursos por clave textual para acceso fácil.
+
+Soporta:\+
+\begin{DoxyItemize}
+\item Fuentes de texto (True\+Type)
+\item Texturas de imágenes (PNG, JPG, BMP, etc)
+\item Sonidos cortos (WAV, OGG, FLAC)
+\item Música con loop automático (WAV, OGG, FLAC)
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Nota}
+Patrón Singleton -\/ instancia única a través de \doxylink{class_c_e_1_1_gestor_assets_a4d4505e002928675fc030ea7947232b4}{Get()} 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_gestor_assets_doc-func-members}
+\Hypertarget{class_c_e_1_1_gestor_assets_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_gestor_assets_a1a9357c6cf76177086cafbda3f914609}\index{CE::GestorAssets@{CE::GestorAssets}!agregarFont@{agregarFont}}
+\index{agregarFont@{agregarFont}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{agregarFont()}{agregarFont()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_a1a9357c6cf76177086cafbda3f914609} 
+void CE::\+\+Gestor\+Assets::\+agregar\+Font (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Carga una fuente de archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador único para acceso posterior \\
+\hline
+{\em filepath} & Ruta del archivo de fuente (.ttf) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_gestor_assets_a3263d63bdb17466e6c6406467484a446}\index{CE::GestorAssets@{CE::GestorAssets}!agregarMusica@{agregarMusica}}
+\index{agregarMusica@{agregarMusica}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{agregarMusica()}{agregarMusica()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_a3263d63bdb17466e6c6406467484a446} 
+void CE::\+\+Gestor\+Assets::\+agregar\+Musica (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Carga música de archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador único para acceso posterior \\
+\hline
+{\em filepath} & Ruta del archivo de música (WAV, OGG, FLAC)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+La música cargada soporta loop automático 
+\end{DoxyNote}
+\Hypertarget{class_c_e_1_1_gestor_assets_acf58c384baa8b2439a425d7675cef45d}\index{CE::GestorAssets@{CE::GestorAssets}!agregarSonido@{agregarSonido}}
+\index{agregarSonido@{agregarSonido}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{agregarSonido()}{agregarSonido()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_acf58c384baa8b2439a425d7675cef45d} 
+void CE::\+\+Gestor\+Assets::\+agregar\+Sonido (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Carga un sonido de archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador único para acceso posterior \\
+\hline
+{\em filepath} & Ruta del archivo de audio (WAV, OGG, FLAC) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_gestor_assets_a790215e48b35e5d1f5a0accbcf62b83a}\index{CE::GestorAssets@{CE::GestorAssets}!agregarTextura@{agregarTextura}}
+\index{agregarTextura@{agregarTextura}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{agregarTextura()}{agregarTextura()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_a790215e48b35e5d1f5a0accbcf62b83a} 
+void CE::\+\+Gestor\+Assets::\+agregar\+Textura (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{const std::\+string \&}]{filepath}{, }\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::\+\+Vector2D}} \&}]{pos\+\_\+init}{, }\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::\+\+Vector2D}} \&}]{dim}{}\end{DoxyParamCaption})}
+
+
+
+Carga una textura de archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador único para acceso posterior \\
+\hline
+{\em filepath} & Ruta del archivo de imagen \\
+\hline
+{\em pos\+\_\+init} & Posición inicial (no usada actualmente) \\
+\hline
+{\em dim} & Dimensión (no usada actualmente) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_gestor_assets_a4d4505e002928675fc030ea7947232b4}\index{CE::GestorAssets@{CE::GestorAssets}!Get@{Get}}
+\index{Get@{Get}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_a4d4505e002928675fc030ea7947232b4} 
+\doxymbox{\hyperlink{class_c_e_1_1_gestor_assets}{Gestor\+Assets}} \& CE::\+\+Gestor\+Assets::\+\+Get (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtiene la instancia singleton del gestor de assets. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al gestor único 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_assets_a3f55d7e051c948f76862c4c534ea5bc3}\index{CE::GestorAssets@{CE::GestorAssets}!getFont@{getFont}}
+\index{getFont@{getFont}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{getFont()}{getFont()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_a3f55d7e051c948f76862c4c534ea5bc3} 
+sf::\+\+Font \& CE::\+\+Gestor\+Assets::\+get\+Font (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene una fuente por clave. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador de la fuente \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a la fuente SFML 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_assets_a3e51de85a1c3c1d710456ba2255396a6}\index{CE::GestorAssets@{CE::GestorAssets}!getMusica@{getMusica}}
+\index{getMusica@{getMusica}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{getMusica()}{getMusica()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_a3e51de85a1c3c1d710456ba2255396a6} 
+sf::\+\+Music \& CE::\+\+Gestor\+Assets::\+get\+Musica (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene música por clave. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador de la música \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a la música SFML (con loop automático) 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_assets_af4eeb2d5a9228b033f9bf0d4ffb045ad}\index{CE::GestorAssets@{CE::GestorAssets}!getSonido@{getSonido}}
+\index{getSonido@{getSonido}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{getSonido()}{getSonido()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_af4eeb2d5a9228b033f9bf0d4ffb045ad} 
+sf::\+\+Sound \& CE::\+\+Gestor\+Assets::\+get\+Sonido (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene un sonido por clave. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador del sonido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al sonido SFML 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_assets_a551984368de2deb87053b78a7672c04a}\index{CE::GestorAssets@{CE::GestorAssets}!getTextura@{getTextura}}
+\index{getTextura@{getTextura}!CE::GestorAssets@{CE::GestorAssets}}
+\doxysubsubsection{\texorpdfstring{getTextura()}{getTextura()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_assets_a551984368de2deb87053b78a7672c04a} 
+sf::\+\+Texture \& CE::\+\+Gestor\+Assets::\+get\+Textura (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene una textura por clave. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & Identificador de la textura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a la textura SFML 
+\end{DoxyReturn}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Primitivos/\+Gestor\+Assets.\+hpp\item 
+src/\+\+Motor/\+\+Primitivos/\+Gestor\+Assets.\+cpp\end{DoxyCompactItemize}

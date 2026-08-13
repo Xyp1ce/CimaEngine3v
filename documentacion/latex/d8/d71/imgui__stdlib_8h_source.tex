@@ -1,0 +1,31 @@
+\doxysection{imgui\+\_\+stdlib.\+h}
+\hypertarget{imgui__stdlib_8h_source}{}\label{imgui__stdlib_8h_source}\index{build/\_deps/imgui-\/src/misc/cpp/imgui\_stdlib.h@{build/\_deps/imgui-\/src/misc/cpp/imgui\_stdlib.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ dear\ imgui:\ wrappers\ for\ C++\ standard\ library\ (STL)\ types\ (std::string,\ etc.)}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ This\ is\ also\ an\ example\ of\ how\ you\ may\ wrap\ your\ own\ similar\ types.}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Changelog:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ -\/\ v0.10:\ Initial\ version.\ Added\ InputText()\ /\ InputTextMultiline()\ calls\ with\ std::string}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ See\ more\ C++\ related\ extension\ (fmt,\ RAII,\ syntaxis\ sugar)\ on\ Wiki:}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ \ https://github.com/ocornut/imgui/wiki/Useful-\/Extensions\#cness}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ IMGUI\_DISABLE}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }ImGui}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ ImGui::InputText()\ with\ std::string}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Because\ text\ input\ needs\ dynamic\ resizing,\ we\ need\ to\ setup\ a\ callback\ to\ grow\ the\ capacity}}
+\DoxyCodeLine{00020\ \ \ \ \ IMGUI\_API\ \textcolor{keywordtype}{bool}\ \ InputText(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ label,\ std::string*\ str,\ ImGuiInputTextFlags\ flags\ =\ 0,\ ImGuiInputTextCallback\ callback\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{void}*\ user\_data\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00021\ \ \ \ \ IMGUI\_API\ \textcolor{keywordtype}{bool}\ \ InputTextMultiline(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ label,\ std::string*\ str,\ \textcolor{keyword}{const}\ ImVec2\&\ size\ =\ ImVec2(0,\ 0),\ ImGuiInputTextFlags\ flags\ =\ 0,\ ImGuiInputTextCallback\ callback\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{void}*\ user\_data\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00022\ \ \ \ \ IMGUI\_API\ \textcolor{keywordtype}{bool}\ \ InputTextWithHint(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ label,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ hint,\ std::string*\ str,\ ImGuiInputTextFlags\ flags\ =\ 0,\ ImGuiInputTextCallback\ callback\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{void}*\ user\_data\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \#ifndef\ IMGUI\_DISABLE}}
+
+\end{DoxyCode}

@@ -1,0 +1,62 @@
+\doxysection{GPropiedades.\+hpp}
+\hypertarget{_g_propiedades_8hpp_source}{}\label{_g_propiedades_8hpp_source}\index{src/Motor/GUI/GPropiedades.hpp@{src/Motor/GUI/GPropiedades.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}GLayer.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}GPaths.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../Primitivos/Objetos.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../Componentes/IComponentes.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <Juego/Componentes/IJComponentes.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../../Juego/objetos/TileMap.hpp"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_g_propiedades}{GPropiedades}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_g_layer}{GLayer}}}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_ac33bc9195fc0929ccc25cf649ac48f60}{\string~GPropiedades}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ guipath;\ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a8a1fb9e8a58421ab1f1a1801312100af}{OnInit}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{MotorConfig}}\&\ des)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a7bd037ab9b8b77193a289e58247a20f8}{OnUpdate}}(\textcolor{keywordtype}{float}\ dt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a0b9923e5c4ba540061fd94d12457997f}{OnRender}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_aa40c8cad20d45ac158de4faad7723918}{seleccionarObjeto}}(\doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}}*\ ref);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_ad5c126ef1b354994d27950edad321511}{seleccionarTileMap}}(\doxymbox{\hyperlink{class_i_v_j_1_1_tile_map}{IVJ::TileMap}}\ *ref);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//lab9\ colisiones}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ panelStats();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ panelTransformada();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ panelSprite(\doxymbox{\hyperlink{class_c_e_1_1_i_sprite}{ISprite}}\ *sprite);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ panelShaders(\doxymbox{\hyperlink{class_c_e_1_1_i_shader}{IShader}}\ *shader);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ panelIControl(\doxymbox{\hyperlink{class_c_e_1_1_i_control}{IControl}}\ *control);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ panelIPaths(\doxymbox{\hyperlink{class_c_e_1_1_i_paths}{IPaths}}\ *path);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ panelIMaquinaEstado(\doxymbox{\hyperlink{class_i_v_j_1_1_i_maquina_estado}{IVJ::IMaquinaEstado}}\ *me);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}}\ *objeto\_select\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ GPaths\ *guipath\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ IVJ::TileMap\ *tilemap\_select\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\_openglMajor\{\};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\_openglMinor\{\};}
+\DoxyCodeLine{00127\ \ \ \ \ \};}
+\DoxyCodeLine{00128\ \}}
+
+\end{DoxyCode}

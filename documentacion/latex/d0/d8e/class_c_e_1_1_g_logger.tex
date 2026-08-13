@@ -1,0 +1,196 @@
+\doxysection{Referencia de la clase CE::\+GLogger}
+\hypertarget{class_c_e_1_1_g_logger}{}\label{class_c_e_1_1_g_logger}\index{CE::GLogger@{CE::GLogger}}
+
+
+Gestor singleton de logging integrado con Im\+Gui.  
+
+
+
+
+{\ttfamily \+\#include $<$GLogger.\+hpp$>$}
+
+Diagrama de herencia de CE::\+GLogger\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d0/d8e/class_c_e_1_1_g_logger}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Tipos públicos}
+\begin{DoxyCompactItemize}
+\item 
+enum class \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{Niveles}} \{ \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafaba4b5ffcdaf38ce4d463171f5c977c5ab3}{LOG}} =0
+, \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafabaeded50d942c7c2d37d09ba8241ff017f}{LOG\+\_\+\+DEBUG}}
+, \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafaba4490aa3d29644e716440fada68f54032}{LOG\+\_\+\+ERROR}}
+, \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafabaf535e1bf740aa6b65982c6354288e10f}{LOG\+\_\+\+SEVERO}}
+ \}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{Niveles} de severidad para los logs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_g_logger_a189a6c2c8555c850962627a26c96f5a9}\label{class_c_e_1_1_g_logger_a189a6c2c8555c850962627a26c96f5a9} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+GLogger} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a8f08d680ff6833b8237f571bcc7ed518}{On\+Init}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&des) override
+\begin{DoxyCompactList}\small\item\em Inicializa el logger GUI. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_logger_af25510b53af35054c7a1f1e53375f5b5}{On\+Update}} (float dt) override
+\begin{DoxyCompactList}\small\item\em Actualiza el logger cada frame (calcula FPS). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a218031378b57c1d80a5781d3ab03477b}{On\+Render}} (void) override
+\begin{DoxyCompactList}\small\item\em Renderiza el panel de logs en Im\+Gui. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_logger_add3ff621b6c79013c6ba0e440df0fec0}{agregar\+Log}} (const std::\+string \&log, \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{Niveles}} n)
+\begin{DoxyCompactList}\small\item\em Agrega un mensaje a la cola de logs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_g_layer}{CE::\+\+GLayer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+GLayer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static GLogger \& \doxymbox{\hyperlink{class_c_e_1_1_g_logger_ad03dc82fdf51eb5ccfba271923185ba6}{Get}} (void)
+\begin{DoxyCompactList}\small\item\em Obtiene la instancia singleton del logger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Gestor singleton de logging integrado con Im\+Gui. 
+
+Proporciona un sistema de logs en tiempo real con colores por nivel, FPS en vivo, y visualización en panel de Im\+Gui. Los logs se almacenan en una cola (\doxylink{class_c_e_1_1_lista}{Lista}) y se renderizan con colores asignados por nivel.
+
+\begin{DoxyNote}{Nota}
+Patrón Singleton -\/ instancia única a través de \doxylink{class_c_e_1_1_g_logger_ad03dc82fdf51eb5ccfba271923185ba6}{Get()} 
+
+Derivada de \doxylink{class_c_e_1_1_g_layer}{GLayer} para integración en sistema GUI del motor 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_g_logger_doc-enum-members}
+\Hypertarget{class_c_e_1_1_g_logger_doc-enum-members}
+\doxysubsection{Documentación de las enumeraciones miembro de la clase}
+\Hypertarget{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}\index{CE::GLogger@{CE::GLogger}!Niveles@{Niveles}}
+\index{Niveles@{Niveles}!CE::GLogger@{CE::GLogger}}
+\doxysubsubsection{\texorpdfstring{Niveles}{Niveles}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab} 
+enum class \doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{CE::\+\+GLogger::\+\+Niveles}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\doxylink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{Niveles} de severidad para los logs. 
+
+\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG@{LOG}!CE::GLogger@{CE::GLogger}}
+\index{CE::GLogger@{CE::GLogger}!LOG@{LOG}}
+}\Hypertarget{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafaba4b5ffcdaf38ce4d463171f5c977c5ab3}\label{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafaba4b5ffcdaf38ce4d463171f5c977c5ab3} 
+LOG&Información general. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_DEBUG@{LOG\_DEBUG}!CE::GLogger@{CE::GLogger}}
+\index{CE::GLogger@{CE::GLogger}!LOG\_DEBUG@{LOG\_DEBUG}}
+}\Hypertarget{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafabaeded50d942c7c2d37d09ba8241ff017f}\label{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafabaeded50d942c7c2d37d09ba8241ff017f} 
+LOG\+\_\+\+DEBUG&Información de debug. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_ERROR@{LOG\_ERROR}!CE::GLogger@{CE::GLogger}}
+\index{CE::GLogger@{CE::GLogger}!LOG\_ERROR@{LOG\_ERROR}}
+}\Hypertarget{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafaba4490aa3d29644e716440fada68f54032}\label{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafaba4490aa3d29644e716440fada68f54032} 
+LOG\+\_\+\+ERROR&Error no fatal. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_SEVERO@{LOG\_SEVERO}!CE::GLogger@{CE::GLogger}}
+\index{CE::GLogger@{CE::GLogger}!LOG\_SEVERO@{LOG\_SEVERO}}
+}\Hypertarget{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafabaf535e1bf740aa6b65982c6354288e10f}\label{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafabaf535e1bf740aa6b65982c6354288e10f} 
+LOG\+\_\+\+SEVERO&Error crítico. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{class_c_e_1_1_g_logger_doc-func-members}
+\Hypertarget{class_c_e_1_1_g_logger_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_g_logger_add3ff621b6c79013c6ba0e440df0fec0}\index{CE::GLogger@{CE::GLogger}!agregarLog@{agregarLog}}
+\index{agregarLog@{agregarLog}!CE::GLogger@{CE::GLogger}}
+\doxysubsubsection{\texorpdfstring{agregarLog()}{agregarLog()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_logger_add3ff621b6c79013c6ba0e440df0fec0} 
+void CE::\+\+GLogger::\+agregar\+Log (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{log}{, }\item[{\doxymbox{\hyperlink{class_c_e_1_1_g_logger_a9bef5b0953232c22a454dfd21e1fafab}{GLogger::\+\+Niveles}}}]{n}{}\end{DoxyParamCaption})}
+
+
+
+Agrega un mensaje a la cola de logs. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em log} & Texto del mensaje a registrar \\
+\hline
+{\em n} & Nivel de severidad del log \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_g_logger_ad03dc82fdf51eb5ccfba271923185ba6}\index{CE::GLogger@{CE::GLogger}!Get@{Get}}
+\index{Get@{Get}!CE::GLogger@{CE::GLogger}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_logger_ad03dc82fdf51eb5ccfba271923185ba6} 
+GLogger \& CE::\+\+GLogger::\+\+Get (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtiene la instancia singleton del logger. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al logger único 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_g_logger_a8f08d680ff6833b8237f571bcc7ed518}\index{CE::GLogger@{CE::GLogger}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!CE::GLogger@{CE::GLogger}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_logger_a8f08d680ff6833b8237f571bcc7ed518} 
+void CE::\+\+GLogger::\+\+On\+Init (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{des}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inicializa el logger GUI. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em des} & Configuración del motor \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_logger_a218031378b57c1d80a5781d3ab03477b}\index{CE::GLogger@{CE::GLogger}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!CE::GLogger@{CE::GLogger}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_logger_a218031378b57c1d80a5781d3ab03477b} 
+void CE::\+\+GLogger::\+\+On\+Render (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderiza el panel de logs en Im\+Gui. 
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_logger_af25510b53af35054c7a1f1e53375f5b5}\index{CE::GLogger@{CE::GLogger}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CE::GLogger@{CE::GLogger}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_logger_af25510b53af35054c7a1f1e53375f5b5} 
+void CE::\+\+GLogger::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Actualiza el logger cada frame (calcula FPS). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6}{CE::\+\+GLayer}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+GUI/\+GLogger.\+hpp\item 
+src/\+\+Motor/\+\+GUI/\+GLogger.\+cpp\end{DoxyCompactItemize}

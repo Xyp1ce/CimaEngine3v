@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la clase CE::Render</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('df/d10/class_c_e_1_1_render.html','../../','d7/d33/class_c_e_1_1_render-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la clase CE::Render</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestor singleton del sistema de renderizado SFML.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d6/d1a/_render_8hpp_source.html">Render.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:af37925b0b70f3d399a91b5c7f64f30a9" id="r_af37925b0b70f3d399a91b5c7f64f30a9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af37925b0b70f3d399a91b5c7f64f30a9">CrearVentana</a> (const <a class="el" href="../../d4/d9f/struct_c_e_1_1_motor_config.html">MotorConfig</a> &amp;motor_info)</td></tr>
+<tr class="memdesc:af37925b0b70f3d399a91b5c7f64f30a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea la ventana de renderizado.  <br /></td></tr>
+<tr class="memitem:afd766763de232cf86215c0c9ed5f9b17" id="r_afd766763de232cf86215c0c9ed5f9b17"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afd766763de232cf86215c0c9ed5f9b17">AutoResizeTextura</a> (unsigned int w, unsigned int h)</td></tr>
+<tr class="memdesc:afd766763de232cf86215c0c9ed5f9b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redimensiona la textura de renderizado.  <br /></td></tr>
+<tr class="memitem:abec2fe91f751c2c8a17ba3877bc2914a" id="r_abec2fe91f751c2c8a17ba3877bc2914a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abec2fe91f751c2c8a17ba3877bc2914a">AddToDraw</a> (const sf::Drawable &amp;obj)</td></tr>
+<tr class="memdesc:abec2fe91f751c2c8a17ba3877bc2914a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un objeto drawable a la cola de renderizado.  <br /></td></tr>
+<tr class="memitem:a534b5a8ed2d1e295ca349e0bce2c665a" id="r_a534b5a8ed2d1e295ca349e0bce2c665a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a534b5a8ed2d1e295ca349e0bce2c665a">AddToDraw</a> (const sf::Drawable &amp;obj, sf::RenderStates shader)</td></tr>
+<tr class="memdesc:a534b5a8ed2d1e295ca349e0bce2c665a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un objeto drawable con estados de renderizado personalizados.  <br /></td></tr>
+<tr class="memitem:abf5b9fe4a25e73e9ebd93f871a0071b1" id="r_abf5b9fe4a25e73e9ebd93f871a0071b1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abf5b9fe4a25e73e9ebd93f871a0071b1">OnClearColor</a> (const sf::Color &amp;clear)</td></tr>
+<tr class="memdesc:abf5b9fe4a25e73e9ebd93f871a0071b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece el color de limpieza de la ventana.  <br /></td></tr>
+<tr class="memitem:ae757ef0ff39c466c62e3123782955693" id="r_ae757ef0ff39c466c62e3123782955693"><td class="memItemLeft"><a id="ae757ef0ff39c466c62e3123782955693" name="ae757ef0ff39c466c62e3123782955693"></a>
+void&#160;</td><td class="memItemRight"><b>OnDisplayTextura</b> (void)</td></tr>
+<tr class="memdesc:ae757ef0ff39c466c62e3123782955693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra/renderiza el contenido de la textura. <br /></td></tr>
+<tr class="memitem:ab3180d783dd683d443f0a63badc5d9e3" id="r_ab3180d783dd683d443f0a63badc5d9e3"><td class="memItemLeft"><a id="ab3180d783dd683d443f0a63badc5d9e3" name="ab3180d783dd683d443f0a63badc5d9e3"></a>
+void&#160;</td><td class="memItemRight"><b>OnDisplayVentana</b> (void)</td></tr>
+<tr class="memdesc:ab3180d783dd683d443f0a63badc5d9e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intercambia buffers y muestra la ventana. <br /></td></tr>
+<tr class="memitem:a7a6d5a2f410c44d73671d12b9ca80742" id="r_a7a6d5a2f410c44d73671d12b9ca80742"><td class="memItemLeft">sf::RenderWindow &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a7a6d5a2f410c44d73671d12b9ca80742">GetVentana</a> (void)</td></tr>
+<tr class="memdesc:a7a6d5a2f410c44d73671d12b9ca80742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la ventana de renderizado SFML.  <br /></td></tr>
+<tr class="memitem:a5631ebf11fa83961df9966e58f9546af" id="r_a5631ebf11fa83961df9966e58f9546af"><td class="memItemLeft">sf::RenderTexture &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a5631ebf11fa83961df9966e58f9546af">GetTextura</a> (void)</td></tr>
+<tr class="memdesc:a5631ebf11fa83961df9966e58f9546af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la textura de renderizado SFML.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Métodos públicos estáticos</h2></td></tr>
+<tr class="memitem:a9519eb30b9ef017fe1328bb80d0a5c3e" id="r_a9519eb30b9ef017fe1328bb80d0a5c3e"><td class="memItemLeft">static Render &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a9519eb30b9ef017fe1328bb80d0a5c3e">Get</a> (void)</td></tr>
+<tr class="memdesc:a9519eb30b9ef017fe1328bb80d0a5c3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la instancia singleton del gestor de renderizado.  <br /></td></tr>
+<tr class="memitem:aa3111682c4537c086a2615575b368ac8" id="r_aa3111682c4537c086a2615575b368ac8"><td class="memItemLeft"><a id="aa3111682c4537c086a2615575b368ac8" name="aa3111682c4537c086a2615575b368ac8"></a>
+static void&#160;</td><td class="memItemRight"><b>Terminar</b> (void)</td></tr>
+<tr class="memdesc:aa3111682c4537c086a2615575b368ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpia/termina el gestor y libera recursos. <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Gestor singleton del sistema de renderizado SFML. </p>
+<p>Gestiona la creación y mantenimiento de ventana y textura de renderizado. Mantiene colas de objetos dibujables y coordina operaciones de renderizado.</p>
+<p>Soporta doble target: RenderWindow (ventana del sistema) y RenderTexture (textura para post-procesamiento o captura).</p>
+<dl class="section note"><dt>Nota</dt><dd>Patrón Singleton - instancia única a través de <a class="el" href="#a9519eb30b9ef017fe1328bb80d0a5c3e" title="Obtiene la instancia singleton del gestor de renderizado.">Get()</a> </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="abec2fe91f751c2c8a17ba3877bc2914a" name="abec2fe91f751c2c8a17ba3877bc2914a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abec2fe91f751c2c8a17ba3877bc2914a">&#9670;&#160;</a></span>AddToDraw() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Render::AddToDraw </td>
+          <td>(</td>
+          <td class="paramtype">const sf::Drawable &amp;</td>          <td class="paramname"><span class="paramname"><em>obj</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un objeto drawable a la cola de renderizado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Referencia constante al objeto drawable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a534b5a8ed2d1e295ca349e0bce2c665a" name="a534b5a8ed2d1e295ca349e0bce2c665a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a534b5a8ed2d1e295ca349e0bce2c665a">&#9670;&#160;</a></span>AddToDraw() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Render::AddToDraw </td>
+          <td>(</td>
+          <td class="paramtype">const sf::Drawable &amp;</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::RenderStates</td>          <td class="paramname"><span class="paramname"><em>shader</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un objeto drawable con estados de renderizado personalizados. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Referencia constante al objeto drawable </td></tr>
+    <tr><td class="paramname">shader</td><td>Estados de renderizado (shader, blend, transform) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afd766763de232cf86215c0c9ed5f9b17" name="afd766763de232cf86215c0c9ed5f9b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd766763de232cf86215c0c9ed5f9b17">&#9670;&#160;</a></span>AutoResizeTextura()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Render::AutoResizeTextura </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>h</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Redimensiona la textura de renderizado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Nuevo ancho </td></tr>
+    <tr><td class="paramname">h</td><td>Nuevo alto </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af37925b0b70f3d399a91b5c7f64f30a9" name="af37925b0b70f3d399a91b5c7f64f30a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af37925b0b70f3d399a91b5c7f64f30a9">&#9670;&#160;</a></span>CrearVentana()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Render::CrearVentana </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d4/d9f/struct_c_e_1_1_motor_config.html">MotorConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>motor_info</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea la ventana de renderizado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor_info</td><td>Configuración con dimensiones y título de ventana </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9519eb30b9ef017fe1328bb80d0a5c3e" name="a9519eb30b9ef017fe1328bb80d0a5c3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9519eb30b9ef017fe1328bb80d0a5c3e">&#9670;&#160;</a></span>Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Render &amp; CE::Render::Get </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene la instancia singleton del gestor de renderizado. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable al renderizador único </dd></dl>
+
+</div>
+</div>
+<a id="a5631ebf11fa83961df9966e58f9546af" name="a5631ebf11fa83961df9966e58f9546af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5631ebf11fa83961df9966e58f9546af">&#9670;&#160;</a></span>GetTextura()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::RenderTexture &amp; CE::Render::GetTextura </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la textura de renderizado SFML. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable a RenderTexture </dd></dl>
+
+</div>
+</div>
+<a id="a7a6d5a2f410c44d73671d12b9ca80742" name="a7a6d5a2f410c44d73671d12b9ca80742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a6d5a2f410c44d73671d12b9ca80742">&#9670;&#160;</a></span>GetVentana()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::RenderWindow &amp; CE::Render::GetVentana </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la ventana de renderizado SFML. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable a RenderWindow </dd></dl>
+
+</div>
+</div>
+<a id="abf5b9fe4a25e73e9ebd93f871a0071b1" name="abf5b9fe4a25e73e9ebd93f871a0071b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf5b9fe4a25e73e9ebd93f871a0071b1">&#9670;&#160;</a></span>OnClearColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Render::OnClearColor </td>
+          <td>(</td>
+          <td class="paramtype">const sf::Color &amp;</td>          <td class="paramname"><span class="paramname"><em>clear</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece el color de limpieza de la ventana. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clear</td><td>Color SFML para limpiar fondo </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada de los siguientes archivos:<ul>
+<li>src/Motor/Render/<a class="el" href="../../d6/d1a/_render_8hpp_source.html">Render.hpp</a></li>
+<li>src/Motor/Render/<b>Render.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../df/d10/class_c_e_1_1_render.html">Render</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

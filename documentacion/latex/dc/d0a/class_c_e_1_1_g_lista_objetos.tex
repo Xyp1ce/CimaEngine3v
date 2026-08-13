@@ -1,0 +1,109 @@
+\doxysection{Referencia de la clase CE::\+GLista\+Objetos}
+\hypertarget{class_c_e_1_1_g_lista_objetos}{}\label{class_c_e_1_1_g_lista_objetos}\index{CE::GListaObjetos@{CE::GListaObjetos}}
+
+
+Panel de Im\+Gui para listar y seleccionar objetos de la escena.  
+
+
+
+
+{\ttfamily \+\#include $<$GLista\+Objetos.\+hpp$>$}
+
+Diagrama de herencia de CE::\+GLista\+Objetos\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dc/d0a/class_c_e_1_1_g_lista_objetos}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_g_lista_objetos_ad040d5cc33d054e28569237fb619badb}\label{class_c_e_1_1_g_lista_objetos_ad040d5cc33d054e28569237fb619badb} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+GLista\+Objetos} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_lista_objetos_a3c874b3357b2276ea97812936be23c20}{On\+Init}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&des) override
+\begin{DoxyCompactList}\small\item\em Inicializa el panel de lista de objetos. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_lista_objetos_ac1adbac93d3343fd19634f2a4437febe}{On\+Update}} (float dt) override
+\begin{DoxyCompactList}\small\item\em Actualiza el panel cada frame. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_lista_objetos_a1307b2bfc3810b93dee3d703464ee478}{On\+Render}} (void) override
+\begin{DoxyCompactList}\small\item\em Renderiza la lista de objetos y propiedades en Im\+Gui. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_g_layer}{CE::\+\+GLayer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+GLayer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Panel de Im\+Gui para listar y seleccionar objetos de la escena. 
+
+Renderiza una lista de todos los objetos en el pool actual permitiendo seleccionar uno para editar sus propiedades. Integra el inspector de propiedades (\doxylink{class_c_e_1_1_g_propiedades}{GPropiedades}) para edición en tiempo real.
+
+\begin{DoxyNote}{Nota}
+Derivada de \doxylink{class_c_e_1_1_g_layer}{GLayer} para integración en sistema GUI del motor 
+
+Contiene instancia embedded de \doxylink{class_c_e_1_1_g_propiedades}{GPropiedades} para edición 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_g_lista_objetos_doc-func-members}
+\Hypertarget{class_c_e_1_1_g_lista_objetos_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_g_lista_objetos_a3c874b3357b2276ea97812936be23c20}\index{CE::GListaObjetos@{CE::GListaObjetos}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!CE::GListaObjetos@{CE::GListaObjetos}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_lista_objetos_a3c874b3357b2276ea97812936be23c20} 
+void CE::\+\+GLista\+Objetos::\+\+On\+Init (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{des}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inicializa el panel de lista de objetos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em des} & Configuración del motor \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_lista_objetos_a1307b2bfc3810b93dee3d703464ee478}\index{CE::GListaObjetos@{CE::GListaObjetos}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!CE::GListaObjetos@{CE::GListaObjetos}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_lista_objetos_a1307b2bfc3810b93dee3d703464ee478} 
+void CE::\+\+GLista\+Objetos::\+\+On\+Render (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderiza la lista de objetos y propiedades en Im\+Gui. 
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_lista_objetos_ac1adbac93d3343fd19634f2a4437febe}\index{CE::GListaObjetos@{CE::GListaObjetos}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CE::GListaObjetos@{CE::GListaObjetos}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_lista_objetos_ac1adbac93d3343fd19634f2a4437febe} 
+void CE::\+\+GLista\+Objetos::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Actualiza el panel cada frame. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6}{CE::\+\+GLayer}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+GUI/\+GLista\+Objetos.\+hpp\item 
+src/\+\+Motor/\+\+GUI/\+GLista\+Objetos.\+cpp\end{DoxyCompactItemize}

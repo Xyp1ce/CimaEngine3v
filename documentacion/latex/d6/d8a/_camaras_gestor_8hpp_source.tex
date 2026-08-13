@@ -1,0 +1,49 @@
+\doxysection{Camaras\+Gestor.\+hpp}
+\hypertarget{_camaras_gestor_8hpp_source}{}\label{_camaras_gestor_8hpp_source}\index{src/Motor/Camaras/CamarasGestor.hpp@{src/Motor/Camaras/CamarasGestor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Camaras.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras}{GestorCamaras}}}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras}{GestorCamaras}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a6533e353c57b15f1a8e458b40a579965}{Get}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a49cbdddb5e3e4b95135210dcd5af5cd4}{agregarCamara}}(\textcolor{keyword}{const}\ std::shared\_ptr<Camara>\&\ nueva);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_aa565c704a680b9e52d0524da117cb6ba}{setCamaraActiva}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a27cedeb119fe884dd946da08bd3a9d02}{onUpdateCamaras}}(\textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_ac92e4f2f74a769e1355e2b3aa064dc34}{onRenderCamara}}(sf::RenderTexture\ \&tex);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ [[nodiscard]]\doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_aa34486a89a5e1ca28ae9ef170ad7e960}{getCamaraActiva}}()}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *m\_camaraActiva.lock();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ [[nodiscard]]\doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a27bec2d26c19415701dacd6a1dd15801}{getCamara}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *m\_listaCamaras[id];}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ [[nodiscard]]std::vector<std::shared\_ptr<Camara>>\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a2f2ba9b8489b99be721141ac9edeccd3}{getListaCamaras}}()}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_listaCamaras;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras}{GestorCamaras}}*\ instancia\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ std::weak\_ptr<Camara>\ m\_camaraActiva;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Camara>>\ m\_listaCamaras;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \};}
+\DoxyCodeLine{00091\ \}}
+
+\end{DoxyCode}

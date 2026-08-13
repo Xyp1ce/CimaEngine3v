@@ -1,0 +1,1456 @@
+\doxysection{imstb\+\_\+textedit.\+h}
+\hypertarget{imstb__textedit_8h_source}{}\label{imstb__textedit_8h_source}\index{build/\_deps/imgui-\/src/imstb\_textedit.h@{build/\_deps/imgui-\/src/imstb\_textedit.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ This\ is\ a\ slightly\ modified\ version\ of\ stb\_textedit.h\ 1.14.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Those\ changes\ would\ need\ to\ be\ pushed\ into\ nothings/stb:}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ -\/\ Fix\ in\ stb\_textedit\_discard\_redo\ (see\ https://github.com/nothings/stb/issues/321)}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ -\/\ Fix\ in\ stb\_textedit\_find\_charpos\ to\ handle\ last\ line\ (see\ https://github.com/ocornut/imgui/issues/6000\ +\ \#6783)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ -\/\ Added\ name\ to\ struct\ or\ it\ may\ be\ forward\ declared\ in\ our\ code.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ -\/\ Added\ UTF-\/8\ support\ (see\ https://github.com/nothings/stb/issues/188\ +\ https://github.com/ocornut/imgui/pull/7925)}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Grep\ for\ [DEAR\ IMGUI]\ to\ find\ the\ changes.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ -\/\ Also\ renamed\ macros\ used\ or\ defined\ outside\ of\ IMSTB\_TEXTEDIT\_IMPLEMENTATION\ block\ from\ STB\_TEXTEDIT\_*\ to\ IMSTB\_TEXTEDIT\_*}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ stb\_textedit.h\ -\/\ v1.14\ \ -\/\ public\ domain\ -\/\ Sean\ Barrett}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Development\ of\ this\ library\ was\ sponsored\ by\ RAD\ Game\ Tools}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ This\ C\ header\ file\ implements\ the\ guts\ of\ a\ multi-\/line\ text-\/editing}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ widget;\ you\ implement\ display,\ word-\/wrapping,\ and\ low-\/level\ string}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ insertion/deletion,\ and\ stb\_textedit\ will\ map\ user\ inputs\ into}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ insertions\ \&\ deletions,\ plus\ updates\ to\ the\ cursor\ position,}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ selection\ state,\ and\ undo\ state.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ It\ is\ intended\ for\ use\ in\ games\ and\ other\ systems\ that\ need\ to\ build}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ their\ own\ custom\ widgets\ and\ which\ do\ not\ have\ heavy\ text-\/editing}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ requirements\ (this\ library\ is\ not\ recommended\ for\ use\ for\ editing\ large}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ texts,\ as\ its\ performance\ does\ not\ scale\ and\ it\ has\ limited\ undo).}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Non-\/trivial\ behaviors\ are\ modelled\ after\ Windows\ text\ controls.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ LICENSE}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ See\ end\ of\ file\ for\ license\ information.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ DEPENDENCIES}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ Uses\ the\ C\ runtime\ function\ 'memmove',\ which\ you\ can\ override}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ by\ defining\ IMSTB\_TEXTEDIT\_memmove\ before\ the\ implementation.}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Uses\ no\ other\ functions.\ Performs\ no\ runtime\ allocations.}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ VERSION\ HISTORY}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \ \ 1.14\ (2021-\/07-\/11)\ page\ up/down,\ various\ fixes}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ \ \ 1.13\ (2019-\/02-\/07)\ fix\ bug\ in\ undo\ size\ management}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ \ \ 1.12\ (2018-\/01-\/29)\ user\ can\ change\ STB\_TEXTEDIT\_KEYTYPE,\ fix\ redo\ to\ avoid\ crash}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ \ 1.11\ (2017-\/03-\/03)\ fix\ HOME\ on\ last\ line,\ dragging\ off\ single-\/line\ textfield}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ \ \ 1.10\ (2016-\/10-\/25)\ suppress\ warnings\ about\ casting\ away\ const\ with\ -\/Wcast-\/qual}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ \ \ 1.9\ \ (2016-\/08-\/27)\ customizable\ move-\/by-\/word}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ \ \ 1.8\ \ (2016-\/04-\/02)\ better\ keyboard\ handling\ when\ mouse\ button\ is\ down}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ \ \ 1.7\ \ (2015-\/09-\/13)\ change\ y\ range\ handling\ in\ case\ baseline\ is\ non-\/0}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ \ \ 1.6\ \ (2015-\/04-\/15)\ allow\ STB\_TEXTEDIT\_memmove}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ \ \ 1.5\ \ (2014-\/09-\/10)\ add\ support\ for\ secondary\ keys\ for\ OS\ X}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ \ \ 1.4\ \ (2014-\/08-\/17)\ fix\ signed/unsigned\ warnings}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ \ \ 1.3\ \ (2014-\/06-\/19)\ fix\ mouse\ clicking\ to\ round\ to\ nearest\ char\ boundary}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ \ \ 1.2\ \ (2014-\/05-\/27)\ fix\ some\ RAD\ types\ that\ had\ crept\ into\ the\ new\ code}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \ \ 1.1\ \ (2013-\/12-\/15)\ move-\/by-\/word\ (requires\ STB\_TEXTEDIT\_IS\_SPACE\ )}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ \ \ 1.0\ \ (2012-\/07-\/26)\ improve\ documentation,\ initial\ public\ release}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ \ \ 0.3\ \ (2012-\/02-\/24)\ bugfixes,\ single-\/line\ mode;\ insert\ mode}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ \ \ 0.2\ \ (2011-\/11-\/28)\ fixes\ to\ undo/redo}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ \ \ 0.1\ \ (2010-\/07-\/08)\ initial\ version}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ ADDITIONAL\ CONTRIBUTORS}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ \ \ Ulf\ Winklemann:\ move-\/by-\/word\ in\ 1.1}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ \ \ Fabian\ Giesen:\ secondary\ key\ inputs\ in\ 1.5}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ \ \ Martins\ Mozeiko:\ STB\_TEXTEDIT\_memmove\ in\ 1.6}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ \ \ Louis\ Schnellbach:\ page\ up/down\ in\ 1.14}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ \ \ Bugfixes:}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ \ \ \ \ \ Scott\ Graham}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ \ \ \ \ \ Daniel\ Keller}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ \ \ \ \ \ Omar\ Cornut}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ \ \ \ \ \ Dan\ Thompson}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ USAGE}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ This\ file\ behaves\ differently\ depending\ on\ what\ symbols\ you\ define}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ before\ including\ it.}}
+\DoxyCodeLine{00078\ \textcolor{comment}{//}}
+\DoxyCodeLine{00079\ \textcolor{comment}{//}}
+\DoxyCodeLine{00080\ \textcolor{comment}{//\ Header-\/file\ mode:}}
+\DoxyCodeLine{00081\ \textcolor{comment}{//}}
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ \ \ If\ you\ do\ not\ define\ STB\_TEXTEDIT\_IMPLEMENTATION\ before\ including\ this,}}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ \ \ it\ will\ operate\ in\ "{}header\ file"{}\ mode.\ In\ this\ mode,\ it\ declares\ a}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ \ \ single\ public\ symbol,\ STB\_TexteditState,\ which\ encapsulates\ the\ current}}
+\DoxyCodeLine{00085\ \textcolor{comment}{//\ \ \ state\ of\ a\ text\ widget\ (except\ for\ the\ string,\ which\ you\ will\ store}}
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ \ \ separately).}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//}}
+\DoxyCodeLine{00088\ \textcolor{comment}{//\ \ \ To\ compile\ in\ this\ mode,\ you\ must\ define\ STB\_TEXTEDIT\_CHARTYPE\ to\ a}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ \ \ primitive\ type\ that\ defines\ a\ single\ character\ (e.g.\ char,\ wchar\_t,\ etc).}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ \ \ To\ save\ space\ or\ increase\ undo-\/ability,\ you\ can\ optionally\ define\ the}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ \ \ following\ things\ that\ are\ used\ by\ the\ undo\ system:}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ \ \ \ \ \ STB\_TEXTEDIT\_POSITIONTYPE\ \ \ \ \ \ \ \ \ small\ int\ type\ encoding\ a\ valid\ cursor\ position}}
+\DoxyCodeLine{00095\ \textcolor{comment}{//\ \ \ \ \ \ STB\_TEXTEDIT\_UNDOSTATECOUNT\ \ \ \ \ \ \ the\ number\ of\ undo\ states\ to\ allow}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ \ \ \ \ \ STB\_TEXTEDIT\_UNDOCHARCOUNT\ \ \ \ \ \ \ \ the\ number\ of\ characters\ to\ store\ in\ the\ undo\ buffer}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ \ \ If\ you\ don't\ define\ these,\ they\ are\ set\ to\ permissive\ types\ and}}
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ \ \ moderate\ sizes.\ The\ undo\ system\ does\ no\ memory\ allocations,\ so}}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ \ \ it\ grows\ STB\_TexteditState\ by\ the\ worst-\/case\ storage\ which\ is\ (in\ bytes):}}
+\DoxyCodeLine{00101\ \textcolor{comment}{//}}
+\DoxyCodeLine{00102\ \textcolor{comment}{//\ \ \ \ \ \ \ \ [4\ +\ 3\ *\ sizeof(STB\_TEXTEDIT\_POSITIONTYPE)]\ *\ STB\_TEXTEDIT\_UNDOSTATECOUNT}}
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ \ \ \ \ \ +\ \ \ \ \ \ \ \ \ \ sizeof(STB\_TEXTEDIT\_CHARTYPE)\ \ \ \ \ \ *\ STB\_TEXTEDIT\_UNDOCHARCOUNT}}
+\DoxyCodeLine{00104\ \textcolor{comment}{//}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//}}
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ Implementation\ mode:}}
+\DoxyCodeLine{00107\ \textcolor{comment}{//}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ \ \ If\ you\ define\ STB\_TEXTEDIT\_IMPLEMENTATION\ before\ including\ this,\ it}}
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ \ \ will\ compile\ the\ implementation\ of\ the\ text\ edit\ widget,\ depending}}
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ \ \ on\ a\ large\ number\ of\ symbols\ which\ must\ be\ defined\ before\ the\ include.}}
+\DoxyCodeLine{00111\ \textcolor{comment}{//}}
+\DoxyCodeLine{00112\ \textcolor{comment}{//\ \ \ The\ implementation\ is\ defined\ only\ as\ static\ functions.\ You\ will\ then}}
+\DoxyCodeLine{00113\ \textcolor{comment}{//\ \ \ need\ to\ provide\ your\ own\ APIs\ in\ the\ same\ file\ which\ will\ access\ the}}
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ \ \ static\ functions.}}
+\DoxyCodeLine{00115\ \textcolor{comment}{//}}
+\DoxyCodeLine{00116\ \textcolor{comment}{//\ \ \ The\ basic\ concept\ is\ that\ you\ provide\ a\ "{}string"{}\ object\ which}}
+\DoxyCodeLine{00117\ \textcolor{comment}{//\ \ \ behaves\ like\ an\ array\ of\ characters.\ stb\_textedit\ uses\ indices\ to}}
+\DoxyCodeLine{00118\ \textcolor{comment}{//\ \ \ refer\ to\ positions\ in\ the\ string,\ implicitly\ representing\ positions}}
+\DoxyCodeLine{00119\ \textcolor{comment}{//\ \ \ in\ the\ displayed\ textedit.\ This\ is\ true\ for\ both\ plain\ text\ and}}
+\DoxyCodeLine{00120\ \textcolor{comment}{//\ \ \ rich\ text;\ even\ with\ rich\ text\ stb\_truetype\ interacts\ with\ your}}
+\DoxyCodeLine{00121\ \textcolor{comment}{//\ \ \ code\ as\ if\ there\ was\ an\ array\ of\ all\ the\ displayed\ characters.}}
+\DoxyCodeLine{00122\ \textcolor{comment}{//}}
+\DoxyCodeLine{00123\ \textcolor{comment}{//\ Symbols\ that\ must\ be\ the\ same\ in\ header-\/file\ and\ implementation\ mode:}}
+\DoxyCodeLine{00124\ \textcolor{comment}{//}}
+\DoxyCodeLine{00125\ \textcolor{comment}{//\ \ \ \ \ STB\_TEXTEDIT\_CHARTYPE\ \ \ \ \ \ \ \ \ \ \ \ \ the\ character\ type}}
+\DoxyCodeLine{00126\ \textcolor{comment}{//\ \ \ \ \ STB\_TEXTEDIT\_POSITIONTYPE\ \ \ \ \ \ \ \ \ small\ type\ that\ is\ a\ valid\ cursor\ position}}
+\DoxyCodeLine{00127\ \textcolor{comment}{//\ \ \ \ \ STB\_TEXTEDIT\_UNDOSTATECOUNT\ \ \ \ \ \ \ the\ number\ of\ undo\ states\ to\ allow}}
+\DoxyCodeLine{00128\ \textcolor{comment}{//\ \ \ \ \ STB\_TEXTEDIT\_UNDOCHARCOUNT\ \ \ \ \ \ \ \ the\ number\ of\ characters\ to\ store\ in\ the\ undo\ buffer}}
+\DoxyCodeLine{00129\ \textcolor{comment}{//}}
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ Symbols\ you\ must\ define\ for\ implementation\ mode:}}
+\DoxyCodeLine{00131\ \textcolor{comment}{//}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_STRING\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ type\ of\ object\ representing\ a\ string\ being\ edited,}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ typically\ this\ is\ a\ wrapper\ object\ with\ other\ data\ you\ need}}
+\DoxyCodeLine{00134\ \textcolor{comment}{//}}
+\DoxyCodeLine{00135\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_STRINGLEN(obj)\ \ \ \ \ \ \ the\ length\ of\ the\ string\ (ideally\ O(1))}}
+\DoxyCodeLine{00136\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,obj,n)\ \ returns\ the\ results\ of\ laying\ out\ a\ line\ of\ characters}}
+\DoxyCodeLine{00137\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ starting\ from\ character\ \#n\ (see\ discussion\ below)}}
+\DoxyCodeLine{00138\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_GETWIDTH(obj,n,i)\ \ \ \ returns\ the\ pixel\ delta\ from\ the\ xpos\ of\ the\ i'th\ character}}
+\DoxyCodeLine{00139\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ to\ the\ xpos\ of\ the\ i+1'th\ char\ for\ a\ line\ of\ characters}}
+\DoxyCodeLine{00140\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ starting\ at\ character\ \#n\ (i.e.\ accounts\ for\ kerning}}
+\DoxyCodeLine{00141\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ with\ previous\ char)}}
+\DoxyCodeLine{00142\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_KEYTOTEXT(k)\ \ \ \ \ \ \ \ \ maps\ a\ keyboard\ input\ to\ an\ insertable\ character}}
+\DoxyCodeLine{00143\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (return\ type\ is\ int,\ -\/1\ means\ not\ valid\ to\ insert)}}
+\DoxyCodeLine{00144\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_GETCHAR(obj,i)\ \ \ \ \ \ \ returns\ the\ i'th\ character\ of\ obj,\ 0-\/based}}
+\DoxyCodeLine{00145\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_NEWLINE\ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ character\ returned\ by\ \_GETCHAR()\ we\ recognize}}
+\DoxyCodeLine{00146\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ as\ manually\ wordwrapping\ for\ end-\/of-\/line\ positioning}}
+\DoxyCodeLine{00147\ \textcolor{comment}{//}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_DELETECHARS(obj,i,n)\ \ \ \ \ \ delete\ n\ characters\ starting\ at\ i}}
+\DoxyCodeLine{00149\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_INSERTCHARS(obj,i,c*,n)\ \ \ insert\ n\ characters\ at\ i\ (pointed\ to\ by\ STB\_TEXTEDIT\_CHARTYPE*)}}
+\DoxyCodeLine{00150\ \textcolor{comment}{//}}
+\DoxyCodeLine{00151\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_SHIFT\ \ \ \ \ \ \ a\ power\ of\ two\ that\ is\ or'd\ in\ to\ a\ keyboard\ input\ to\ represent\ the\ shift\ key}}
+\DoxyCodeLine{00152\ \textcolor{comment}{//}}
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LEFT\ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ left}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_RIGHT\ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ right}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_UP\ \ \ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ up}}
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_DOWN\ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ down}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_PGUP\ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ up\ a\ page}}
+\DoxyCodeLine{00158\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_PGDOWN\ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ down\ a\ page}}
+\DoxyCodeLine{00159\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LINESTART\ \ \ keyboard\ input\ to\ move\ cursor\ to\ start\ of\ line\ \ //\ e.g.\ HOME}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LINEEND\ \ \ \ \ keyboard\ input\ to\ move\ cursor\ to\ end\ of\ line\ \ \ \ //\ e.g.\ END}}
+\DoxyCodeLine{00161\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_TEXTSTART\ \ \ keyboard\ input\ to\ move\ cursor\ to\ start\ of\ text\ \ //\ e.g.\ ctrl-\/HOME}}
+\DoxyCodeLine{00162\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_TEXTEND\ \ \ \ \ keyboard\ input\ to\ move\ cursor\ to\ end\ of\ text\ \ \ \ //\ e.g.\ ctrl-\/END}}
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_DELETE\ \ \ \ \ \ keyboard\ input\ to\ delete\ selection\ or\ character\ under\ cursor}}
+\DoxyCodeLine{00164\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_BACKSPACE\ \ \ keyboard\ input\ to\ delete\ selection\ or\ character\ left\ of\ cursor}}
+\DoxyCodeLine{00165\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_UNDO\ \ \ \ \ \ \ \ keyboard\ input\ to\ perform\ undo}}
+\DoxyCodeLine{00166\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_REDO\ \ \ \ \ \ \ \ keyboard\ input\ to\ perform\ redo}}
+\DoxyCodeLine{00167\ \textcolor{comment}{//}}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ Optional:}}
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_INSERT\ \ \ \ \ \ \ \ \ \ \ \ \ \ keyboard\ input\ to\ toggle\ insert\ mode}}
+\DoxyCodeLine{00170\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_IS\_SPACE(ch)\ \ \ \ \ \ \ \ \ \ true\ if\ character\ is\ whitespace\ (e.g.\ 'isspace'),}}
+\DoxyCodeLine{00171\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ required\ for\ default\ WORDLEFT/WORDRIGHT\ handlers}}
+\DoxyCodeLine{00172\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_MOVEWORDLEFT(obj,i)\ \ \ custom\ handler\ for\ WORDLEFT,\ returns\ index\ to\ move\ cursor\ to}}
+\DoxyCodeLine{00173\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_MOVEWORDRIGHT(obj,i)\ \ custom\ handler\ for\ WORDRIGHT,\ returns\ index\ to\ move\ cursor\ to}}
+\DoxyCodeLine{00174\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_WORDLEFT\ \ \ \ \ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ left\ one\ word\ //\ e.g.\ ctrl-\/LEFT}}
+\DoxyCodeLine{00175\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_WORDRIGHT\ \ \ \ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ right\ one\ word\ //\ e.g.\ ctrl-\/RIGHT}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LINESTART2\ \ \ \ \ \ \ \ \ \ secondary\ keyboard\ input\ to\ move\ cursor\ to\ start\ of\ line}}
+\DoxyCodeLine{00177\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LINEEND2\ \ \ \ \ \ \ \ \ \ \ \ secondary\ keyboard\ input\ to\ move\ cursor\ to\ end\ of\ line}}
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_TEXTSTART2\ \ \ \ \ \ \ \ \ \ secondary\ keyboard\ input\ to\ move\ cursor\ to\ start\ of\ text}}
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_TEXTEND2\ \ \ \ \ \ \ \ \ \ \ \ secondary\ keyboard\ input\ to\ move\ cursor\ to\ end\ of\ text}}
+\DoxyCodeLine{00180\ \textcolor{comment}{//}}
+\DoxyCodeLine{00181\ \textcolor{comment}{//\ Keyboard\ input\ must\ be\ encoded\ as\ a\ single\ integer\ value;\ e.g.\ a\ character\ code}}
+\DoxyCodeLine{00182\ \textcolor{comment}{//\ and\ some\ bitflags\ that\ represent\ shift\ states.\ to\ simplify\ the\ interface,\ SHIFT\ must}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ be\ a\ bitflag,\ so\ we\ can\ test\ the\ shifted\ state\ of\ cursor\ movements\ to\ allow\ selection,}}
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ i.e.\ (STB\_TEXTEDIT\_K\_RIGHT|STB\_TEXTEDIT\_K\_SHIFT)\ should\ be\ shifted\ right-\/arrow.}}
+\DoxyCodeLine{00185\ \textcolor{comment}{//}}
+\DoxyCodeLine{00186\ \textcolor{comment}{//\ You\ can\ encode\ other\ things,\ such\ as\ CONTROL\ or\ ALT,\ in\ additional\ bits,\ and}}
+\DoxyCodeLine{00187\ \textcolor{comment}{//\ then\ test\ for\ their\ presence\ in\ e.g.\ STB\_TEXTEDIT\_K\_WORDLEFT.\ For\ example,}}
+\DoxyCodeLine{00188\ \textcolor{comment}{//\ my\ Windows\ implementations\ add\ an\ additional\ CONTROL\ bit,\ and\ an\ additional\ KEYDOWN}}
+\DoxyCodeLine{00189\ \textcolor{comment}{//\ bit.\ Then\ all\ of\ the\ STB\_TEXTEDIT\_K\_\ values\ bitwise-\/or\ in\ the\ KEYDOWN\ bit,}}
+\DoxyCodeLine{00190\ \textcolor{comment}{//\ and\ I\ pass\ both\ WM\_KEYDOWN\ and\ WM\_CHAR\ events\ to\ the\ "{}key"{}\ function\ in\ the}}
+\DoxyCodeLine{00191\ \textcolor{comment}{//\ API\ below.\ The\ control\ keys\ will\ only\ match\ WM\_KEYDOWN\ events\ because\ of\ the}}
+\DoxyCodeLine{00192\ \textcolor{comment}{//\ keydown\ bit\ I\ add,\ and\ STB\_TEXTEDIT\_KEYTOTEXT\ only\ tests\ for\ the\ KEYDOWN}}
+\DoxyCodeLine{00193\ \textcolor{comment}{//\ bit\ so\ it\ only\ decodes\ WM\_CHAR\ events.}}
+\DoxyCodeLine{00194\ \textcolor{comment}{//}}
+\DoxyCodeLine{00195\ \textcolor{comment}{//\ STB\_TEXTEDIT\_LAYOUTROW\ returns\ information\ about\ the\ shape\ of\ one\ displayed}}
+\DoxyCodeLine{00196\ \textcolor{comment}{//\ row\ of\ characters\ assuming\ they\ start\ on\ the\ i'th\ character-\/-\/the\ width\ and}}
+\DoxyCodeLine{00197\ \textcolor{comment}{//\ the\ height\ and\ the\ number\ of\ characters\ consumed.\ This\ allows\ this\ library}}
+\DoxyCodeLine{00198\ \textcolor{comment}{//\ to\ traverse\ the\ entire\ layout\ incrementally.\ You\ need\ to\ compute\ word-\/wrapping}}
+\DoxyCodeLine{00199\ \textcolor{comment}{//\ here.}}
+\DoxyCodeLine{00200\ \textcolor{comment}{//}}
+\DoxyCodeLine{00201\ \textcolor{comment}{//\ Each\ textfield\ keeps\ its\ own\ insert\ mode\ state,\ which\ is\ not\ how\ normal}}
+\DoxyCodeLine{00202\ \textcolor{comment}{//\ applications\ work.\ To\ keep\ an\ app-\/wide\ insert\ mode,\ update/copy\ the}}
+\DoxyCodeLine{00203\ \textcolor{comment}{//\ "{}insert\_mode"{}\ field\ of\ STB\_TexteditState\ before/after\ calling\ API\ functions.}}
+\DoxyCodeLine{00204\ \textcolor{comment}{//}}
+\DoxyCodeLine{00205\ \textcolor{comment}{//\ API}}
+\DoxyCodeLine{00206\ \textcolor{comment}{//}}
+\DoxyCodeLine{00207\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_initialize\_state(STB\_TexteditState\ *state,\ int\ is\_single\_line)}}
+\DoxyCodeLine{00208\ \textcolor{comment}{//}}
+\DoxyCodeLine{00209\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_click(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ float\ x,\ float\ y)}}
+\DoxyCodeLine{00210\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_drag(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ float\ x,\ float\ y)}}
+\DoxyCodeLine{00211\ \textcolor{comment}{//\ \ \ \ int\ \ stb\_textedit\_cut(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state)}}
+\DoxyCodeLine{00212\ \textcolor{comment}{//\ \ \ \ int\ \ stb\_textedit\_paste(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ STB\_TEXTEDIT\_CHARTYPE\ *text,\ int\ len)}}
+\DoxyCodeLine{00213\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_key(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ STB\_TEXEDIT\_KEYTYPE\ key)}}
+\DoxyCodeLine{00214\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_text(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ STB\_TEXTEDIT\_CHARTYPE\ *text,\ int\ text\_len)}}
+\DoxyCodeLine{00215\ \textcolor{comment}{//}}
+\DoxyCodeLine{00216\ \textcolor{comment}{//\ \ \ \ Each\ of\ these\ functions\ potentially\ updates\ the\ string\ and\ updates\ the}}
+\DoxyCodeLine{00217\ \textcolor{comment}{//\ \ \ \ state.}}
+\DoxyCodeLine{00218\ \textcolor{comment}{//}}
+\DoxyCodeLine{00219\ \textcolor{comment}{//\ \ \ \ \ \ initialize\_state:}}
+\DoxyCodeLine{00220\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ set\ the\ textedit\ state\ to\ a\ known\ good\ default\ state\ when\ initially}}
+\DoxyCodeLine{00221\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ constructing\ the\ textedit.}}
+\DoxyCodeLine{00222\ \textcolor{comment}{//}}
+\DoxyCodeLine{00223\ \textcolor{comment}{//\ \ \ \ \ \ click:}}
+\DoxyCodeLine{00224\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ with\ the\ mouse\ x,y\ on\ a\ mouse\ down;\ it\ will\ update\ the\ cursor}}
+\DoxyCodeLine{00225\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ and\ reset\ the\ selection\ start/end\ to\ the\ cursor\ point.\ the\ x,y\ must}}
+\DoxyCodeLine{00226\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ be\ relative\ to\ the\ text\ widget,\ with\ (0,0)\ being\ the\ top\ left.}}
+\DoxyCodeLine{00227\ \textcolor{comment}{//}}
+\DoxyCodeLine{00228\ \textcolor{comment}{//\ \ \ \ \ \ drag:}}
+\DoxyCodeLine{00229\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ with\ the\ mouse\ x,y\ on\ a\ mouse\ drag/up;\ it\ will\ update\ the}}
+\DoxyCodeLine{00230\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ cursor\ and\ the\ selection\ end\ point}}
+\DoxyCodeLine{00231\ \textcolor{comment}{//}}
+\DoxyCodeLine{00232\ \textcolor{comment}{//\ \ \ \ \ \ cut:}}
+\DoxyCodeLine{00233\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ to\ delete\ the\ current\ selection;\ returns\ true\ if\ there\ was}}
+\DoxyCodeLine{00234\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ one.\ you\ should\ FIRST\ copy\ the\ current\ selection\ to\ the\ system\ paste\ buffer.}}
+\DoxyCodeLine{00235\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ (To\ copy,\ just\ copy\ the\ current\ selection\ out\ of\ the\ string\ yourself.)}}
+\DoxyCodeLine{00236\ \textcolor{comment}{//}}
+\DoxyCodeLine{00237\ \textcolor{comment}{//\ \ \ \ \ \ paste:}}
+\DoxyCodeLine{00238\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ to\ paste\ text\ at\ the\ current\ cursor\ point\ or\ over\ the\ current}}
+\DoxyCodeLine{00239\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ selection\ if\ there\ is\ one.}}
+\DoxyCodeLine{00240\ \textcolor{comment}{//}}
+\DoxyCodeLine{00241\ \textcolor{comment}{//\ \ \ \ \ \ key:}}
+\DoxyCodeLine{00242\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ for\ keyboard\ inputs\ sent\ to\ the\ textfield.\ you\ can\ use\ it}}
+\DoxyCodeLine{00243\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for\ "{}key\ down"{}\ events\ or\ for\ "{}translated"{}\ key\ events.\ if\ you\ need\ to}}
+\DoxyCodeLine{00244\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ do\ both\ (as\ in\ Win32),\ or\ distinguish\ Unicode\ characters\ from\ control}}
+\DoxyCodeLine{00245\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ inputs,\ set\ a\ high\ bit\ to\ distinguish\ the\ two;\ then\ you\ can\ define\ the}}
+\DoxyCodeLine{00246\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ various\ definitions\ like\ STB\_TEXTEDIT\_K\_LEFT\ have\ the\ is-\/key-\/event\ bit}}
+\DoxyCodeLine{00247\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ set,\ and\ make\ STB\_TEXTEDIT\_KEYTOCHAR\ check\ that\ the\ is-\/key-\/event\ bit\ is}}
+\DoxyCodeLine{00248\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ clear.\ STB\_TEXTEDIT\_KEYTYPE\ defaults\ to\ int,\ but\ you\ can\ \#define\ it\ to}}
+\DoxyCodeLine{00249\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ anything\ other\ type\ you\ want\ before\ including.}}
+\DoxyCodeLine{00250\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ if\ the\ STB\_TEXTEDIT\_KEYTOTEXT\ function\ is\ defined,\ selected\ keys\ are}}
+\DoxyCodeLine{00251\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ transformed\ into\ text\ and\ stb\_textedit\_text()\ is\ automatically\ called.}}
+\DoxyCodeLine{00252\ \textcolor{comment}{//}}
+\DoxyCodeLine{00253\ \textcolor{comment}{//\ \ \ \ \ \ text:\ [DEAR\ IMGUI]\ added\ 2024-\/09}}
+\DoxyCodeLine{00254\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ to\ text\ inputs\ sent\ to\ the\ textfield.}}
+\DoxyCodeLine{00255\ \textcolor{comment}{//}}
+\DoxyCodeLine{00256\ \textcolor{comment}{//}}
+\DoxyCodeLine{00257\ \textcolor{comment}{//\ \ \ When\ rendering,\ you\ can\ read\ the\ cursor\ position\ and\ selection\ state\ from}}
+\DoxyCodeLine{00258\ \textcolor{comment}{//\ \ \ the\ STB\_TexteditState.}}
+\DoxyCodeLine{00259\ \textcolor{comment}{//}}
+\DoxyCodeLine{00260\ \textcolor{comment}{//}}
+\DoxyCodeLine{00261\ \textcolor{comment}{//\ Notes:}}
+\DoxyCodeLine{00262\ \textcolor{comment}{//}}
+\DoxyCodeLine{00263\ \textcolor{comment}{//\ This\ is\ designed\ to\ be\ usable\ in\ IMGUI,\ so\ it\ allows\ for\ the\ possibility\ of}}
+\DoxyCodeLine{00264\ \textcolor{comment}{//\ running\ in\ an\ IMGUI\ that\ has\ NOT\ cached\ the\ multi-\/line\ layout.\ For\ this}}
+\DoxyCodeLine{00265\ \textcolor{comment}{//\ reason,\ it\ provides\ an\ interface\ that\ is\ compatible\ with\ computing\ the}}
+\DoxyCodeLine{00266\ \textcolor{comment}{//\ layout\ incrementally-\/-\/we\ try\ to\ make\ sure\ we\ make\ as\ few\ passes\ through}}
+\DoxyCodeLine{00267\ \textcolor{comment}{//\ as\ possible.\ (For\ example,\ to\ locate\ the\ mouse\ pointer\ in\ the\ text,\ we}}
+\DoxyCodeLine{00268\ \textcolor{comment}{//\ could\ define\ functions\ that\ return\ the\ X\ and\ Y\ positions\ of\ characters}}
+\DoxyCodeLine{00269\ \textcolor{comment}{//\ and\ binary\ search\ Y\ and\ then\ X,\ but\ if\ we're\ doing\ dynamic\ layout\ this}}
+\DoxyCodeLine{00270\ \textcolor{comment}{//\ will\ run\ the\ layout\ algorithm\ many\ times,\ so\ instead\ we\ manually\ search}}
+\DoxyCodeLine{00271\ \textcolor{comment}{//\ forward\ in\ one\ pass.\ Similar\ logic\ applies\ to\ e.g.\ up-\/arrow\ and}}
+\DoxyCodeLine{00272\ \textcolor{comment}{//\ down-\/arrow\ movement.)}}
+\DoxyCodeLine{00273\ \textcolor{comment}{//}}
+\DoxyCodeLine{00274\ \textcolor{comment}{//\ If\ it's\ run\ in\ a\ widget\ that\ *has*\ cached\ the\ layout,\ then\ this\ is\ less}}
+\DoxyCodeLine{00275\ \textcolor{comment}{//\ efficient,\ but\ it's\ not\ horrible\ on\ modern\ computers.\ But\ you\ wouldn't}}
+\DoxyCodeLine{00276\ \textcolor{comment}{//\ want\ to\ edit\ million-\/line\ files\ with\ it.}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \textcolor{preprocessor}{\#ifndef\ INCLUDE\_IMSTB\_TEXTEDIT\_H}}
+\DoxyCodeLine{00287\ \textcolor{preprocessor}{\#define\ INCLUDE\_IMSTB\_TEXTEDIT\_H}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00290\ \textcolor{comment}{//}}
+\DoxyCodeLine{00291\ \textcolor{comment}{//\ \ \ \ \ STB\_TexteditState}}
+\DoxyCodeLine{00292\ \textcolor{comment}{//}}
+\DoxyCodeLine{00293\ \textcolor{comment}{//\ Definition\ of\ STB\_TexteditState\ which\ you\ should\ store}}
+\DoxyCodeLine{00294\ \textcolor{comment}{//\ per-\/textfield;\ it\ includes\ cursor\ position,\ selection\ state,}}
+\DoxyCodeLine{00295\ \textcolor{comment}{//\ and\ undo\ state.}}
+\DoxyCodeLine{00296\ \textcolor{comment}{//}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \textcolor{preprocessor}{\#ifndef\ IMSTB\_TEXTEDIT\_UNDOSTATECOUNT}}
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\#define\ IMSTB\_TEXTEDIT\_UNDOSTATECOUNT\ \ \ 99}}
+\DoxyCodeLine{00300\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00301\ \textcolor{preprocessor}{\#ifndef\ IMSTB\_TEXTEDIT\_UNDOCHARCOUNT}}
+\DoxyCodeLine{00302\ \textcolor{preprocessor}{\#define\ IMSTB\_TEXTEDIT\_UNDOCHARCOUNT\ \ \ 999}}
+\DoxyCodeLine{00303\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00304\ \textcolor{preprocessor}{\#ifndef\ IMSTB\_TEXTEDIT\_CHARTYPE}}
+\DoxyCodeLine{00305\ \textcolor{preprocessor}{\#define\ IMSTB\_TEXTEDIT\_CHARTYPE\ \ \ \ \ \ \ \ int}}
+\DoxyCodeLine{00306\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00307\ \textcolor{preprocessor}{\#ifndef\ IMSTB\_TEXTEDIT\_POSITIONTYPE}}
+\DoxyCodeLine{00308\ \textcolor{preprocessor}{\#define\ IMSTB\_TEXTEDIT\_POSITIONTYPE\ \ \ \ int}}
+\DoxyCodeLine{00309\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00312\ \{}
+\DoxyCodeLine{00313\ \ \ \ \textcolor{comment}{//\ private\ data}}
+\DoxyCodeLine{00314\ \ \ \ IMSTB\_TEXTEDIT\_POSITIONTYPE\ \ where;}
+\DoxyCodeLine{00315\ \ \ \ IMSTB\_TEXTEDIT\_POSITIONTYPE\ \ insert\_length;}
+\DoxyCodeLine{00316\ \ \ \ IMSTB\_TEXTEDIT\_POSITIONTYPE\ \ delete\_length;}
+\DoxyCodeLine{00317\ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_storage;}
+\DoxyCodeLine{00318\ \}\ \doxymbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}};}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00321\ \{}
+\DoxyCodeLine{00322\ \ \ \ \textcolor{comment}{//\ private\ data}}
+\DoxyCodeLine{00323\ \ \ \ \doxymbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ \ \ \ \ \ \ \ \ \ undo\_rec\ [IMSTB\_TEXTEDIT\_UNDOSTATECOUNT];}
+\DoxyCodeLine{00324\ \ \ \ IMSTB\_TEXTEDIT\_CHARTYPE\ \ undo\_char[IMSTB\_TEXTEDIT\_UNDOCHARCOUNT];}
+\DoxyCodeLine{00325\ \ \ \ \textcolor{keywordtype}{short}\ undo\_point,\ redo\_point;}
+\DoxyCodeLine{00326\ \ \ \ \textcolor{keywordtype}{int}\ undo\_char\_point,\ redo\_char\_point;}
+\DoxyCodeLine{00327\ \}\ \doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}};}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}}
+\DoxyCodeLine{00330\ \{}
+\DoxyCodeLine{00332\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00333\ \ \ \ \textcolor{comment}{//\ public\ data}}
+\DoxyCodeLine{00334\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \ \ \ \textcolor{keywordtype}{int}\ cursor;}
+\DoxyCodeLine{00337\ \ \ \ \textcolor{comment}{//\ position\ of\ the\ text\ cursor\ within\ the\ string}}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ \ \ \ \textcolor{keywordtype}{int}\ select\_start;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ selection\ start\ point}}
+\DoxyCodeLine{00340\ \ \ \ \textcolor{keywordtype}{int}\ select\_end;}
+\DoxyCodeLine{00341\ \ \ \ \textcolor{comment}{//\ selection\ start\ and\ end\ point\ in\ characters;\ if\ equal,\ no\ selection.}}
+\DoxyCodeLine{00342\ \ \ \ \textcolor{comment}{//\ note\ that\ start\ may\ be\ less\ than\ or\ greater\ than\ end\ (e.g.\ when}}
+\DoxyCodeLine{00343\ \ \ \ \textcolor{comment}{//\ dragging\ the\ mouse,\ start\ is\ where\ the\ initial\ click\ was,\ and\ you}}
+\DoxyCodeLine{00344\ \ \ \ \textcolor{comment}{//\ can\ drag\ in\ either\ direction)}}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ insert\_mode;}
+\DoxyCodeLine{00347\ \ \ \ \textcolor{comment}{//\ each\ textfield\ keeps\ its\ own\ insert\ mode\ state.\ to\ keep\ an\ app-\/wide}}
+\DoxyCodeLine{00348\ \ \ \ \textcolor{comment}{//\ insert\ mode,\ copy\ this\ value\ in/out\ of\ the\ app\ state}}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \ \textcolor{keywordtype}{int}\ row\_count\_per\_page;}
+\DoxyCodeLine{00351\ \ \ \ \textcolor{comment}{//\ page\ size\ in\ number\ of\ row.}}
+\DoxyCodeLine{00352\ \ \ \ \textcolor{comment}{//\ this\ value\ MUST\ be\ set\ to\ >0\ for\ pageup\ or\ pagedown\ in\ multilines\ documents.}}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00355\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00356\ \ \ \ \textcolor{comment}{//\ private\ data}}
+\DoxyCodeLine{00357\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00358\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ cursor\_at\_end\_of\_line;\ \textcolor{comment}{//\ not\ implemented\ yet}}
+\DoxyCodeLine{00359\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ initialized;}
+\DoxyCodeLine{00360\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ has\_preferred\_x;}
+\DoxyCodeLine{00361\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ single\_line;}
+\DoxyCodeLine{00362\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ padding1,\ padding2,\ padding3;}
+\DoxyCodeLine{00363\ \ \ \ \textcolor{keywordtype}{float}\ preferred\_x;\ \textcolor{comment}{//\ this\ determines\ where\ the\ cursor\ up/down\ tries\ to\ seek\ to\ along\ x}}
+\DoxyCodeLine{00364\ \ \ \ \doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ undostate;}
+\DoxyCodeLine{00365\ \}\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}};}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00369\ \textcolor{comment}{//}}
+\DoxyCodeLine{00370\ \textcolor{comment}{//\ \ \ \ \ StbTexteditRow}}
+\DoxyCodeLine{00371\ \textcolor{comment}{//}}
+\DoxyCodeLine{00372\ \textcolor{comment}{//\ Result\ of\ layout\ query,\ used\ by\ stb\_textedit\ to\ determine\ where}}
+\DoxyCodeLine{00373\ \textcolor{comment}{//\ the\ text\ in\ each\ row\ is.}}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00375\ \textcolor{comment}{//\ result\ of\ layout\ query}}
+\DoxyCodeLine{00376\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00377\ \{}
+\DoxyCodeLine{00378\ \ \ \ \textcolor{keywordtype}{float}\ x0,x1;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ starting\ x\ location,\ end\ x\ location\ (allows\ for\ align=right,\ etc)}}
+\DoxyCodeLine{00379\ \ \ \ \textcolor{keywordtype}{float}\ baseline\_y\_delta;\ \ \textcolor{comment}{//\ position\ of\ baseline\ relative\ to\ previous\ row's\ baseline}}
+\DoxyCodeLine{00380\ \ \ \ \textcolor{keywordtype}{float}\ ymin,ymax;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ height\ of\ row\ above\ and\ below\ baseline}}
+\DoxyCodeLine{00381\ \ \ \ \textcolor{keywordtype}{int}\ num\_chars;}
+\DoxyCodeLine{00382\ \}\ \doxymbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}};}
+\DoxyCodeLine{00383\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//INCLUDE\_IMSTB\_TEXTEDIT\_H}}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \textcolor{comment}{//\ implementation\ isn't\ include-\/guarded,\ since\ it\ might\ have\ indirectly}}
+\DoxyCodeLine{00395\ \textcolor{comment}{//\ included\ just\ the\ "{}header"{}\ portion}}
+\DoxyCodeLine{00396\ \textcolor{preprocessor}{\#ifdef\ IMSTB\_TEXTEDIT\_IMPLEMENTATION}}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ \textcolor{preprocessor}{\#ifndef\ IMSTB\_TEXTEDIT\_memmove}}
+\DoxyCodeLine{00399\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00400\ \textcolor{preprocessor}{\#define\ IMSTB\_TEXTEDIT\_memmove\ memmove}}
+\DoxyCodeLine{00401\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00405\ \textcolor{comment}{//}}
+\DoxyCodeLine{00406\ \textcolor{comment}{//\ \ \ \ \ \ Mouse\ input\ handling}}
+\DoxyCodeLine{00407\ \textcolor{comment}{//}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \textcolor{comment}{//\ traverse\ the\ layout\ to\ locate\ the\ nearest\ character\ to\ a\ display\ position}}
+\DoxyCodeLine{00410\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_text\_locate\_coord(IMSTB\_TEXTEDIT\_STRING\ *str,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)}
+\DoxyCodeLine{00411\ \{}
+\DoxyCodeLine{00412\ \ \ \ \doxymbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ r;}
+\DoxyCodeLine{00413\ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00414\ \ \ \ \textcolor{keywordtype}{float}\ base\_y\ =\ 0,\ prev\_x;}
+\DoxyCodeLine{00415\ \ \ \ \textcolor{keywordtype}{int}\ i=0,\ k;}
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00417\ \ \ \ r.x0\ =\ r.x1\ =\ 0;}
+\DoxyCodeLine{00418\ \ \ \ r.ymin\ =\ r.ymax\ =\ 0;}
+\DoxyCodeLine{00419\ \ \ \ r.num\_chars\ =\ 0;}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \textcolor{comment}{//\ search\ rows\ to\ find\ one\ that\ straddles\ 'y'}}
+\DoxyCodeLine{00422\ \ \ \ \textcolor{keywordflow}{while}\ (i\ <\ n)\ \{}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ i);}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r.num\_chars\ <=\ 0)}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00426\ }
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i==0\ \&\&\ y\ <\ base\_y\ +\ r.ymin)}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00429\ }
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (y\ <\ base\_y\ +\ r.ymax)}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00432\ }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ i\ +=\ r.num\_chars;}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ base\_y\ +=\ r.baseline\_y\_delta;}
+\DoxyCodeLine{00435\ \ \ \ \}}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \ \textcolor{comment}{//\ below\ all\ text,\ return\ 'after'\ last\ character}}
+\DoxyCodeLine{00438\ \ \ \ \textcolor{keywordflow}{if}\ (i\ >=\ n)}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ \ \ \ \textcolor{comment}{//\ check\ if\ it's\ before\ the\ beginning\ of\ the\ line}}
+\DoxyCodeLine{00442\ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ r.x0)}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00445\ \ \ \ \textcolor{comment}{//\ check\ if\ it's\ before\ the\ end\ of\ the\ line}}
+\DoxyCodeLine{00446\ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ r.x1)\ \{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \textcolor{comment}{//\ search\ characters\ in\ row\ for\ one\ that\ straddles\ 'x'}}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ prev\_x\ =\ r.x0;}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (k=0;\ k\ <\ r.num\_chars;\ k\ =\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(str,\ i\ +\ k)\ -\/\ i)\ \{}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ STB\_TEXTEDIT\_GETWIDTH(str,\ i,\ k);}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ prev\_x+w)\ \{}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ prev\_x+w/2)}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ k+i;}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(str,\ i\ +\ k);}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ prev\_x\ +=\ w;}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \textcolor{comment}{//\ shouldn't\ happen,\ but\ if\ it\ does,\ fall\ through\ to\ end-\/of-\/line\ case}}
+\DoxyCodeLine{00460\ \ \ \ \}}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ \ \ \ \textcolor{comment}{//\ if\ the\ last\ character\ is\ a\ newline,\ return\ that.\ otherwise\ return\ 'after'\ the\ last\ character}}
+\DoxyCodeLine{00463\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_GETCHAR(str,\ i+r.num\_chars-\/1)\ ==\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i+r.num\_chars-\/1;}
+\DoxyCodeLine{00465\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i+r.num\_chars;}
+\DoxyCodeLine{00467\ \}}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00469\ \textcolor{comment}{//\ API\ click:\ on\ mouse\ down,\ move\ the\ cursor\ to\ the\ clicked\ location,\ and\ reset\ the\ selection}}
+\DoxyCodeLine{00470\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_click(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)}
+\DoxyCodeLine{00471\ \{}
+\DoxyCodeLine{00472\ \ \ \ \textcolor{comment}{//\ In\ single-\/line\ mode,\ just\ always\ make\ y\ =\ 0.\ This\ lets\ the\ drag\ keep\ working\ if\ the\ mouse}}
+\DoxyCodeLine{00473\ \ \ \ \textcolor{comment}{//\ goes\ off\ the\ top\ or\ bottom\ of\ the\ text}}
+\DoxyCodeLine{00474\ \ \ \ \textcolor{keywordflow}{if}(\ state-\/>single\_line\ )}
+\DoxyCodeLine{00475\ \ \ \ \{}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ r;}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ 0);}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ y\ =\ r.ymin;}
+\DoxyCodeLine{00479\ \ \ \ \}}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00481\ \ \ \ state-\/>cursor\ =\ stb\_text\_locate\_coord(str,\ x,\ y);}
+\DoxyCodeLine{00482\ \ \ \ state-\/>select\_start\ =\ state-\/>cursor;}
+\DoxyCodeLine{00483\ \ \ \ state-\/>select\_end\ =\ state-\/>cursor;}
+\DoxyCodeLine{00484\ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00485\ \}}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ \textcolor{comment}{//\ API\ drag:\ on\ mouse\ drag,\ move\ the\ cursor\ and\ selection\ endpoint\ to\ the\ clicked\ location}}
+\DoxyCodeLine{00488\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_drag(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)}
+\DoxyCodeLine{00489\ \{}
+\DoxyCodeLine{00490\ \ \ \ \textcolor{keywordtype}{int}\ p\ =\ 0;}
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00492\ \ \ \ \textcolor{comment}{//\ In\ single-\/line\ mode,\ just\ always\ make\ y\ =\ 0.\ This\ lets\ the\ drag\ keep\ working\ if\ the\ mouse}}
+\DoxyCodeLine{00493\ \ \ \ \textcolor{comment}{//\ goes\ off\ the\ top\ or\ bottom\ of\ the\ text}}
+\DoxyCodeLine{00494\ \ \ \ \textcolor{keywordflow}{if}(\ state-\/>single\_line\ )}
+\DoxyCodeLine{00495\ \ \ \ \{}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ r;}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ 0);}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ y\ =\ r.ymin;}
+\DoxyCodeLine{00499\ \ \ \ \}}
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00501\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>select\_start\ ==\ state-\/>select\_end)}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ state-\/>select\_start\ =\ state-\/>cursor;}
+\DoxyCodeLine{00503\ }
+\DoxyCodeLine{00504\ \ \ \ p\ =\ stb\_text\_locate\_coord(str,\ x,\ y);}
+\DoxyCodeLine{00505\ \ \ \ state-\/>cursor\ =\ state-\/>select\_end\ =\ p;}
+\DoxyCodeLine{00506\ \}}
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00509\ \textcolor{comment}{//}}
+\DoxyCodeLine{00510\ \textcolor{comment}{//\ \ \ \ \ \ Keyboard\ input\ handling}}
+\DoxyCodeLine{00511\ \textcolor{comment}{//}}
+\DoxyCodeLine{00512\ }
+\DoxyCodeLine{00513\ \textcolor{comment}{//\ forward\ declarations}}
+\DoxyCodeLine{00514\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_undo(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state);}
+\DoxyCodeLine{00515\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_redo(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state);}
+\DoxyCodeLine{00516\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_delete(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ length);}
+\DoxyCodeLine{00517\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_insert(\doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ length);}
+\DoxyCodeLine{00518\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_replace(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ old\_length,\ \textcolor{keywordtype}{int}\ new\_length);}
+\DoxyCodeLine{00519\ }
+\DoxyCodeLine{00520\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00521\ \{}
+\DoxyCodeLine{00522\ \ \ \ \textcolor{keywordtype}{float}\ x,y;\ \ \ \ \textcolor{comment}{//\ position\ of\ n'th\ character}}
+\DoxyCodeLine{00523\ \ \ \ \textcolor{keywordtype}{float}\ height;\ \textcolor{comment}{//\ height\ of\ line}}
+\DoxyCodeLine{00524\ \ \ \ \textcolor{keywordtype}{int}\ first\_char,\ length;\ \textcolor{comment}{//\ first\ char\ of\ row,\ and\ length}}
+\DoxyCodeLine{00525\ \ \ \ \textcolor{keywordtype}{int}\ prev\_first;\ \ \textcolor{comment}{//\ first\ char\ of\ previous\ row}}
+\DoxyCodeLine{00526\ \}\ StbFindState;}
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00528\ \textcolor{comment}{//\ find\ the\ x/y\ location\ of\ a\ character,\ and\ remember\ info\ about\ the\ previous\ row\ in}}
+\DoxyCodeLine{00529\ \textcolor{comment}{//\ case\ we\ get\ a\ move-\/up\ event\ (for\ page\ up,\ we'll\ have\ to\ rescan)}}
+\DoxyCodeLine{00530\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_find\_charpos(StbFindState\ *find,\ IMSTB\_TEXTEDIT\_STRING\ *str,\ \textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{int}\ single\_line)}
+\DoxyCodeLine{00531\ \{}
+\DoxyCodeLine{00532\ \ \ \ \doxymbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ r;}
+\DoxyCodeLine{00533\ \ \ \ \textcolor{keywordtype}{int}\ prev\_start\ =\ 0;}
+\DoxyCodeLine{00534\ \ \ \ \textcolor{keywordtype}{int}\ z\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00535\ \ \ \ \textcolor{keywordtype}{int}\ i=0,\ first;}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ \ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ z\ \&\&\ single\_line)\ \{}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \textcolor{comment}{//\ special\ case\ if\ it's\ at\ the\ end\ (may\ not\ be\ needed?)}}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ 0);}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ find-\/>y\ =\ 0;}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ find-\/>first\_char\ =\ 0;}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ find-\/>length\ =\ z;}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ find-\/>height\ =\ r.ymax\ -\/\ r.ymin;}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ find-\/>x\ =\ r.x1;}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00546\ \ \ \ \}}
+\DoxyCodeLine{00547\ }
+\DoxyCodeLine{00548\ \ \ \ \textcolor{comment}{//\ search\ rows\ to\ find\ the\ one\ that\ straddles\ character\ n}}
+\DoxyCodeLine{00549\ \ \ \ find-\/>y\ =\ 0;}
+\DoxyCodeLine{00550\ }
+\DoxyCodeLine{00551\ \ \ \ \textcolor{keywordflow}{for}(;;)\ \{}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ i);}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ i\ +\ r.num\_chars)}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ r.num\_chars\ ==\ z\ \&\&\ z\ >\ 0\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ z\ -\/\ 1)\ !=\ STB\_TEXTEDIT\_NEWLINE)\ \ \textcolor{comment}{//\ [DEAR\ IMGUI]\ special\ handling\ for\ last\ line}}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ prev\_start\ =\ i;}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ i\ +=\ r.num\_chars;}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ find-\/>y\ +=\ r.baseline\_y\_delta;}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ z)\ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ r.num\_chars\ =\ 0;\ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00565\ \ \ \ \}}
+\DoxyCodeLine{00566\ }
+\DoxyCodeLine{00567\ \ \ \ find-\/>first\_char\ =\ first\ =\ i;}
+\DoxyCodeLine{00568\ \ \ \ find-\/>length\ =\ r.num\_chars;}
+\DoxyCodeLine{00569\ \ \ \ find-\/>height\ =\ r.ymax\ -\/\ r.ymin;}
+\DoxyCodeLine{00570\ \ \ \ find-\/>prev\_first\ =\ prev\_start;}
+\DoxyCodeLine{00571\ }
+\DoxyCodeLine{00572\ \ \ \ \textcolor{comment}{//\ now\ scan\ to\ find\ xpos}}
+\DoxyCodeLine{00573\ \ \ \ find-\/>x\ =\ r.x0;}
+\DoxyCodeLine{00574\ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ first+i\ <\ n;\ i\ =\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(str,\ first\ +\ i)\ -\/\ first)}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ find-\/>x\ +=\ STB\_TEXTEDIT\_GETWIDTH(str,\ first,\ i);}
+\DoxyCodeLine{00576\ \}}
+\DoxyCodeLine{00577\ }
+\DoxyCodeLine{00578\ \textcolor{preprocessor}{\#define\ STB\_TEXT\_HAS\_SELECTION(s)\ \ \ ((s)-\/>select\_start\ !=\ (s)-\/>select\_end)}}
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00580\ \textcolor{comment}{//\ make\ the\ selection/cursor\ state\ valid\ if\ client\ altered\ the\ string}}
+\DoxyCodeLine{00581\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_clamp(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00582\ \{}
+\DoxyCodeLine{00583\ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00584\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>select\_start\ >\ n)\ state-\/>select\_start\ =\ n;}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>select\_end\ \ \ >\ n)\ state-\/>select\_end\ =\ n;}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ clamping\ forced\ them\ to\ be\ equal,\ move\ the\ cursor\ to\ match}}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>select\_start\ ==\ state-\/>select\_end)}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_start;}
+\DoxyCodeLine{00590\ \ \ \ \}}
+\DoxyCodeLine{00591\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>cursor\ >\ n)\ state-\/>cursor\ =\ n;}
+\DoxyCodeLine{00592\ \}}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00594\ \textcolor{comment}{//\ delete\ characters\ while\ updating\ undo}}
+\DoxyCodeLine{00595\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_delete(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ len)}
+\DoxyCodeLine{00596\ \{}
+\DoxyCodeLine{00597\ \ \ \ stb\_text\_makeundo\_delete(str,\ state,\ where,\ len);}
+\DoxyCodeLine{00598\ \ \ \ STB\_TEXTEDIT\_DELETECHARS(str,\ where,\ len);}
+\DoxyCodeLine{00599\ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00600\ \}}
+\DoxyCodeLine{00601\ }
+\DoxyCodeLine{00602\ \textcolor{comment}{//\ delete\ the\ section}}
+\DoxyCodeLine{00603\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_delete\_selection(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00604\ \{}
+\DoxyCodeLine{00605\ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00606\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>select\_start\ <\ state-\/>select\_end)\ \{}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete(str,\ state,\ state-\/>select\_start,\ state-\/>select\_end\ -\/\ state-\/>select\_start);}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>cursor\ =\ state-\/>select\_start;}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete(str,\ state,\ state-\/>select\_end,\ state-\/>select\_start\ -\/\ state-\/>select\_end);}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ state-\/>select\_start\ =\ state-\/>cursor\ =\ state-\/>select\_end;}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00615\ \ \ \ \}}
+\DoxyCodeLine{00616\ \}}
+\DoxyCodeLine{00617\ }
+\DoxyCodeLine{00618\ \textcolor{comment}{//\ canoncialize\ the\ selection\ so\ start\ <=\ end}}
+\DoxyCodeLine{00619\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_sortselection(\doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00620\ \{}
+\DoxyCodeLine{00621\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>select\_end\ <\ state-\/>select\_start)\ \{}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ temp\ =\ state-\/>select\_end;}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>select\_start;}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ state-\/>select\_start\ =\ temp;}
+\DoxyCodeLine{00625\ \ \ \ \}}
+\DoxyCodeLine{00626\ \}}
+\DoxyCodeLine{00627\ }
+\DoxyCodeLine{00628\ \textcolor{comment}{//\ move\ cursor\ to\ first\ character\ of\ selection}}
+\DoxyCodeLine{00629\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_move\_to\_first(\doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00630\ \{}
+\DoxyCodeLine{00631\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ stb\_textedit\_sortselection(state);}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_start;}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>select\_start;}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00636\ \ \ \ \}}
+\DoxyCodeLine{00637\ \}}
+\DoxyCodeLine{00638\ }
+\DoxyCodeLine{00639\ \textcolor{comment}{//\ move\ cursor\ to\ last\ character\ of\ selection}}
+\DoxyCodeLine{00640\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_move\_to\_last(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00641\ \{}
+\DoxyCodeLine{00642\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ stb\_textedit\_sortselection(state);}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_end;}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ state-\/>select\_start\ =\ state-\/>select\_end;}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00648\ \ \ \ \}}
+\DoxyCodeLine{00649\ \}}
+\DoxyCodeLine{00650\ }
+\DoxyCodeLine{00651\ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00652\ \textcolor{comment}{//\ Functions\ must\ be\ implemented\ for\ UTF8\ support}}
+\DoxyCodeLine{00653\ \textcolor{comment}{//\ Code\ in\ this\ file\ that\ uses\ those\ functions\ is\ modified\ for\ [DEAR\ IMGUI]\ and\ deviates\ from\ the\ original\ stb\_textedit.}}
+\DoxyCodeLine{00654\ \textcolor{comment}{//\ There\ is\ not\ necessarily\ a\ '[DEAR\ IMGUI]'\ at\ the\ usage\ sites.}}
+\DoxyCodeLine{00655\ \textcolor{preprocessor}{\#ifndef\ IMSTB\_TEXTEDIT\_GETPREVCHARINDEX}}
+\DoxyCodeLine{00656\ \textcolor{preprocessor}{\#define\ IMSTB\_TEXTEDIT\_GETPREVCHARINDEX(obj,\ idx)\ (idx\ -\/\ 1)}}
+\DoxyCodeLine{00657\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00658\ \textcolor{preprocessor}{\#ifndef\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX}}
+\DoxyCodeLine{00659\ \textcolor{preprocessor}{\#define\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(obj,\ idx)\ (idx\ +\ 1)}}
+\DoxyCodeLine{00660\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_IS\_SPACE}}
+\DoxyCodeLine{00663\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ is\_word\_boundary(\ IMSTB\_TEXTEDIT\_STRING\ *str,\ \textcolor{keywordtype}{int}\ idx\ )}
+\DoxyCodeLine{00664\ \{}
+\DoxyCodeLine{00665\ \ \ \ \textcolor{keywordflow}{return}\ idx\ >\ 0\ ?\ (STB\_TEXTEDIT\_IS\_SPACE(\ STB\_TEXTEDIT\_GETCHAR(str,idx-\/1)\ )\ \&\&\ !STB\_TEXTEDIT\_IS\_SPACE(\ STB\_TEXTEDIT\_GETCHAR(str,\ idx)\ )\ )\ :\ 1;}
+\DoxyCodeLine{00666\ \}}
+\DoxyCodeLine{00667\ }
+\DoxyCodeLine{00668\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_MOVEWORDLEFT}}
+\DoxyCodeLine{00669\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_move\_to\_word\_previous(\ IMSTB\_TEXTEDIT\_STRING\ *str,\ \textcolor{keywordtype}{int}\ c\ )}
+\DoxyCodeLine{00670\ \{}
+\DoxyCodeLine{00671\ \ \ \ -\/-\/c;\ \textcolor{comment}{//\ always\ move\ at\ least\ one\ character}}
+\DoxyCodeLine{00672\ \ \ \ \textcolor{keywordflow}{while}(\ c\ >=\ 0\ \&\&\ !is\_word\_boundary(\ str,\ c\ )\ )}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ -\/-\/c;}
+\DoxyCodeLine{00674\ }
+\DoxyCodeLine{00675\ \ \ \ \textcolor{keywordflow}{if}(\ c\ <\ 0\ )}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ c\ =\ 0;}
+\DoxyCodeLine{00677\ }
+\DoxyCodeLine{00678\ \ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{00679\ \}}
+\DoxyCodeLine{00680\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_MOVEWORDLEFT\ stb\_textedit\_move\_to\_word\_previous}}
+\DoxyCodeLine{00681\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00682\ }
+\DoxyCodeLine{00683\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_MOVEWORDRIGHT}}
+\DoxyCodeLine{00684\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_move\_to\_word\_next(\ IMSTB\_TEXTEDIT\_STRING\ *str,\ \textcolor{keywordtype}{int}\ c\ )}
+\DoxyCodeLine{00685\ \{}
+\DoxyCodeLine{00686\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ len\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00687\ \ \ \ ++c;\ \textcolor{comment}{//\ always\ move\ at\ least\ one\ character}}
+\DoxyCodeLine{00688\ \ \ \ \textcolor{keywordflow}{while}(\ c\ <\ len\ \&\&\ !is\_word\_boundary(\ str,\ c\ )\ )}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ ++c;}
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00691\ \ \ \ \textcolor{keywordflow}{if}(\ c\ >\ len\ )}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ c\ =\ len;}
+\DoxyCodeLine{00693\ }
+\DoxyCodeLine{00694\ \ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{00695\ \}}
+\DoxyCodeLine{00696\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_MOVEWORDRIGHT\ stb\_textedit\_move\_to\_word\_next}}
+\DoxyCodeLine{00697\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00698\ }
+\DoxyCodeLine{00699\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00700\ }
+\DoxyCodeLine{00701\ \textcolor{comment}{//\ update\ selection\ and\ cursor\ to\ match\ each\ other}}
+\DoxyCodeLine{00702\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_prep\_selection\_at\_cursor(\doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00703\ \{}
+\DoxyCodeLine{00704\ \ \ \ \textcolor{keywordflow}{if}\ (!STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ state-\/>select\_start\ =\ state-\/>select\_end\ =\ state-\/>cursor;}
+\DoxyCodeLine{00706\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_end;}
+\DoxyCodeLine{00708\ \}}
+\DoxyCodeLine{00709\ }
+\DoxyCodeLine{00710\ \textcolor{comment}{//\ API\ cut:\ delete\ selection}}
+\DoxyCodeLine{00711\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_cut(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00712\ \{}
+\DoxyCodeLine{00713\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ stb\_textedit\_delete\_selection(str,state);\ \textcolor{comment}{//\ implicitly\ clamps}}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00717\ \ \ \ \}}
+\DoxyCodeLine{00718\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00719\ \}}
+\DoxyCodeLine{00720\ }
+\DoxyCodeLine{00721\ \textcolor{comment}{//\ API\ paste:\ replace\ existing\ selection\ with\ passed-\/in\ text}}
+\DoxyCodeLine{00722\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_paste\_internal(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ IMSTB\_TEXTEDIT\_CHARTYPE\ *text,\ \textcolor{keywordtype}{int}\ len)}
+\DoxyCodeLine{00723\ \{}
+\DoxyCodeLine{00724\ \ \ \ \textcolor{comment}{//\ if\ there's\ a\ selection,\ the\ paste\ should\ delete\ it}}
+\DoxyCodeLine{00725\ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00726\ \ \ \ stb\_textedit\_delete\_selection(str,state);}
+\DoxyCodeLine{00727\ \ \ \ \textcolor{comment}{//\ try\ to\ insert\ the\ characters}}
+\DoxyCodeLine{00728\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_INSERTCHARS(str,\ state-\/>cursor,\ text,\ len))\ \{}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ stb\_text\_makeundo\_insert(state,\ state-\/>cursor,\ len);}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ state-\/>cursor\ +=\ len;}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00733\ \ \ \ \}}
+\DoxyCodeLine{00734\ \ \ \ \textcolor{comment}{//\ note:\ paste\ failure\ will\ leave\ deleted\ selection,\ may\ be\ restored\ with\ an\ undo\ (see\ https://github.com/nothings/stb/issues/734\ for\ details)}}
+\DoxyCodeLine{00735\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00736\ \}}
+\DoxyCodeLine{00737\ }
+\DoxyCodeLine{00738\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_KEYTYPE}}
+\DoxyCodeLine{00739\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_KEYTYPE\ int}}
+\DoxyCodeLine{00740\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00741\ }
+\DoxyCodeLine{00742\ \textcolor{comment}{//\ [DEAR\ IMGUI]\ Added\ stb\_textedit\_text(),\ extracted\ out\ and\ called\ by\ stb\_textedit\_key()\ for\ backward\ compatibility.}}
+\DoxyCodeLine{00743\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_text(IMSTB\_TEXTEDIT\_STRING*\ str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}*\ state,\ \textcolor{keyword}{const}\ IMSTB\_TEXTEDIT\_CHARTYPE*\ text,\ \textcolor{keywordtype}{int}\ text\_len)}
+\DoxyCodeLine{00744\ \{}
+\DoxyCodeLine{00745\ \ \ \ \textcolor{comment}{//\ can't\ add\ newline\ in\ single-\/line\ mode}}
+\DoxyCodeLine{00746\ \ \ \ \textcolor{keywordflow}{if}\ (text[0]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'}\ \&\&\ state-\/>single\_line)}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00748\ }
+\DoxyCodeLine{00749\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>insert\_mode\ \&\&\ !STB\_TEXT\_HAS\_SELECTION(state)\ \&\&\ state-\/>cursor\ <\ STB\_TEXTEDIT\_STRINGLEN(str))\ \{}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ stb\_text\_makeundo\_replace(str,\ state,\ state-\/>cursor,\ 1,\ 1);}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ STB\_TEXTEDIT\_DELETECHARS(str,\ state-\/>cursor,\ 1);}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_INSERTCHARS(str,\ state-\/>cursor,\ text,\ text\_len))\ \{}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ +=\ text\_len;}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00756\ \ \ \ \}}
+\DoxyCodeLine{00757\ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ stb\_textedit\_delete\_selection(str,\ state);\ \textcolor{comment}{//\ implicitly\ clamps}}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_INSERTCHARS(str,\ state-\/>cursor,\ text,\ text\_len))\ \{}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ stb\_text\_makeundo\_insert(state,\ state-\/>cursor,\ text\_len);}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ +=\ text\_len;}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00764\ \ \ \ \}}
+\DoxyCodeLine{00765\ \}}
+\DoxyCodeLine{00766\ }
+\DoxyCodeLine{00767\ \textcolor{comment}{//\ API\ key:\ process\ a\ keyboard\ input}}
+\DoxyCodeLine{00768\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_key(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ STB\_TEXTEDIT\_KEYTYPE\ key)}
+\DoxyCodeLine{00769\ \{}
+\DoxyCodeLine{00770\ retry:}
+\DoxyCodeLine{00771\ \ \ \ \textcolor{keywordflow}{switch}\ (key)\ \{}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \{}
+\DoxyCodeLine{00773\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_KEYTOTEXT}}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ c\ =\ STB\_TEXTEDIT\_KEYTOTEXT(key);}
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ >\ 0)\ \{}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \ \ IMSTB\_TEXTEDIT\_CHARTYPE\ ch\ =\ (IMSTB\_TEXTEDIT\_CHARTYPE)c;}
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_text(str,\ state,\ \&ch,\ 1);}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00779\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00782\ }
+\DoxyCodeLine{00783\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_INSERT}}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_INSERT:}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ state-\/>insert\_mode\ =\ !state-\/>insert\_mode;}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00787\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00788\ }
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_UNDO:}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ stb\_text\_undo(str,\ state);}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00793\ }
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_REDO:}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \ stb\_text\_redo(str,\ state);}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00798\ }
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LEFT:}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ currently\ there's\ a\ selection,\ move\ cursor\ to\ start\ of\ selection}}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>cursor\ >\ 0)}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ IMSTB\_TEXTEDIT\_GETPREVCHARINDEX(str,\ state-\/>cursor);}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00808\ }
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_RIGHT:}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ currently\ there's\ a\ selection,\ move\ cursor\ to\ end\ of\ selection}}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_last(str,\ state);}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(str,\ state-\/>cursor);}
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00818\ }
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LEFT\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ selection\ left}}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>select\_end\ >\ 0)}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ IMSTB\_TEXTEDIT\_GETPREVCHARINDEX(str,\ state-\/>select\_end);}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_end;}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00828\ }
+\DoxyCodeLine{00829\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_MOVEWORDLEFT}}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_WORDLEFT:}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ STB\_TEXTEDIT\_MOVEWORDLEFT(str,\ state-\/>cursor);}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(\ str,\ state\ );}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00838\ }
+\DoxyCodeLine{00839\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_WORDLEFT\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ !STB\_TEXT\_HAS\_SELECTION(\ state\ )\ )}
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00842\ }
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ STB\_TEXTEDIT\_MOVEWORDLEFT(str,\ state-\/>cursor);}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>cursor;}
+\DoxyCodeLine{00845\ }
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(\ str,\ state\ );}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00848\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00849\ }
+\DoxyCodeLine{00850\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_MOVEWORDRIGHT}}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_WORDRIGHT:}
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_last(str,\ state);}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ STB\_TEXTEDIT\_MOVEWORDRIGHT(str,\ state-\/>cursor);}
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(\ str,\ state\ );}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00859\ }
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_WORDRIGHT\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ !STB\_TEXT\_HAS\_SELECTION(\ state\ )\ )}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00863\ }
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ STB\_TEXTEDIT\_MOVEWORDRIGHT(str,\ state-\/>cursor);}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>cursor;}
+\DoxyCodeLine{00866\ }
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(\ str,\ state\ );}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00869\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00870\ }
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_RIGHT\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ selection\ right}}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(str,\ state-\/>select\_end);}
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_end;}
+\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{00878\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00879\ }
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_DOWN:}
+\DoxyCodeLine{00881\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_DOWN\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00882\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_PGDOWN:}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_PGDOWN\ |\ STB\_TEXTEDIT\_K\_SHIFT:\ \{}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ StbFindState\ find;}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ row;}
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ sel\ =\ (key\ \&\ STB\_TEXTEDIT\_K\_SHIFT)\ !=\ 0;}
+\DoxyCodeLine{00887\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ is\_page\ =\ (key\ \&\ \string~STB\_TEXTEDIT\_K\_SHIFT)\ ==\ STB\_TEXTEDIT\_K\_PGDOWN;}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\_count\ =\ is\_page\ ?\ state-\/>row\_count\_per\_page\ :\ 1;}
+\DoxyCodeLine{00889\ }
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_page\ \&\&\ state-\/>single\_line)\ \{}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ windows,\ up\&down\ in\ single-\/line\ behave\ like\ left\&right}}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ STB\_TEXTEDIT\_K\_RIGHT\ |\ (key\ \&\ STB\_TEXTEDIT\_K\_SHIFT);}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ retry;}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00895\ }
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sel)}
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_last(str,\ state);}
+\DoxyCodeLine{00900\ }
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compute\ current\ position\ of\ cursor\ point}}
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ \ stb\_textedit\_find\_charpos(\&find,\ str,\ state-\/>cursor,\ state-\/>single\_line);}
+\DoxyCodeLine{00904\ }
+\DoxyCodeLine{00905\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ row\_count;\ ++j)\ \{}
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ goal\_x\ =\ state-\/>has\_preferred\_x\ ?\ state-\/>preferred\_x\ :\ find.x;}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\ =\ find.first\_char\ +\ find.length;}
+\DoxyCodeLine{00908\ }
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (find.length\ ==\ 0)}
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00911\ }
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ going\ down\ while\ being\ on\ the\ last\ line\ shouldn't\ bring\ us\ to\ that\ line\ end}}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_GETCHAR(str,\ find.first\_char\ +\ find.length\ -\/\ 1)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00916\ }
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ find\ character\ position\ down\ a\ row}}
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ start;}
+\DoxyCodeLine{00919\ \ \ \ \ \ \ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&row,\ str,\ state-\/>cursor);}
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ row.x0;}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ row.num\_chars;\ ++i)\ \{}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ STB\_TEXTEDIT\_GETWIDTH(str,\ start,\ i);}
+\DoxyCodeLine{00923\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ IMSTB\_TEXTEDIT\_GETWIDTH\_NEWLINE}}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dx\ ==\ IMSTB\_TEXTEDIT\_GETWIDTH\_NEWLINE)}
+\DoxyCodeLine{00925\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00926\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ +=\ dx;}
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ >\ goal\_x)}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00930\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(str,\ state-\/>cursor);}
+\DoxyCodeLine{00931\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00932\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00933\ }
+\DoxyCodeLine{00934\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 1;}
+\DoxyCodeLine{00935\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>preferred\_x\ =\ goal\_x;}
+\DoxyCodeLine{00936\ }
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sel)}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>cursor;}
+\DoxyCodeLine{00939\ }
+\DoxyCodeLine{00940\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ go\ to\ next\ line}}
+\DoxyCodeLine{00941\ \ \ \ \ \ \ \ \ \ \ \ \ find.first\_char\ =\ find.first\_char\ +\ find.length;}
+\DoxyCodeLine{00942\ \ \ \ \ \ \ \ \ \ \ \ \ find.length\ =\ row.num\_chars;}
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00946\ }
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_UP:}
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_UP\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_PGUP:}
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_PGUP\ |\ STB\_TEXTEDIT\_K\_SHIFT:\ \{}
+\DoxyCodeLine{00951\ \ \ \ \ \ \ \ \ \ StbFindState\ find;}
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ row;}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ prev\_scan,\ sel\ =\ (key\ \&\ STB\_TEXTEDIT\_K\_SHIFT)\ !=\ 0;}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ is\_page\ =\ (key\ \&\ \string~STB\_TEXTEDIT\_K\_SHIFT)\ ==\ STB\_TEXTEDIT\_K\_PGUP;}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\_count\ =\ is\_page\ ?\ state-\/>row\_count\_per\_page\ :\ 1;}
+\DoxyCodeLine{00956\ }
+\DoxyCodeLine{00957\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_page\ \&\&\ state-\/>single\_line)\ \{}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ windows,\ up\&down\ become\ left\&right}}
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ STB\_TEXTEDIT\_K\_LEFT\ |\ (key\ \&\ STB\_TEXTEDIT\_K\_SHIFT);}
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ retry;}
+\DoxyCodeLine{00961\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00962\ }
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sel)}
+\DoxyCodeLine{00964\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00965\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{00967\ }
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compute\ current\ position\ of\ cursor\ point}}
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \ stb\_textedit\_find\_charpos(\&find,\ str,\ state-\/>cursor,\ state-\/>single\_line);}
+\DoxyCodeLine{00971\ }
+\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ row\_count;\ ++j)\ \{}
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ x,\ goal\_x\ =\ state-\/>has\_preferred\_x\ ?\ state-\/>preferred\_x\ :\ find.x;}
+\DoxyCodeLine{00974\ }
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ can\ only\ go\ up\ if\ there's\ a\ previous\ row}}
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (find.prev\_first\ ==\ find.first\_char)}
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00978\ }
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ find\ character\ position\ up\ a\ row}}
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ find.prev\_first;}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&row,\ str,\ state-\/>cursor);}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ row.x0;}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ row.num\_chars;\ ++i)\ \{}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ STB\_TEXTEDIT\_GETWIDTH(str,\ find.prev\_first,\ i);}
+\DoxyCodeLine{00985\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ IMSTB\_TEXTEDIT\_GETWIDTH\_NEWLINE}}
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dx\ ==\ IMSTB\_TEXTEDIT\_GETWIDTH\_NEWLINE)}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00988\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ +=\ dx;}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ >\ goal\_x)}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(str,\ state-\/>cursor);}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00995\ }
+\DoxyCodeLine{00996\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 1;}
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>preferred\_x\ =\ goal\_x;}
+\DoxyCodeLine{00998\ }
+\DoxyCodeLine{00999\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sel)}
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>cursor;}
+\DoxyCodeLine{01001\ }
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ go\ to\ previous\ line}}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (we\ need\ to\ scan\ previous\ line\ the\ hard\ way.\ maybe\ we\ could\ expose\ this\ as\ a\ new\ API\ function?)}}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \ \ \ prev\_scan\ =\ find.prev\_first\ >\ 0\ ?\ find.prev\_first\ -\/\ 1\ :\ 0;}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (prev\_scan\ >\ 0\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ prev\_scan\ -\/\ 1)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/prev\_scan;}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \ \ \ \ find.first\_char\ =\ find.prev\_first;}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ \ \ \ \ find.prev\_first\ =\ prev\_scan;}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01010\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01012\ }
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_DELETE:}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_DELETE\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete\_selection(str,\ state);}
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>cursor\ <\ n)}
+\DoxyCodeLine{01020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete(str,\ state,\ state-\/>cursor,\ IMSTB\_TEXTEDIT\_GETNEXTCHARINDEX(str,\ state-\/>cursor)\ -\/\ state-\/>cursor);}
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01022\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01023\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01024\ }
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_BACKSPACE:}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_BACKSPACE\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{01028\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete\_selection(str,\ state);}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>cursor\ >\ 0)\ \{}
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ prev\ =\ IMSTB\_TEXTEDIT\_GETPREVCHARINDEX(str,\ state-\/>cursor);}
+\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete(str,\ state,\ prev,\ state-\/>cursor\ -\/\ prev);}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ prev;}
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01036\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01039\ }
+\DoxyCodeLine{01040\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_TEXTSTART2}}
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTSTART2:}
+\DoxyCodeLine{01042\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01043\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTSTART:}
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_start\ =\ state-\/>select\_end\ =\ 0;}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01047\ }
+\DoxyCodeLine{01048\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_TEXTEND2}}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTEND2:}
+\DoxyCodeLine{01050\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTEND:}
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ state-\/>select\_start\ =\ state-\/>select\_end\ =\ 0;}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01056\ }
+\DoxyCodeLine{01057\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_TEXTSTART2}}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTSTART2\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01059\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTSTART\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{01062\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_end\ =\ 0;}
+\DoxyCodeLine{01063\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01064\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01065\ }
+\DoxyCodeLine{01066\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_TEXTEND2}}
+\DoxyCodeLine{01067\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTEND2\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01068\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTEND\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01070\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ state-\/>select\_end\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01074\ }
+\DoxyCodeLine{01075\ }
+\DoxyCodeLine{01076\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_LINESTART2}}
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINESTART2:}
+\DoxyCodeLine{01078\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINESTART:}
+\DoxyCodeLine{01080\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{01082\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>single\_line)}
+\DoxyCodeLine{01083\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ 0;}
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{while}\ (state-\/>cursor\ >\ 0\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ state-\/>cursor-\/1)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01085\ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/state-\/>cursor;}
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01087\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01088\ }
+\DoxyCodeLine{01089\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_LINEEND2}}
+\DoxyCodeLine{01090\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINEEND2:}
+\DoxyCodeLine{01091\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01092\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINEEND:\ \{}
+\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01094\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>single\_line)}
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ n;}
+\DoxyCodeLine{01098\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{while}\ (state-\/>cursor\ <\ n\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ state-\/>cursor)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>cursor;}
+\DoxyCodeLine{01100\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01101\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01103\ }
+\DoxyCodeLine{01104\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_LINESTART2}}
+\DoxyCodeLine{01105\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINESTART2\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01106\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINESTART\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>single\_line)}
+\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ 0;}
+\DoxyCodeLine{01112\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{while}\ (state-\/>cursor\ >\ 0\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ state-\/>cursor-\/1)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/state-\/>cursor;}
+\DoxyCodeLine{01114\ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>cursor;}
+\DoxyCodeLine{01115\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01116\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01117\ }
+\DoxyCodeLine{01118\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_LINEEND2}}
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINEEND2\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01120\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINEEND\ |\ STB\_TEXTEDIT\_K\_SHIFT:\ \{}
+\DoxyCodeLine{01122\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01123\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01124\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{01125\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>single\_line)}
+\DoxyCodeLine{01126\ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>cursor\ =\ n;}
+\DoxyCodeLine{01127\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{while}\ (state-\/>cursor\ <\ n\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ state-\/>cursor)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01128\ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>cursor;}
+\DoxyCodeLine{01129\ \ \ \ \ \ \ \ \ \ state-\/>select\_end\ =\ state-\/>cursor;}
+\DoxyCodeLine{01130\ \ \ \ \ \ \ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01131\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01132\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01133\ \ \ \ \}}
+\DoxyCodeLine{01134\ \}}
+\DoxyCodeLine{01135\ }
+\DoxyCodeLine{01137\ \textcolor{comment}{//}}
+\DoxyCodeLine{01138\ \textcolor{comment}{//\ \ \ \ \ \ Undo\ processing}}
+\DoxyCodeLine{01139\ \textcolor{comment}{//}}
+\DoxyCodeLine{01140\ \textcolor{comment}{//\ @OPTIMIZE:\ the\ undo/redo\ buffer\ should\ be\ circular}}
+\DoxyCodeLine{01141\ }
+\DoxyCodeLine{01142\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_flush\_redo(\doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state)}
+\DoxyCodeLine{01143\ \{}
+\DoxyCodeLine{01144\ \ \ \ state-\/>redo\_point\ =\ IMSTB\_TEXTEDIT\_UNDOSTATECOUNT;}
+\DoxyCodeLine{01145\ \ \ \ state-\/>redo\_char\_point\ =\ IMSTB\_TEXTEDIT\_UNDOCHARCOUNT;}
+\DoxyCodeLine{01146\ \}}
+\DoxyCodeLine{01147\ }
+\DoxyCodeLine{01148\ \textcolor{comment}{//\ discard\ the\ oldest\ entry\ in\ the\ undo\ list}}
+\DoxyCodeLine{01149\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_discard\_undo(\doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state)}
+\DoxyCodeLine{01150\ \{}
+\DoxyCodeLine{01151\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>undo\_point\ >\ 0)\ \{}
+\DoxyCodeLine{01152\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ 0th\ undo\ state\ has\ characters,\ clean\ those\ up}}
+\DoxyCodeLine{01153\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>undo\_rec[0].char\_storage\ >=\ 0)\ \{}
+\DoxyCodeLine{01154\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ state-\/>undo\_rec[0].insert\_length,\ i;}
+\DoxyCodeLine{01155\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ n\ characters\ from\ all\ other\ records}}
+\DoxyCodeLine{01156\ \ \ \ \ \ \ \ \ \ state-\/>undo\_char\_point\ -\/=\ n;}
+\DoxyCodeLine{01157\ \ \ \ \ \ \ \ \ \ IMSTB\_TEXTEDIT\_memmove(state-\/>undo\_char,\ state-\/>undo\_char\ +\ n,\ (\textcolor{keywordtype}{size\_t})\ (state-\/>undo\_char\_point*\textcolor{keyword}{sizeof}(IMSTB\_TEXTEDIT\_CHARTYPE)));}
+\DoxyCodeLine{01158\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ state-\/>undo\_point;\ ++i)}
+\DoxyCodeLine{01159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>undo\_rec[i].char\_storage\ >=\ 0)}
+\DoxyCodeLine{01160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>undo\_rec[i].char\_storage\ -\/=\ n;\ \textcolor{comment}{//\ @OPTIMIZE:\ get\ rid\ of\ char\_storage\ and\ infer\ it}}
+\DoxyCodeLine{01161\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01162\ \ \ \ \ \ \ -\/-\/state-\/>undo\_point;}
+\DoxyCodeLine{01163\ \ \ \ \ \ \ IMSTB\_TEXTEDIT\_memmove(state-\/>undo\_rec,\ state-\/>undo\_rec+1,\ (\textcolor{keywordtype}{size\_t})\ (state-\/>undo\_point*\textcolor{keyword}{sizeof}(state-\/>undo\_rec[0])));}
+\DoxyCodeLine{01164\ \ \ \ \}}
+\DoxyCodeLine{01165\ \}}
+\DoxyCodeLine{01166\ }
+\DoxyCodeLine{01167\ \textcolor{comment}{//\ discard\ the\ oldest\ entry\ in\ the\ redo\ list-\/-\/it's\ bad\ if\ this}}
+\DoxyCodeLine{01168\ \textcolor{comment}{//\ ever\ happens,\ but\ because\ undo\ \&\ redo\ have\ to\ store\ the\ actual}}
+\DoxyCodeLine{01169\ \textcolor{comment}{//\ characters\ in\ different\ cases,\ the\ redo\ character\ buffer\ can}}
+\DoxyCodeLine{01170\ \textcolor{comment}{//\ fill\ up\ even\ though\ the\ undo\ buffer\ didn't}}
+\DoxyCodeLine{01171\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_discard\_redo(\doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state)}
+\DoxyCodeLine{01172\ \{}
+\DoxyCodeLine{01173\ \ \ \ \textcolor{keywordtype}{int}\ k\ =\ IMSTB\_TEXTEDIT\_UNDOSTATECOUNT-\/1;}
+\DoxyCodeLine{01174\ }
+\DoxyCodeLine{01175\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>redo\_point\ <=\ k)\ \{}
+\DoxyCodeLine{01176\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ k'th\ undo\ state\ has\ characters,\ clean\ those\ up}}
+\DoxyCodeLine{01177\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>undo\_rec[k].char\_storage\ >=\ 0)\ \{}
+\DoxyCodeLine{01178\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ state-\/>undo\_rec[k].insert\_length,\ i;}
+\DoxyCodeLine{01179\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ the\ remaining\ redo\ character\ data\ to\ the\ end\ of\ the\ buffer}}
+\DoxyCodeLine{01180\ \ \ \ \ \ \ \ \ \ state-\/>redo\_char\_point\ +=\ n;}
+\DoxyCodeLine{01181\ \ \ \ \ \ \ \ \ \ IMSTB\_TEXTEDIT\_memmove(state-\/>undo\_char\ +\ state-\/>redo\_char\_point,\ state-\/>undo\_char\ +\ state-\/>redo\_char\_point-\/n,\ (\textcolor{keywordtype}{size\_t})\ ((IMSTB\_TEXTEDIT\_UNDOCHARCOUNT\ -\/\ state-\/>redo\_char\_point)*\textcolor{keyword}{sizeof}(IMSTB\_TEXTEDIT\_CHARTYPE)));}
+\DoxyCodeLine{01182\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ adjust\ the\ position\ of\ all\ the\ other\ records\ to\ account\ for\ above\ memmove}}
+\DoxyCodeLine{01183\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=state-\/>redo\_point;\ i\ <\ k;\ ++i)}
+\DoxyCodeLine{01184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>undo\_rec[i].char\_storage\ >=\ 0)}
+\DoxyCodeLine{01185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>undo\_rec[i].char\_storage\ +=\ n;}
+\DoxyCodeLine{01186\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01187\ \ \ \ \ \ \ \textcolor{comment}{//\ now\ move\ all\ the\ redo\ records\ towards\ the\ end\ of\ the\ buffer;\ the\ first\ one\ is\ at\ 'redo\_point'}}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{01189\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ move\_size\ =\ (size\_t)((IMSTB\_TEXTEDIT\_UNDOSTATECOUNT\ -\/\ state-\/>redo\_point\ -\/\ 1)\ *\ \textcolor{keyword}{sizeof}(state-\/>undo\_rec[0]));}
+\DoxyCodeLine{01190\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buf\_begin\ =\ (\textcolor{keywordtype}{char}*)state-\/>undo\_rec;\ (void)buf\_begin;}
+\DoxyCodeLine{01191\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buf\_end\ \ \ =\ (\textcolor{keywordtype}{char}*)state-\/>undo\_rec\ +\ \textcolor{keyword}{sizeof}(state-\/>undo\_rec);\ (void)buf\_end;}
+\DoxyCodeLine{01192\ \ \ \ \ \ \ IM\_ASSERT(((\textcolor{keywordtype}{char}*)(state-\/>undo\_rec\ +\ state-\/>redo\_point))\ >=\ buf\_begin);}
+\DoxyCodeLine{01193\ \ \ \ \ \ \ IM\_ASSERT(((\textcolor{keywordtype}{char}*)(state-\/>undo\_rec\ +\ state-\/>redo\_point\ +\ 1)\ +\ move\_size)\ <=\ buf\_end);}
+\DoxyCodeLine{01194\ \ \ \ \ \ \ IMSTB\_TEXTEDIT\_memmove(state-\/>undo\_rec\ +\ state-\/>redo\_point+1,\ state-\/>undo\_rec\ +\ state-\/>redo\_point,\ move\_size);}
+\DoxyCodeLine{01195\ }
+\DoxyCodeLine{01196\ \ \ \ \ \ \ \textcolor{comment}{//\ now\ move\ redo\_point\ to\ point\ to\ the\ new\ one}}
+\DoxyCodeLine{01197\ \ \ \ \ \ \ ++state-\/>redo\_point;}
+\DoxyCodeLine{01198\ \ \ \ \}}
+\DoxyCodeLine{01199\ \}}
+\DoxyCodeLine{01200\ }
+\DoxyCodeLine{01201\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ *stb\_text\_create\_undo\_record(\doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state,\ \textcolor{keywordtype}{int}\ numchars)}
+\DoxyCodeLine{01202\ \{}
+\DoxyCodeLine{01203\ \ \ \ \textcolor{comment}{//\ any\ time\ we\ create\ a\ new\ undo\ record,\ we\ discard\ redo}}
+\DoxyCodeLine{01204\ \ \ \ stb\_textedit\_flush\_redo(state);}
+\DoxyCodeLine{01205\ }
+\DoxyCodeLine{01206\ \ \ \ \textcolor{comment}{//\ if\ we\ have\ no\ free\ records,\ we\ have\ to\ make\ room,\ by\ sliding\ the}}
+\DoxyCodeLine{01207\ \ \ \ \textcolor{comment}{//\ existing\ records\ down}}
+\DoxyCodeLine{01208\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>undo\_point\ ==\ IMSTB\_TEXTEDIT\_UNDOSTATECOUNT)}
+\DoxyCodeLine{01209\ \ \ \ \ \ \ stb\_textedit\_discard\_undo(state);}
+\DoxyCodeLine{01210\ }
+\DoxyCodeLine{01211\ \ \ \ \textcolor{comment}{//\ if\ the\ characters\ to\ store\ won't\ possibly\ fit\ in\ the\ buffer,\ we\ can't\ undo}}
+\DoxyCodeLine{01212\ \ \ \ \textcolor{keywordflow}{if}\ (numchars\ >\ IMSTB\_TEXTEDIT\_UNDOCHARCOUNT)\ \{}
+\DoxyCodeLine{01213\ \ \ \ \ \ \ state-\/>undo\_point\ =\ 0;}
+\DoxyCodeLine{01214\ \ \ \ \ \ \ state-\/>undo\_char\_point\ =\ 0;}
+\DoxyCodeLine{01215\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{01216\ \ \ \ \}}
+\DoxyCodeLine{01217\ }
+\DoxyCodeLine{01218\ \ \ \ \textcolor{comment}{//\ if\ we\ don't\ have\ enough\ free\ characters\ in\ the\ buffer,\ we\ have\ to\ make\ room}}
+\DoxyCodeLine{01219\ \ \ \ \textcolor{keywordflow}{while}\ (state-\/>undo\_char\_point\ +\ numchars\ >\ IMSTB\_TEXTEDIT\_UNDOCHARCOUNT)}
+\DoxyCodeLine{01220\ \ \ \ \ \ \ stb\_textedit\_discard\_undo(state);}
+\DoxyCodeLine{01221\ }
+\DoxyCodeLine{01222\ \ \ \ \textcolor{keywordflow}{return}\ \&state-\/>undo\_rec[state-\/>undo\_point++];}
+\DoxyCodeLine{01223\ \}}
+\DoxyCodeLine{01224\ }
+\DoxyCodeLine{01225\ \textcolor{keyword}{static}\ IMSTB\_TEXTEDIT\_CHARTYPE\ *stb\_text\_createundo(\doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state,\ \textcolor{keywordtype}{int}\ pos,\ \textcolor{keywordtype}{int}\ insert\_len,\ \textcolor{keywordtype}{int}\ delete\_len)}
+\DoxyCodeLine{01226\ \{}
+\DoxyCodeLine{01227\ \ \ \ \doxymbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ *r\ =\ stb\_text\_create\_undo\_record(state,\ insert\_len);}
+\DoxyCodeLine{01228\ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ NULL)}
+\DoxyCodeLine{01229\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{01230\ }
+\DoxyCodeLine{01231\ \ \ \ r-\/>where\ =\ pos;}
+\DoxyCodeLine{01232\ \ \ \ r-\/>insert\_length\ =\ (IMSTB\_TEXTEDIT\_POSITIONTYPE)\ insert\_len;}
+\DoxyCodeLine{01233\ \ \ \ r-\/>delete\_length\ =\ (IMSTB\_TEXTEDIT\_POSITIONTYPE)\ delete\_len;}
+\DoxyCodeLine{01234\ }
+\DoxyCodeLine{01235\ \ \ \ \textcolor{keywordflow}{if}\ (insert\_len\ ==\ 0)\ \{}
+\DoxyCodeLine{01236\ \ \ \ \ \ \ r-\/>char\_storage\ =\ -\/1;}
+\DoxyCodeLine{01237\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{01238\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01239\ \ \ \ \ \ \ r-\/>char\_storage\ =\ state-\/>undo\_char\_point;}
+\DoxyCodeLine{01240\ \ \ \ \ \ \ state-\/>undo\_char\_point\ +=\ insert\_len;}
+\DoxyCodeLine{01241\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&state-\/>undo\_char[r-\/>char\_storage];}
+\DoxyCodeLine{01242\ \ \ \ \}}
+\DoxyCodeLine{01243\ \}}
+\DoxyCodeLine{01244\ }
+\DoxyCodeLine{01245\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_undo(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{01246\ \{}
+\DoxyCodeLine{01247\ \ \ \ \doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *s\ =\ \&state-\/>undostate;}
+\DoxyCodeLine{01248\ \ \ \ \doxymbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ u,\ *r;}
+\DoxyCodeLine{01249\ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>undo\_point\ ==\ 0)}
+\DoxyCodeLine{01250\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01251\ }
+\DoxyCodeLine{01252\ \ \ \ \textcolor{comment}{//\ we\ need\ to\ do\ two\ things:\ apply\ the\ undo\ record,\ and\ create\ a\ redo\ record}}
+\DoxyCodeLine{01253\ \ \ \ u\ =\ s-\/>undo\_rec[s-\/>undo\_point-\/1];}
+\DoxyCodeLine{01254\ \ \ \ r\ =\ \&s-\/>undo\_rec[s-\/>redo\_point-\/1];}
+\DoxyCodeLine{01255\ \ \ \ r-\/>char\_storage\ =\ -\/1;}
+\DoxyCodeLine{01256\ }
+\DoxyCodeLine{01257\ \ \ \ r-\/>insert\_length\ =\ u.delete\_length;}
+\DoxyCodeLine{01258\ \ \ \ r-\/>delete\_length\ =\ u.insert\_length;}
+\DoxyCodeLine{01259\ \ \ \ r-\/>where\ =\ u.where;}
+\DoxyCodeLine{01260\ }
+\DoxyCodeLine{01261\ \ \ \ \textcolor{keywordflow}{if}\ (u.delete\_length)\ \{}
+\DoxyCodeLine{01262\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ undo\ record\ says\ to\ delete\ characters,\ then\ the\ redo\ record\ will}}
+\DoxyCodeLine{01263\ \ \ \ \ \ \ \textcolor{comment}{//\ need\ to\ re-\/insert\ the\ characters\ that\ get\ deleted,\ so\ we\ need\ to\ store}}
+\DoxyCodeLine{01264\ \ \ \ \ \ \ \textcolor{comment}{//\ them.}}
+\DoxyCodeLine{01265\ }
+\DoxyCodeLine{01266\ \ \ \ \ \ \ \textcolor{comment}{//\ there\ are\ three\ cases:}}
+\DoxyCodeLine{01267\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ there's\ enough\ room\ to\ store\ the\ characters}}
+\DoxyCodeLine{01268\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ characters\ stored\ for\ *redoing*\ don't\ leave\ room\ for\ redo}}
+\DoxyCodeLine{01269\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ characters\ stored\ for\ *undoing*\ don't\ leave\ room\ for\ redo}}
+\DoxyCodeLine{01270\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ last\ is\ true,\ we\ have\ to\ bail}}
+\DoxyCodeLine{01271\ }
+\DoxyCodeLine{01272\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>undo\_char\_point\ +\ u.delete\_length\ >=\ IMSTB\_TEXTEDIT\_UNDOCHARCOUNT)\ \{}
+\DoxyCodeLine{01273\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ undo\ records\ take\ up\ too\ much\ character\ space;\ there's\ no\ space\ to\ store\ the\ redo\ characters}}
+\DoxyCodeLine{01274\ \ \ \ \ \ \ \ \ \ r-\/>insert\_length\ =\ 0;}
+\DoxyCodeLine{01275\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01276\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01277\ }
+\DoxyCodeLine{01278\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there's\ definitely\ room\ to\ store\ the\ characters\ eventually}}
+\DoxyCodeLine{01279\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (s-\/>undo\_char\_point\ +\ u.delete\_length\ >\ s-\/>redo\_char\_point)\ \{}
+\DoxyCodeLine{01280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ should\ never\ happen:}}
+\DoxyCodeLine{01281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>redo\_point\ ==\ IMSTB\_TEXTEDIT\_UNDOSTATECOUNT)}
+\DoxyCodeLine{01282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01283\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there's\ currently\ not\ enough\ room,\ so\ discard\ a\ redo\ record}}
+\DoxyCodeLine{01284\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_discard\_redo(s);}
+\DoxyCodeLine{01285\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01286\ \ \ \ \ \ \ \ \ \ r\ =\ \&s-\/>undo\_rec[s-\/>redo\_point-\/1];}
+\DoxyCodeLine{01287\ }
+\DoxyCodeLine{01288\ \ \ \ \ \ \ \ \ \ r-\/>char\_storage\ =\ s-\/>redo\_char\_point\ -\/\ u.delete\_length;}
+\DoxyCodeLine{01289\ \ \ \ \ \ \ \ \ \ s-\/>redo\_char\_point\ =\ s-\/>redo\_char\_point\ -\/\ u.delete\_length;}
+\DoxyCodeLine{01290\ }
+\DoxyCodeLine{01291\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ save\ the\ characters}}
+\DoxyCodeLine{01292\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ u.delete\_length;\ ++i)}
+\DoxyCodeLine{01293\ \ \ \ \ \ \ \ \ \ \ \ \ s-\/>undo\_char[r-\/>char\_storage\ +\ i]\ =\ STB\_TEXTEDIT\_GETCHAR(str,\ u.where\ +\ i);}
+\DoxyCodeLine{01294\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01295\ }
+\DoxyCodeLine{01296\ \ \ \ \ \ \ \textcolor{comment}{//\ now\ we\ can\ carry\ out\ the\ deletion}}
+\DoxyCodeLine{01297\ \ \ \ \ \ \ STB\_TEXTEDIT\_DELETECHARS(str,\ u.where,\ u.delete\_length);}
+\DoxyCodeLine{01298\ \ \ \ \}}
+\DoxyCodeLine{01299\ }
+\DoxyCodeLine{01300\ \ \ \ \textcolor{comment}{//\ check\ type\ of\ recorded\ action:}}
+\DoxyCodeLine{01301\ \ \ \ \textcolor{keywordflow}{if}\ (u.insert\_length)\ \{}
+\DoxyCodeLine{01302\ \ \ \ \ \ \ \textcolor{comment}{//\ easy\ case:\ was\ a\ deletion,\ so\ we\ need\ to\ insert\ n\ characters}}
+\DoxyCodeLine{01303\ \ \ \ \ \ \ STB\_TEXTEDIT\_INSERTCHARS(str,\ u.where,\ \&s-\/>undo\_char[u.char\_storage],\ u.insert\_length);}
+\DoxyCodeLine{01304\ \ \ \ \ \ \ s-\/>undo\_char\_point\ -\/=\ u.insert\_length;}
+\DoxyCodeLine{01305\ \ \ \ \}}
+\DoxyCodeLine{01306\ }
+\DoxyCodeLine{01307\ \ \ \ state-\/>cursor\ =\ u.where\ +\ u.insert\_length;}
+\DoxyCodeLine{01308\ }
+\DoxyCodeLine{01309\ \ \ \ s-\/>undo\_point-\/-\/;}
+\DoxyCodeLine{01310\ \ \ \ s-\/>redo\_point-\/-\/;}
+\DoxyCodeLine{01311\ \}}
+\DoxyCodeLine{01312\ }
+\DoxyCodeLine{01313\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_redo(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{01314\ \{}
+\DoxyCodeLine{01315\ \ \ \ \doxymbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *s\ =\ \&state-\/>undostate;}
+\DoxyCodeLine{01316\ \ \ \ \doxymbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ *u,\ r;}
+\DoxyCodeLine{01317\ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>redo\_point\ ==\ IMSTB\_TEXTEDIT\_UNDOSTATECOUNT)}
+\DoxyCodeLine{01318\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01319\ }
+\DoxyCodeLine{01320\ \ \ \ \textcolor{comment}{//\ we\ need\ to\ do\ two\ things:\ apply\ the\ redo\ record,\ and\ create\ an\ undo\ record}}
+\DoxyCodeLine{01321\ \ \ \ u\ =\ \&s-\/>undo\_rec[s-\/>undo\_point];}
+\DoxyCodeLine{01322\ \ \ \ r\ =\ s-\/>undo\_rec[s-\/>redo\_point];}
+\DoxyCodeLine{01323\ }
+\DoxyCodeLine{01324\ \ \ \ \textcolor{comment}{//\ we\ KNOW\ there\ must\ be\ room\ for\ the\ undo\ record,\ because\ the\ redo\ record}}
+\DoxyCodeLine{01325\ \ \ \ \textcolor{comment}{//\ was\ derived\ from\ an\ undo\ record}}
+\DoxyCodeLine{01326\ }
+\DoxyCodeLine{01327\ \ \ \ u-\/>delete\_length\ =\ r.insert\_length;}
+\DoxyCodeLine{01328\ \ \ \ u-\/>insert\_length\ =\ r.delete\_length;}
+\DoxyCodeLine{01329\ \ \ \ u-\/>where\ =\ r.where;}
+\DoxyCodeLine{01330\ \ \ \ u-\/>char\_storage\ =\ -\/1;}
+\DoxyCodeLine{01331\ }
+\DoxyCodeLine{01332\ \ \ \ \textcolor{keywordflow}{if}\ (r.delete\_length)\ \{}
+\DoxyCodeLine{01333\ \ \ \ \ \ \ \textcolor{comment}{//\ the\ redo\ record\ requires\ us\ to\ delete\ characters,\ so\ the\ undo\ record}}
+\DoxyCodeLine{01334\ \ \ \ \ \ \ \textcolor{comment}{//\ needs\ to\ store\ the\ characters}}
+\DoxyCodeLine{01335\ }
+\DoxyCodeLine{01336\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>undo\_char\_point\ +\ u-\/>insert\_length\ >\ s-\/>redo\_char\_point)\ \{}
+\DoxyCodeLine{01337\ \ \ \ \ \ \ \ \ \ u-\/>insert\_length\ =\ 0;}
+\DoxyCodeLine{01338\ \ \ \ \ \ \ \ \ \ u-\/>delete\_length\ =\ 0;}
+\DoxyCodeLine{01339\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01340\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01341\ \ \ \ \ \ \ \ \ \ u-\/>char\_storage\ =\ s-\/>undo\_char\_point;}
+\DoxyCodeLine{01342\ \ \ \ \ \ \ \ \ \ s-\/>undo\_char\_point\ =\ s-\/>undo\_char\_point\ +\ u-\/>insert\_length;}
+\DoxyCodeLine{01343\ }
+\DoxyCodeLine{01344\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ save\ the\ characters}}
+\DoxyCodeLine{01345\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ u-\/>insert\_length;\ ++i)}
+\DoxyCodeLine{01346\ \ \ \ \ \ \ \ \ \ \ \ \ s-\/>undo\_char[u-\/>char\_storage\ +\ i]\ =\ STB\_TEXTEDIT\_GETCHAR(str,\ u-\/>where\ +\ i);}
+\DoxyCodeLine{01347\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01348\ }
+\DoxyCodeLine{01349\ \ \ \ \ \ \ STB\_TEXTEDIT\_DELETECHARS(str,\ r.where,\ r.delete\_length);}
+\DoxyCodeLine{01350\ \ \ \ \}}
+\DoxyCodeLine{01351\ }
+\DoxyCodeLine{01352\ \ \ \ \textcolor{keywordflow}{if}\ (r.insert\_length)\ \{}
+\DoxyCodeLine{01353\ \ \ \ \ \ \ \textcolor{comment}{//\ easy\ case:\ need\ to\ insert\ n\ characters}}
+\DoxyCodeLine{01354\ \ \ \ \ \ \ STB\_TEXTEDIT\_INSERTCHARS(str,\ r.where,\ \&s-\/>undo\_char[r.char\_storage],\ r.insert\_length);}
+\DoxyCodeLine{01355\ \ \ \ \ \ \ s-\/>redo\_char\_point\ +=\ r.insert\_length;}
+\DoxyCodeLine{01356\ \ \ \ \}}
+\DoxyCodeLine{01357\ }
+\DoxyCodeLine{01358\ \ \ \ state-\/>cursor\ =\ r.where\ +\ r.insert\_length;}
+\DoxyCodeLine{01359\ }
+\DoxyCodeLine{01360\ \ \ \ s-\/>undo\_point++;}
+\DoxyCodeLine{01361\ \ \ \ s-\/>redo\_point++;}
+\DoxyCodeLine{01362\ \}}
+\DoxyCodeLine{01363\ }
+\DoxyCodeLine{01364\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_insert(\doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ length)}
+\DoxyCodeLine{01365\ \{}
+\DoxyCodeLine{01366\ \ \ \ stb\_text\_createundo(\&state-\/>undostate,\ where,\ 0,\ length);}
+\DoxyCodeLine{01367\ \}}
+\DoxyCodeLine{01368\ }
+\DoxyCodeLine{01369\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_delete(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ length)}
+\DoxyCodeLine{01370\ \{}
+\DoxyCodeLine{01371\ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01372\ \ \ \ IMSTB\_TEXTEDIT\_CHARTYPE\ *p\ =\ stb\_text\_createundo(\&state-\/>undostate,\ where,\ length,\ 0);}
+\DoxyCodeLine{01373\ \ \ \ \textcolor{keywordflow}{if}\ (p)\ \{}
+\DoxyCodeLine{01374\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ length;\ ++i)}
+\DoxyCodeLine{01375\ \ \ \ \ \ \ \ \ \ p[i]\ =\ STB\_TEXTEDIT\_GETCHAR(str,\ where+i);}
+\DoxyCodeLine{01376\ \ \ \ \}}
+\DoxyCodeLine{01377\ \}}
+\DoxyCodeLine{01378\ }
+\DoxyCodeLine{01379\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_replace(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ old\_length,\ \textcolor{keywordtype}{int}\ new\_length)}
+\DoxyCodeLine{01380\ \{}
+\DoxyCodeLine{01381\ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01382\ \ \ \ IMSTB\_TEXTEDIT\_CHARTYPE\ *p\ =\ stb\_text\_createundo(\&state-\/>undostate,\ where,\ old\_length,\ new\_length);}
+\DoxyCodeLine{01383\ \ \ \ \textcolor{keywordflow}{if}\ (p)\ \{}
+\DoxyCodeLine{01384\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ old\_length;\ ++i)}
+\DoxyCodeLine{01385\ \ \ \ \ \ \ \ \ \ p[i]\ =\ STB\_TEXTEDIT\_GETCHAR(str,\ where+i);}
+\DoxyCodeLine{01386\ \ \ \ \}}
+\DoxyCodeLine{01387\ \}}
+\DoxyCodeLine{01388\ }
+\DoxyCodeLine{01389\ \textcolor{comment}{//\ reset\ the\ state\ to\ default}}
+\DoxyCodeLine{01390\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_clear\_state(\doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ is\_single\_line)}
+\DoxyCodeLine{01391\ \{}
+\DoxyCodeLine{01392\ \ \ \ state-\/>undostate.undo\_point\ =\ 0;}
+\DoxyCodeLine{01393\ \ \ \ state-\/>undostate.undo\_char\_point\ =\ 0;}
+\DoxyCodeLine{01394\ \ \ \ state-\/>undostate.redo\_point\ =\ IMSTB\_TEXTEDIT\_UNDOSTATECOUNT;}
+\DoxyCodeLine{01395\ \ \ \ state-\/>undostate.redo\_char\_point\ =\ IMSTB\_TEXTEDIT\_UNDOCHARCOUNT;}
+\DoxyCodeLine{01396\ \ \ \ state-\/>select\_end\ =\ state-\/>select\_start\ =\ 0;}
+\DoxyCodeLine{01397\ \ \ \ state-\/>cursor\ =\ 0;}
+\DoxyCodeLine{01398\ \ \ \ state-\/>has\_preferred\_x\ =\ 0;}
+\DoxyCodeLine{01399\ \ \ \ state-\/>preferred\_x\ =\ 0;}
+\DoxyCodeLine{01400\ \ \ \ state-\/>cursor\_at\_end\_of\_line\ =\ 0;}
+\DoxyCodeLine{01401\ \ \ \ state-\/>initialized\ =\ 1;}
+\DoxyCodeLine{01402\ \ \ \ state-\/>single\_line\ =\ (\textcolor{keywordtype}{unsigned}\ char)\ is\_single\_line;}
+\DoxyCodeLine{01403\ \ \ \ state-\/>insert\_mode\ =\ 0;}
+\DoxyCodeLine{01404\ \ \ \ state-\/>row\_count\_per\_page\ =\ 0;}
+\DoxyCodeLine{01405\ \}}
+\DoxyCodeLine{01406\ }
+\DoxyCodeLine{01407\ \textcolor{comment}{//\ API\ initialize}}
+\DoxyCodeLine{01408\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_initialize\_state(\doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ is\_single\_line)}
+\DoxyCodeLine{01409\ \{}
+\DoxyCodeLine{01410\ \ \ \ stb\_textedit\_clear\_state(state,\ is\_single\_line);}
+\DoxyCodeLine{01411\ \}}
+\DoxyCodeLine{01412\ }
+\DoxyCodeLine{01413\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{01414\ \textcolor{preprocessor}{\#pragma\ GCC\ diagnostic\ push}}
+\DoxyCodeLine{01415\ \textcolor{preprocessor}{\#pragma\ GCC\ diagnostic\ ignored\ "{}-\/Wcast-\/qual"{}}}
+\DoxyCodeLine{01416\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01417\ }
+\DoxyCodeLine{01418\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_paste(IMSTB\_TEXTEDIT\_STRING\ *str,\ \doxymbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ IMSTB\_TEXTEDIT\_CHARTYPE\ \textcolor{keyword}{const}\ *ctext,\ \textcolor{keywordtype}{int}\ len)}
+\DoxyCodeLine{01419\ \{}
+\DoxyCodeLine{01420\ \ \ \ \textcolor{keywordflow}{return}\ stb\_textedit\_paste\_internal(str,\ state,\ (IMSTB\_TEXTEDIT\_CHARTYPE\ *)\ ctext,\ len);}
+\DoxyCodeLine{01421\ \}}
+\DoxyCodeLine{01422\ }
+\DoxyCodeLine{01423\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{01424\ \textcolor{preprocessor}{\#pragma\ GCC\ diagnostic\ pop}}
+\DoxyCodeLine{01425\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01426\ }
+\DoxyCodeLine{01427\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//IMSTB\_TEXTEDIT\_IMPLEMENTATION}}
+\DoxyCodeLine{01428\ }
+\DoxyCodeLine{01429\ \textcolor{comment}{/*}}
+\DoxyCodeLine{01430\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01431\ \textcolor{comment}{This\ software\ is\ available\ under\ 2\ licenses\ -\/-\/\ choose\ whichever\ you\ prefer.}}
+\DoxyCodeLine{01432\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01433\ \textcolor{comment}{ALTERNATIVE\ A\ -\/\ MIT\ License}}
+\DoxyCodeLine{01434\ \textcolor{comment}{Copyright\ (c)\ 2017\ Sean\ Barrett}}
+\DoxyCodeLine{01435\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of}}
+\DoxyCodeLine{01436\ \textcolor{comment}{this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal\ in}}
+\DoxyCodeLine{01437\ \textcolor{comment}{the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to}}
+\DoxyCodeLine{01438\ \textcolor{comment}{use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell\ copies}}
+\DoxyCodeLine{01439\ \textcolor{comment}{of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do}}
+\DoxyCodeLine{01440\ \textcolor{comment}{so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{01441\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{01442\ \textcolor{comment}{copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{01443\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{01444\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{01445\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{01446\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{01447\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{01448\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{01449\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{01450\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01451\ \textcolor{comment}{ALTERNATIVE\ B\ -\/\ Public\ Domain\ (www.unlicense.org)}}
+\DoxyCodeLine{01452\ \textcolor{comment}{This\ is\ free\ and\ unencumbered\ software\ released\ into\ the\ public\ domain.}}
+\DoxyCodeLine{01453\ \textcolor{comment}{Anyone\ is\ free\ to\ copy,\ modify,\ publish,\ use,\ compile,\ sell,\ or\ distribute\ this}}
+\DoxyCodeLine{01454\ \textcolor{comment}{software,\ either\ in\ source\ code\ form\ or\ as\ a\ compiled\ binary,\ for\ any\ purpose,}}
+\DoxyCodeLine{01455\ \textcolor{comment}{commercial\ or\ non-\/commercial,\ and\ by\ any\ means.}}
+\DoxyCodeLine{01456\ \textcolor{comment}{In\ jurisdictions\ that\ recognize\ copyright\ laws,\ the\ author\ or\ authors\ of\ this}}
+\DoxyCodeLine{01457\ \textcolor{comment}{software\ dedicate\ any\ and\ all\ copyright\ interest\ in\ the\ software\ to\ the\ public}}
+\DoxyCodeLine{01458\ \textcolor{comment}{domain.\ We\ make\ this\ dedication\ for\ the\ benefit\ of\ the\ public\ at\ large\ and\ to}}
+\DoxyCodeLine{01459\ \textcolor{comment}{the\ detriment\ of\ our\ heirs\ and\ successors.\ We\ intend\ this\ dedication\ to\ be\ an}}
+\DoxyCodeLine{01460\ \textcolor{comment}{overt\ act\ of\ relinquishment\ in\ perpetuity\ of\ all\ present\ and\ future\ rights\ to}}
+\DoxyCodeLine{01461\ \textcolor{comment}{this\ software\ under\ copyright\ law.}}
+\DoxyCodeLine{01462\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{01463\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{01464\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{01465\ \textcolor{comment}{AUTHORS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER\ LIABILITY,\ WHETHER\ IN\ AN}}
+\DoxyCodeLine{01466\ \textcolor{comment}{ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION}}
+\DoxyCodeLine{01467\ \textcolor{comment}{WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE\ SOFTWARE.}}
+\DoxyCodeLine{01468\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01469\ \textcolor{comment}{*/}}
+
+\end{DoxyCode}

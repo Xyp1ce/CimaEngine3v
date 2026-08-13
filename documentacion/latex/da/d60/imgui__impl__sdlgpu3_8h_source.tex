@@ -1,0 +1,57 @@
+\doxysection{imgui\+\_\+impl\+\_\+sdlgpu3.\+h}
+\hypertarget{imgui__impl__sdlgpu3_8h_source}{}\label{imgui__impl__sdlgpu3_8h_source}\index{build/\_deps/imgui-\/src/backends/imgui\_impl\_sdlgpu3.h@{build/\_deps/imgui-\/src/backends/imgui\_impl\_sdlgpu3.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ dear\ imgui:\ Renderer\ Backend\ for\ SDL\_GPU}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ This\ needs\ to\ be\ used\ along\ with\ the\ SDL3\ Platform\ Backend}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Implemented\ features:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ [X]\ Renderer:\ User\ texture\ binding.\ Use\ simply\ cast\ a\ reference\ to\ your\ SDL\_GPUTextureSamplerBinding\ to\ ImTextureID.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ [X]\ Renderer:\ Large\ meshes\ support\ (64k+\ vertices)\ with\ 16-\/bit\ indices.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Missing\ features:}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ [\ ]\ Renderer:\ Multi-\/viewport\ support\ (multiple\ windows).}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ The\ aim\ of\ imgui\_impl\_sdlgpu3.h/.cpp\ is\ to\ be\ usable\ in\ your\ engine\ without\ any\ modification.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ IF\ YOU\ FEEL\ YOU\ NEED\ TO\ MAKE\ ANY\ CHANGE\ TO\ THIS\ CODE,\ please\ share\ them\ and\ your\ feedback\ at\ https://github.com/ocornut/imgui/}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ You\ can\ use\ unmodified\ imgui\_impl\_*\ files\ in\ your\ project.\ See\ examples/\ folder\ for\ examples\ of\ using\ this.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Prefer\ including\ the\ entire\ imgui/\ repository\ into\ your\ project\ (either\ as\ a\ copy\ or\ as\ a\ submodule),\ and\ only\ build\ the\ backends\ you\ need.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Learn\ about\ Dear\ ImGui:}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ -\/\ FAQ\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ https://dearimgui.com/faq}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ -\/\ Getting\ Started\ \ \ \ \ \ https://dearimgui.com/getting-\/started}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ -\/\ Documentation\ \ \ \ \ \ \ \ https://dearimgui.com/docs\ (same\ as\ your\ local\ docs/\ folder).}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ -\/\ Introduction,\ links\ and\ more\ at\ the\ top\ of\ imgui.cpp}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Important\ note\ to\ the\ reader\ who\ wish\ to\ integrate\ imgui\_impl\_sdlgpu3.cpp/.h\ in\ their\ own\ engine/app.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ -\/\ Unline\ other\ backends,\ the\ user\ must\ call\ the\ function\ Imgui\_ImplSDLGPU\_PrepareDrawData\ BEFORE\ issuing\ a\ SDL\_GPURenderPass\ containing\ ImGui\_ImplSDLGPU\_RenderDrawData.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \ \ Calling\ the\ function\ is\ MANDATORY,\ otherwise\ the\ ImGui\ will\ not\ upload\ neither\ the\ vertex\ nor\ the\ index\ buffer\ for\ the\ GPU.\ See\ imgui\_impl\_sdlgpu3.cpp\ for\ more\ info.}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}imgui.h"{}}\ \ \ \ \ \ \textcolor{comment}{//\ IMGUI\_IMPL\_API}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#ifndef\ IMGUI\_DISABLE}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <SDL3/SDL\_gpu.h>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ Initialization\ data,\ for\ ImGui\_ImplSDLGPU\_Init()}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ -\/\ Remember\ to\ set\ ColorTargetFormat\ to\ the\ correct\ format.\ If\ you're\ rendering\ to\ the\ swapchain,\ call\ SDL\_GetGPUSwapchainTextureFormat\ to\ query\ the\ right\ value}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_im_gui___impl_s_d_l_g_p_u3___init_info}{ImGui\_ImplSDLGPU3\_InitInfo}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ SDL\_GPUDevice*\ \ \ \ \ \ \ Device\ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00035\ \ \ \ \ SDL\_GPUTextureFormat\ ColorTargetFormat\ \ =\ SDL\_GPU\_TEXTUREFORMAT\_INVALID;}
+\DoxyCodeLine{00036\ \ \ \ \ SDL\_GPUSampleCount\ \ \ MSAASamples\ \ \ \ \ \ \ \ =\ SDL\_GPU\_SAMPLECOUNT\_1;}
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Follow\ "{}Getting\ Started"{}\ link\ and\ check\ examples/\ folder\ to\ learn\ about\ using\ backends!}}
+\DoxyCodeLine{00040\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{bool}\ \ \ \ \ ImGui\_ImplSDLGPU3\_Init(\doxymbox{\hyperlink{struct_im_gui___impl_s_d_l_g_p_u3___init_info}{ImGui\_ImplSDLGPU3\_InitInfo}}*\ info);}
+\DoxyCodeLine{00041\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ ImGui\_ImplSDLGPU3\_Shutdown();}
+\DoxyCodeLine{00042\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ ImGui\_ImplSDLGPU3\_NewFrame();}
+\DoxyCodeLine{00043\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ Imgui\_ImplSDLGPU3\_PrepareDrawData(\doxymbox{\hyperlink{struct_im_draw_data}{ImDrawData}}*\ draw\_data,\ SDL\_GPUCommandBuffer*\ command\_buffer);}
+\DoxyCodeLine{00044\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ ImGui\_ImplSDLGPU3\_RenderDrawData(\doxymbox{\hyperlink{struct_im_draw_data}{ImDrawData}}*\ draw\_data,\ SDL\_GPUCommandBuffer*\ command\_buffer,\ SDL\_GPURenderPass*\ render\_pass,\ SDL\_GPUGraphicsPipeline*\ pipeline\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ ImGui\_ImplSDLGPU3\_CreateDeviceObjects();}
+\DoxyCodeLine{00047\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ ImGui\_ImplSDLGPU3\_DestroyDeviceObjects();}
+\DoxyCodeLine{00048\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ ImGui\_ImplSDLGPU3\_CreateFontsTexture();}
+\DoxyCodeLine{00049\ IMGUI\_IMPL\_API\ \textcolor{keywordtype}{void}\ \ \ \ \ ImGui\_ImplSDLGPU3\_DestroyFontsTexture();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \#ifndef\ IMGUI\_DISABLE}}
+
+\end{DoxyCode}

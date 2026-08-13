@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Archivo de código fuente src/Motor/Utils/CEInterfaces.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d2/d21/_c_e_interfaces_8hpp_source.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">CEInterfaces.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span>CE</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../df/d28/class_c_e_1_1_i_iterador.html">   14</a></span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">class </span><a class="code hl_class" href="../../df/d28/class_c_e_1_1_i_iterador.html">IIterador</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../df/d28/class_c_e_1_1_i_iterador.html#a688fd4df583c36dd1fdb9a5ffe030ed5">   21</a></span>            <span class="keyword">virtual</span> T* <a class="code hl_function" href="../../df/d28/class_c_e_1_1_i_iterador.html#a688fd4df583c36dd1fdb9a5ffe030ed5">iterInicio</a>()=0; </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../df/d28/class_c_e_1_1_i_iterador.html#aa5d764da7b0c7538f37c41c6eb675612">   27</a></span>            <span class="keyword">virtual</span> T* <a class="code hl_function" href="../../df/d28/class_c_e_1_1_i_iterador.html#aa5d764da7b0c7538f37c41c6eb675612">iterFinal</a>()=0; </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="../../df/d28/class_c_e_1_1_i_iterador.html#a03626272fab97999cd038e693a3085ca">   33</a></span>            <span class="keyword">virtual</span> T* <a class="code hl_function" href="../../df/d28/class_c_e_1_1_i_iterador.html#a03626272fab97999cd038e693a3085ca">iterActual</a>()=0; </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../df/d28/class_c_e_1_1_i_iterador.html#a7aff9318dd7b0bcc27112fd7bd21f224">   39</a></span>            <span class="keyword">virtual</span> T* <a class="code hl_function" href="../../df/d28/class_c_e_1_1_i_iterador.html#a7aff9318dd7b0bcc27112fd7bd21f224">iterSiguiente</a>()=0; </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../df/d28/class_c_e_1_1_i_iterador.html#a10d95ddf7c07185feb11bf452986a781">   45</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="../../df/d28/class_c_e_1_1_i_iterador.html#a10d95ddf7c07185feb11bf452986a781">iterTermino</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    };</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="};">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html">   57</a></span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">class </span><a class="code hl_class" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html">IManipularDatos</a></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a6898c3d1fc22006c3d8365d8ca26332f">   64</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a6898c3d1fc22006c3d8365d8ca26332f">agregarDato</a>(<span class="keyword">const</span> T&amp; d)=0;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#abcd0ea71969dde05f752535f1ed5b2f5">   71</a></span>            <span class="keyword">virtual</span> T <a class="code hl_function" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#abcd0ea71969dde05f752535f1ed5b2f5">eliminarDato</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)=0;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a6e003e13fd28e423c607e4a7a61b5df9">   77</a></span>            <span class="keyword">virtual</span> T <a class="code hl_function" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a6e003e13fd28e423c607e4a7a61b5df9">popDato</a>()=0; </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a2c60ce683e56191cce1faa92ac2f441d">   83</a></span>            <span class="keyword">virtual</span> T <a class="code hl_function" href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a2c60ce683e56191cce1faa92ac2f441d">popFrontDato</a>()=0; </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    };</div>
+</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="ttc" id="aclass_c_e_1_1_i_iterador_html"><div class="ttname"><a href="../../df/d28/class_c_e_1_1_i_iterador.html">CE::IIterador</a></div><div class="ttdoc">Interfaz template para iteración sobre contenedores.</div><div class="ttdef"><b>Definition</b> CEInterfaces.hpp:15</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_iterador_html_a03626272fab97999cd038e693a3085ca"><div class="ttname"><a href="../../df/d28/class_c_e_1_1_i_iterador.html#a03626272fab97999cd038e693a3085ca">CE::IIterador::iterActual</a></div><div class="ttdeci">virtual T * iterActual()=0</div><div class="ttdoc">Obtiene el elemento actual sin mover.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_iterador_html_a10d95ddf7c07185feb11bf452986a781"><div class="ttname"><a href="../../df/d28/class_c_e_1_1_i_iterador.html#a10d95ddf7c07185feb11bf452986a781">CE::IIterador::iterTermino</a></div><div class="ttdeci">virtual bool iterTermino() const =0</div><div class="ttdoc">Verifica si la iteración ha terminado.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_iterador_html_a688fd4df583c36dd1fdb9a5ffe030ed5"><div class="ttname"><a href="../../df/d28/class_c_e_1_1_i_iterador.html#a688fd4df583c36dd1fdb9a5ffe030ed5">CE::IIterador::iterInicio</a></div><div class="ttdeci">virtual T * iterInicio()=0</div><div class="ttdoc">Mueve el iterador al primer elemento.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_iterador_html_a7aff9318dd7b0bcc27112fd7bd21f224"><div class="ttname"><a href="../../df/d28/class_c_e_1_1_i_iterador.html#a7aff9318dd7b0bcc27112fd7bd21f224">CE::IIterador::iterSiguiente</a></div><div class="ttdeci">virtual T * iterSiguiente()=0</div><div class="ttdoc">Avanza el iterador al siguiente elemento.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_iterador_html_aa5d764da7b0c7538f37c41c6eb675612"><div class="ttname"><a href="../../df/d28/class_c_e_1_1_i_iterador.html#aa5d764da7b0c7538f37c41c6eb675612">CE::IIterador::iterFinal</a></div><div class="ttdeci">virtual T * iterFinal()=0</div><div class="ttdoc">Mueve el iterador al último elemento.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_manipular_datos_html"><div class="ttname"><a href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html">CE::IManipularDatos</a></div><div class="ttdoc">Interfaz template para manipulación de datos en contenedores.</div><div class="ttdef"><b>Definition</b> CEInterfaces.hpp:58</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_manipular_datos_html_a2c60ce683e56191cce1faa92ac2f441d"><div class="ttname"><a href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a2c60ce683e56191cce1faa92ac2f441d">CE::IManipularDatos::popFrontDato</a></div><div class="ttdeci">virtual T popFrontDato()=0</div><div class="ttdoc">Elimina y retorna el elemento del inicio (pop front).</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_manipular_datos_html_a6898c3d1fc22006c3d8365d8ca26332f"><div class="ttname"><a href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a6898c3d1fc22006c3d8365d8ca26332f">CE::IManipularDatos::agregarDato</a></div><div class="ttdeci">virtual void agregarDato(const T &amp;d)=0</div><div class="ttdoc">Agrega un elemento al contenedor.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_manipular_datos_html_a6e003e13fd28e423c607e4a7a61b5df9"><div class="ttname"><a href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#a6e003e13fd28e423c607e4a7a61b5df9">CE::IManipularDatos::popDato</a></div><div class="ttdeci">virtual T popDato()=0</div><div class="ttdoc">Elimina y retorna el elemento del final.</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_manipular_datos_html_abcd0ea71969dde05f752535f1ed5b2f5"><div class="ttname"><a href="../../de/d1b/class_c_e_1_1_i_manipular_datos.html#abcd0ea71969dde05f752535f1ed5b2f5">CE::IManipularDatos::eliminarDato</a></div><div class="ttdeci">virtual T eliminarDato(int id)=0</div><div class="ttdoc">Elimina un elemento por su índice.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>Motor</b></li><li class="navelem"><b>Utils</b></li><li class="navelem"><b>CEInterfaces.hpp</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

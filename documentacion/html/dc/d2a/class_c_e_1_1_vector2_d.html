@@ -1,0 +1,590 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la clase CE::Vector2D</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('dc/d2a/class_c_e_1_1_vector2_d.html','../../','d5/d82/class_c_e_1_1_vector2_d-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la clase CE::Vector2D</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Clase para aritmética y geometría 2D.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../db/dfb/_vector2_d_8hpp_source.html">Vector2D.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a8f5cf1b4798fb5a841d62ccdd2313dac" id="r_a8f5cf1b4798fb5a841d62ccdd2313dac"><td class="memItemLeft"><a id="a8f5cf1b4798fb5a841d62ccdd2313dac" name="a8f5cf1b4798fb5a841d62ccdd2313dac"></a>
+&#160;</td><td class="memItemRight"><b>Vector2D</b> ()</td></tr>
+<tr class="memdesc:a8f5cf1b4798fb5a841d62ccdd2313dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor por defecto (0, 0). <br /></td></tr>
+<tr class="memitem:afeeb54430a0742854e62fe3d8054f2c0" id="r_afeeb54430a0742854e62fe3d8054f2c0"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#afeeb54430a0742854e62fe3d8054f2c0">Vector2D</a> (const float x, const float y)</td></tr>
+<tr class="memdesc:afeeb54430a0742854e62fe3d8054f2c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor con coordenadas explícitas.  <br /></td></tr>
+<tr class="memitem:a1d4091e39b5d802d23a2b4f7a3f6245d" id="r_a1d4091e39b5d802d23a2b4f7a3f6245d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a1d4091e39b5d802d23a2b4f7a3f6245d">Vector2D</a> (const float v)</td></tr>
+<tr class="memdesc:a1d4091e39b5d802d23a2b4f7a3f6245d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor de valor uniforme.  <br /></td></tr>
+<tr class="memitem:a097557e2398e83bbbc353c92cb064098" id="r_a097557e2398e83bbbc353c92cb064098"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a097557e2398e83bbbc353c92cb064098">Vector2D</a> (const sf::Vector2f &amp;cpy)</td></tr>
+<tr class="memdesc:a097557e2398e83bbbc353c92cb064098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor desde vector SFML.  <br /></td></tr>
+<tr class="memitem:a74080160e6650a25dc4ca6e7c22ec92a" id="r_a74080160e6650a25dc4ca6e7c22ec92a"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a74080160e6650a25dc4ca6e7c22ec92a">longitud</a> () const</td></tr>
+<tr class="memdesc:a74080160e6650a25dc4ca6e7c22ec92a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula la longitud/magnitud del vector.  <br /></td></tr>
+<tr class="memitem:aeb8758980b7f4f1ba1e4fe1e804a427e" id="r_aeb8758980b7f4f1ba1e4fe1e804a427e"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#aeb8758980b7f4f1ba1e4fe1e804a427e">magnitud</a> () const</td></tr>
+<tr class="memdesc:aeb8758980b7f4f1ba1e4fe1e804a427e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias para <a class="el" href="#a74080160e6650a25dc4ca6e7c22ec92a" title="Calcula la longitud/magnitud del vector.">longitud()</a> - obtiene magnitud.  <br /></td></tr>
+<tr class="memitem:a16e31cca39513ffa7f4dddc561990812" id="r_a16e31cca39513ffa7f4dddc561990812"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a16e31cca39513ffa7f4dddc561990812">distancia</a> (const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;o) const</td></tr>
+<tr class="memdesc:a16e31cca39513ffa7f4dddc561990812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula distancia hacia otro vector.  <br /></td></tr>
+<tr class="memitem:a9377c2215d1b694d0a1cf443c1347a60" id="r_a9377c2215d1b694d0a1cf443c1347a60"><td class="memItemLeft"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a9377c2215d1b694d0a1cf443c1347a60">normalizacion</a> ()</td></tr>
+<tr class="memdesc:a9377c2215d1b694d0a1cf443c1347a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normaliza el vector a magnitud 1.  <br /></td></tr>
+<tr class="memitem:ad285879e9871adcdb27bc172685a7be6" id="r_ad285879e9871adcdb27bc172685a7be6"><td class="memItemLeft"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ad285879e9871adcdb27bc172685a7be6">escala</a> (float s)</td></tr>
+<tr class="memdesc:ad285879e9871adcdb27bc172685a7be6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escala el vector por un factor.  <br /></td></tr>
+<tr class="memitem:a6bcff6bc8d232c9e71bf16578c11d567" id="r_a6bcff6bc8d232c9e71bf16578c11d567"><td class="memItemLeft"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a6bcff6bc8d232c9e71bf16578c11d567">suma</a> (const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;o)</td></tr>
+<tr class="memdesc:a6bcff6bc8d232c9e71bf16578c11d567"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suma otro vector al presente.  <br /></td></tr>
+<tr class="memitem:a1ea6b1436f6ffc4f2f9ae106b762b63b" id="r_a1ea6b1436f6ffc4f2f9ae106b762b63b"><td class="memItemLeft"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a1ea6b1436f6ffc4f2f9ae106b762b63b">resta</a> (const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;o)</td></tr>
+<tr class="memdesc:a1ea6b1436f6ffc4f2f9ae106b762b63b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resta otro vector del presente.  <br /></td></tr>
+<tr class="memitem:a373e44e30334e78ac47018a26150274a" id="r_a373e44e30334e78ac47018a26150274a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a373e44e30334e78ac47018a26150274a">operator==</a> (const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;v) const</td></tr>
+<tr class="memdesc:a373e44e30334e78ac47018a26150274a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compara igualdad entre vectores.  <br /></td></tr>
+<tr class="memitem:aa03ecd87f2aaddfbe4a12f527dd4979d" id="r_aa03ecd87f2aaddfbe4a12f527dd4979d"><td class="memItemLeft"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa03ecd87f2aaddfbe4a12f527dd4979d">operator+</a> (const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;v) const</td></tr>
+<tr class="memdesc:aa03ecd87f2aaddfbe4a12f527dd4979d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suma de vectores (crea nuevo vector).  <br /></td></tr>
+<tr class="memitem:a96b683ae9bba92b5f1f68f85d15bbb80" id="r_a96b683ae9bba92b5f1f68f85d15bbb80"><td class="memItemLeft"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a>&#160;</td><td class="memItemRight"><a class="el" href="#a96b683ae9bba92b5f1f68f85d15bbb80">operator-</a> (const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;v) const</td></tr>
+<tr class="memdesc:a96b683ae9bba92b5f1f68f85d15bbb80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resta de vectores (crea nuevo vector).  <br /></td></tr>
+<tr class="memitem:a046686ffb660405415c4a6f33b52ae3e" id="r_a046686ffb660405415c4a6f33b52ae3e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a046686ffb660405415c4a6f33b52ae3e">operator+=</a> (const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;v)</td></tr>
+<tr class="memdesc:a046686ffb660405415c4a6f33b52ae3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suma en lugar (modificación en situ).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos públicos</h2></td></tr>
+<tr class="memitem:a767bf22856e4a0134dcf15beccc68733" id="r_a767bf22856e4a0134dcf15beccc68733"><td class="memItemLeft"><a id="a767bf22856e4a0134dcf15beccc68733" name="a767bf22856e4a0134dcf15beccc68733"></a>
+float&#160;</td><td class="memItemRight"><b>x</b></td></tr>
+<tr class="memdesc:a767bf22856e4a0134dcf15beccc68733"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordenada X. <br /></td></tr>
+<tr class="memitem:a1605b342aa8f402b8c44ff0a4f9a02f9" id="r_a1605b342aa8f402b8c44ff0a4f9a02f9"><td class="memItemLeft"><a id="a1605b342aa8f402b8c44ff0a4f9a02f9" name="a1605b342aa8f402b8c44ff0a4f9a02f9"></a>
+float&#160;</td><td class="memItemRight"><b>y</b></td></tr>
+<tr class="memdesc:a1605b342aa8f402b8c44ff0a4f9a02f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordenada Y. <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+Amigas</h2></td></tr>
+<tr class="memitem:a3042faf2fa1b8228cc82456632e02532" id="r_a3042faf2fa1b8228cc82456632e02532"><td class="memItemLeft">std::ostream &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a3042faf2fa1b8228cc82456632e02532">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;vec)</td></tr>
+<tr class="memdesc:a3042faf2fa1b8228cc82456632e02532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salida de stream para impresión.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Clase para aritmética y geometría 2D. </p>
+<p>Encapsula un vector 2D con operaciones comunes como magnitud, normalización, distancia y operadores algebraicos. Se integra con SFML permitiendo conversión desde/hacia sf::Vector2f.</p>
+<dl class="section note"><dt>Nota</dt><dd>Coordenadas públicas (x, y) para acceso directo </dd></dl>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentación de constructores y destructores</h2>
+<a id="afeeb54430a0742854e62fe3d8054f2c0" name="afeeb54430a0742854e62fe3d8054f2c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeeb54430a0742854e62fe3d8054f2c0">&#9670;&#160;</a></span>Vector2D() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CE::Vector2D::Vector2D </td>
+          <td>(</td>
+          <td class="paramtype">const float</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor con coordenadas explícitas. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Coordenada X </td></tr>
+    <tr><td class="paramname">y</td><td>Coordenada Y </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1d4091e39b5d802d23a2b4f7a3f6245d" name="a1d4091e39b5d802d23a2b4f7a3f6245d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4091e39b5d802d23a2b4f7a3f6245d">&#9670;&#160;</a></span>Vector2D() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CE::Vector2D::Vector2D </td>
+          <td>(</td>
+          <td class="paramtype">const float</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor de valor uniforme. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Valor para ambas coordenadas (x=v, y=v) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a097557e2398e83bbbc353c92cb064098" name="a097557e2398e83bbbc353c92cb064098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a097557e2398e83bbbc353c92cb064098">&#9670;&#160;</a></span>Vector2D() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CE::Vector2D::Vector2D </td>
+          <td>(</td>
+          <td class="paramtype">const sf::Vector2f &amp;</td>          <td class="paramname"><span class="paramname"><em>cpy</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor desde vector SFML. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cpy</td><td>Vector sf::Vector2f a copiar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="a16e31cca39513ffa7f4dddc561990812" name="a16e31cca39513ffa7f4dddc561990812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e31cca39513ffa7f4dddc561990812">&#9670;&#160;</a></span>distancia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CE::Vector2D::distancia </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>o</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula distancia hacia otro vector. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>Otro vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Distancia euclidiana entre los puntos </dd></dl>
+
+</div>
+</div>
+<a id="ad285879e9871adcdb27bc172685a7be6" name="ad285879e9871adcdb27bc172685a7be6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad285879e9871adcdb27bc172685a7be6">&#9670;&#160;</a></span>escala()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp; CE::Vector2D::escala </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Escala el vector por un factor. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Factor de escala </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia a este vector modificado (encadenamiento) </dd></dl>
+
+</div>
+</div>
+<a id="a74080160e6650a25dc4ca6e7c22ec92a" name="a74080160e6650a25dc4ca6e7c22ec92a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74080160e6650a25dc4ca6e7c22ec92a">&#9670;&#160;</a></span>longitud()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CE::Vector2D::longitud </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula la longitud/magnitud del vector. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Magnitud como float (sqrt(x² + y²)) </dd></dl>
+
+</div>
+</div>
+<a id="aeb8758980b7f4f1ba1e4fe1e804a427e" name="aeb8758980b7f4f1ba1e4fe1e804a427e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb8758980b7f4f1ba1e4fe1e804a427e">&#9670;&#160;</a></span>magnitud()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CE::Vector2D::magnitud </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alias para <a class="el" href="#a74080160e6650a25dc4ca6e7c22ec92a" title="Calcula la longitud/magnitud del vector.">longitud()</a> - obtiene magnitud. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Magnitud del vector </dd></dl>
+
+</div>
+</div>
+<a id="a9377c2215d1b694d0a1cf443c1347a60" name="a9377c2215d1b694d0a1cf443c1347a60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9377c2215d1b694d0a1cf443c1347a60">&#9670;&#160;</a></span>normalizacion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp; CE::Vector2D::normalizacion </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normaliza el vector a magnitud 1. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia a este vector modificado (encadenamiento) </dd></dl>
+
+</div>
+</div>
+<a id="aa03ecd87f2aaddfbe4a12f527dd4979d" name="aa03ecd87f2aaddfbe4a12f527dd4979d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa03ecd87f2aaddfbe4a12f527dd4979d">&#9670;&#160;</a></span>operator+()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> CE::Vector2D::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Suma de vectores (crea nuevo vector). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a sumar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Nuevo vector resultado de la suma </dd></dl>
+
+</div>
+</div>
+<a id="a046686ffb660405415c4a6f33b52ae3e" name="a046686ffb660405415c4a6f33b52ae3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a046686ffb660405415c4a6f33b52ae3e">&#9670;&#160;</a></span>operator+=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::Vector2D::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Suma en lugar (modificación en situ). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a sumar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96b683ae9bba92b5f1f68f85d15bbb80" name="a96b683ae9bba92b5f1f68f85d15bbb80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b683ae9bba92b5f1f68f85d15bbb80">&#9670;&#160;</a></span>operator-()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> CE::Vector2D::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resta de vectores (crea nuevo vector). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a restar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Nuevo vector resultado de la resta </dd></dl>
+
+</div>
+</div>
+<a id="a373e44e30334e78ac47018a26150274a" name="a373e44e30334e78ac47018a26150274a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a373e44e30334e78ac47018a26150274a">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CE::Vector2D::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compara igualdad entre vectores. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a comparar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si x e y son iguales </dd></dl>
+
+</div>
+</div>
+<a id="a1ea6b1436f6ffc4f2f9ae106b762b63b" name="a1ea6b1436f6ffc4f2f9ae106b762b63b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ea6b1436f6ffc4f2f9ae106b762b63b">&#9670;&#160;</a></span>resta()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp; CE::Vector2D::resta </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>o</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resta otro vector del presente. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>Vector a restar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia a este vector modificado (encadenamiento) </dd></dl>
+
+</div>
+</div>
+<a id="a6bcff6bc8d232c9e71bf16578c11d567" name="a6bcff6bc8d232c9e71bf16578c11d567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bcff6bc8d232c9e71bf16578c11d567">&#9670;&#160;</a></span>suma()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp; CE::Vector2D::suma </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>o</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Suma otro vector al presente. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>Vector a sumar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia a este vector modificado (encadenamiento) </dd></dl>
+
+</div>
+</div>
+<a name="doc-related-members" id="doc-related-members"></a><h2 id="header-doc-related-members" class="groupheader">Documentación de símbolos amigos y relacionados</h2>
+<a id="a3042faf2fa1b8228cc82456632e02532" name="a3042faf2fa1b8228cc82456632e02532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3042faf2fa1b8228cc82456632e02532">&#9670;&#160;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a8f5cf1b4798fb5a841d62ccdd2313dac">Vector2D</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>vec</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Salida de stream para impresión. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Stream de salida </td></tr>
+    <tr><td class="paramname">vec</td><td>Vector a imprimir </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia al stream </dd></dl>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada de los siguientes archivos:<ul>
+<li>src/Motor/Utils/<a class="el" href="../../db/dfb/_vector2_d_8hpp_source.html">Vector2D.hpp</a></li>
+<li>src/Motor/Utils/<b>Vector2D.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

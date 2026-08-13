@@ -1,0 +1,60 @@
+\doxysection{Figuras.\+hpp}
+\hypertarget{_figuras_8hpp_source}{}\label{_figuras_8hpp_source}\index{src/Juego/Figuras/Figuras.hpp@{src/Juego/Figuras/Figuras.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../../Motor/Primitivos/Objetos.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }IVJ}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{class\ }Figuras:\textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{CE::Objeto}}}
+\DoxyCodeLine{00008\ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ Figuras(\textcolor{keywordtype}{int}\ l,\ \textcolor{keyword}{const}\ sf::Color\&\ relleno,\ \textcolor{keyword}{const}\ sf::Color\&\ contorno);}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \string~Figuras()\textcolor{keyword}{\ override}\{\};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ std::shared\_ptr<Figuras>\&fig)}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ os<<\textcolor{stringliteral}{"{}Lados:\ "{}}<<fig-\/>f\_lados<<}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)nRelleno:\ "{}}<<fig-\/>f\_crelleno.toInteger()<<}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)nContorno:"{}}<<fig-\/>f\_ccontorno.toInteger()<<}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ f\_lados;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ sf::Color\ f\_crelleno;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ sf::Color\ f\_ccontorno;}
+\DoxyCodeLine{00024\ \ \ \ \ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{class\ }Rectangulo:\ \textcolor{keyword}{public}\ Figuras}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ Rectangulo(\textcolor{keywordtype}{float}\ ancho,\ \textcolor{keywordtype}{float}\ largo,\textcolor{keyword}{const}\ sf::Color\&\ relleno,\textcolor{keyword}{const}\ \ sf::Color\&\ contorno);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \string~Rectangulo()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ draw(sf::RenderTarget\&\ target,\ sf::RenderStates\ state)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_rectangulo_a0d9056a4b25a305eaaee73ee8542ff83}{onUpdate}}(\textcolor{keywordtype}{float}\ dt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ sf::RectangleShape\ rect\_img;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ w;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ h;}
+\DoxyCodeLine{00039\ \ \ \ \ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{class\ }Circulo:\ \textcolor{keyword}{public}\ Figuras}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ Circulo(\textcolor{keywordtype}{float}\ radio,\ \textcolor{keyword}{const}\ sf::Color\&\ relleno,\textcolor{keyword}{const}\ \ sf::Color\&\ contorno);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \string~Circulo()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ draw(sf::RenderTarget\&\ target,\ sf::RenderStates\ state)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_circulo_a0fc786b279f7b8d4e1b70c1eb00d4692}{onUpdate}}(\textcolor{keywordtype}{float}\ dt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ sf::CircleShape\ circ\_img;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radio;}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \}}
+
+\end{DoxyCode}

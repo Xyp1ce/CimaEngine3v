@@ -1,0 +1,36 @@
+\doxysection{Referencia del directorio build/\+\+\_\+deps/\+imgui-\/src/\+examples/\+example\+\_\+sdl3\+\_\+opengl3}
+\hypertarget{dir_4f636e46b298919a819a900db95bee8e}{}\label{dir_4f636e46b298919a819a900db95bee8e}\index{Referencia del directorio build/\_deps/imgui-\/src/examples/example\_sdl3\_opengl3@{Referencia del directorio build/\_deps/imgui-\/src/examples/example\_sdl3\_opengl3}}
+
+
+\doxysubsection{Descripción detallada}
+\hypertarget{dir_4f636e46b298919a819a900db95bee8e_autotoc_md207}{}\doxysubsection{\texorpdfstring{How to Build}{How to Build}}\label{dir_4f636e46b298919a819a900db95bee8e_autotoc_md207}
+\hypertarget{dir_4f636e46b298919a819a900db95bee8e_autotoc_md208}{}\doxysubsection{\texorpdfstring{Windows with Visual Studio\textquotesingle{}s IDE}{Windows with Visual Studio\textquotesingle{}s IDE}}\label{dir_4f636e46b298919a819a900db95bee8e_autotoc_md208}
+Use the provided project file (.vcxproj). Add to solution (imgui\+\_\+examples.\+sln) if necessary.\hypertarget{dir_4f636e46b298919a819a900db95bee8e_autotoc_md209}{}\doxysubsection{\texorpdfstring{Windows with Visual Studio\textquotesingle{}s CLI}{Windows with Visual Studio\textquotesingle{}s CLI}}\label{dir_4f636e46b298919a819a900db95bee8e_autotoc_md209}
+Use build\+\_\+win32.\+bat or directly:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{set\ SDL3\_DIR=path\_to\_your\_sdl3\_folder}
+\DoxyCodeLine{cl\ /Zi\ /MD\ /utf-\/8\ /I..\ /I..\(\backslash\)..\ /I\%SDL3\_DIR\%\(\backslash\)include\ main.cpp\ ..\(\backslash\)..\(\backslash\)backends\(\backslash\)imgui\_impl\_sdl3.cpp\ ..\(\backslash\)..\(\backslash\)backends\(\backslash\)imgui\_impl\_opengl3.cpp\ ..\(\backslash\)..\(\backslash\)imgui*.cpp\ /FeDebug/example\_sdl3\_opengl3.exe\ /FoDebug/\ /link\ /libpath:\%SDL3\_DIR\%\(\backslash\)lib\(\backslash\)x86\ SDL3.lib\ opengl32.lib\ /subsystem:console}
+\DoxyCodeLine{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\string^\ include\ paths\ \ \ \ \ \string^\string^\ source\ files\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\string^\ output\ exe\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\string^\ output\ dir\ \ \ \string^\string^\ libraries}
+\DoxyCodeLine{\#\ or\ for\ 64-\/bit:}
+\DoxyCodeLine{cl\ /Zi\ /MD\ /utf-\/8\ /I..\ /I..\(\backslash\)..\ /I\%SDL3\_DIR\%\(\backslash\)include\ main.cpp\ ..\(\backslash\)..\(\backslash\)backends\(\backslash\)imgui\_impl\_sdl3.cpp\ ..\(\backslash\)..\(\backslash\)backends\(\backslash\)imgui\_impl\_opengl3.cpp\ ..\(\backslash\)..\(\backslash\)imgui*.cpp\ /FeDebug/example\_sdl3\_opengl3.exe\ /FoDebug/\ /link\ /libpath:\%SDL3\_DIR\%\(\backslash\)lib\(\backslash\)x64\ SDL3.lib\ SDL2mainopengl32.lib\ /subsystem:console}
+
+\end{DoxyCode}
+\hypertarget{dir_4f636e46b298919a819a900db95bee8e_autotoc_md210}{}\doxysubsection{\texorpdfstring{Linux and similar Unixes}{Linux and similar Unixes}}\label{dir_4f636e46b298919a819a900db95bee8e_autotoc_md210}
+Use our Makefile or directly:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{c++\ \`{}sdl3-\/config\ -\/-\/cflags`\ -\/I\ ..\ -\/I\ ../..\ -\/I\ ../../backends}
+\DoxyCodeLine{\ \ main.cpp\ ../../backends/imgui\_impl\_sdl3.cpp\ ../../backends/imgui\_impl\_opengl3.cpp\ ../../imgui*.cpp}
+\DoxyCodeLine{\ \ \`{}sdl3-\/config\ -\/-\/libs`\ -\/lGL\ -\/ldl}
+
+\end{DoxyCode}
+\hypertarget{dir_4f636e46b298919a819a900db95bee8e_autotoc_md211}{}\doxysubsection{\texorpdfstring{mac\+OS}{mac\+OS}}\label{dir_4f636e46b298919a819a900db95bee8e_autotoc_md211}
+Use our Makefile or directly:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{brew\ install\ sdl3}
+\DoxyCodeLine{c++\ \`{}sdl3-\/config\ -\/-\/cflags`\ -\/I\ ..\ -\/I\ ../..\ -\/I\ ../../backends}
+\DoxyCodeLine{\ \ main.cpp\ ../../backends/imgui\_impl\_sdl3.cpp\ ../../backends/imgui\_impl\_opengl3.cpp\ ../../imgui*.cpp}
+\DoxyCodeLine{\ \ \`{}sdl3-\/config\ -\/-\/libs`\ -\/framework\ OpenGl\ -\/framework\ CoreFoundation}
+
+\end{DoxyCode}
+\hypertarget{dir_4f636e46b298919a819a900db95bee8e_autotoc_md212}{}\doxysubsection{\texorpdfstring{Emscripten}{Emscripten}}\label{dir_4f636e46b298919a819a900db95bee8e_autotoc_md212}
+As of 2023-\/05-\/30 Emscripten doesn\textquotesingle{}t support SDL3 yet. 

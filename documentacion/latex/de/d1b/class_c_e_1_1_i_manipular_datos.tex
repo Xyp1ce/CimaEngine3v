@@ -1,0 +1,131 @@
+\doxysection{Referencia de la plantilla de la clase CE::\+IManipular\+Datos\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}}
+\hypertarget{class_c_e_1_1_i_manipular_datos}{}\label{class_c_e_1_1_i_manipular_datos}\index{CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}}
+
+
+Interfaz template para manipulación de datos en contenedores.  
+
+
+
+
+{\ttfamily \+\#include $<$CEInterfaces.\+hpp$>$}
+
+Diagrama de herencia de CE::\+IManipular\+Datos\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{de/d1b/class_c_e_1_1_i_manipular_datos}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_i_manipular_datos_a6898c3d1fc22006c3d8365d8ca26332f}{agregar\+Dato}} (const T \&d)=0
+\begin{DoxyCompactList}\small\item\em Agrega un elemento al contenedor. \end{DoxyCompactList}\item 
+virtual T \doxymbox{\hyperlink{class_c_e_1_1_i_manipular_datos_abcd0ea71969dde05f752535f1ed5b2f5}{eliminar\+Dato}} (int id)=0
+\begin{DoxyCompactList}\small\item\em Elimina un elemento por su índice. \end{DoxyCompactList}\item 
+virtual T \doxymbox{\hyperlink{class_c_e_1_1_i_manipular_datos_a6e003e13fd28e423c607e4a7a61b5df9}{pop\+Dato}} ()=0
+\begin{DoxyCompactList}\small\item\em Elimina y retorna el elemento del final. \end{DoxyCompactList}\item 
+virtual T \doxymbox{\hyperlink{class_c_e_1_1_i_manipular_datos_a2c60ce683e56191cce1faa92ac2f441d}{pop\+Front\+Dato}} ()=0
+\begin{DoxyCompactList}\small\item\em Elimina y retorna el elemento del inicio (pop front). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\subsubsection*{template$<$typename T$>$\newline
+class CE::\+\+IManipular\+Datos$<$ T $>$}
+Interfaz template para manipulación de datos en contenedores. 
+
+Define operaciones comunes para agregar y eliminar elementos de una colección, permitiendo eliminación por índice, desde el final (pop) y desde el inicio (pop front).
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de datos de los elementos contenidos \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{class_c_e_1_1_i_manipular_datos_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_manipular_datos_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_manipular_datos_a6898c3d1fc22006c3d8365d8ca26332f}\index{CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}!agregarDato@{agregarDato}}
+\index{agregarDato@{agregarDato}!CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{agregarDato()}{agregarDato()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_manipular_datos_a6898c3d1fc22006c3d8365d8ca26332f} 
+template$<$typename T$>$ \\
+virtual void \doxymbox{\hyperlink{class_c_e_1_1_i_manipular_datos}{CE::\+\+IManipular\+Datos}}$<$ T $>$::\+agregar\+Dato (\begin{DoxyParamCaption}\item[{const T \&}]{d}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Agrega un elemento al contenedor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em d} & Referencia constante al elemento a agregar \\
+\hline
+\end{DoxyParams}
+
+
+Implementado en \doxymbox{\hyperlink{class_c_e_1_1_lista_ac1a5c03b9683492851a00f8160ae6264}{CE::\+\+Lista$<$ T $>$}} y \doxymbox{\hyperlink{class_c_e_1_1_lista_ac1a5c03b9683492851a00f8160ae6264}{CE::\+\+Lista$<$ std::\+pair$<$ std::\+string, Niveles $>$ $>$}}.
+
+\Hypertarget{class_c_e_1_1_i_manipular_datos_abcd0ea71969dde05f752535f1ed5b2f5}\index{CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}!eliminarDato@{eliminarDato}}
+\index{eliminarDato@{eliminarDato}!CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{eliminarDato()}{eliminarDato()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_manipular_datos_abcd0ea71969dde05f752535f1ed5b2f5} 
+template$<$typename T$>$ \\
+virtual T \doxymbox{\hyperlink{class_c_e_1_1_i_manipular_datos}{CE::\+\+IManipular\+Datos}}$<$ T $>$::\+eliminar\+Dato (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Elimina un elemento por su índice. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em id} & Índice del elemento a eliminar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Copia del elemento eliminado 
+\end{DoxyReturn}
+
+
+Implementado en \doxymbox{\hyperlink{class_c_e_1_1_lista_a932ee647f56c1966260ffe92e083f9e8}{CE::\+\+Lista$<$ T $>$}} y \doxymbox{\hyperlink{class_c_e_1_1_lista_a932ee647f56c1966260ffe92e083f9e8}{CE::\+\+Lista$<$ std::\+pair$<$ std::\+string, Niveles $>$ $>$}}.
+
+\Hypertarget{class_c_e_1_1_i_manipular_datos_a6e003e13fd28e423c607e4a7a61b5df9}\index{CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}!popDato@{popDato}}
+\index{popDato@{popDato}!CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{popDato()}{popDato()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_manipular_datos_a6e003e13fd28e423c607e4a7a61b5df9} 
+template$<$typename T$>$ \\
+virtual T \doxymbox{\hyperlink{class_c_e_1_1_i_manipular_datos}{CE::\+\+IManipular\+Datos}}$<$ T $>$::\+pop\+Dato (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Elimina y retorna el elemento del final. 
+
+\begin{DoxyReturn}{Devuelve}
+Copia del elemento del final removido 
+\end{DoxyReturn}
+
+
+Implementado en \doxymbox{\hyperlink{class_c_e_1_1_lista_a61208ae1463db7d058a26b418d869b53}{CE::\+\+Lista$<$ T $>$}} y \doxymbox{\hyperlink{class_c_e_1_1_lista_a61208ae1463db7d058a26b418d869b53}{CE::\+\+Lista$<$ std::\+pair$<$ std::\+string, Niveles $>$ $>$}}.
+
+\Hypertarget{class_c_e_1_1_i_manipular_datos_a2c60ce683e56191cce1faa92ac2f441d}\index{CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}!popFrontDato@{popFrontDato}}
+\index{popFrontDato@{popFrontDato}!CE::IManipularDatos$<$ T $>$@{CE::IManipularDatos$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{popFrontDato()}{popFrontDato()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_manipular_datos_a2c60ce683e56191cce1faa92ac2f441d} 
+template$<$typename T$>$ \\
+virtual T \doxymbox{\hyperlink{class_c_e_1_1_i_manipular_datos}{CE::\+\+IManipular\+Datos}}$<$ T $>$::\+pop\+Front\+Dato (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Elimina y retorna el elemento del inicio (pop front). 
+
+\begin{DoxyReturn}{Devuelve}
+Copia del elemento del inicio removido 
+\end{DoxyReturn}
+
+
+Implementado en \doxymbox{\hyperlink{class_c_e_1_1_lista_ae0b144daf515db9b21a1868010f3fab2}{CE::\+\+Lista$<$ T $>$}} y \doxymbox{\hyperlink{class_c_e_1_1_lista_ae0b144daf515db9b21a1868010f3fab2}{CE::\+\+Lista$<$ std::\+pair$<$ std::\+string, Niveles $>$ $>$}}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Utils/\+CEInterfaces.\+hpp\end{DoxyCompactItemize}

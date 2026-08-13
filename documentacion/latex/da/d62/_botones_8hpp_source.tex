@@ -1,0 +1,44 @@
+\doxysection{Botones.\+hpp}
+\hypertarget{_botones_8hpp_source}{}\label{_botones_8hpp_source}\index{src/Motor/Inputs/Botones.hpp@{src/Motor/Inputs/Botones.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_botones_aea3d5a5723b3146ef691d2bb5660bb88}{Botones}}}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{TipoAccion}}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OnPress,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OnRelease,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ None}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_botones_aea3d5a5723b3146ef691d2bb5660bb88}{Botones}}(\textcolor{keyword}{const}\ std::string\&\ nombre,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{TipoAccion}}\&\ tipo,\textcolor{keyword}{const}\ sf::Keyboard::Scancode\&\ scan);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \doxymbox{\hyperlink{class_c_e_1_1_botones_aaaf939a30757c2606bd8f4df6704f399}{getNombre}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \doxymbox{\hyperlink{class_c_e_1_1_botones_a3456aecfd8b33c618cb11f89bdcb268b}{getTipoString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{TipoAccion}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_botones_ae7475d780e7060cbd650395e388b6001}{getTipo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \doxymbox{\hyperlink{class_c_e_1_1_botones_ab6ac5c27c56bde98c22f3a5939f57f8a}{toString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Keyboard::Scancode\&\ \doxymbox{\hyperlink{class_c_e_1_1_botones_af58682d2c4e1711c7e9674f52dc28447}{getScancode}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ nombre;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_botones_ae98e046f59512411d865f9c860566eac}{TipoAccion}}\ accion\{TipoAccion::None\};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Keyboard::Scancode\ tecla;}
+\DoxyCodeLine{00080\ \ \ \ \ \};}
+\DoxyCodeLine{00081\ \}}
+
+\end{DoxyCode}

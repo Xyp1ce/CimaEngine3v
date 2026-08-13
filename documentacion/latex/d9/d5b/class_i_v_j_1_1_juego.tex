@@ -1,0 +1,158 @@
+\doxysection{Referencia de la clase IVJ::\+Juego}
+\hypertarget{class_i_v_j_1_1_juego}{}\label{class_i_v_j_1_1_juego}\index{IVJ::Juego@{IVJ::Juego}}
+Diagrama de herencia de IVJ::\+Juego\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d5b/class_i_v_j_1_1_juego}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_i_v_j_1_1_juego_a2b9832d2d42a1f24ec98674aee4ef60b}{On\+Init}} (void) override
+\begin{DoxyCompactList}\small\item\em Hook de inicialización llamado al inicio del motor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_i_v_j_1_1_juego_a75209868b481e607e0df394269a2af33}{On\+Inputs}} (std::\+optional$<$ sf::\+\+Event $>$ \&eventos) override
+\begin{DoxyCompactList}\small\item\em Procesa eventos de SFML individuales. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_i_v_j_1_1_juego_a455fbd2f1c537c4fefe22a2fcb7be209}{On\+Inputs}} (\doxymbox{\hyperlink{class_c_e_1_1_input_buffer}{CE::\+\+Input\+Buffer}} \&buffer) override
+\begin{DoxyCompactList}\small\item\em Procesa el buffer completo de eventos acumulados. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_i_v_j_1_1_juego_aae7369e18a96fbd0075662c76d6c92f5}{On\+Inputs}} () override
+\begin{DoxyCompactList}\small\item\em Procesa entrada sin parámetros (entrada continua como teclas sostenidas). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_i_v_j_1_1_juego_ab03ea71614092bd4d4a5bea74f90c43e}{On\+Update}} (float dt) override
+\begin{DoxyCompactList}\small\item\em Actualiza la lógica de la capa de juego. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_i_v_j_1_1_juego_ae01681faaeddabd7d010d26a4be8b0ad}{On\+Render}} () override
+\begin{DoxyCompactList}\small\item\em Hook de renderizado llamado cada frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_game_layer}{CE::\+\+Game\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Game\+Layer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual de la capa de juego. \end{DoxyCompactList}\item 
+virtual bool \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a410dee1c9af17fb73ede6767e9805bc1}{Esta\+Corriendo}} (void)
+\begin{DoxyCompactList}\small\item\em Verifica si la capa de juego sigue activa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Otros miembros heredados}
+\doxysubsection*{Atributos protegidos heredados de \doxymbox{\hyperlink{class_c_e_1_1_game_layer}{CE::\+\+Game\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries termino}
+\begin{DoxyCompactList}\small\item\em Bandera que indica si la capa debe terminar (false = continuar ejecutando). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{class_i_v_j_1_1_juego_doc-func-members}
+\Hypertarget{class_i_v_j_1_1_juego_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_i_v_j_1_1_juego_a2b9832d2d42a1f24ec98674aee4ef60b}\index{IVJ::Juego@{IVJ::Juego}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!IVJ::Juego@{IVJ::Juego}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_i_v_j_1_1_juego_a2b9832d2d42a1f24ec98674aee4ef60b} 
+void IVJ::\+\+Juego::\+\+On\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Hook de inicialización llamado al inicio del motor. 
+
+Las subclases pueden sobrescribir este método para realizar inicializaciones específicas de su lógica de juego. 
+
+Reimplementado de \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a377756b0e2ba0dbbefd1fdebc09f5e1a}{CE::\+\+Game\+Layer}}.
+
+\Hypertarget{class_i_v_j_1_1_juego_aae7369e18a96fbd0075662c76d6c92f5}\index{IVJ::Juego@{IVJ::Juego}!OnInputs@{OnInputs}}
+\index{OnInputs@{OnInputs}!IVJ::Juego@{IVJ::Juego}}
+\doxysubsubsection{\texorpdfstring{OnInputs()}{OnInputs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_i_v_j_1_1_juego_aae7369e18a96fbd0075662c76d6c92f5} 
+void IVJ::\+\+Juego::\+\+On\+Inputs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Procesa entrada sin parámetros (entrada continua como teclas sostenidas). 
+
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a04ef1c3b4c271ed27aa74bb65edb7dff}{CE::\+\+Game\+Layer}}.
+
+\Hypertarget{class_i_v_j_1_1_juego_a455fbd2f1c537c4fefe22a2fcb7be209}\index{IVJ::Juego@{IVJ::Juego}!OnInputs@{OnInputs}}
+\index{OnInputs@{OnInputs}!IVJ::Juego@{IVJ::Juego}}
+\doxysubsubsection{\texorpdfstring{OnInputs()}{OnInputs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_i_v_j_1_1_juego_a455fbd2f1c537c4fefe22a2fcb7be209} 
+void IVJ::\+\+Juego::\+\+On\+Inputs (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_e_1_1_input_buffer}{CE::\+\+Input\+Buffer}} \&}]{in\+\_\+buffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Procesa el buffer completo de eventos acumulados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em in\+\_\+buffer} & Referencia al buffer de entrada circulante \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a3078e33661546d0dec04dd831215cbca}{CE::\+\+Game\+Layer}}.
+
+\Hypertarget{class_i_v_j_1_1_juego_a75209868b481e607e0df394269a2af33}\index{IVJ::Juego@{IVJ::Juego}!OnInputs@{OnInputs}}
+\index{OnInputs@{OnInputs}!IVJ::Juego@{IVJ::Juego}}
+\doxysubsubsection{\texorpdfstring{OnInputs()}{OnInputs()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_i_v_j_1_1_juego_a75209868b481e607e0df394269a2af33} 
+void IVJ::\+\+Juego::\+\+On\+Inputs (\begin{DoxyParamCaption}\item[{std::\+optional$<$ sf::\+\+Event $>$ \&}]{eventos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Procesa eventos de SFML individuales. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em eventos} & Referencia a evento opcional de SFML \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_game_layer_afd1110a9d5ac5d3831e05b87dd4f1da8}{CE::\+\+Game\+Layer}}.
+
+\Hypertarget{class_i_v_j_1_1_juego_ae01681faaeddabd7d010d26a4be8b0ad}\index{IVJ::Juego@{IVJ::Juego}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!IVJ::Juego@{IVJ::Juego}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_i_v_j_1_1_juego_ae01681faaeddabd7d010d26a4be8b0ad} 
+void IVJ::\+\+Juego::\+\+On\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Hook de renderizado llamado cada frame. 
+
+Las subclases pueden sobrescribir este método para realizar renderizado específico. Por defecto no hace nada. 
+
+Reimplementado de \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a36785531dba2e09839a0387b8fa94d09}{CE::\+\+Game\+Layer}}.
+
+\Hypertarget{class_i_v_j_1_1_juego_ab03ea71614092bd4d4a5bea74f90c43e}\index{IVJ::Juego@{IVJ::Juego}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!IVJ::Juego@{IVJ::Juego}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_i_v_j_1_1_juego_ab03ea71614092bd4d4a5bea74f90c43e} 
+void IVJ::\+\+Juego::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Actualiza la lógica de la capa de juego. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time (tiempo transcurrido en segundos) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_game_layer_a8454bfacf849027ceaa2e904a47e54a8}{CE::\+\+Game\+Layer}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Juego/\+Juego.\+hpp\item 
+src/\+\+Juego/\+Juego.\+cpp\end{DoxyCompactItemize}

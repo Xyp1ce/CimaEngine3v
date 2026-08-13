@@ -1,0 +1,152 @@
+\doxysection{Referencia de la clase CE::\+GPropiedades}
+\hypertarget{class_c_e_1_1_g_propiedades}{}\label{class_c_e_1_1_g_propiedades}\index{CE::GPropiedades@{CE::GPropiedades}}
+
+
+Inspector de propiedades para editar objetos y tilemaps en tiempo real.  
+
+
+
+
+{\ttfamily \+\#include $<$GPropiedades.\+hpp$>$}
+
+Diagrama de herencia de CE::\+GPropiedades\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d1/d3a/class_c_e_1_1_g_propiedades}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_g_propiedades_ac33bc9195fc0929ccc25cf649ac48f60}\label{class_c_e_1_1_g_propiedades_ac33bc9195fc0929ccc25cf649ac48f60} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+GPropiedades} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual -\/ limpia \doxylink{class_c_e_1_1_g_paths}{GPaths}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a8a1fb9e8a58421ab1f1a1801312100af}{On\+Init}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&des) override
+\begin{DoxyCompactList}\small\item\em Inicializa el inspector de propiedades. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a7bd037ab9b8b77193a289e58247a20f8}{On\+Update}} (float dt) override
+\begin{DoxyCompactList}\small\item\em Actualiza el inspector cada frame. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_a0b9923e5c4ba540061fd94d12457997f}{On\+Render}} (void) override
+\begin{DoxyCompactList}\small\item\em Renderiza el inspector en Im\+Gui. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_aa40c8cad20d45ac158de4faad7723918}{seleccionar\+Objeto}} (\doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} \texorpdfstring{$\ast$}{*}ref)
+\begin{DoxyCompactList}\small\item\em Establece qué objeto editar. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_propiedades_ad5c126ef1b354994d27950edad321511}{seleccionar\+Tile\+Map}} (\doxymbox{\hyperlink{class_i_v_j_1_1_tile_map}{IVJ::\+\+Tile\+Map}} \texorpdfstring{$\ast$}{*}ref)
+\begin{DoxyCompactList}\small\item\em Establece qué tilemap editar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_g_layer}{CE::\+\+GLayer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+GLayer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Inspector de propiedades para editar objetos y tilemaps en tiempo real. 
+
+Panel Im\+Gui que permite editar propiedades de objetos seleccionados, incluyendo transformación, sprites, shaders, controles y trayectorias. También permite edición de propiedades de tilemaps.
+
+Utiliza múltiples sub-\/paneles para diferentes tipos de componentes:\+
+\begin{DoxyItemize}
+\item Transform:\+ posición, velocidad, rotación
+\item Sprite:\+ textura, dimensiones, escala
+\item Shader:\+ uniforms del shader
+\item Control:\+ estado de botones de entrada
+\item Paths:\+ editor de trayectorias (delegado a \doxylink{class_c_e_1_1_g_paths}{GPaths})
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Nota}
+Derivada de \doxylink{class_c_e_1_1_g_layer}{GLayer} para integración en sistema GUI del motor 
+
+Contiene instancia de \doxylink{class_c_e_1_1_g_paths}{GPaths} para edición de trayectorias 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_g_propiedades_doc-func-members}
+\Hypertarget{class_c_e_1_1_g_propiedades_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_g_propiedades_a8a1fb9e8a58421ab1f1a1801312100af}\index{CE::GPropiedades@{CE::GPropiedades}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!CE::GPropiedades@{CE::GPropiedades}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_propiedades_a8a1fb9e8a58421ab1f1a1801312100af} 
+void CE::\+\+GPropiedades::\+\+On\+Init (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{des}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inicializa el inspector de propiedades. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em des} & Configuración del motor \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_propiedades_a0b9923e5c4ba540061fd94d12457997f}\index{CE::GPropiedades@{CE::GPropiedades}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!CE::GPropiedades@{CE::GPropiedades}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_propiedades_a0b9923e5c4ba540061fd94d12457997f} 
+void CE::\+\+GPropiedades::\+\+On\+Render (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderiza el inspector en Im\+Gui. 
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_propiedades_a7bd037ab9b8b77193a289e58247a20f8}\index{CE::GPropiedades@{CE::GPropiedades}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CE::GPropiedades@{CE::GPropiedades}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_propiedades_a7bd037ab9b8b77193a289e58247a20f8} 
+void CE::\+\+GPropiedades::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Actualiza el inspector cada frame. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_propiedades_aa40c8cad20d45ac158de4faad7723918}\index{CE::GPropiedades@{CE::GPropiedades}!seleccionarObjeto@{seleccionarObjeto}}
+\index{seleccionarObjeto@{seleccionarObjeto}!CE::GPropiedades@{CE::GPropiedades}}
+\doxysubsubsection{\texorpdfstring{seleccionarObjeto()}{seleccionarObjeto()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_propiedades_aa40c8cad20d45ac158de4faad7723918} 
+void CE::\+\+GPropiedades::\+seleccionar\+Objeto (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_e_1_1_objeto}{Objeto}} \texorpdfstring{$\ast$}{*}}]{ref}{}\end{DoxyParamCaption})}
+
+
+
+Establece qué objeto editar. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ref} & Puntero al objeto a editar (nullptr para deseleccionar) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_g_propiedades_ad5c126ef1b354994d27950edad321511}\index{CE::GPropiedades@{CE::GPropiedades}!seleccionarTileMap@{seleccionarTileMap}}
+\index{seleccionarTileMap@{seleccionarTileMap}!CE::GPropiedades@{CE::GPropiedades}}
+\doxysubsubsection{\texorpdfstring{seleccionarTileMap()}{seleccionarTileMap()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_propiedades_ad5c126ef1b354994d27950edad321511} 
+void CE::\+\+GPropiedades::\+seleccionar\+Tile\+Map (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_i_v_j_1_1_tile_map}{IVJ::\+\+Tile\+Map}} \texorpdfstring{$\ast$}{*}}]{ref}{}\end{DoxyParamCaption})}
+
+
+
+Establece qué tilemap editar. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ref} & Puntero al tilemap a editar (nullptr para deseleccionar) \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+GUI/\+GPropiedades.\+hpp\item 
+src/\+\+Motor/\+\+GUI/\+GPropiedades.\+cpp\end{DoxyCompactItemize}

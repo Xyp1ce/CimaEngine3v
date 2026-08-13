@@ -1,0 +1,39 @@
+\doxysection{Sistemas.\+hpp}
+\hypertarget{_sistemas_8hpp_source}{}\label{_sistemas_8hpp_source}\index{src/Juego/Sistemas/Sistemas.hpp@{src/Juego/Sistemas/Sistemas.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../../Motor/Componentes/IComponentes.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../../Motor/Primitivos/CEPool.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../../Motor/Primitivos/Objetos.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../Componentes/IJComponentes.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }IVJ}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ [[maybe\_unused]]\ \textcolor{keywordtype}{void}\ SistemaControl(CE::Objeto\ \&ente,\ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00011\ [[maybe\_unused]]\ \textcolor{keywordtype}{void}\ SistemaMover(\textcolor{keyword}{const}\ std::vector<std::shared\_ptr<CE::Objeto>>\ \&entes,\ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00012\ [[maybe\_unused]]\ \textcolor{keywordtype}{void}\ SistemaMover(\textcolor{keyword}{const}\ std::shared\_ptr<CE::Objeto>\ \&objeto,\ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00013\ [[maybe\_unused]]\ \textcolor{keywordtype}{bool}\ SistemaColAABB(CE::Objeto\ \&A,\ CE::Objeto\ \&B,\ \textcolor{keywordtype}{bool}\ resolucion\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00014\ [[maybe\_unused]]\ \textcolor{keywordtype}{bool}\ SistemaColAABBMid(CE::Objeto\ \&A,\ CE::Objeto\ \&B,\ \textcolor{keywordtype}{bool}\ resolucion\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ SistemaMoverBalas(\textcolor{keyword}{const}\ std::shared\_ptr<CE::Objeto>\ \&ente,\ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ [[maybe\_unused]]\ \textcolor{keywordtype}{void}\ SistemaSpawn(CE::Pool\ \&spwans);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ [[maybe\_unused]]\ \textcolor{keywordtype}{void}\ SistemaPaths(std::vector<std::shared\_ptr<CE::Objeto>>\ \&obj);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ [[maybe\_unused]]\ \textcolor{keywordtype}{bool}\ checkRayoHit(CE::Objeto\ \&npc,\ CE::Vector2D\ \&p1,\ CE::Vector2D\ \&p2);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ void\ SistemaDialogos(CE::Objeto\&\ npc);}}
+\DoxyCodeLine{00025\ [[maybe\_unused]]\ \textcolor{keywordtype}{void}\ SistemaDialogos(IVJ::IDialogo\ *dialogo,\ CE::Objeto\ \&obj);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{bool}\ revisarDistanciaInteraccion(CE::Objeto\ \&jugador,\ CE::Objeto\ \&npc,\ \textcolor{keywordtype}{float}\ distancia\_maxima);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ DEBUG}}
+\DoxyCodeLine{00030\ [[maybe\_unused]]\ \textcolor{keywordtype}{void}\ pintarLinea(CE::Vector2D\ \&p1,\ CE::Vector2D\ \&p2,\ \textcolor{keyword}{const}\ sf::Color\ \&color\ =\ sf::Color::Red);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \}\ \textcolor{comment}{//\ namespace\ IVJ}}
+
+\end{DoxyCode}

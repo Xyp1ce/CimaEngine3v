@@ -1,0 +1,68 @@
+\doxysection{Referencia de la clase CE::\+ITimer}
+\hypertarget{class_c_e_1_1_i_timer}{}\label{class_c_e_1_1_i_timer}\index{CE::ITimer@{CE::ITimer}}
+
+
+Componente de temporizador para animaciones y timing de eventos.  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+ITimer\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d72/class_c_e_1_1_i_timer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_timer_a88495293c8b661b95eb780735bc59920}\label{class_c_e_1_1_i_timer_a88495293c8b661b95eb780735bc59920} 
+{\bfseries ITimer} (int max\+\_\+frame)
+\begin{DoxyCompactList}\small\item\em Constructor inicializa timer en 0. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_timer_a9dc1125dffd0e6c5479664d160da98f2}\label{class_c_e_1_1_i_timer_a9dc1125dffd0e6c5479664d160da98f2} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+ITimer} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_i_timer_a6318672819164f945c456f5c596d2c63}{clonar}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_timer_acdf55ea7e0b3605df4c2de7d3fb52950}\label{class_c_e_1_1_i_timer_acdf55ea7e0b3605df4c2de7d3fb52950} 
+int {\bfseries frame\+\_\+actual}
+\begin{DoxyCompactList}\small\item\em Frame actual de la animación. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_timer_ad5ef6ddf393787580b9aaa4a7a33bb8e}\label{class_c_e_1_1_i_timer_ad5ef6ddf393787580b9aaa4a7a33bb8e} 
+int {\bfseries frame\+\_\+maximo}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente de temporizador para animaciones y timing de eventos. 
+
+Rastrea el frame actual y la fracción de frame para animaciones sincronizadas y efectos basados en tiempo. 
+
+\label{class_c_e_1_1_i_timer_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_timer_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_timer_a6318672819164f945c456f5c596d2c63}\index{CE::ITimer@{CE::ITimer}!clonar@{clonar}}
+\index{clonar@{clonar}!CE::ITimer@{CE::ITimer}}
+\doxysubsubsection{\texorpdfstring{clonar()}{clonar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_timer_a6318672819164f945c456f5c596d2c63} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ CE::\+\+ITimer::\+clonar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,127 @@
+\doxysection{Referencia de la clase IVJ::\+Rectangulo}
+\hypertarget{class_i_v_j_1_1_rectangulo}{}\label{class_i_v_j_1_1_rectangulo}\index{IVJ::Rectangulo@{IVJ::Rectangulo}}
+Diagrama de herencia de IVJ::\+Rectangulo\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{d0/d8d/class_i_v_j_1_1_rectangulo}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_i_v_j_1_1_rectangulo_af62072073d244ad3d20bdeab1aec4a81}\label{class_i_v_j_1_1_rectangulo_af62072073d244ad3d20bdeab1aec4a81} 
+{\bfseries Rectangulo} (float ancho, float largo, const sf::\+\+Color \&relleno, const sf::\+\+Color \&contorno)
+\item 
+\Hypertarget{class_i_v_j_1_1_rectangulo_a2105c61fa4fb8e131f4d395390ded869}\label{class_i_v_j_1_1_rectangulo_a2105c61fa4fb8e131f4d395390ded869} 
+void {\bfseries draw} (sf::\+\+Render\+Target \&target, sf::\+\+Render\+States state) const override
+\item 
+void \doxymbox{\hyperlink{class_i_v_j_1_1_rectangulo_a0d9056a4b25a305eaaee73ee8542ff83}{on\+Update}} (float dt) override
+\begin{DoxyCompactList}\small\item\em Actualiza la lógica del objeto cada frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_i_v_j_1_1_figuras}{IVJ::\+\+Figuras}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Figuras} (int l, const sf::\+\+Color \&relleno, const sf::\+\+Color \&contorno)
+\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_objeto}{CE::\+\+Objeto}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}{Objeto}} ()
+\begin{DoxyCompactList}\small\item\em Constructor del objeto. \end{DoxyCompactList}\item 
+{\bfseries Objeto} (const Objeto \&cpy)
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Objeto} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_objeto_aeffb214a8635a1e923b4b8950e058448}{draw}} (sf::\+\+Render\+Target \&target, sf::\+\+Render\+States state) const override
+\begin{DoxyCompactList}\small\item\em Implementa la interfaz Drawable de SFML. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}{Objeto}} \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_a09986c4049ef07edb43dd7ab09f3c4a2}{add\+Componente}} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \&componnentes)
+\begin{DoxyCompactList}\small\item\em Adjunta un componente compartido al objeto. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\\doxymbox{\hyperlink{class_c_e_1_1_objeto_a793a85a23db0c4eb1fa670d8ff2ae9de}{Objeto}} \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_a751b86f19453847dc163bba4484efd72}{copy\+Componente}} (const T \texorpdfstring{$\ast$}{*}componnentes)
+\begin{DoxyCompactList}\small\item\em Copia un componente existente y lo adjunta al objeto. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\T \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae8a9e934b1053695637a0703bd4fd5ca}{get\+Componente}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene un componente del objeto por tipo. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\bool \doxymbox{\hyperlink{class_c_e_1_1_objeto_a759a596392fb9637d92e00bb4e67958e}{tiene\+Componente}} () const
+\begin{DoxyCompactList}\small\item\em Verifica si el objeto tiene un componente de tipo específico. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_nombre}{INombre}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_objeto_afd5af934bb57487ab0daae12dfc40b9e}{get\+Nombre}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el componente de nombre del objeto. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_transform}{ITransform}} $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae8265ac7b7cd59607d1538ff0672f690}{get\+Transformada}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el componente de transformación del objeto. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_stats}{IStats}} $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae07978f665ca78002b0e506298689c4f}{get\+Stats}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el componente de estadísticas del objeto. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_e_1_1_objeto_aa0c3894b9c171ac56bd459fe02427c9e}{esta\+Vivo}} () const
+\begin{DoxyCompactList}\small\item\em Verifica si el objeto está vivo. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_objeto_a85862966bc0de5f37ce974c6e4ed2a08}{get\+Lista\+Componentes}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la lista completa de componentes del objeto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_objeto_a33ebaf3ad78581b9c53063fb9d9eb687}{set\+Posicion}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Establece la posición del objeto. \end{DoxyCompactList}\item 
+virtual std::\+string \doxymbox{\hyperlink{class_c_e_1_1_objeto_a7f135c51c29e55edde75fe06fe8e7e88}{to\+String}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene representación textual del objeto. \end{DoxyCompactList}\item 
+virtual void {\bfseries input\+FSM} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_i_v_j_1_1_rectangulo_ac5b54577878ee9a718216fe50a768d20}\label{class_i_v_j_1_1_rectangulo_ac5b54577878ee9a718216fe50a768d20} 
+float {\bfseries w}
+\item 
+\Hypertarget{class_i_v_j_1_1_rectangulo_a82a0ec51622e2c6ba48e8b90e928fa9c}\label{class_i_v_j_1_1_rectangulo_a82a0ec51622e2c6ba48e8b90e928fa9c} 
+float {\bfseries h}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Otros miembros heredados}
+\doxysubsection*{Métodos públicos estáticos heredados de \doxymbox{\hyperlink{class_c_e_1_1_objeto}{CE::\+\+Objeto}}}
+\begin{DoxyCompactItemize}
+\item 
+static int \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae84599a22595f74df40c93a3241795aa}{get\+Num\+Objetos}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el número total de objetos creados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos protegidos heredados de \doxymbox{\hyperlink{class_i_v_j_1_1_figuras}{IVJ::\+\+Figuras}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries f\+\_\+lados}
+\item 
+sf::\+\+Color {\bfseries f\+\_\+crelleno}
+\item 
+sf::\+\+Color {\bfseries f\+\_\+ccontorno}
+\end{DoxyCompactItemize}
+\doxysubsection*{Atributos protegidos heredados de \doxymbox{\hyperlink{class_c_e_1_1_objeto}{CE::\+\+Objeto}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_nombre}{INombre}} $>$ {\bfseries nombre}
+\begin{DoxyCompactList}\small\item\em Componente de nombre del objeto. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_transform}{ITransform}} $>$ {\bfseries transform}
+\begin{DoxyCompactList}\small\item\em Componente de transformación (posición, velocidad, rotación). \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_stats}{IStats}} $>$ {\bfseries stats}
+\begin{DoxyCompactList}\small\item\em Componente de estadísticas (salud, fuerza, etc). \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ $>$ {\bfseries componentes}
+\begin{DoxyCompactList}\small\item\em Contenedor de componentes adjuntos al objeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{class_i_v_j_1_1_rectangulo_doc-func-members}
+\Hypertarget{class_i_v_j_1_1_rectangulo_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_i_v_j_1_1_rectangulo_a0d9056a4b25a305eaaee73ee8542ff83}\index{IVJ::Rectangulo@{IVJ::Rectangulo}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!IVJ::Rectangulo@{IVJ::Rectangulo}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily \label{class_i_v_j_1_1_rectangulo_a0d9056a4b25a305eaaee73ee8542ff83} 
+void IVJ::\+\+Rectangulo::\+on\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Actualiza la lógica del objeto cada frame. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time (tiempo transcurrido en segundos) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Método virtual puro -\/ debe ser implementado por subclases 
+\end{DoxyNote}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_objeto_a7018b9059b915f5cbd8220e0a1ffe6c3}{CE::\+\+Objeto}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Juego/\+\+Figuras/\+Figuras.\+hpp\item 
+src/\+\+Juego/\+\+Figuras/\+Figuras.\+cpp\end{DoxyCompactItemize}

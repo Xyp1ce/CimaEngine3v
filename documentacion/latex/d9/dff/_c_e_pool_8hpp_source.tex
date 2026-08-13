@@ -1,0 +1,37 @@
+\doxysection{CEPool.\+hpp}
+\hypertarget{_c_e_pool_8hpp_source}{}\label{_c_e_pool_8hpp_source}\index{src/Motor/Primitivos/CEPool.hpp@{src/Motor/Primitivos/CEPool.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Objetos.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_pool_a24eb47d0f1cd2eca677e76ad1589cc98}{Pool}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{\ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_pool_a24eb47d0f1cd2eca677e76ad1589cc98}{Pool}}(\textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_pool_aa76de037a66d62d3b4ca81f5cd957ddf}{agregarPool}}(\textcolor{keyword}{const}\ std::shared\_ptr<Objeto>\&\ obj);\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_pool_af146ff0522fda2e459278c19206ec56b}{borrarPool}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<Objeto>\&\ \doxymbox{\hyperlink{class_c_e_1_1_pool_a349e7e7717ad221da974e80117c0bddb}{operator[]}}(std::size\_t\ idx);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<Objeto>\&\ \doxymbox{\hyperlink{class_c_e_1_1_pool_a349e7e7717ad221da974e80117c0bddb}{operator[]}}(std::size\_t\ idx)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Objeto>>\&\ \doxymbox{\hyperlink{class_c_e_1_1_pool_ac5e1ff2af9986bfb39d251174704203a}{getPool}}()}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ objetos;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_c_e_1_1_pool_a18ac3ac9aa43b28a243d47655e554d82}{max\_size}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<Objeto>>\ objetos;}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \}}
+
+\end{DoxyCode}

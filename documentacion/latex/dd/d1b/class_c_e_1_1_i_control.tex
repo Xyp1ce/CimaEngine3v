@@ -1,0 +1,123 @@
+\doxysection{Referencia de la clase CE::\+IControl}
+\hypertarget{class_c_e_1_1_i_control}{}\label{class_c_e_1_1_i_control}\index{CE::IControl@{CE::IControl}}
+
+
+Componente que rastrea el estado de entrada/\+controles de una entidad.  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+IControl\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dd/d1b/class_c_e_1_1_i_control}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_control_a11fbfdb4a8a5b8661acb8fa5971d1626}\label{class_c_e_1_1_i_control_a11fbfdb4a8a5b8661acb8fa5971d1626} 
+{\bfseries IControl} ()
+\begin{DoxyCompactList}\small\item\em Constructor inicializa todos los controles en false. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_control_aee36585c347d32961c1e4cf26154244c}\label{class_c_e_1_1_i_control_aee36585c347d32961c1e4cf26154244c} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+IControl} () override
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_i_control_a8df1650f584b644278f736c4480b8ee7}{clonar}} () const override
+\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_i_control_acbfcc98d1724499b1d619e4c30cc3687}{set\+Activo}} (bool a)
+\begin{DoxyCompactList}\small\item\em Activa o desactiva el componente de control. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_e_1_1_i_control_a11745dfe5d742f6f4811fcce7d799c9e}{is\+Activo}} () const
+\begin{DoxyCompactList}\small\item\em Verifica si el componente de control está activo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_control_aa2bb9d318dca30cb4026b12ecb737050}\label{class_c_e_1_1_i_control_aa2bb9d318dca30cb4026b12ecb737050} 
+bool {\bfseries arr}
+\begin{DoxyCompactList}\small\item\em Entrada:\+ dirección arriba. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_control_a7287ca767f2ebc42bf7bfb82482f20ae}\label{class_c_e_1_1_i_control_a7287ca767f2ebc42bf7bfb82482f20ae} 
+bool {\bfseries abj}
+\begin{DoxyCompactList}\small\item\em Entrada:\+ dirección abajo. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_control_aab921fcbbdcc945b9f875b48f268c424}\label{class_c_e_1_1_i_control_aab921fcbbdcc945b9f875b48f268c424} 
+bool {\bfseries izq}
+\begin{DoxyCompactList}\small\item\em Entrada:\+ dirección izquierda. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_control_a3074655559b81684cbd2fe1858ca9e91}\label{class_c_e_1_1_i_control_a3074655559b81684cbd2fe1858ca9e91} 
+bool {\bfseries der}
+\begin{DoxyCompactList}\small\item\em Entrada:\+ dirección derecha. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_control_ac0b4b58b25a119ff6f67af0a7fe5e566}\label{class_c_e_1_1_i_control_ac0b4b58b25a119ff6f67af0a7fe5e566} 
+bool {\bfseries run}
+\begin{DoxyCompactList}\small\item\em Entrada:\+ acción correr. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_control_ae21b63c41f717c7cfbc0b61d2177abb1}\label{class_c_e_1_1_i_control_ae21b63c41f717c7cfbc0b61d2177abb1} 
+bool {\bfseries jmp}
+\begin{DoxyCompactList}\small\item\em Entrada:\+ acción saltar. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_control_a095c858b411ec24933c8ef92724766a9}\label{class_c_e_1_1_i_control_a095c858b411ec24933c8ef92724766a9} 
+bool {\bfseries acc}
+\begin{DoxyCompactList}\small\item\em Entrada:\+ acción atacar/\+usar. \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_control_a20164937e3349a5b75ee6e0fbe11a33b}\label{class_c_e_1_1_i_control_a20164937e3349a5b75ee6e0fbe11a33b} 
+bool {\bfseries sacc}
+\begin{DoxyCompactList}\small\item\em Entrada:\+ acción secundaria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente que rastrea el estado de entrada/\+controles de una entidad. 
+
+Almacena booleans para 8 direcciones y acciones de entrada, típicamente mapeadas a controles del jugador o IA.
+
+\begin{DoxyNote}{Nota}
+Futuro:\+ considerar usar bitfield (entero de 32 bits) para 32 botones 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_i_control_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_control_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_control_a8df1650f584b644278f736c4480b8ee7}\index{CE::IControl@{CE::IControl}!clonar@{clonar}}
+\index{clonar@{clonar}!CE::IControl@{CE::IControl}}
+\doxysubsubsection{\texorpdfstring{clonar()}{clonar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_control_a8df1650f584b644278f736c4480b8ee7} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ CE::\+\+IControl::\+clonar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}.
+
+\Hypertarget{class_c_e_1_1_i_control_a11745dfe5d742f6f4811fcce7d799c9e}\index{CE::IControl@{CE::IControl}!isActivo@{isActivo}}
+\index{isActivo@{isActivo}!CE::IControl@{CE::IControl}}
+\doxysubsubsection{\texorpdfstring{isActivo()}{isActivo()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_control_a11745dfe5d742f6f4811fcce7d799c9e} 
+bool CE::\+\+IControl::\+is\+Activo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica si el componente de control está activo. 
+
+\begin{DoxyReturn}{Devuelve}
+true si está activo, false si está desactivado 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_i_control_acbfcc98d1724499b1d619e4c30cc3687}\index{CE::IControl@{CE::IControl}!setActivo@{setActivo}}
+\index{setActivo@{setActivo}!CE::IControl@{CE::IControl}}
+\doxysubsubsection{\texorpdfstring{setActivo()}{setActivo()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_control_acbfcc98d1724499b1d619e4c30cc3687} 
+void CE::\+\+IControl::\+set\+Activo (\begin{DoxyParamCaption}\item[{bool}]{a}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Activa o desactiva el componente de control. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em a} & true para activar, false para desactivar \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+cpp\end{DoxyCompactItemize}

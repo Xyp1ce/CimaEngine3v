@@ -1,0 +1,81 @@
+\chapter{Cima\+Engine3v }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{CimaEngine3v@{CimaEngine3v}}
+\label{md__r_e_a_d_m_e_autotoc_md223}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md223}%
+
+
+\href{https://github.com/Omar-z/CimaEngine3v/actions/workflows/build.yml}{\texttt{}}\hypertarget{md__r_e_a_d_m_e_autotoc_md224}{}\doxysection{\texorpdfstring{Como compilar y ejecutar}{Como compilar y ejecutar}}\label{md__r_e_a_d_m_e_autotoc_md224}
+1.-\/ crear un folder build y moverse en consola a el
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+
+\end{DoxyCode}
+
+
+2.\+1 -\/ en la consola dentro del folder build crear el ensamble, en este caso se puede {\bfseries{seleccionar un tool chain de multi-\/configuración}}
+\begin{DoxyItemize}
+\item Ninja Multi-\/\+Config
+\item Xcode
+\item Visual Studio xxxx
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/G"{}Ninja\ Multi-\/Config"{}\ -\/B\ .\ ..}
+
+\end{DoxyCode}
+ 2.\+2 -\/ compilar y generar el ejecutable
+\begin{DoxyItemize}
+\item Debug :\+ Tiene banderas de depuración
+\item Release:\+ Tiene banderas de optimización
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/-\/build\ .\ -\/-\/config\ Debug\ -\/-\/target\ CimaEngine3v}
+
+\end{DoxyCode}
+
+
+En el caso que no se tenga un toolchain multi config (basado en Makefiles) entonces, se tiene que especificar la configuración al hacer el build
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#para\ el\ build\ de\ Debug\ ,\ en\ consola\ ir\ a\ CimaEngine/build/\ }
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Debug}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ para\ el\ build\ de\ Release\ ,\ en\ consola\ ir\ a\ CimaEngine/build/\ }
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Especificar\ si\ quiere\ usar\ un\ toolchain\ diferente}
+\DoxyCodeLine{}
+\DoxyCodeLine{cmake\ -\/G"{}MinGW\ Makefiles"{}\ ..\ -\/DCMAKE\_BUILD\_TYPE=Debug}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ estando\ en\ el\ folder\ de\ \`{}build`\ }
+\DoxyCodeLine{cmake\ -\/-\/build\ .\ -\/-\/target\ CimaEngine3v\ }
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item copiar el archivo {\ttfamily compiler\+\_\+commands.\+json} generado en el folder {\ttfamily build} al folder raíz, este archivo le ayuda a tu IDE a autocompletar mejor y encontrar los paths 2.-\/ el ejecutable se crea en {\ttfamily Cima\+Engine3v/\+bin/\+\texorpdfstring{$<$}{<}perfil\texorpdfstring{$>$}{>}/\+\+Cima\+Engine3v.exe}
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ si\ se\ hizo\ un\ build\ de\ Debug}
+\DoxyCodeLine{CimaEngine3v/bin/Debug/CimaEngine3v.exe}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ si\ se\ hizo\ un\ build\ de\ Release}
+\DoxyCodeLine{CimaEngine3v/bin/Release/CimaEngine3v.exe}
+
+\end{DoxyCode}
+ 

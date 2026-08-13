@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Archivo de código fuente src/Motor/Camaras/Camaras.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d02/_camaras_8hpp_source.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Camaras.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;../Primitivos/Objetos.hpp&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../Componentes/IComponentes.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;../Utils/Vector2D.hpp&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span>CE</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html">   19</a></span>    <span class="keyword">class </span><a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a61830b58bbd970a2b21a92a344173462">Camara</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a61830b58bbd970a2b21a92a344173462">Camara</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y,<span class="keywordtype">float</span> w, <span class="keywordtype">float</span> h);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a61830b58bbd970a2b21a92a344173462">Camara</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; pos, <span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; dim);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#ad70b88819bbf0a2231c42b0af816ed28">   39</a></span>            <span class="keyword">virtual</span> <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#ad70b88819bbf0a2231c42b0af816ed28">~Camara</a>(){};</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#a63e6ed28da30ef2eb0c6472074f65907">   45</a></span>            [[nodiscard]]<a class="code hl_class" href="../../d5/d49/class_c_e_1_1_i_transform.html">ITransform</a>&amp; <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a63e6ed28da30ef2eb0c6472074f65907">getTransformada</a>()</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                <span class="keywordflow">return</span> *<a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#ae44c37293684069afb1a9bf12049d4a8">m_transform</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            }</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#aebb0b2a0eeea49c218b715dfd5683c05">   54</a></span>            [[nodiscard]]sf::View&amp; <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#aebb0b2a0eeea49c218b715dfd5683c05">getView</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">            </span>{</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                <span class="keywordflow">return</span> *<a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#a7f4e7b32444973b0c1ba3c8b38395221">m_view</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            }</div>
+</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a36096a4de196b1b71f2e49f10804332d">lockEnObjeto</a>(<span class="keyword">const</span> std::shared_ptr&lt;Objeto&gt;&amp; obj);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a1727c000d45f89c72398a6c3b7b776b9">setViewSize</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#ad151bfbeac578095a496deb00adc1d89">onUpdate</a>(<span class="keywordtype">float</span> dt);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#a1b3ce17c8b81599ebcf3b9d105f135c7">   86</a></span>            <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#a1b3ce17c8b81599ebcf3b9d105f135c7">cam_width</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#a2bc975c52b571464574b6fe110325f3d">   89</a></span>            <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#a2bc975c52b571464574b6fe110325f3d">cam_height</a>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#a13f77bb6338cce16849d9c981f468562">   92</a></span>            <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#a13f77bb6338cce16849d9c981f468562">num_camaras</a>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#ae74fb39f17fe12bfb4648ff6e6862186">   95</a></span>            std::string <a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#ae74fb39f17fe12bfb4648ff6e6862186">nombre</a>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#a71be0c219b8a4c593310ef8cd46bda81">   98</a></span>            <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#a71be0c219b8a4c593310ef8cd46bda81">esta_activa</a>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#a7f4e7b32444973b0c1ba3c8b38395221">  102</a></span>            std::shared_ptr&lt;sf::View&gt; <a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#a7f4e7b32444973b0c1ba3c8b38395221">m_view</a>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#a5a9bd087c872697a4a70cbee7d015b10">  105</a></span>            std::weak_ptr&lt;Objeto&gt; <a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#a5a9bd087c872697a4a70cbee7d015b10">m_lockObj</a>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="../../d4/d62/class_c_e_1_1_camara.html#ae44c37293684069afb1a9bf12049d4a8">  108</a></span>            std::shared_ptr&lt;ITransform&gt; <a class="code hl_variable" href="../../d4/d62/class_c_e_1_1_camara.html#ae44c37293684069afb1a9bf12049d4a8">m_transform</a>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    };</div>
+</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    </div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="};">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="../../de/ded/class_c_e_1_1_camara_cuadro.html">  118</a></span>    <span class="keyword">class </span><a class="code hl_function" href="../../de/ded/class_c_e_1_1_camara_cuadro.html#a4905226f831e41585afbfd2283ac780e">CamaraCuadro</a>: <span class="keyword">public</span> <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a61830b58bbd970a2b21a92a344173462">Camara</a></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <a class="code hl_function" href="../../de/ded/class_c_e_1_1_camara_cuadro.html#a4905226f831e41585afbfd2283ac780e">CamaraCuadro</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; pos, <span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; dim);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="../../de/ded/class_c_e_1_1_camara_cuadro.html#a05df306f234ac2457e26da1b934755ad">  129</a></span>            <a class="code hl_function" href="../../de/ded/class_c_e_1_1_camara_cuadro.html#a05df306f234ac2457e26da1b934755ad">~CamaraCuadro</a>()<span class="keyword"> override</span>{};</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/ded/class_c_e_1_1_camara_cuadro.html#a4bc8cc1bf4f44be954f91e0b7c9d4423">onUpdate</a>(<span class="keywordtype">float</span> dt) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            <span class="keywordtype">float</span> limitex;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="keywordtype">float</span> limitey;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    };</div>
+</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span></div>
+<div class="foldopen" id="foldopen00155" data-start="{" data-end="};">
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html">  155</a></span>    <span class="keyword">class </span><a class="code hl_function" href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html#af2642caf026c815f46b67175dbf84c1b">CamaraLERP</a>: <span class="keyword">public</span> <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a61830b58bbd970a2b21a92a344173462">Camara</a></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            <a class="code hl_function" href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html#af2642caf026c815f46b67175dbf84c1b">CamaraLERP</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; pos, <span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; dim);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html#aec0f82105c1749ff0e01404c784f79f8">  166</a></span>            <a class="code hl_function" href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html#aec0f82105c1749ff0e01404c784f79f8">~CamaraLERP</a>()<span class="keyword">override</span>{};</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html#a60b57c4ad9690f04a2063cc17ced5f72">onUpdate</a>(<span class="keywordtype">float</span> dt)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            <span class="keywordtype">float</span> vel;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    };</div>
+</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span></div>
+<div class="foldopen" id="foldopen00188" data-start="{" data-end="};">
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="../../d4/d21/class_c_e_1_1_camara_snap_ventana.html">  188</a></span>    <span class="keyword">class </span>CamaraSnapVentana: <span class="keyword">public</span> <a class="code hl_function" href="../../d4/d62/class_c_e_1_1_camara.html#a61830b58bbd970a2b21a92a344173462">Camara</a></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    {</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            CamaraSnapVentana(<span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; pos, <span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; dim, <span class="keyword">const</span> <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a>&amp; dven);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            ~CamaraSnapVentana()<span class="keyword"> override</span>{};</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d21/class_c_e_1_1_camara_snap_ventana.html#aade19538b7e59ba42c365635aadbdb8a">onUpdate</a>(<span class="keywordtype">float</span> dt) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <a class="code hl_class" href="../../dc/d2a/class_c_e_1_1_vector2_d.html">Vector2D</a> m_vdim;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keywordtype">bool</span> lock{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    };</div>
+</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>}</div>
+<div class="ttc" id="aclass_c_e_1_1_camara_cuadro_html_a05df306f234ac2457e26da1b934755ad"><div class="ttname"><a href="../../de/ded/class_c_e_1_1_camara_cuadro.html#a05df306f234ac2457e26da1b934755ad">CE::CamaraCuadro::~CamaraCuadro</a></div><div class="ttdeci">~CamaraCuadro() override</div><div class="ttdoc">Destructor virtual.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:129</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_cuadro_html_a4905226f831e41585afbfd2283ac780e"><div class="ttname"><a href="../../de/ded/class_c_e_1_1_camara_cuadro.html#a4905226f831e41585afbfd2283ac780e">CE::CamaraCuadro::CamaraCuadro</a></div><div class="ttdeci">CamaraCuadro(const Vector2D &amp;pos, const Vector2D &amp;dim)</div><div class="ttdoc">Constructor del cuadro limitante.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:55</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_cuadro_html_a4bc8cc1bf4f44be954f91e0b7c9d4423"><div class="ttname"><a href="../../de/ded/class_c_e_1_1_camara_cuadro.html#a4bc8cc1bf4f44be954f91e0b7c9d4423">CE::CamaraCuadro::onUpdate</a></div><div class="ttdeci">void onUpdate(float dt) override</div><div class="ttdoc">Actualiza la cámara con seguimiento limitado por cuadro.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:62</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a13f77bb6338cce16849d9c981f468562"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a13f77bb6338cce16849d9c981f468562">CE::Camara::num_camaras</a></div><div class="ttdeci">static int num_camaras</div><div class="ttdoc">Contador estático de cámaras totales.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:92</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a1727c000d45f89c72398a6c3b7b776b9"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a1727c000d45f89c72398a6c3b7b776b9">CE::Camara::setViewSize</a></div><div class="ttdeci">void setViewSize(float x, float y)</div><div class="ttdoc">Establece el tamaño de la vista de cámara.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:33</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a1b3ce17c8b81599ebcf3b9d105f135c7"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a1b3ce17c8b81599ebcf3b9d105f135c7">CE::Camara::cam_width</a></div><div class="ttdeci">float cam_width</div><div class="ttdoc">Ancho de la vista de cámara en píxeles.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:86</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a2bc975c52b571464574b6fe110325f3d"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a2bc975c52b571464574b6fe110325f3d">CE::Camara::cam_height</a></div><div class="ttdeci">float cam_height</div><div class="ttdoc">Alto de la vista de cámara en píxeles.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:89</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a36096a4de196b1b71f2e49f10804332d"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a36096a4de196b1b71f2e49f10804332d">CE::Camara::lockEnObjeto</a></div><div class="ttdeci">void lockEnObjeto(const std::shared_ptr&lt; Objeto &gt; &amp;obj)</div><div class="ttdoc">Vincula el seguimiento de cámara a un objeto.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:38</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a5a9bd087c872697a4a70cbee7d015b10"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a5a9bd087c872697a4a70cbee7d015b10">CE::Camara::m_lockObj</a></div><div class="ttdeci">std::weak_ptr&lt; Objeto &gt; m_lockObj</div><div class="ttdoc">Referencia débil al objeto siendo seguido (evita ciclos).</div><div class="ttdef"><b>Definition</b> Camaras.hpp:105</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a61830b58bbd970a2b21a92a344173462"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a61830b58bbd970a2b21a92a344173462">CE::Camara::Camara</a></div><div class="ttdeci">Camara(float x, float y, float w, float h)</div><div class="ttdoc">Constructor con coordenadas y dimensiones como floats.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:8</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a63e6ed28da30ef2eb0c6472074f65907"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a63e6ed28da30ef2eb0c6472074f65907">CE::Camara::getTransformada</a></div><div class="ttdeci">ITransform &amp; getTransformada()</div><div class="ttdoc">Obtiene el componente de transformación de la cámara.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:45</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a71be0c219b8a4c593310ef8cd46bda81"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a71be0c219b8a4c593310ef8cd46bda81">CE::Camara::esta_activa</a></div><div class="ttdeci">bool esta_activa</div><div class="ttdoc">Bandera que indica si la cámara está activa.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:98</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_a7f4e7b32444973b0c1ba3c8b38395221"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#a7f4e7b32444973b0c1ba3c8b38395221">CE::Camara::m_view</a></div><div class="ttdeci">std::shared_ptr&lt; sf::View &gt; m_view</div><div class="ttdoc">Vista SFML compartida.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:102</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_ad151bfbeac578095a496deb00adc1d89"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#ad151bfbeac578095a496deb00adc1d89">CE::Camara::onUpdate</a></div><div class="ttdeci">virtual void onUpdate(float dt)</div><div class="ttdoc">Actualiza la cámara.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:43</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_ad70b88819bbf0a2231c42b0af816ed28"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#ad70b88819bbf0a2231c42b0af816ed28">CE::Camara::~Camara</a></div><div class="ttdeci">virtual ~Camara()</div><div class="ttdoc">Destructor virtual.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:39</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_ae44c37293684069afb1a9bf12049d4a8"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#ae44c37293684069afb1a9bf12049d4a8">CE::Camara::m_transform</a></div><div class="ttdeci">std::shared_ptr&lt; ITransform &gt; m_transform</div><div class="ttdoc">Componente de transformación (posición, velocidad, rotación).</div><div class="ttdef"><b>Definition</b> Camaras.hpp:108</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_ae74fb39f17fe12bfb4648ff6e6862186"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#ae74fb39f17fe12bfb4648ff6e6862186">CE::Camara::nombre</a></div><div class="ttdeci">std::string nombre</div><div class="ttdoc">Nombre/identificador de la cámara.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:95</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_html_aebb0b2a0eeea49c218b715dfd5683c05"><div class="ttname"><a href="../../d4/d62/class_c_e_1_1_camara.html#aebb0b2a0eeea49c218b715dfd5683c05">CE::Camara::getView</a></div><div class="ttdeci">sf::View &amp; getView() const</div><div class="ttdoc">Obtiene la vista SFML de la cámara.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:54</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_l_e_r_p_html_a60b57c4ad9690f04a2063cc17ced5f72"><div class="ttname"><a href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html#a60b57c4ad9690f04a2063cc17ced5f72">CE::CamaraLERP::onUpdate</a></div><div class="ttdeci">void onUpdate(float dt) override</div><div class="ttdoc">Actualiza la cámara con interpolación suave.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:96</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_l_e_r_p_html_aec0f82105c1749ff0e01404c784f79f8"><div class="ttname"><a href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html#aec0f82105c1749ff0e01404c784f79f8">CE::CamaraLERP::~CamaraLERP</a></div><div class="ttdeci">~CamaraLERP() override</div><div class="ttdoc">Destructor virtual.</div><div class="ttdef"><b>Definition</b> Camaras.hpp:166</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_l_e_r_p_html_af2642caf026c815f46b67175dbf84c1b"><div class="ttname"><a href="../../da/dd2/class_c_e_1_1_camara_l_e_r_p.html#af2642caf026c815f46b67175dbf84c1b">CE::CamaraLERP::CamaraLERP</a></div><div class="ttdeci">CamaraLERP(const Vector2D &amp;pos, const Vector2D &amp;dim)</div><div class="ttdoc">Constructor de cámara LERP.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:90</div></div>
+<div class="ttc" id="aclass_c_e_1_1_camara_snap_ventana_html_aade19538b7e59ba42c365635aadbdb8a"><div class="ttname"><a href="../../d4/d21/class_c_e_1_1_camara_snap_ventana.html#aade19538b7e59ba42c365635aadbdb8a">CE::CamaraSnapVentana::onUpdate</a></div><div class="ttdeci">void onUpdate(float dt) override</div><div class="ttdoc">Actualiza la cámara.</div><div class="ttdef"><b>Definition</b> Camaras.cpp:113</div></div>
+<div class="ttc" id="aclass_c_e_1_1_i_transform_html"><div class="ttname"><a href="../../d5/d49/class_c_e_1_1_i_transform.html">CE::ITransform</a></div><div class="ttdoc">Componente de transformación que almacena posición, velocidad y rotación.</div><div class="ttdef"><b>Definition</b> IComponentes.hpp:68</div></div>
+<div class="ttc" id="aclass_c_e_1_1_vector2_d_html"><div class="ttname"><a href="../../dc/d2a/class_c_e_1_1_vector2_d.html">CE::Vector2D</a></div><div class="ttdoc">Clase para aritmética y geometría 2D.</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:18</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>Motor</b></li><li class="navelem"><b>Camaras</b></li><li class="navelem"><b>Camaras.hpp</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

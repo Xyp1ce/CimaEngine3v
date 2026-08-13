@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la clase CE::GestorEscenas</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d0/d63/class_c_e_1_1_gestor_escenas.html','../../','da/d19/class_c_e_1_1_gestor_escenas-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la clase CE::GestorEscenas</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestor singleton de escenas del juego con transiciones dinámicas.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../da/db7/_gestor_escenas_8hpp_source.html">GestorEscenas.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a77acb2cea9cc8d234fd62fdb07d4a366" id="r_a77acb2cea9cc8d234fd62fdb07d4a366"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a77acb2cea9cc8d234fd62fdb07d4a366">registrarEscena</a> (const std::string &amp;key, const std::shared_ptr&lt; <a class="el" href="../../d0/d51/class_c_e_1_1_escena.html">Escena</a> &gt; &amp;escena)</td></tr>
+<tr class="memdesc:a77acb2cea9cc8d234fd62fdb07d4a366"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra una nueva escena en el gestor.  <br /></td></tr>
+<tr class="memitem:afb1c2fbfe235a6201c284189e8c64794" id="r_afb1c2fbfe235a6201c284189e8c64794"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afb1c2fbfe235a6201c284189e8c64794">cambiarEscena</a> (const std::string &amp;key)</td></tr>
+<tr class="memdesc:afb1c2fbfe235a6201c284189e8c64794"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia a una escena registrada.  <br /></td></tr>
+<tr class="memitem:a2ae735ba5e161920823b186e5330bedb" id="r_a2ae735ba5e161920823b186e5330bedb"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2ae735ba5e161920823b186e5330bedb">cambiarEscenayEliminar</a> (const std::string &amp;key, bool eliminar=false)</td></tr>
+<tr class="memdesc:a2ae735ba5e161920823b186e5330bedb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia a una escena con opción de limpiar la anterior.  <br /></td></tr>
+<tr class="memitem:a51243e3bc8c8e98c5732bcf532e1505c" id="r_a51243e3bc8c8e98c5732bcf532e1505c"><td class="memItemLeft"><a class="el" href="../../d0/d51/class_c_e_1_1_escena.html">Escena</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a51243e3bc8c8e98c5732bcf532e1505c">getEscenaActual</a> ()</td></tr>
+<tr class="memdesc:a51243e3bc8c8e98c5732bcf532e1505c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la escena actualmente activa.  <br /></td></tr>
+<tr class="memitem:a6676125a3f4fd87b6e107b3c1a513c71" id="r_a6676125a3f4fd87b6e107b3c1a513c71"><td class="memItemLeft">HEscenas &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a6676125a3f4fd87b6e107b3c1a513c71">getTodasEscenas</a> ()</td></tr>
+<tr class="memdesc:a6676125a3f4fd87b6e107b3c1a513c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene todas las escenas registradas.  <br /></td></tr>
+<tr class="memitem:ad1171f2eb9f39cfb253999a3eff6367a" id="r_ad1171f2eb9f39cfb253999a3eff6367a"><td class="memItemLeft">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad1171f2eb9f39cfb253999a3eff6367a">getKeys</a> () const</td></tr>
+<tr class="memdesc:ad1171f2eb9f39cfb253999a3eff6367a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene los identificadores de todas las escenas registradas.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Métodos públicos estáticos</h2></td></tr>
+<tr class="memitem:aa6541d1bd9369d0ca439a336616871cc" id="r_aa6541d1bd9369d0ca439a336616871cc"><td class="memItemLeft">static <a class="el" href="../../d0/d63/class_c_e_1_1_gestor_escenas.html">GestorEscenas</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#aa6541d1bd9369d0ca439a336616871cc">Get</a> ()</td></tr>
+<tr class="memdesc:aa6541d1bd9369d0ca439a336616871cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la instancia singleton del gestor de escenas.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Gestor singleton de escenas del juego con transiciones dinámicas. </p>
+<p>Administra el registro, almacenamiento y cambio de escenas del juego. Mantiene la escena actual activa y permite transiciones entre escenas con opción de limpiar memoria de la escena anterior.</p>
+<dl class="section note"><dt>Nota</dt><dd>Patrón Singleton - instancia única a través de <a class="el" href="#aa6541d1bd9369d0ca439a336616871cc" title="Obtiene la instancia singleton del gestor de escenas.">Get()</a> </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="afb1c2fbfe235a6201c284189e8c64794" name="afb1c2fbfe235a6201c284189e8c64794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb1c2fbfe235a6201c284189e8c64794">&#9670;&#160;</a></span>cambiarEscena()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::GestorEscenas::cambiarEscena </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cambia a una escena registrada. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Identificador de la escena destino</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Activa la escena especificada. La escena anterior se mantiene en memoria. </p>
+
+</div>
+</div>
+<a id="a2ae735ba5e161920823b186e5330bedb" name="a2ae735ba5e161920823b186e5330bedb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ae735ba5e161920823b186e5330bedb">&#9670;&#160;</a></span>cambiarEscenayEliminar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::GestorEscenas::cambiarEscenayEliminar </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>eliminar</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cambia a una escena con opción de limpiar la anterior. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Identificador de la escena destino </td></tr>
+    <tr><td class="paramname">eliminar</td><td>true para liberar la escena anterior, false para mantenerla </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa6541d1bd9369d0ca439a336616871cc" name="aa6541d1bd9369d0ca439a336616871cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6541d1bd9369d0ca439a336616871cc">&#9670;&#160;</a></span>Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d63/class_c_e_1_1_gestor_escenas.html">GestorEscenas</a> &amp; CE::GestorEscenas::Get </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene la instancia singleton del gestor de escenas. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable al gestor único </dd></dl>
+
+</div>
+</div>
+<a id="a51243e3bc8c8e98c5732bcf532e1505c" name="a51243e3bc8c8e98c5732bcf532e1505c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51243e3bc8c8e98c5732bcf532e1505c">&#9670;&#160;</a></span>getEscenaActual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d51/class_c_e_1_1_escena.html">Escena</a> &amp; CE::GestorEscenas::getEscenaActual </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la escena actualmente activa. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable a la escena actual </dd></dl>
+
+</div>
+</div>
+<a id="ad1171f2eb9f39cfb253999a3eff6367a" name="ad1171f2eb9f39cfb253999a3eff6367a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1171f2eb9f39cfb253999a3eff6367a">&#9670;&#160;</a></span>getKeys()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; CE::GestorEscenas::getKeys </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene los identificadores de todas las escenas registradas. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Vector con todas las claves de escenas </dd></dl>
+
+</div>
+</div>
+<a id="a6676125a3f4fd87b6e107b3c1a513c71" name="a6676125a3f4fd87b6e107b3c1a513c71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6676125a3f4fd87b6e107b3c1a513c71">&#9670;&#160;</a></span>getTodasEscenas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HEscenas &amp; CE::GestorEscenas::getTodasEscenas </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene todas las escenas registradas. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia mutable al mapa de escenas </dd></dl>
+
+</div>
+</div>
+<a id="a77acb2cea9cc8d234fd62fdb07d4a366" name="a77acb2cea9cc8d234fd62fdb07d4a366"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77acb2cea9cc8d234fd62fdb07d4a366">&#9670;&#160;</a></span>registrarEscena()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CE::GestorEscenas::registrarEscena </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="../../d0/d51/class_c_e_1_1_escena.html">Escena</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>escena</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registra una nueva escena en el gestor. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Identificador único de la escena </td></tr>
+    <tr><td class="paramname">escena</td><td>Puntero compartido a la escena a registrar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>La escena se almacena pero no se activa hasta llamar a <a class="el" href="#afb1c2fbfe235a6201c284189e8c64794" title="Cambia a una escena registrada.">cambiarEscena()</a>. </p>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada de los siguientes archivos:<ul>
+<li>src/Motor/Primitivos/<a class="el" href="../../da/db7/_gestor_escenas_8hpp_source.html">GestorEscenas.hpp</a></li>
+<li>src/Motor/Primitivos/<b>GestorEscenas.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../d0/d63/class_c_e_1_1_gestor_escenas.html">GestorEscenas</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+\doxysection{Referencia de la clase CE::\+IBounding\+Box}
+\hypertarget{class_c_e_1_1_i_bounding_box}{}\label{class_c_e_1_1_i_bounding_box}\index{CE::IBoundingBox@{CE::IBoundingBox}}
+
+
+Componente de colisión que define un área de límites rectangular.  
+
+
+
+
+{\ttfamily \+\#include $<$IComponentes.\+hpp$>$}
+
+Diagrama de herencia de CE::\+IBounding\+Box\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d2/d22/class_c_e_1_1_i_bounding_box}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_e_1_1_i_bounding_box_a3e214a14699a1c8eb99858449b59908b}{IBounding\+Box}} (const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&dim)
+\begin{DoxyCompactList}\small\item\em Constructor de la caja colisora. \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ \doxymbox{\hyperlink{class_c_e_1_1_i_bounding_box_a28cd6089c1b9c19202e3485d4a88cbb6}{clonar}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IComponentes} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual por defecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_i_bounding_box_ae9ea242bb52da8141be742ac2b4d4427}\label{class_c_e_1_1_i_bounding_box_ae9ea242bb52da8141be742ac2b4d4427} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} {\bfseries tam}
+\begin{DoxyCompactList}\small\item\em Dimensiones totales de la caja colisora (ancho, alto). \end{DoxyCompactList}\item 
+\Hypertarget{class_c_e_1_1_i_bounding_box_a9d81bc912c42e76fdb34cabb66cd2986}\label{class_c_e_1_1_i_bounding_box_a9d81bc912c42e76fdb34cabb66cd2986} 
+\doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} {\bfseries mitad}
+\begin{DoxyCompactList}\small\item\em Mitad de las dimensiones (usado para cálculos rápidos). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente de colisión que define un área de límites rectangular. 
+
+Almacena las dimensiones de la caja colisora y su punto medio para facilitar cálculos de colisión y detección espacial. 
+
+\label{class_c_e_1_1_i_bounding_box_doc-constructors}
+\Hypertarget{class_c_e_1_1_i_bounding_box_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_c_e_1_1_i_bounding_box_a3e214a14699a1c8eb99858449b59908b}\index{CE::IBoundingBox@{CE::IBoundingBox}!IBoundingBox@{IBoundingBox}}
+\index{IBoundingBox@{IBoundingBox}!CE::IBoundingBox@{CE::IBoundingBox}}
+\doxysubsubsection{\texorpdfstring{IBoundingBox()}{IBoundingBox()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_bounding_box_a3e214a14699a1c8eb99858449b59908b} 
+CE::\+\+IBounding\+Box::\+\+IBounding\+Box (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{Vector2D}} \&}]{dim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor de la caja colisora. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dim} & Dimensiones de la caja (ancho y alto) \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_c_e_1_1_i_bounding_box_doc-func-members}
+\Hypertarget{class_c_e_1_1_i_bounding_box_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_i_bounding_box_a28cd6089c1b9c19202e3485d4a88cbb6}\index{CE::IBoundingBox@{CE::IBoundingBox}!clonar@{clonar}}
+\index{clonar@{clonar}!CE::IBoundingBox@{CE::IBoundingBox}}
+\doxysubsubsection{\texorpdfstring{clonar()}{clonar()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_i_bounding_box_a28cd6089c1b9c19202e3485d4a88cbb6} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{IComponentes}} $>$ CE::\+\+IBounding\+Box::\+clonar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_i_componentes}{CE::\+\+IComponentes}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+hpp\item 
+src/\+\+Motor/\+\+Componentes/\+IComponentes.\+cpp\end{DoxyCompactItemize}

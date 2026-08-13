@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la estructura ImGui_ImplDX12_InitInfo</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d0/df5/struct_im_gui___impl_d_x12___init_info.html','../../','da/d77/struct_im_gui___impl_d_x12___init_info-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la estructura ImGui_ImplDX12_InitInfo</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos públicos</h2></td></tr>
+<tr class="memitem:ae010edaef902b3865896902e1a111d40" id="r_ae010edaef902b3865896902e1a111d40"><td class="memItemLeft"><a id="ae010edaef902b3865896902e1a111d40" name="ae010edaef902b3865896902e1a111d40"></a>
+ID3D12Device *&#160;</td><td class="memItemRight"><b>Device</b></td></tr>
+<tr class="memitem:ae1991453617a4a9fa735a075eaa008ac" id="r_ae1991453617a4a9fa735a075eaa008ac"><td class="memItemLeft"><a id="ae1991453617a4a9fa735a075eaa008ac" name="ae1991453617a4a9fa735a075eaa008ac"></a>
+ID3D12CommandQueue *&#160;</td><td class="memItemRight"><b>CommandQueue</b></td></tr>
+<tr class="memitem:a03516ab81a3743e00aeac73a4cf77c20" id="r_a03516ab81a3743e00aeac73a4cf77c20"><td class="memItemLeft"><a id="a03516ab81a3743e00aeac73a4cf77c20" name="a03516ab81a3743e00aeac73a4cf77c20"></a>
+int&#160;</td><td class="memItemRight"><b>NumFramesInFlight</b></td></tr>
+<tr class="memitem:a0978fb5649adab8ebf4b34408f976890" id="r_a0978fb5649adab8ebf4b34408f976890"><td class="memItemLeft"><a id="a0978fb5649adab8ebf4b34408f976890" name="a0978fb5649adab8ebf4b34408f976890"></a>
+DXGI_FORMAT&#160;</td><td class="memItemRight"><b>RTVFormat</b></td></tr>
+<tr class="memitem:a60bf5e4049af126f2317350484fc8065" id="r_a60bf5e4049af126f2317350484fc8065"><td class="memItemLeft"><a id="a60bf5e4049af126f2317350484fc8065" name="a60bf5e4049af126f2317350484fc8065"></a>
+DXGI_FORMAT&#160;</td><td class="memItemRight"><b>DSVFormat</b></td></tr>
+<tr class="memitem:ac449d760864a151eace90244ce941af7" id="r_ac449d760864a151eace90244ce941af7"><td class="memItemLeft"><a id="ac449d760864a151eace90244ce941af7" name="ac449d760864a151eace90244ce941af7"></a>
+void *&#160;</td><td class="memItemRight"><b>UserData</b></td></tr>
+<tr class="memitem:a2da89744e7e1f9805687f36687264326" id="r_a2da89744e7e1f9805687f36687264326"><td class="memItemLeft"><a id="a2da89744e7e1f9805687f36687264326" name="a2da89744e7e1f9805687f36687264326"></a>
+ID3D12DescriptorHeap *&#160;</td><td class="memItemRight"><b>SrvDescriptorHeap</b></td></tr>
+<tr class="memitem:a681f1af11f689aafbb57f21192a09e03" id="r_a681f1af11f689aafbb57f21192a09e03"><td class="memItemLeft"><a id="a681f1af11f689aafbb57f21192a09e03" name="a681f1af11f689aafbb57f21192a09e03"></a>
+void(*&#160;</td><td class="memItemRight"><b>SrvDescriptorAllocFn</b> )(<a class="el" href="../../d0/df5/struct_im_gui___impl_d_x12___init_info.html">ImGui_ImplDX12_InitInfo</a> *info, D3D12_CPU_DESCRIPTOR_HANDLE *out_cpu_desc_handle, D3D12_GPU_DESCRIPTOR_HANDLE *out_gpu_desc_handle)</td></tr>
+<tr class="memitem:a32f45f1af55326124cf70ee632c44ded" id="r_a32f45f1af55326124cf70ee632c44ded"><td class="memItemLeft"><a id="a32f45f1af55326124cf70ee632c44ded" name="a32f45f1af55326124cf70ee632c44ded"></a>
+void(*&#160;</td><td class="memItemRight"><b>SrvDescriptorFreeFn</b> )(<a class="el" href="../../d0/df5/struct_im_gui___impl_d_x12___init_info.html">ImGui_ImplDX12_InitInfo</a> *info, D3D12_CPU_DESCRIPTOR_HANDLE cpu_desc_handle, D3D12_GPU_DESCRIPTOR_HANDLE gpu_desc_handle)</td></tr>
+<tr class="memitem:a1bd30406c7582f533daacbf258946472" id="r_a1bd30406c7582f533daacbf258946472"><td class="memItemLeft"><a id="a1bd30406c7582f533daacbf258946472" name="a1bd30406c7582f533daacbf258946472"></a>
+D3D12_CPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><b>LegacySingleSrvCpuDescriptor</b></td></tr>
+<tr class="memitem:aa07383dc41544c8e9a79c769407ed497" id="r_aa07383dc41544c8e9a79c769407ed497"><td class="memItemLeft"><a id="aa07383dc41544c8e9a79c769407ed497" name="aa07383dc41544c8e9a79c769407ed497"></a>
+D3D12_GPU_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight"><b>LegacySingleSrvGpuDescriptor</b></td></tr>
+</table>
+<hr/>La documentación de esta estructura está generada del siguiente archivo:<ul>
+<li>build/_deps/imgui-src/backends/<a class="el" href="../../d7/d53/imgui__impl__dx12_8h_source.html">imgui_impl_dx12.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="../../d0/df5/struct_im_gui___impl_d_x12___init_info.html">ImGui_ImplDX12_InitInfo</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

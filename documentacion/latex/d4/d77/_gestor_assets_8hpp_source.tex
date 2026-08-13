@@ -1,0 +1,64 @@
+\doxysection{Gestor\+Assets.\+hpp}
+\hypertarget{_gestor_assets_8hpp_source}{}\label{_gestor_assets_8hpp_source}\index{src/Motor/Primitivos/GestorAssets.hpp@{src/Motor/Primitivos/GestorAssets.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include<map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include<memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../Utils/Vector2D.hpp"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_gestor_assets}{GestorAssets}}}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets}{GestorAssets}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a4d4505e002928675fc030ea7947232b4}{Get}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a1a9357c6cf76177086cafbda3f914609}{agregarFont}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a790215e48b35e5d1f5a0accbcf62b83a}{agregarTextura}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \textcolor{keyword}{const}\ std::string\&\ filepath,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::Vector2D}}\&\ pos\_init,\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_c_e_1_1_vector2_d}{CE::Vector2D}}\&\ dim);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_acf58c384baa8b2439a425d7675cef45d}{agregarSonido}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a3263d63bdb17466e6c6406467484a446}{agregarMusica}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Font\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a3f55d7e051c948f76862c4c534ea5bc3}{getFont}}(\textcolor{keyword}{const}\ std::string\&\ key)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *hashFonts[key];}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Texture\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a551984368de2deb87053b78a7672c04a}{getTextura}}(\textcolor{keyword}{const}\ std::string\&\ key)}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *hashTexturas[key];}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Sound\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_af4eeb2d5a9228b033f9bf0d4ffb045ad}{getSonido}}(\textcolor{keyword}{const}\ std::string\&\ key)}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *hashSonidos[key];}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Music\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets_a3e51de85a1c3c1d710456ba2255396a6}{getMusica}}(\textcolor{keyword}{const}\ std::string\&\ key)}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *hashMusica[key];}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ std::shared\_ptr<sf::Font>>\ hashFonts;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ std::shared\_ptr<sf::Texture>>\ hashTexturas;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ std::shared\_ptr<sf::Sound>>\ hashSonidos;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ std::shared\_ptr<sf::Music>>\ hashMusica;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ sf::SoundBuffer\ sound\_buffer;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_assets}{GestorAssets}}*\ instancia=\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00127\ \ \ \ \ \};}
+\DoxyCodeLine{00128\ \}}
+
+\end{DoxyCode}

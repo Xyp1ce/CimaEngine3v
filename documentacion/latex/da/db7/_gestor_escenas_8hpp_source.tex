@@ -1,0 +1,49 @@
+\doxysection{Gestor\+Escenas.\+hpp}
+\hypertarget{_gestor_escenas_8hpp_source}{}\label{_gestor_escenas_8hpp_source}\index{src/Motor/Primitivos/GestorEscenas.hpp@{src/Motor/Primitivos/GestorEscenas.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Escena.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\#include\ <cstdarg>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas}{GestorEscenas}}}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ std::map<std::string,std::shared\_ptr<Escena>>\ HEscenas;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas}{GestorEscenas}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_aa6541d1bd9369d0ca439a336616871cc}{Get}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_a77acb2cea9cc8d234fd62fdb07d4a366}{registrarEscena}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \textcolor{keyword}{const}\ std::shared\_ptr<Escena>\&\ escena);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_afb1c2fbfe235a6201c284189e8c64794}{cambiarEscena}}(\textcolor{keyword}{const}\ std::string\&\ key);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_a2ae735ba5e161920823b186e5330bedb}{cambiarEscenayEliminar}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \textcolor{keywordtype}{bool}\ eliminar=\textcolor{keyword}{false});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_escena}{Escena}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_a51243e3bc8c8e98c5732bcf532e1505c}{getEscenaActual}}();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ HEscenas\&\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_a6676125a3f4fd87b6e107b3c1a513c71}{getTodasEscenas}}()}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ escenas;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas_ad1171f2eb9f39cfb253999a3eff6367a}{getKeys}}()\textcolor{keyword}{const}}
+\DoxyCodeLine{00074\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ keys;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ it=\ escenas.begin();\ it!=escenas.end();++it)}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keys.push\_back(it-\/>first);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ keys;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ escena\_actual;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ HEscenas\ escenas;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_c_e_1_1_gestor_escenas}{GestorEscenas}}*\ instancia=0;}
+\DoxyCodeLine{00090\ \ \ \ \ \};}
+\DoxyCodeLine{00091\ \}}
+
+\end{DoxyCode}

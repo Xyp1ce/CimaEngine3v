@@ -1,0 +1,107 @@
+\doxysection{Referencia de la clase CE::\+GDock}
+\hypertarget{class_c_e_1_1_g_dock}{}\label{class_c_e_1_1_g_dock}\index{CE::GDock@{CE::GDock}}
+
+
+Panel dock de Im\+Gui para mostrar información del motor.  
+
+
+
+
+{\ttfamily \+\#include $<$GDock.\+hpp$>$}
+
+Diagrama de herencia de CE::\+GDock\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d2/dc3/class_c_e_1_1_g_dock}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_e_1_1_g_dock_ae2459b45e7c545f24fa1d89582953f3a}\label{class_c_e_1_1_g_dock_ae2459b45e7c545f24fa1d89582953f3a} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+GDock} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_dock_a32a4016d6a467a4d5b625df4a1f175db}{On\+Init}} (const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&des) override
+\begin{DoxyCompactList}\small\item\em Inicializa el panel dock. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_dock_a783e6b50e5a3a39810e08b0dc9d50922}{On\+Update}} (float dt) override
+\begin{DoxyCompactList}\small\item\em Actualiza el panel dock cada frame. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_g_dock_ad0b714227808dc6bf7ec9f22c688af53}{On\+Render}} (void) override
+\begin{DoxyCompactList}\small\item\em Renderiza el panel dock en Im\+Gui. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_c_e_1_1_g_layer}{CE::\+\+GLayer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+GLayer} ()
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Panel dock de Im\+Gui para mostrar información del motor. 
+
+Implementa un panel de información/\+debug que muestra detalles sobre la configuración del motor (resolución, título, etc).
+
+\begin{DoxyNote}{Nota}
+Derivada de \doxylink{class_c_e_1_1_g_layer}{GLayer} para integración en sistema GUI del motor 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_g_dock_doc-func-members}
+\Hypertarget{class_c_e_1_1_g_dock_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_g_dock_a32a4016d6a467a4d5b625df4a1f175db}\index{CE::GDock@{CE::GDock}!OnInit@{OnInit}}
+\index{OnInit@{OnInit}!CE::GDock@{CE::GDock}}
+\doxysubsubsection{\texorpdfstring{OnInit()}{OnInit()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_dock_a32a4016d6a467a4d5b625df4a1f175db} 
+void CE::\+\+GDock::\+\+On\+Init (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_e_1_1_motor_config}{Motor\+Config}} \&}]{des}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inicializa el panel dock. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em des} & Configuración del motor (se almacena para mostrar) \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_a605df871381de6ae0d5db03cb82e31df}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_dock_ad0b714227808dc6bf7ec9f22c688af53}\index{CE::GDock@{CE::GDock}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!CE::GDock@{CE::GDock}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_dock_ad0b714227808dc6bf7ec9f22c688af53} 
+void CE::\+\+GDock::\+\+On\+Render (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderiza el panel dock en Im\+Gui. 
+
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_acef73a7b77895c80c8b84364f7e2fcd1}{CE::\+\+GLayer}}.
+
+\Hypertarget{class_c_e_1_1_g_dock_a783e6b50e5a3a39810e08b0dc9d50922}\index{CE::GDock@{CE::GDock}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CE::GDock@{CE::GDock}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_g_dock_a783e6b50e5a3a39810e08b0dc9d50922} 
+void CE::\+\+GDock::\+\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Actualiza el panel dock cada frame. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{class_c_e_1_1_g_layer_abbaf60ad981f3d972ccabe362c1099d6}{CE::\+\+GLayer}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+GUI/\+GDock.\+hpp\item 
+src/\+\+Motor/\+\+GUI/\+GDock.\+cpp\end{DoxyCompactItemize}

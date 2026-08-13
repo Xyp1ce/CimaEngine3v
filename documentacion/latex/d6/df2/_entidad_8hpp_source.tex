@@ -1,0 +1,41 @@
+\doxysection{Entidad.\+hpp}
+\hypertarget{_entidad_8hpp_source}{}\label{_entidad_8hpp_source}\index{src/Juego/objetos/Entidad.hpp@{src/Juego/objetos/Entidad.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../../Motor/Primitivos/Objetos.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../Maquinas/FSM.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }IVJ}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_i_v_j_1_1_f_s_m}{FSM}};\ \textcolor{comment}{//\ referencia\ circular}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }Entidad\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_c_e_1_1_objeto}{CE::Objeto}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ Entidad()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00013\ \ \ \ \ Entidad(\textcolor{keyword}{const}\ Entidad\ \&cpy);}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_i_v_j_1_1_entidad_a4fe15970acf1635c6e372a6c90ab80bd}{onUpdate}}(\textcolor{keywordtype}{float}\ dt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ draw(sf::RenderTarget\ \&target,\ sf::RenderStates\ state)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ fsm}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ setFSM(\textcolor{keyword}{const}\ std::shared\_ptr<FSM>\ \&mq);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ inputFSM()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ versiones\ const}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<CE::INombre>\ \doxymbox{\hyperlink{class_c_e_1_1_objeto_afd5af934bb57487ab0daae12dfc40b9e}{getNombre}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae88ba1dbc425eee527da8ea49acd5202}{nombre}};}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<CE::IStats>\ \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae07978f665ca78002b0e506298689c4f}{getStats}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_c_e_1_1_objeto_ad0035a54234514bc42c7c44da7627e55}{stats}};}
+\DoxyCodeLine{00029\ \ \ \ \ \};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::shared\_ptr<CE::IComponentes>>\ \&\doxymbox{\hyperlink{class_c_e_1_1_objeto_a85862966bc0de5f37ce974c6e4ed2a08}{getListaComponentes}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_c_e_1_1_objeto_ae97dce229f2bab88d027889cc25d9848}{componentes}};}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ \}\ \textcolor{comment}{//\ namespace\ IVJ}}
+
+\end{DoxyCode}

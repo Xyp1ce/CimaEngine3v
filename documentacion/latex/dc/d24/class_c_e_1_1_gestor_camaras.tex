@@ -1,0 +1,176 @@
+\doxysection{Referencia de la clase CE::\+Gestor\+Camaras}
+\hypertarget{class_c_e_1_1_gestor_camaras}{}\label{class_c_e_1_1_gestor_camaras}\index{CE::GestorCamaras@{CE::GestorCamaras}}
+
+
+Gestor singleton para administración de múltiples cámaras.  
+
+
+
+
+{\ttfamily \+\#include $<$Camaras\+Gestor.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a49cbdddb5e3e4b95135210dcd5af5cd4}{agregar\+Camara}} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}} $>$ \&nueva)
+\begin{DoxyCompactList}\small\item\em Agrega una nueva cámara al gestor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_aa565c704a680b9e52d0524da117cb6ba}{set\+Camara\+Activa}} (int id)
+\begin{DoxyCompactList}\small\item\em Establece cuál cámara es la activa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a27cedeb119fe884dd946da08bd3a9d02}{on\+Update\+Camaras}} (float dt)
+\begin{DoxyCompactList}\small\item\em Actualiza todas las cámaras. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_ac92e4f2f74a769e1355e2b3aa064dc34}{on\+Render\+Camara}} (sf::\+\+Render\+Texture \&tex)
+\begin{DoxyCompactList}\small\item\em Renderiza en una textura usando la cámara activa. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}} \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_aa34486a89a5e1ca28ae9ef170ad7e960}{get\+Camara\+Activa}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la cámara actualmente activa. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}} \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a27bec2d26c19415701dacd6a1dd15801}{get\+Camara}} (int id)
+\begin{DoxyCompactList}\small\item\em Obtiene una cámara por su índice. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}} $>$ $>$ \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a2f2ba9b8489b99be721141ac9edeccd3}{get\+Lista\+Camaras}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la lista completa de cámaras. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras}{Gestor\+Camaras}} \& \doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras_a6533e353c57b15f1a8e458b40a579965}{Get}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la instancia singleton del gestor de cámaras. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Gestor singleton para administración de múltiples cámaras. 
+
+Mantiene una colección de cámaras, designa cuál es la activa y orquesta su actualización y renderizado. Permite cambiar cámaras en tiempo de ejecución.
+
+\begin{DoxyNote}{Nota}
+Patrón Singleton -\/ instancia única a través de \doxylink{class_c_e_1_1_gestor_camaras_a6533e353c57b15f1a8e458b40a579965}{Get()} 
+
+Usa weak\+\_\+ptr para la cámara activa para permitir eliminación externa 
+\end{DoxyNote}
+
+
+\label{class_c_e_1_1_gestor_camaras_doc-func-members}
+\Hypertarget{class_c_e_1_1_gestor_camaras_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_c_e_1_1_gestor_camaras_a49cbdddb5e3e4b95135210dcd5af5cd4}\index{CE::GestorCamaras@{CE::GestorCamaras}!agregarCamara@{agregarCamara}}
+\index{agregarCamara@{agregarCamara}!CE::GestorCamaras@{CE::GestorCamaras}}
+\doxysubsubsection{\texorpdfstring{agregarCamara()}{agregarCamara()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_camaras_a49cbdddb5e3e4b95135210dcd5af5cd4} 
+void CE::\+\+Gestor\+Camaras::\+agregar\+Camara (\begin{DoxyParamCaption}\item[{const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}} $>$ \&}]{nueva}{}\end{DoxyParamCaption})}
+
+
+
+Agrega una nueva cámara al gestor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em nueva} & Puntero compartido a la cámara a agregar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_gestor_camaras_a6533e353c57b15f1a8e458b40a579965}\index{CE::GestorCamaras@{CE::GestorCamaras}!Get@{Get}}
+\index{Get@{Get}!CE::GestorCamaras@{CE::GestorCamaras}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_camaras_a6533e353c57b15f1a8e458b40a579965} 
+\doxymbox{\hyperlink{class_c_e_1_1_gestor_camaras}{Gestor\+Camaras}} \& CE::\+\+Gestor\+Camaras::\+\+Get (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtiene la instancia singleton del gestor de cámaras. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al gestor único 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_camaras_a27bec2d26c19415701dacd6a1dd15801}\index{CE::GestorCamaras@{CE::GestorCamaras}!getCamara@{getCamara}}
+\index{getCamara@{getCamara}!CE::GestorCamaras@{CE::GestorCamaras}}
+\doxysubsubsection{\texorpdfstring{getCamara()}{getCamara()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_camaras_a27bec2d26c19415701dacd6a1dd15801} 
+\doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}} \& CE::\+\+Gestor\+Camaras::\+get\+Camara (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Obtiene una cámara por su índice. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em id} & Índice en la lista de cámaras \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a la cámara 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_camaras_aa34486a89a5e1ca28ae9ef170ad7e960}\index{CE::GestorCamaras@{CE::GestorCamaras}!getCamaraActiva@{getCamaraActiva}}
+\index{getCamaraActiva@{getCamaraActiva}!CE::GestorCamaras@{CE::GestorCamaras}}
+\doxysubsubsection{\texorpdfstring{getCamaraActiva()}{getCamaraActiva()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_camaras_aa34486a89a5e1ca28ae9ef170ad7e960} 
+\doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}} \& CE::\+\+Gestor\+Camaras::\+get\+Camara\+Activa (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Obtiene la cámara actualmente activa. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable a la cámara activa
+\end{DoxyReturn}
+\begin{DoxyWarning}{Atención}
+Puede lanzar excepción si la cámara activa fue eliminada externamente 
+\end{DoxyWarning}
+\Hypertarget{class_c_e_1_1_gestor_camaras_a2f2ba9b8489b99be721141ac9edeccd3}\index{CE::GestorCamaras@{CE::GestorCamaras}!getListaCamaras@{getListaCamaras}}
+\index{getListaCamaras@{getListaCamaras}!CE::GestorCamaras@{CE::GestorCamaras}}
+\doxysubsubsection{\texorpdfstring{getListaCamaras()}{getListaCamaras()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_camaras_a2f2ba9b8489b99be721141ac9edeccd3} 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_c_e_1_1_camara}{Camara}} $>$ $>$ \& CE::\+\+Gestor\+Camaras::\+get\+Lista\+Camaras (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Obtiene la lista completa de cámaras. 
+
+\begin{DoxyReturn}{Devuelve}
+Referencia mutable al vector de cámaras 
+\end{DoxyReturn}
+\Hypertarget{class_c_e_1_1_gestor_camaras_ac92e4f2f74a769e1355e2b3aa064dc34}\index{CE::GestorCamaras@{CE::GestorCamaras}!onRenderCamara@{onRenderCamara}}
+\index{onRenderCamara@{onRenderCamara}!CE::GestorCamaras@{CE::GestorCamaras}}
+\doxysubsubsection{\texorpdfstring{onRenderCamara()}{onRenderCamara()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_camaras_ac92e4f2f74a769e1355e2b3aa064dc34} 
+void CE::\+\+Gestor\+Camaras::\+on\+Render\+Camara (\begin{DoxyParamCaption}\item[{sf::\+\+Render\+Texture \&}]{tex}{}\end{DoxyParamCaption})}
+
+
+
+Renderiza en una textura usando la cámara activa. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em tex} & Referencia a la textura de renderizado \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_gestor_camaras_a27cedeb119fe884dd946da08bd3a9d02}\index{CE::GestorCamaras@{CE::GestorCamaras}!onUpdateCamaras@{onUpdateCamaras}}
+\index{onUpdateCamaras@{onUpdateCamaras}!CE::GestorCamaras@{CE::GestorCamaras}}
+\doxysubsubsection{\texorpdfstring{onUpdateCamaras()}{onUpdateCamaras()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_camaras_a27cedeb119fe884dd946da08bd3a9d02} 
+void CE::\+\+Gestor\+Camaras::\+on\+Update\+Camaras (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})}
+
+
+
+Actualiza todas las cámaras. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dt} & Delta time en segundos \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_e_1_1_gestor_camaras_aa565c704a680b9e52d0524da117cb6ba}\index{CE::GestorCamaras@{CE::GestorCamaras}!setCamaraActiva@{setCamaraActiva}}
+\index{setCamaraActiva@{setCamaraActiva}!CE::GestorCamaras@{CE::GestorCamaras}}
+\doxysubsubsection{\texorpdfstring{setCamaraActiva()}{setCamaraActiva()}}
+{\footnotesize\ttfamily \label{class_c_e_1_1_gestor_camaras_aa565c704a680b9e52d0524da117cb6ba} 
+void CE::\+\+Gestor\+Camaras::\+set\+Camara\+Activa (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Establece cuál cámara es la activa. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em id} & Índice de la cámara en la lista \\
+\hline
+\end{DoxyParams}
+
+
+La documentación de esta clase está generada de los siguientes archivos:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Motor/\+\+Camaras/\+Camaras\+Gestor.\+hpp\item 
+src/\+\+Motor/\+\+Camaras/\+Camaras\+Gestor.\+cpp\end{DoxyCompactItemize}

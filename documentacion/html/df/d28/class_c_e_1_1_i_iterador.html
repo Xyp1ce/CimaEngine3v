@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CimaEngine3v: Referencia de la plantilla de la clase CE::IIterador&lt; T &gt;</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CimaEngine3v
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('df/d28/class_c_e_1_1_i_iterador.html','../../','d5/d2b/class_c_e_1_1_i_iterador-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la plantilla de la clase CE::IIterador&lt; T &gt;<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Interfaz template para iteración sobre contenedores.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d2/d21/_c_e_interfaces_8hpp_source.html">CEInterfaces.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de herencia de CE::IIterador&lt; T &gt;</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="../../df/d28/class_c_e_1_1_i_iterador.png" usemap="#CE_3A_3AIIterador_3C_20T_20_3E_map" alt=""/>
+  <map id="CE_3A_3AIIterador_3C_20T_20_3E_map" name="CE_3A_3AIIterador_3C_20T_20_3E_map">
+<area href="../../d7/d15/class_c_e_1_1_lista.html" title="Lista doblemente enlazada template con patrón iterador." alt="CE::Lista&lt; T &gt;" shape="rect" coords="0,56,113,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a688fd4df583c36dd1fdb9a5ffe030ed5" id="r_a688fd4df583c36dd1fdb9a5ffe030ed5"><td class="memItemLeft">virtual T *&#160;</td><td class="memItemRight"><a class="el" href="#a688fd4df583c36dd1fdb9a5ffe030ed5">iterInicio</a> ()=0</td></tr>
+<tr class="memdesc:a688fd4df583c36dd1fdb9a5ffe030ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mueve el iterador al primer elemento.  <br /></td></tr>
+<tr class="memitem:aa5d764da7b0c7538f37c41c6eb675612" id="r_aa5d764da7b0c7538f37c41c6eb675612"><td class="memItemLeft">virtual T *&#160;</td><td class="memItemRight"><a class="el" href="#aa5d764da7b0c7538f37c41c6eb675612">iterFinal</a> ()=0</td></tr>
+<tr class="memdesc:aa5d764da7b0c7538f37c41c6eb675612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mueve el iterador al último elemento.  <br /></td></tr>
+<tr class="memitem:a03626272fab97999cd038e693a3085ca" id="r_a03626272fab97999cd038e693a3085ca"><td class="memItemLeft">virtual T *&#160;</td><td class="memItemRight"><a class="el" href="#a03626272fab97999cd038e693a3085ca">iterActual</a> ()=0</td></tr>
+<tr class="memdesc:a03626272fab97999cd038e693a3085ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el elemento actual sin mover.  <br /></td></tr>
+<tr class="memitem:a7aff9318dd7b0bcc27112fd7bd21f224" id="r_a7aff9318dd7b0bcc27112fd7bd21f224"><td class="memItemLeft">virtual T *&#160;</td><td class="memItemRight"><a class="el" href="#a7aff9318dd7b0bcc27112fd7bd21f224">iterSiguiente</a> ()=0</td></tr>
+<tr class="memdesc:a7aff9318dd7b0bcc27112fd7bd21f224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza el iterador al siguiente elemento.  <br /></td></tr>
+<tr class="memitem:a10d95ddf7c07185feb11bf452986a781" id="r_a10d95ddf7c07185feb11bf452986a781"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a10d95ddf7c07185feb11bf452986a781">iterTermino</a> () const =0</td></tr>
+<tr class="memdesc:a10d95ddf7c07185feb11bf452986a781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica si la iteración ha terminado.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class CE::IIterador&lt; T &gt;</div><p>Interfaz template para iteración sobre contenedores. </p>
+<p>Define los métodos necesarios para navegar sobre una colección de elementos de tipo genérico T, soportando movimiento hacia inicio, final, actual y siguiente.</p>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Tipo de datos de los elementos contenidos </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="a03626272fab97999cd038e693a3085ca" name="a03626272fab97999cd038e693a3085ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03626272fab97999cd038e693a3085ca">&#9670;&#160;</a></span>iterActual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual T * <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html">CE::IIterador</a>&lt; T &gt;::iterActual </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene el elemento actual sin mover. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al elemento actual o nullptr </dd></dl>
+
+<p>Implementado en <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#ab6a3f1e76103704afe86365acfefbaea">CE::Lista&lt; T &gt;</a> y <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#ab6a3f1e76103704afe86365acfefbaea">CE::Lista&lt; std::pair&lt; std::string, Niveles &gt; &gt;</a>.</p>
+
+</div>
+</div>
+<a id="aa5d764da7b0c7538f37c41c6eb675612" name="aa5d764da7b0c7538f37c41c6eb675612"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5d764da7b0c7538f37c41c6eb675612">&#9670;&#160;</a></span>iterFinal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual T * <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html">CE::IIterador</a>&lt; T &gt;::iterFinal </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mueve el iterador al último elemento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al último elemento o nullptr si está vacío </dd></dl>
+
+<p>Implementado en <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#a3779e4ab20f27a2308bdcdc70ecc1329">CE::Lista&lt; T &gt;</a> y <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#a3779e4ab20f27a2308bdcdc70ecc1329">CE::Lista&lt; std::pair&lt; std::string, Niveles &gt; &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a688fd4df583c36dd1fdb9a5ffe030ed5" name="a688fd4df583c36dd1fdb9a5ffe030ed5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a688fd4df583c36dd1fdb9a5ffe030ed5">&#9670;&#160;</a></span>iterInicio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual T * <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html">CE::IIterador</a>&lt; T &gt;::iterInicio </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mueve el iterador al primer elemento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al primer elemento o nullptr si está vacío </dd></dl>
+
+<p>Implementado en <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#acb0443735ba1ee5906a75e719de75b19">CE::Lista&lt; T &gt;</a> y <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#acb0443735ba1ee5906a75e719de75b19">CE::Lista&lt; std::pair&lt; std::string, Niveles &gt; &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a7aff9318dd7b0bcc27112fd7bd21f224" name="a7aff9318dd7b0bcc27112fd7bd21f224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aff9318dd7b0bcc27112fd7bd21f224">&#9670;&#160;</a></span>iterSiguiente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual T * <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html">CE::IIterador</a>&lt; T &gt;::iterSiguiente </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Avanza el iterador al siguiente elemento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Puntero al siguiente elemento o nullptr si es el final </dd></dl>
+
+<p>Implementado en <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#a93d3b09cba613b737ce7eac43729ab0b">CE::Lista&lt; T &gt;</a> y <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#a93d3b09cba613b737ce7eac43729ab0b">CE::Lista&lt; std::pair&lt; std::string, Niveles &gt; &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a10d95ddf7c07185feb11bf452986a781" name="a10d95ddf7c07185feb11bf452986a781"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d95ddf7c07185feb11bf452986a781">&#9670;&#160;</a></span>iterTermino()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool <a class="el" href="../../df/d28/class_c_e_1_1_i_iterador.html">CE::IIterador</a>&lt; T &gt;::iterTermino </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifica si la iteración ha terminado. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se ha alcanzado el final, false en caso contrario </dd></dl>
+
+<p>Implementado en <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#aaf4202f53ec896644f7bbe4b876acef6">CE::Lista&lt; T &gt;</a> y <a class="el" href="../../d7/d15/class_c_e_1_1_lista.html#aaf4202f53ec896644f7bbe4b876acef6">CE::Lista&lt; std::pair&lt; std::string, Niveles &gt; &gt;</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li>src/Motor/Utils/<a class="el" href="../../d2/d21/_c_e_interfaces_8hpp_source.html">CEInterfaces.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CE</b></li><li class="navelem"><a href="../../df/d28/class_c_e_1_1_i_iterador.html">IIterador</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

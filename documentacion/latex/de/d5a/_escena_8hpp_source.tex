@@ -1,0 +1,78 @@
+\doxysection{Escena.\+hpp}
+\hypertarget{_escena_8hpp_source}{}\label{_escena_8hpp_source}\index{src/Motor/Primitivos/Escena.hpp@{src/Motor/Primitivos/Escena.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../Inputs/Botones.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CEPool.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//shaders\ y\ tilemap\ mover\ el\ source\ a\ motor/mapas}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../../Juego/objetos/TileMap.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include<vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include<map>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }CE}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_c_e_1_1_escena}{Escena}}}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ std::map<sf::Keyboard::Scancode,std::string>\ HashBotones;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a393c41fc5ec98438bd854d893767f15e}{\string~Escena}}()\{\};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_aa5b1d1ee11f920a6034208aa3813f346}{onInit}}()=0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_acd29ab05b7d32581bcfbd634be4db0d8}{onFinal}}()=0;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_adafabc6e0e86440d3b71a780bf3cdc31}{onUpdate}}(\textcolor{keywordtype}{float}\ dt)=0;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a18a0d78ee0f9dbedc51f105ade30bfb4}{onInputs}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_c_e_1_1_botones}{CE::Botones}}\&\ accion)=0;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a2c0c5cac03eda5887fd7ad760cd0157b}{onRender}}()=0;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a86a6f993844de886879a3562378d49b7}{registrarBotones}}(sf::Keyboard::Scancode\ boton,\ \textcolor{keyword}{const}\ std::string\ \&accion)}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_escena_a933c65a0647ff8b8c793fc18e8e145ee}{botones}}[boton]=accion;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ HashBotones\ \&\doxymbox{\hyperlink{class_c_e_1_1_escena_ae19da6f6a5c932fdda676eaacda683a0}{getBotones}}()}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a933c65a0647ff8b8c793fc18e8e145ee}{botones}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_pool}{Pool}}\&\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a36fa3e07118825511b84f40f60b64e6c}{getPool}}()}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_ac2d0293c81e5b4e19f63f2fe4bf8b381}{objetos}};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<sf::Keyboard::Scancode>\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_escena_a4a93f12159b3472a3721ab376ef81beb}{getBotonesRegistrados}}()}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<sf::Keyboard::Scancode>\ b;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.reserve(\doxymbox{\hyperlink{class_c_e_1_1_escena_a933c65a0647ff8b8c793fc18e8e145ee}{botones}}.size());}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ k\ =\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a933c65a0647ff8b8c793fc18e8e145ee}{botones}}.begin();k!=\doxymbox{\hyperlink{class_c_e_1_1_escena_a933c65a0647ff8b8c793fc18e8e145ee}{botones}}.end();k++)}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.emplace\_back(k-\/>first);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IVJ::Entidad>\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a82db80b9c8ed4e76056110cbedaf393a}{getJugador}}()\{\textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<IVJ::TileMap>\&\ \doxymbox{\hyperlink{class_c_e_1_1_escena_ad0ceb8522279c223ea147fa51e0b9925}{getTileMapsLayers}}()\ \ \{\textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a75a607e8c850d3db009c627812d6a88a}{tiles\_layers}};\};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ HashBotones\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a933c65a0647ff8b8c793fc18e8e145ee}{botones}};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ HashBotones\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a29db91b535a4461ba82109d120a9da40}{gui}};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a026461cac225411f9ed6f908821d7e36}{nombre}};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_c_e_1_1_pool}{Pool}}\ \doxymbox{\hyperlink{class_c_e_1_1_escena_ac2d0293c81e5b4e19f63f2fe4bf8b381}{objetos}}\{100\};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<IVJ::TileMap>\ \doxymbox{\hyperlink{class_c_e_1_1_escena_a75a607e8c850d3db009c627812d6a88a}{tiles\_layers}};}
+\DoxyCodeLine{00141\ \ \ \ \ \};}
+\DoxyCodeLine{00142\ \}}
+
+\end{DoxyCode}
