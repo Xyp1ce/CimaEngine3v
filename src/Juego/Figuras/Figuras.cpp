@@ -61,4 +61,29 @@ namespace IVJ
         pivote.setPosition(circ_img.getPosition());
         target.draw(pivote);
     }
+
+    Pentagono::Pentagono(float radio, const sf::Color &relleno, const sf::Color& contorno)
+    : Figuras{5,relleno,contorno},m_img{radio,5},radio{radio}
+    {
+        m_img.setFillColor(relleno);
+        m_img.setOutlineColor(contorno);
+        m_img.setOutlineThickness(3);
+        //anchor
+        m_img.setOrigin({radio,radio});
+    }
+    void Pentagono::onUpdate(float dt)
+    {
+        m_img.setPosition({transform->posicion.x,transform->posicion.y});
+        (void)dt;
+    }
+    void Pentagono::draw(sf::RenderTarget& target, sf::RenderStates state) const 
+    {
+        state.transform *= getTransform();
+        target.draw(m_img);
+        sf::CircleShape pivote{10.f};
+        pivote.setFillColor(f_ccontorno);
+        pivote.setOrigin({10.f,10.f});
+        pivote.setPosition(m_img.getPosition());
+        target.draw(pivote);
+    }
 }

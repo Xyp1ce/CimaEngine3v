@@ -1,0 +1,11 @@
+{
+	"Configs" : 
+	[
+		"Debug"
+	],
+	"InstallScripts" : 
+	[
+		"/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

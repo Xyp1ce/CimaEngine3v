@@ -51,4 +51,17 @@ namespace IVJ
             float radio;
     };
 
+    class Pentagono : public Figuras {
+        public: 
+            explicit Pentagono(float radio, const sf::Color& relleno, const sf::Color& contorno);
+            ~Pentagono() override {};
+            void draw(sf::RenderTarget& target, sf::RenderStates state) const override; 
+            void onUpdate(float dt) override;
+
+        private:
+            sf::CircleShape m_img;
+
+        public:
+            float radio;
+    };
 }

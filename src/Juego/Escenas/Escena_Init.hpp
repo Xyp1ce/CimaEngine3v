@@ -1,4 +1,5 @@
 #pragma once
+#include <Juego/Figuras/ClasePrueba.hpp>
 #include <Motor/Primitivos/Escena.hpp>
 #include <Juego/Figuras/Figuras.hpp>
 #include <memory>
@@ -18,6 +19,6 @@ namespace IVJ
             void onRender() override;
         private:
             int inicializar{1};
-            
+        std::shared_ptr<Alumno> alumno;
     };
 }

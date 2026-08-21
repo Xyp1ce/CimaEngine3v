@@ -1,0 +1,3 @@
+/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/CMakeFiles/imgui-populate.dir
+/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/CMakeFiles/edit_cache.dir
+/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/CMakeFiles/rebuild_cache.dir

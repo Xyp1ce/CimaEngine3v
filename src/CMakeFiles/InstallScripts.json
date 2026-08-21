@@ -1,0 +1,30 @@
+{
+	"Configs" : 
+	[
+		"Debug"
+	],
+	"InstallScripts" : 
+	[
+		"/home/ramonm/CimaEngine3v/src/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/_deps/imgui-sfml-build/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Main/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/Render/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/App/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/GUI/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/Primitivos/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/Utils/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/Componentes/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/Camaras/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Motor/Inputs/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Juego/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Juego/Figuras/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Juego/Sistemas/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Juego/Escenas/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Juego/objetos/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Juego/Componentes/cmake_install.cmake",
+		"/home/ramonm/CimaEngine3v/src/src/Juego/Maquinas/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

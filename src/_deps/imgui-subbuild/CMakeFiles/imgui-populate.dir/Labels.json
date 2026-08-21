@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/CMakeFiles/imgui-populate-Debug"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/CMakeFiles/imgui-populate-(CONFIG).rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/CMakeFiles/(CONFIG)/imgui-populate-complete.rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/imgui-populate-prefix/src/imgui-populate-stamp/(CONFIG)/imgui-populate-build.rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/imgui-populate-prefix/src/imgui-populate-stamp/(CONFIG)/imgui-populate-configure.rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/imgui-populate-prefix/src/imgui-populate-stamp/(CONFIG)/imgui-populate-download.rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/imgui-populate-prefix/src/imgui-populate-stamp/(CONFIG)/imgui-populate-install.rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/imgui-populate-prefix/src/imgui-populate-stamp/(CONFIG)/imgui-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/imgui-populate-prefix/src/imgui-populate-stamp/(CONFIG)/imgui-populate-patch.rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/imgui-populate-prefix/src/imgui-populate-stamp/(CONFIG)/imgui-populate-test.rule"
+		},
+		{
+			"file" : "/home/ramonm/CimaEngine3v/src/_deps/imgui-subbuild/imgui-populate-prefix/src/imgui-populate-stamp/(CONFIG)/imgui-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"imgui-populate"
+		],
+		"name" : "imgui-populate"
+	}
+}
