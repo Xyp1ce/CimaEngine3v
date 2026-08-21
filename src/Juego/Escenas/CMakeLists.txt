@@ -5,3 +5,4 @@ file(GLOB_RECURSE gl_cpp RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_S
 
 target_sources(CimaEngine3v PRIVATE ${gl_cpp})
 
+add_compile_definitions(ROOT_FOLDER="$CMAKE_CURRENT_SOURCE_DIR")
