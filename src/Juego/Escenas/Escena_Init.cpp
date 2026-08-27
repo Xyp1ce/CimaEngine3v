@@ -16,7 +16,7 @@ void Escena_Init::onInit() {
   if (!inicializar)
     return;
 
-  // CargadorFiguras cargador("../../../assets/figuras_2026_2.txt");
+  //CargadorFiguras cargador("/home/ramonm/CimaEngine3v/assets/figuras_2026_2.txt");
   CargadorFiguras cargador(ASSETS "/figuras_2026_2.txt");
   auto listaFiguras = cargador.cargar();
 

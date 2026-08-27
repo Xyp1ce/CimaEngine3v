@@ -1,6 +1,7 @@
 #include "Figuras.hpp"
 #include <fstream>
 #include <iostream>
+#include <typeinfo>
 
 namespace IVJ {
 Figuras::Figuras(int l, const sf::Color &relleno, const sf::Color &contorno)
@@ -151,6 +152,7 @@ void Octagono::draw(sf::RenderTarget &target, sf::RenderStates state) const {
 CargadorFiguras::CargadorFiguras(const std::string &ruta) : m_ruta(ruta) {}
 
 std::vector<std::shared_ptr<Figuras>> CargadorFiguras::cargar() {
+  // El error esta entre aqui
   std::vector<std::shared_ptr<Figuras>> lista;
   std::ifstream archivo(m_ruta);
   std::string tipo;
@@ -161,39 +163,59 @@ std::vector<std::shared_ptr<Figuras>> CargadorFiguras::cargar() {
   }
 
   while (archivo >> tipo) {
+    std::cout << typeid(tipo).name() << "\n";
+    std::cout << typeid("Rectangulo").name() << "\n";
+
     float x, y;
     archivo >> x >> y;
 
+    std::cout << "hola" << tipo << "hola" << "\n";
+
+    bool comparacion = tipo == "Rectangulo";
+
+    std::cout << comparacion << "\n";
+    // Hasta aca
     if (tipo == "Rectangulo") {
-      float w, h;
+      std::cout << "Creando Rectangulo" << "\n";
+      int w, h;
       int r1, g1, b1, r2, g2, b2;
       archivo >> w >> h >> r1 >> g1 >> b1 >> r2 >> g2 >> b2;
       auto fig = std::make_shared<Rectangulo>(w, h, sf::Color(r1, g1, b1),
                                               sf::Color(r2, g2, b2));
       fig->setPosicion(x, y);
       lista.push_back(fig);
+      std::cout << "Creado un Rectangulo" << "\n";
     } else {
       float radio;
       int r1, g1, b1, r2, g2, b2;
       archivo >> radio >> r1 >> g1 >> b1 >> r2 >> g2 >> b2;
 
       std::shared_ptr<Figuras> fig = nullptr;
-      if (tipo == "Circulo")
+      if (tipo == "Circulo") {
         fig = std::make_shared<Circulo>(radio, sf::Color(r1, g1, b1),
                                         sf::Color(r2, g2, b2));
-      else if (tipo == "Triangulo")
+        std::cout << "Creado un Circulo" << "\n";
+      }
+      else if (tipo == "Triangulo") {
         fig = std::make_shared<Triangulo>(radio, sf::Color(r1, g1, b1),
                                           sf::Color(r2, g2, b2));
-      else if (tipo == "Pentagono")
+        std::cout << "Creado un Triangulo" << "\n"; 
+      }
+      else if (tipo == "Pentagono") {
         fig = std::make_shared<Pentagono>(radio, sf::Color(r1, g1, b1),
                                           sf::Color(r2, g2, b2));
-      else if (tipo == "Hexagono")
+        std::cout << "Creado un Pentagono" << "\n";
+      }
+      else if (tipo == "Hexagono") {
         fig = std::make_shared<Hexagono>(radio, sf::Color(r1, g1, b1),
                                          sf::Color(r2, g2, b2));
-      else if (tipo == "Octagono")
+        std::cout << "Creado un Hexagono" << "\n";
+      }
+      else if (tipo == "Octagono") {
         fig = std::make_shared<Octagono>(radio, sf::Color(r1, g1, b1),
                                          sf::Color(r2, g2, b2));
-
+        std::cout << "Creado un Octagono" << "\n";
+      }
       if (fig) {
         fig->setPosicion(x, y);
         lista.push_back(fig);
