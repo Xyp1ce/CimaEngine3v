@@ -78,7 +78,7 @@ set(COMPILADOR_TIPO_GNU
     "$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>"
 )
 
-target_compile_options(CimaEngine3v PRIVATE 
+target_compile_options(CimaEngine3v PRIVATE
     # --- BANDERAS MSVC ---
     "$<$<AND:$<CONFIG:Debug>,$<CXX_COMPILER_ID:MSVC>>:/Zi;/W4;/WX>"
     "$<$<AND:$<CONFIG:Release>,$<CXX_COMPILER_ID:MSVC>>:/O2>"
@@ -87,3 +87,4 @@ target_compile_options(CimaEngine3v PRIVATE
     "$<$<AND:$<CONFIG:Release>,${COMPILADOR_TIPO_GNU}>:-O2>"
 )
 
+add_compile_definitions(ROOT_FOLDER="${CMAKE_CURRENT_SOURCE_DIR}")

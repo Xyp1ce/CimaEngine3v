@@ -10,6 +10,6 @@ add_subdirectory(Maquinas)
 
 target_sources(CimaEngine3v PRIVATE Juego.cpp)
 
-
+add_compile_definitions(ROOT_FOLDER="${CMAKE_CURRENT_SOURCE_DIR}")
 
 
