@@ -152,7 +152,6 @@ void Octagono::draw(sf::RenderTarget &target, sf::RenderStates state) const {
 CargadorFiguras::CargadorFiguras(const std::string &ruta) : m_ruta(ruta) {}
 
 std::vector<std::shared_ptr<Figuras>> CargadorFiguras::cargar() {
-  // El error esta entre aqui
   std::vector<std::shared_ptr<Figuras>> lista;
   std::ifstream archivo(m_ruta);
   std::string tipo;
@@ -163,20 +162,10 @@ std::vector<std::shared_ptr<Figuras>> CargadorFiguras::cargar() {
   }
 
   while (archivo >> tipo) {
-    std::cout << typeid(tipo).name() << "\n";
-    std::cout << typeid("Rectangulo").name() << "\n";
-
     float x, y;
     archivo >> x >> y;
 
-    std::cout << "hola" << tipo << "hola" << "\n";
-
-    bool comparacion = tipo == "Rectangulo";
-
-    std::cout << comparacion << "\n";
-    // Hasta aca
     if (tipo == "Rectangulo") {
-      std::cout << "Creando Rectangulo" << "\n";
       int w, h;
       int r1, g1, b1, r2, g2, b2;
       archivo >> w >> h >> r1 >> g1 >> b1 >> r2 >> g2 >> b2;
@@ -184,7 +173,6 @@ std::vector<std::shared_ptr<Figuras>> CargadorFiguras::cargar() {
                                               sf::Color(r2, g2, b2));
       fig->setPosicion(x, y);
       lista.push_back(fig);
-      std::cout << "Creado un Rectangulo" << "\n";
     } else {
       float radio;
       int r1, g1, b1, r2, g2, b2;
@@ -194,27 +182,18 @@ std::vector<std::shared_ptr<Figuras>> CargadorFiguras::cargar() {
       if (tipo == "Circulo") {
         fig = std::make_shared<Circulo>(radio, sf::Color(r1, g1, b1),
                                         sf::Color(r2, g2, b2));
-        std::cout << "Creado un Circulo" << "\n";
-      }
-      else if (tipo == "Triangulo") {
+      } else if (tipo == "Triangulo") {
         fig = std::make_shared<Triangulo>(radio, sf::Color(r1, g1, b1),
                                           sf::Color(r2, g2, b2));
-        std::cout << "Creado un Triangulo" << "\n"; 
-      }
-      else if (tipo == "Pentagono") {
+      } else if (tipo == "Pentagono") {
         fig = std::make_shared<Pentagono>(radio, sf::Color(r1, g1, b1),
                                           sf::Color(r2, g2, b2));
-        std::cout << "Creado un Pentagono" << "\n";
-      }
-      else if (tipo == "Hexagono") {
+      } else if (tipo == "Hexagono") {
         fig = std::make_shared<Hexagono>(radio, sf::Color(r1, g1, b1),
                                          sf::Color(r2, g2, b2));
-        std::cout << "Creado un Hexagono" << "\n";
-      }
-      else if (tipo == "Octagono") {
+      } else if (tipo == "Octagono") {
         fig = std::make_shared<Octagono>(radio, sf::Color(r1, g1, b1),
                                          sf::Color(r2, g2, b2));
-        std::cout << "Creado un Octagono" << "\n";
       }
       if (fig) {
         fig->setPosicion(x, y);
