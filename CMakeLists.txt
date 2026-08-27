@@ -87,4 +87,3 @@ target_compile_options(CimaEngine3v PRIVATE
     "$<$<AND:$<CONFIG:Release>,${COMPILADOR_TIPO_GNU}>:-O2>"
 )
 
-add_compile_definitions(ROOT_FOLDER="${CMAKE_CURRENT_SOURCE_DIR}")

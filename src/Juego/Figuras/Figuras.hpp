@@ -112,14 +112,12 @@ public:
   float radio;
 };
 
-class FileLoader {
+class CargadorFiguras {
 public:
-  FileLoader(const std::string &pathfile);
-  ~FileLoader();
-  std::vector<std::shared_ptr<Figuras>> LoadFile();
+  explicit CargadorFiguras(const std::string &ruta);
+  std::vector<std::shared_ptr<Figuras>> cargar();
 
 private:
-  std::vector<std::shared_ptr<Figuras>> lista;
-  std::string archivo;
+  std::string m_ruta;
 };
 } // namespace IVJ

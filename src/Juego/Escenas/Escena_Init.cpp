@@ -16,9 +16,15 @@ void Escena_Init::onInit() {
   if (!inicializar)
     return;
 
-  std::cout << "Variable apuntador inteligente" << "\n";
-  std::shared_ptr<Alumno> al = std::make_shared<Alumno>("Ramon", 2210376, 6);
-  std::cout << al->getNombre() << "\n";
+  // CargadorFiguras cargador("../../../assets/figuras_2026_2.txt");
+  CargadorFiguras cargador(ASSETS "/figuras_2026_2.txt");
+  auto listaFiguras = cargador.cargar();
+
+  std::cout << "[DEBUG] Figuras cargadas: " << listaFiguras.size() << "\n";
+
+  for (auto fig : listaFiguras) {
+    objetos.agregarPool(fig);
+  }
 
   inicializar = false;
 }
