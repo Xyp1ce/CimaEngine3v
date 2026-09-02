@@ -7,6 +7,7 @@
 #include "Motor/GUI/GLogger.hpp"
 #include "Motor/Utils/Vector2D.hpp"
 #include <cmath>
+#include <codecvt>
 #include <memory>
 
 #include <Juego/Componentes/IJComponentes.hpp>
@@ -299,4 +300,38 @@ void SistemaGirar(CE::Objeto &ente, float dt) {
   componente->angulo += 3.146 * dt;
 }
 
+void SistemaVertical(CE::Objeto &ente, float dt) {
+  if (!ente.getComponente<IVertical>())
+    return;
+  auto componente = ente.getComponente<IVertical>();
+  auto pos = ente.getTransformada()->posicion;
+  float radio = componente->radio;
+  float y = radio * sin(componente->angulo);
+  ente.setPosicion(pos.x, pos.y + y);
+  componente->angulo += 3.146f * dt;
+}
+
+void SistemaOnda(CE::Objeto &ente, float dt) {
+  if (!ente.getComponente<IOnda>())
+    return;
+  auto componente = ente.getComponente<IOnda>();
+  auto pos = ente.getTransformada()->posicion;
+  auto dim = CE::Render::Get().GetVentana().getSize();
+  // direccion = 1 -> derecha
+  // direccion = -1 -> izquierda
+  float avance_x = 150.f * dt;
+  if (pos.x > dim.x)
+    componente->direccion = -1;
+  if (pos.x < 0)
+    componente->direccion = 1;
+  int dir = componente->direccion;
+  if (dir == -1)
+    avance_x = -150.f * dt;
+  float radio = componente->radio;
+  float y = radio * sin(componente->angulo);
+  float nueva_x = pos.x + avance_x;
+  float nueva_y = pos.y + y;
+  ente.setPosicion(nueva_x, nueva_y);
+  componente->angulo += 3.146f * dt;
+}
 } // namespace IVJ

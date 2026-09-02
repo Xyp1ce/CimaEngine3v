@@ -122,4 +122,35 @@ public:
   float angulo;
   float radio;
 };
+
+class IVertical : public CE::IComponentes {
+public:
+  explicit IVertical(const float ang, const float r);
+
+  virtual ~IVertical() override {};
+  // esto permite copiar el componente sin crear referencia
+  // se tiene que implementar afueras (error de diseño mio)
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<IVertical>(*this);
+  };
+
+public:
+  float angulo;
+  float radio;
+};
+
+class IOnda : public CE::IComponentes {
+public:
+  explicit IOnda(const float ang, const float r, const int dir);
+
+  virtual ~IOnda() override {};
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<IOnda>(*this);
+  };
+
+public:
+  float angulo;
+  float radio;
+  int direccion;
+};
 } // namespace IVJ

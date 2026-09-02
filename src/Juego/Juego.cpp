@@ -16,6 +16,7 @@
 #include <ctime>
 
 #include <Juego/Escenas/Escena_Menu.hpp>
+#include <Juego/Escenas/Escena_Sistemas.hpp>
 #include <Juego/objetos/Entidad.hpp>
 
 namespace IVJ {
@@ -36,6 +37,8 @@ void Juego::OnInit(void) {
                                            std::make_shared<Escena_Init>());
   CE::GestorEscenas::Get().registrarEscena("Menu",
                                            std::make_shared<Escena_Menu>());
+  CE::GestorEscenas::Get().registrarEscena("Sistemas",
+                                           std::make_shared<Escena_Sistemas>());
 
   CE::GestorEscenas::Get().cambiarEscena("Menu"); // ejecuta onInit()A
   escena_actual = &CE::GestorEscenas::Get().getEscenaActual();

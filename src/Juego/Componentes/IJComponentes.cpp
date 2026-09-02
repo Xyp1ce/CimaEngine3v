@@ -110,4 +110,10 @@ void IIndicador::onRender() {
 IGirar::IGirar(const float ang, const float r)
     : CE::IComponentes{}, angulo{ang}, radio{r} {}
 
+IVertical::IVertical(const float ang, const float r)
+    : CE::IComponentes{}, angulo{ang}, radio{r} {}
+
+IOnda::IOnda(const float ang, const float r, const int dir)
+    : CE::IComponentes{}, angulo{ang}, radio{r}, direccion{dir} {}
+
 } // namespace IVJ

@@ -1,4 +1,5 @@
-#include "Escena_Menu.hpp"
+#include "Juego/Escenas/Escena_Sistemas.hpp"
+#include "Escena_Sistemas.hpp"
 #include "Motor/Inputs/Botones.hpp"
 #include "Motor/Primitivos/GestorAssets.hpp"
 #include "Motor/Primitivos/GestorEscenas.hpp"
@@ -11,8 +12,8 @@
 #include <memory>
 
 namespace IVJ {
-Escena_Menu::Escena_Menu() : CE::Escena{} {}
-void Escena_Menu::onInit() {
+Escena_Sistemas::Escena_Sistemas() : CE::Escena{} {}
+void Escena_Sistemas::onInit() {
   if (!inicializar)
     return;
   registrarBotones(sf::Keyboard::Scancode::W, "arriba");
@@ -35,19 +36,31 @@ void Escena_Menu::onInit() {
       CE::GestorAssets::Get().getFont("default_font"), "Salir");
   strSalir->setPosicion(510.f, 300.f);
 
-  auto cuadro = std::make_shared<Rectangulo>(150, 150, sf::Color::White,
-                                             sf::Color::Black);
-  cuadro->addComponente(std::make_shared<IVertical>(3.1416, 5.f));
-  cuadro->setPosicion(800, 200);
+  auto cuadro_vertical = std::make_shared<Rectangulo>(
+      150, 150, sf::Color::White, sf::Color::Black);
+  cuadro_vertical->addComponente(std::make_shared<IVertical>(3.1416, 5.f));
+  cuadro_vertical->setPosicion(800, 200);
+
+  auto cuadro_circulo = std::make_shared<Rectangulo>(150, 150, sf::Color::White,
+                                                     sf::Color::Black);
+  cuadro_circulo->addComponente(std::make_shared<IGirar>(3.1416, 6.f));
+  cuadro_circulo->setPosicion(500, 300);
+
+  auto cuadro_onda = std::make_shared<Rectangulo>(150, 150, sf::Color::White,
+                                                  sf::Color::Black);
+  cuadro_onda->addComponente(std::make_shared<IOnda>(3.1416, 6.f, 1));
+  cuadro_onda->setPosicion(200, 500);
 
   objetos.agregarPool(marcador);
   objetos.agregarPool(strIniciar);
   objetos.agregarPool(strSalir);
-  objetos.agregarPool(cuadro);
+  objetos.agregarPool(cuadro_vertical);
+  objetos.agregarPool(cuadro_circulo);
+  objetos.agregarPool(cuadro_onda);
   inicializar = false;
 }
-void Escena_Menu::onFinal() {}
-void Escena_Menu::onUpdate(float dt) {
+void Escena_Sistemas::onFinal() {}
+void Escena_Sistemas::onUpdate(float dt) {
   for (auto &obj : objetos.getPool()) {
     obj->onUpdate(dt);
     SistemaGirar(*obj, dt);
@@ -55,7 +68,7 @@ void Escena_Menu::onUpdate(float dt) {
     SistemaOnda(*obj, dt);
   }
 }
-void Escena_Menu::onInputs(const CE::Botones &accion) {
+void Escena_Sistemas::onInputs(const CE::Botones &accion) {
   switch (accion.getTipo()) {
   case CE::Botones::TipoAccion::OnPress: {
     if (accion.getNombre() == "arriba" || accion.getNombre() == "abajo") {
@@ -86,7 +99,7 @@ void Escena_Menu::onInputs(const CE::Botones &accion) {
   }
   }
 }
-void Escena_Menu::onRender() {
+void Escena_Sistemas::onRender() {
   for (auto &obj : objetos.getPool())
     CE::Render::Get().AddToDraw(*obj);
 }

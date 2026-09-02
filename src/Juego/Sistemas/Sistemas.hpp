@@ -37,4 +37,9 @@ bool revisarDistanciaInteraccion(CE::Objeto &jugador, CE::Objeto &npc,
                                   const sf::Color &color = sf::Color::Red);
 
 [[maybe_unused]] void SistemaGirar(CE::Objeto &ente, float dt);
+
+[[maybe_unused]] void SistemaVertical(CE::Objeto &ente, float dt);
+
+[[maybe_unused]] void SistemaOnda(CE::Objeto &ente, float dt);
+
 } // namespace IVJ
