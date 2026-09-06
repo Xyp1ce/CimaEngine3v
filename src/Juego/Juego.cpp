@@ -17,6 +17,8 @@
 
 #include <Juego/Escenas/Escena_Menu.hpp>
 #include <Juego/Escenas/Escena_Sistemas.hpp>
+#include <Juego/Escenas/Escena_Vibora.hpp>
+
 #include <Juego/objetos/Entidad.hpp>
 
 namespace IVJ {
@@ -39,7 +41,8 @@ void Juego::OnInit(void) {
                                            std::make_shared<Escena_Menu>());
   CE::GestorEscenas::Get().registrarEscena("Sistemas",
                                            std::make_shared<Escena_Sistemas>());
-
+  CE::GestorEscenas::Get().registrarEscena("Vibora",
+                                           std::make_shared<Escena_Vibora>());
   CE::GestorEscenas::Get().cambiarEscena("Menu"); // ejecuta onInit()A
   escena_actual = &CE::GestorEscenas::Get().getEscenaActual();
 }

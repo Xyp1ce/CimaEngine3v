@@ -2,15 +2,16 @@
 #include <fstream>
 #include <iostream>
 #include <typeinfo>
+#include <Juego/Componentes/IJComponentes.hpp>
 
 namespace IVJ {
 Figuras::Figuras(int l, const sf::Color &relleno, const sf::Color &contorno)
-    : CE::Objeto{}, f_lados{l}, f_crelleno{relleno}, f_ccontorno{contorno} {}
+: CE::Objeto{}, f_lados{l}, f_crelleno{relleno}, f_ccontorno{contorno} {}
 
 Rectangulo::Rectangulo(float ancho, float largo, const sf::Color &relleno,
                        const sf::Color &contorno)
-    : Figuras{4, relleno, contorno},
-      rect_img{sf::RectangleShape({ancho, largo})}, w{ancho}, h{largo} {
+  : Figuras{4, relleno, contorno},
+  rect_img{sf::RectangleShape({ancho, largo})}, w{ancho}, h{largo} {
   rect_img.setFillColor(f_crelleno);
   rect_img.setOutlineColor(f_ccontorno);
   rect_img.setOutlineThickness(3);
@@ -35,7 +36,7 @@ void Rectangulo::onUpdate(float dt) {
 // CIRCULO
 Circulo::Circulo(float radio, const sf::Color &relleno,
                  const sf::Color &contorno)
-    : Figuras{32, relleno, contorno}, circ_img{radio, 32}, radio{radio} {
+: Figuras{32, relleno, contorno}, circ_img{radio, 32}, radio{radio} {
   circ_img.setFillColor(relleno);
   circ_img.setOutlineColor(contorno);
   circ_img.setOutlineThickness(3);
@@ -58,7 +59,7 @@ void Circulo::draw(sf::RenderTarget &target, sf::RenderStates state) const {
 
 Pentagono::Pentagono(float radio, const sf::Color &relleno,
                      const sf::Color &contorno)
-    : Figuras{5, relleno, contorno}, m_img{radio, 5}, radio{radio} {
+: Figuras{5, relleno, contorno}, m_img{radio, 5}, radio{radio} {
   m_img.setFillColor(relleno);
   m_img.setOutlineColor(contorno);
   m_img.setOutlineThickness(3);
@@ -83,7 +84,7 @@ void Pentagono::draw(sf::RenderTarget &target, sf::RenderStates state) const {
 
 Triangulo::Triangulo(float radio, const sf::Color &relleno,
                      const sf::Color &contorno)
-    : Figuras{5, relleno, contorno}, t_img{radio, 3}, radio{radio} {
+: Figuras{5, relleno, contorno}, t_img{radio, 3}, radio{radio} {
   t_img.setFillColor(relleno);
   t_img.setOutlineColor(contorno);
   t_img.setOutlineThickness(3);
@@ -106,7 +107,7 @@ void Triangulo::draw(sf::RenderTarget &target, sf::RenderStates state) const {
 // Clase Hexagono
 Hexagono::Hexagono(float radio, const sf::Color &relleno,
                    const sf::Color &contorno)
-    : Figuras{5, relleno, contorno}, h_img{radio, 6}, radio{radio} {
+: Figuras{5, relleno, contorno}, h_img{radio, 6}, radio{radio} {
   h_img.setFillColor(relleno);
   h_img.setOutlineColor(contorno);
   h_img.setOutlineThickness(3);
@@ -129,7 +130,7 @@ void Hexagono::draw(sf::RenderTarget &target, sf::RenderStates state) const {
 // Clase Octagono
 Octagono::Octagono(float radio, const sf::Color &relleno,
                    const sf::Color &contorno)
-    : Figuras{5, relleno, contorno}, o_img{radio, 6}, radio{radio} {
+: Figuras{5, relleno, contorno}, o_img{radio, 6}, radio{radio} {
   o_img.setFillColor(relleno);
   o_img.setOutlineColor(contorno);
   o_img.setOutlineThickness(3);
@@ -202,5 +203,94 @@ std::vector<std::shared_ptr<Figuras>> CargadorFiguras::cargar() {
     }
   }
   return lista;
+}
+
+EnteVibora::EnteVibora(float radio, const sf::Color &relleno, const sf::Color &contorno)
+: Circulo{radio, relleno, contorno}, direccion{1, 0} {
+}
+
+void EnteVibora::setDireccion(float x, float y) {
+  direccion.x = x;
+  direccion.y = y;
+}
+
+void EnteVibora::onUpdate(float dt) {
+  auto miTransform = getTransformada();
+  miTransform->posicion.x += direccion.x * velocidad * dt;
+  miTransform->posicion.y += direccion.y * velocidad * dt;
+
+  Circulo::onUpdate(dt);
+
+  auto cuerpo = getComponente<ICPartesCuerpo>();
+  if (!cuerpo) return; 
+
+  if (!cuerpo->partes.empty()) {
+    cuerpo->partes[0]->posiciones.push(miTransform->posicion);
+  }
+
+  for (size_t i = 0; i < cuerpo->partes.size(); ++i) {
+    auto& parteActual = cuerpo->partes[i];
+
+    if (!parteActual->hacerAccion) {
+      parteActual->timer->curr_frame++;
+      if (parteActual->timer->curr_frame >= parteActual->timer->max_frame) {
+        parteActual->hacerAccion = true;
+      }
+    }
+
+    if (parteActual->hacerAccion) {
+      if (!parteActual->posiciones.vacia()) {
+        CE::Vector2D nuevaPos = parteActual->posiciones.pop();
+        parteActual->pos->posicion = nuevaPos;
+
+        if (i + 1 < cuerpo->partes.size()) {
+          cuerpo->partes[i+1]->posiciones.push(nuevaPos);
+        }
+      }
+    }
+
+    if (parteActual->parte->figura) {
+      parteActual->parte->figura->setPosicion(parteActual->pos->posicion.x, parteActual->pos->posicion.y);
+      parteActual->parte->figura->onUpdate(dt);
+    }
+  }
+
+  // Agregar parte nueva cada 3 segundos
+  tiempoAcumulado += dt;
+  if (tiempoAcumulado >= 3.0f) {
+    tiempoAcumulado = 0.f;
+    agregarNuevaParte(cuerpo);
+  }
+}
+
+void EnteVibora::agregarNuevaParte(ICPartesCuerpo* cuerpo) {
+  auto nuevaParte = std::make_shared<ICParte>();
+
+  // Retraso para que las partes no se encimen
+  nuevaParte->timer->max_frame = 15; 
+
+  auto fig = std::make_shared<Circulo>(cuerpo->width / 2.f, sf::Color::Red, sf::Color::White);
+
+  if (cuerpo->partes.empty()) {
+    fig->setPosicion(getTransformada()->posicion.x, getTransformada()->posicion.y);
+  } else {
+    auto& ultimaParte = cuerpo->partes.back();
+    fig->setPosicion(ultimaParte->pos->posicion.x, ultimaParte->pos->posicion.y);
+  }
+
+  nuevaParte->parte->figura = fig;
+  cuerpo->partes.push_back(nuevaParte);
+}
+
+void EnteVibora::draw(sf::RenderTarget &target, sf::RenderStates state) const {
+  auto cuerpo = getComponente<ICPartesCuerpo>();
+  if (cuerpo) {
+    for (auto& p : cuerpo->partes) {
+      if (p->parte->figura) {
+        target.draw(*p->parte->figura, state);
+      }
+    }
+  }
+  Circulo::draw(target, state);
 }
 } // namespace IVJ

@@ -120,4 +120,25 @@ public:
 private:
   std::string m_ruta;
 };
+// Asegúrate de hacer forward declaration de tu componente si es necesario
+// o incluir tu archivo de componentes arriba en el .hpp
+class ICPartesCuerpo; 
+
+class EnteVibora : public Circulo {
+private:
+  float velocidad = 100.f;
+  CE::Vector2D direccion;
+  float tiempoAcumulado = 0.f;
+
+public:
+  explicit EnteVibora(float radio, const sf::Color &relleno, const sf::Color &contorno);
+  ~EnteVibora() override {};
+
+  void setDireccion(float x, float y);
+  void onUpdate(float dt) override;
+  void draw(sf::RenderTarget &target, sf::RenderStates state) const override;
+  
+  // Método auxiliar que nos pide la escena
+  void agregarNuevaParte(ICPartesCuerpo* cuerpo);
+};
 } // namespace IVJ
