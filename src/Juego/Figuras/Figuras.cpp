@@ -221,7 +221,6 @@ void EnteVibora::setDireccion(float x, float y) {
   direccion.x = x;
   direccion.y = y;
 }
-
 void EnteVibora::onUpdate(float dt) {
   auto miTransform = getTransformada();
 
@@ -229,19 +228,24 @@ void EnteVibora::onUpdate(float dt) {
   float dx = objetivo.x - miTransform->posicion.x;
   float dy = objetivo.y - miTransform->posicion.y;
 
-  // Calculamos la distancia para saber si ya llegamos al punto
+  // Calculamos la distancia para saber si ya llegamos
   float distancia = std::sqrt(dx * dx + dy * dy);
 
   if (distancia < 5.0f) {
-    // Si ya llegamos (o estamos muy cerca), buscamos un nuevo punto
     generarNuevoObjetivo();
   } else {
-    // Obtenemos el ángulo en radianes hacia el objetivo usando atan2
-    float angulo = std::atan2(dy, dx);
-
-    // Convertimos el ángulo en un vector de dirección normalizado (x, y)
-    direccion.x = std::cos(angulo);
-    direccion.y = std::sin(angulo);
+    // Lógica de persecución ortogonal estricta
+    // Utilizamos un pequeño umbral (ej. 2.0f) para evitar temblores al
+    // alinearse
+    if (std::abs(dx) > 2.0f) {
+      // Alinear primero en el eje X
+      direccion.x = (dx > 0) ? 1.0f : -1.0f;
+      direccion.y = 0.0f;
+    } else if (std::abs(dy) > 2.0f) {
+      // Una vez alineado en X, moverse en el eje Y
+      direccion.x = 0.0f;
+      direccion.y = (dy > 0) ? 1.0f : -1.0f;
+    }
   }
 
   // Movemos la cabeza de la víbora
@@ -250,6 +254,7 @@ void EnteVibora::onUpdate(float dt) {
 
   Circulo::onUpdate(dt);
 
+  // --- LÓGICA DEL RASTRO (Sin cambios) ---
   auto cuerpo = getComponente<ICPartesCuerpo>();
   if (!cuerpo)
     return;
@@ -286,12 +291,14 @@ void EnteVibora::onUpdate(float dt) {
     }
   }
 
+  // --- Agregar parte nueva cada 3 segundos (Sin cambios) ---
   tiempoAcumulado += dt;
   if (tiempoAcumulado >= 3.0f) {
     tiempoAcumulado = 0.f;
     agregarNuevaParte(cuerpo);
   }
 }
+
 void EnteVibora::agregarNuevaParte(ICPartesCuerpo *cuerpo) {
   auto nuevaParte = std::make_shared<ICParte>();
 
