@@ -1,7 +1,7 @@
 #pragma once
 #include "../../Motor/Primitivos/Objetos.hpp"
 #include <SFML/Graphics.hpp>
-#include <cmath>
+#include <SFML/Graphics/CircleShape.hpp>
 
 namespace IVJ {
 class Figuras : public CE::Objeto {
@@ -61,13 +61,14 @@ public:
   void draw(sf::RenderTarget &target, sf::RenderStates state) const override;
   void onUpdate(float dt) override;
 
+  sf::CircleShape &getShape() { return m_img; }
+
 private:
   sf::CircleShape m_img;
 
 public:
   float radio;
 };
-
 class Triangulo : public Figuras {
 public:
   explicit Triangulo(float radio, const sf::Color &relleno,
