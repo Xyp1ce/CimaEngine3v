@@ -323,4 +323,14 @@ public:
 public:
   bool tiene{false};
 };
+class IScore : public CE::IComponentes {
+public:
+  virtual ~IScore() override {};
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<IScore>(*this);
+  };
+
+public:
+  int score{0};
+};
 } // namespace IVJ

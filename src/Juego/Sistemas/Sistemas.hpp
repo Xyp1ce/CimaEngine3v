@@ -42,4 +42,11 @@ bool revisarDistanciaInteraccion(CE::Objeto &jugador, CE::Objeto &npc,
 
 [[maybe_unused]] void SistemaOnda(CE::Objeto &ente, float dt);
 
+[[maybe_unused]] void
+SistemaBuscarComida(CE::Objeto &ente,
+                    const std::vector<std::shared_ptr<CE::Objeto>> &objetos);
+
+[[maybe_unused]] void SistemaMoveraComidaoCasa(CE::Objeto &ente, float dt);
+[[maybe_unused]] void SistemaConsumirComida(CE::Objeto &ente);
+
 } // namespace IVJ

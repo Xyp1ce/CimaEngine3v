@@ -37,6 +37,7 @@ Escena_Sim::Escena_Sim()
   mensaje.m_texto.setPosition({mx, my});
   mensaje.m_texto.setFillColor(sf::Color::Yellow);
 }
+
 void Escena_Sim::onInit() {
   std::random_device rd;
   std::mt19937 rand(rd());
@@ -52,6 +53,8 @@ void Escena_Sim::onInit() {
                                        punto_superior.y - 100.f)(rand);
     auto comida =
         std::make_shared<Circulo>(5.f, sf::Color::Green, sf::Color::Green);
+    // agregar si tiene dueño
+    comida->addComponente(std::make_shared<ITieneDueño>());
     comida->setPosicion(x, y);
     objetos.agregarPoolEnfrete(comida);
   }
@@ -89,6 +92,19 @@ void Escena_Sim::onInit() {
     stats->agi = std::uniform_int_distribution(10, 255)(rand);
     ente->setPosicion(x, y);
     ente->getShape().setRotation(sf::degrees(angulo));
+    // guardar el ángulo para la reproducción
+    ente->getTransformada()->angulo = angulo;
+
+    ente->addComponente(
+            std::make_shared<IEstadoInterno>(IEstadoInterno::Estados::BUSCAR))
+        // agregar inventario
+        .addComponente(std::make_shared<IInventarioComida>())
+        // agregar target nulo
+        .addComponente(std::make_shared<ITargetComida>())
+        // agregar la posicion inicial
+        .addComponente(std::make_shared<IPosicionInicial>(x, y))
+        // agregar score
+        .addComponente(std::make_shared<IScore>());
 
     objetos.agregarPool(ente);
   }
@@ -99,29 +115,13 @@ void Escena_Sim::onInit() {
 void Escena_Sim::onFinal() {}
 
 void Escena_Sim::onUpdate(float dt) {
-  if (generacion_termino) {
-    // borrar los entes que ya murieron
-    // boorarPool itera todos los objetos y va eliminando
-    // a los objetos que stats->hp <= 0, en este caso
-    // hp puede ser la energia.
-    objetos.borrarPool();
-  } else {
+  if (!generacion_termino) {
     for (auto &obj : objetos.getPool()) {
       obj->onUpdate(dt);
-      // prueba al azar de entes muriendo
-      std::random_device rd;
-      std::mt19937 rand(rd());
-      float prob = std::uniform_real_distribution(0.f, 1.f)(rand);
-      if (prob < 0.0002) // matamos ente
-      {
-        int id = std::uniform_int_distribution(
-            0, (int)objetos.getPool().size() - 1)(rand);
-        auto &ente = objetos.getPool()[id];
-        auto &stats = ente->getStats();
-        stats->hp = 0;
-        // se puede repetir el id pero solo al final de la simulación lo borra
-        std::cout << prob << " murio ente id ->" << id << "\n";
-      }
+      SistemaBuscarComida(*obj, objetos.getPool());
+      SistemaMoveraComidaoCasa(*obj, dt);
+      SistemaConsumirComida(*obj);
+      // SistemaReproducirEnte(*obj);
     }
 
     timer_generacion.frame_actual++;
@@ -136,6 +136,7 @@ void Escena_Sim::onUpdate(float dt) {
           std::to_string(timer_generacion.frame_maximo),
       CE::GLogger::Niveles::LOG_SEVERO);
 }
+
 void Escena_Sim::onInputs(const CE::Botones &accion) {
   switch (accion.getTipo()) {
   case CE::Botones::TipoAccion::OnPress: {
@@ -146,6 +147,27 @@ void Escena_Sim::onInputs(const CE::Botones &accion) {
 
     if (accion.getNombre() == "Ok" && generacion_termino == true) {
       generacion_termino = false;
+      // borrar para la siguiente generación y resetear
+      for (auto &obj : objetos.getPool()) {
+        if (obj->tieneComponente<IEstadoInterno>() &&
+            obj->tieneComponente<ITargetComida>() &&
+            obj->tieneComponente<IInventarioComida>() &&
+            obj->tieneComponente<IScore>()) {
+          // resetear
+          obj->getComponente<IEstadoInterno>()->setEstadoInterno(
+              IEstadoInterno::Estados::BUSCAR);
+          obj->getComponente<ITargetComida>()->quitarTarget();
+          obj->getComponente<IInventarioComida>()->sacarComida();
+          auto pos_init = obj->getComponente<IPosicionInicial>()->pos_init;
+          obj->setPosicion(pos_init.x, pos_init.y);
+          // marcar muerto la siguiente generación
+          if (obj->getComponente<IScore>()->score == 0) {
+            obj->getStats()->hp = 0;
+          }
+          obj->getComponente<IScore>()->score = 0;
+        }
+      }
+      objetos.borrarPool();
       this->onInit();
     }
     break;
@@ -162,6 +184,24 @@ void Escena_Sim::onRender() {
   } else {
     for (auto &obj : objetos.getPool())
       CE::Render::Get().AddToDraw(*obj);
+
+    // DEBUG
+    for (auto &obj : objetos.getPool()) {
+      if (!obj->tieneComponente<ITargetComida>())
+        continue;
+      auto target = obj->getComponente<ITargetComida>();
+      if (!target->getTargetComida().lock())
+        continue;
+      auto po = obj->getTransformada()->posicion;
+      auto pt = target->getTargetComida().lock()->getTransformada()->posicion;
+
+      sf::VertexArray linea(sf::PrimitiveType::Lines, 2);
+      linea[0].position = sf::Vector2f({po.x, po.y});
+      linea[0].color = sf::Color::Black;
+      linea[1].position = sf::Vector2f({pt.x, pt.y});
+      linea[1].color = sf::Color::Black;
+      CE::Render::Get().AddToDraw(linea);
+    }
   }
 }
 } // namespace IVJ

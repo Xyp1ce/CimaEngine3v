@@ -334,4 +334,141 @@ void SistemaOnda(CE::Objeto &ente, float dt) {
   ente.setPosicion(nueva_x, nueva_y);
   componente->angulo += 3.146f * dt;
 }
+
+void SistemaBuscarComida(
+    CE::Objeto &ente, const std::vector<std::shared_ptr<CE::Objeto>> &objetos) {
+  // comida y mundo son un ente pero no tienen estos componentes, por eso salir
+  // temprano.
+  if (!ente.tieneComponente<IEstadoInterno>() &&
+      !ente.tieneComponente<IInventarioComida>())
+    return;
+  // si ya tiene una comida en mente, no ocupamos buscar
+  if (ente.getComponente<ITargetComida>()->getTargetComida().lock() != nullptr)
+    return;
+  // si no esta buscando que no busque
+  if (ente.getComponente<IEstadoInterno>()->getEstadoInterno() !=
+      IEstadoInterno::Estados::BUSCAR)
+    return;
+
+  // ahora si buscamos una comida lo más cerca posible
+  std::shared_ptr<Circulo> comida_mas_cerca = nullptr;
+  float dist_min = 9999999999999.f;
+  for (auto &objeto : objetos) {
+    // verificamos si el objeto es Circulo, de lo contrario no nos interesa como
+    // comida usamos la libreria estandar para hacer este calculo
+    std::shared_ptr<Circulo> comida =
+        std::dynamic_pointer_cast<Circulo>(objeto);
+    // no es comida
+    if (!comida)
+      continue;
+    // tiene dueño
+    if (comida->getComponente<ITieneDueño>()->tiene)
+      continue;
+    // calculamos la distancia
+    auto mi_pos = ente.getTransformada()->posicion;
+    float dist = mi_pos.distancia(comida->getTransformada()->posicion);
+    if (dist < dist_min) {
+      dist_min = dist;
+      comida_mas_cerca = comida;
+    }
+  }
+  // std::cout << "Ente  " << ente.getNombre()->nombre << " encontro: " <<
+  // comida_mas_cerca->getNombre()->nombre <<
+  // "\n";
+  ente.getComponente<ITargetComida>()->setTargetComida(comida_mas_cerca);
+  ente.getComponente<IEstadoInterno>()->setEstadoInterno(
+      IEstadoInterno::Estados::ENMOVIMIENTOCOMIDA);
+}
+void SistemaMoveraComidaoCasa(CE::Objeto &ente, float dt) {
+  // comida y mundo no tienen IEstadoInterno
+  if (!ente.tieneComponente<IEstadoInterno>())
+    return;
+
+  // aún esta buscando
+  if (ente.getComponente<IEstadoInterno>()->getEstadoInterno() !=
+          IEstadoInterno::Estados::ENMOVIMIENTOCASA &&
+      ente.getComponente<IEstadoInterno>()->getEstadoInterno() !=
+          IEstadoInterno::Estados::ENMOVIMIENTOCOMIDA)
+    return;
+
+  // desplazarse hacia casa o comida
+  auto estado = ente.getComponente<IEstadoInterno>()->getEstadoInterno();
+  switch (estado) {
+  case IEstadoInterno::Estados::ENMOVIMIENTOCOMIDA: {
+    auto po = ente.getTransformada()->posicion;
+    auto vo = ente.getTransformada()->velocidad;
+    std::shared_ptr<Circulo> target =
+        ente.getComponente<ITargetComida>()->getTargetComida().lock();
+    // no tiene target
+    if (!target) {
+      ente.getComponente<IEstadoInterno>()->setEstadoInterno(
+          IEstadoInterno::Estados::BUSCAR);
+      ente.getComponente<ITargetComida>()->quitarTarget();
+      return;
+    }
+    auto pt = target->getTransformada()->posicion;
+    auto dir = pt - po;
+    float dx = po.x + (dir.x * vo.x * dt);
+    float dy = po.y + (dir.y * vo.y * dt);
+    ente.setPosicion(dx, dy);
+    float dist = po.distancia(pt);
+    if (target->getComponente<ITieneDueño>()->tiene) {
+      ente.getComponente<IEstadoInterno>()->setEstadoInterno(
+          IEstadoInterno::Estados::BUSCAR);
+      ente.getComponente<ITargetComida>()->quitarTarget();
+    } else if (dist < 0.15) {
+      // si target no tiene dueño, ser el dueño del target y guardar en
+      // inventario
+      ente.getComponente<IEstadoInterno>()->setEstadoInterno(
+          IEstadoInterno::Estados::ENMOVIMIENTOCASA);
+      ente.getComponente<IInventarioComida>()->guardarComida(target);
+      target->getComponente<ITieneDueño>()->tiene = true;
+    }
+  } break;
+  case IEstadoInterno::Estados::ENMOVIMIENTOCASA: {
+    auto po = ente.getTransformada()->posicion;
+    auto vo = ente.getTransformada()->velocidad;
+    auto pt = ente.getComponente<IPosicionInicial>()->pos_init;
+    auto dir = pt - po;
+    float dx = po.x + (dir.x * vo.x * dt);
+    float dy = po.y + (dir.y * vo.y * dt);
+    ente.setPosicion(dx, dy);
+    float dist = po.distancia(pt);
+    // mover comida con el ente
+    auto comida =
+        ente.getComponente<IInventarioComida>()->getComidaGuardada().lock();
+    comida->setPosicion(dx, dy);
+    if (dist < 0.15)
+      ente.getComponente<IEstadoInterno>()->setEstadoInterno(
+          IEstadoInterno::Estados::CONSUMIR);
+  } break;
+  default:
+    break;
+  }
+}
+void SistemaConsumirComida(CE::Objeto &ente) {
+  // comida y mundo no tiene IEstadoInterno ni ITargetComida
+  if (!ente.tieneComponente<IEstadoInterno>() &&
+      !ente.tieneComponente<ITargetComida>())
+    return;
+  // si no tiene target
+  if (ente.getComponente<ITargetComida>()->getTargetComida().lock() == nullptr)
+    return;
+  // si no esta en estado consumir
+  if (ente.getComponente<IEstadoInterno>()->getEstadoInterno() !=
+      IEstadoInterno::Estados::CONSUMIR)
+    return;
+
+  // si llega aquí es que esta en el estado consumir y solo puede estar en este
+  // estado si ya llego a la posición inicial. quitar comida del inventario
+  ente.getComponente<IInventarioComida>()->sacarComida();
+  // quitar comida del target del ente
+  ente.getComponente<ITargetComida>()->quitarTarget();
+  // no quitar propetario de comida, para que nadie lo busque, y por defecto ya
+  // esta marcado para borrar incrementar score
+  ente.getComponente<IScore>()->score++;
+  // cambiar estado a buscar nueva comida
+  ente.getComponente<IEstadoInterno>()->setEstadoInterno(
+      IEstadoInterno::Estados::BUSCAR);
+}
 } // namespace IVJ
