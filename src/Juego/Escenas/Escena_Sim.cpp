@@ -97,6 +97,7 @@ void Escena_Sim::onInit() {
 }
 
 void Escena_Sim::onFinal() {}
+
 void Escena_Sim::onUpdate(float dt) {
   if (generacion_termino) {
     // borrar los entes que ya murieron
@@ -107,6 +108,20 @@ void Escena_Sim::onUpdate(float dt) {
   } else {
     for (auto &obj : objetos.getPool()) {
       obj->onUpdate(dt);
+      // prueba al azar de entes muriendo
+      std::random_device rd;
+      std::mt19937 rand(rd());
+      float prob = std::uniform_real_distribution(0.f, 1.f)(rand);
+      if (prob < 0.0002) // matamos ente
+      {
+        int id = std::uniform_int_distribution(
+            0, (int)objetos.getPool().size() - 1)(rand);
+        auto &ente = objetos.getPool()[id];
+        auto &stats = ente->getStats();
+        stats->hp = 0;
+        // se puede repetir el id pero solo al final de la simulación lo borra
+        std::cout << prob << " murio ente id ->" << id << "\n";
+      }
     }
 
     timer_generacion.frame_actual++;

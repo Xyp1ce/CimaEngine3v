@@ -157,102 +157,170 @@ public:
 // --- 2. Componente 1: ICTimer ---
 class ICTimer : public CE::IComponentes {
 public:
-    int curr_frame;
-    int max_frame;
+  int curr_frame;
+  int max_frame;
 
-    explicit ICTimer(int max) : curr_frame(0), max_frame(max) {}
-    ~ICTimer() override = default;
+  explicit ICTimer(int max) : curr_frame(0), max_frame(max) {}
+  ~ICTimer() override = default;
 
-    std::shared_ptr<IComponentes> clonar() const override {
-        return std::make_shared<ICTimer>(*this);
-    }
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<ICTimer>(*this);
+  }
 };
 
-// --- Componente auxiliar: ICFigura ---
-// Nota: En tu motor, las Figuras (como Circulo) heredan de Objeto,
-// no de IComponentes. Para cumplir la consigna "un componente ICFigura",
-// crearemos un componente que almacene un puntero a una Figura.
-class Figuras; // Forward declaration
+class Figuras;
 class ICFigura : public CE::IComponentes {
 public:
-    std::shared_ptr<Figuras> figura;
+  std::shared_ptr<Figuras> figura;
 
-    explicit ICFigura(std::shared_ptr<Figuras> fig) : figura(fig) {}
-    ~ICFigura() override = default;
+  explicit ICFigura(std::shared_ptr<Figuras> fig) : figura(fig) {}
+  ~ICFigura() override = default;
 
-    std::shared_ptr<IComponentes> clonar() const override {
-        return std::make_shared<ICFigura>(*this);
-    }
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<ICFigura>(*this);
+  }
 };
 
-// --- Cola Personalizada para Vector2D ---
-// Implementación simple de un arreglo circular para no usar std::queue
 struct MiColaPosiciones {
 private:
-    static const int CAPACIDAD = 1000; // Suficiente para guardar un rastro
-    CE::Vector2D datos[CAPACIDAD];
-    int frente = 0;
-    int final = 0;
-    int tamano = 0;
+  static const int CAPACIDAD = 1000; // Suficiente para guardar un rastro
+  CE::Vector2D datos[CAPACIDAD];
+  int frente = 0;
+  int final = 0;
+  int tamano = 0;
+
 public:
-    void push(const CE::Vector2D& val) {
-        if (tamano < CAPACIDAD) {
-            datos[final] = val;
-            final = (final + 1) % CAPACIDAD;
-            tamano++;
-        }
+  void push(const CE::Vector2D &val) {
+    if (tamano < CAPACIDAD) {
+      datos[final] = val;
+      final = (final + 1) % CAPACIDAD;
+      tamano++;
     }
-    CE::Vector2D pop() {
-        if (tamano > 0) {
-            CE::Vector2D val = datos[frente];
-            frente = (frente + 1) % CAPACIDAD;
-            tamano--;
-            return val;
-        }
-        return CE::Vector2D(0, 0); // O manejar el error
+  }
+  CE::Vector2D pop() {
+    if (tamano > 0) {
+      CE::Vector2D val = datos[frente];
+      frente = (frente + 1) % CAPACIDAD;
+      tamano--;
+      return val;
     }
-    bool vacia() const { return tamano == 0; }
-    int size() const { return tamano; }
+    return CE::Vector2D(0, 0); // O manejar el error
+  }
+  bool vacia() const { return tamano == 0; }
+  int size() const { return tamano; }
 };
 
 // --- 2. Componente 2: ICParte ---
 class ICParte : public CE::IComponentes {
 public:
-    MiColaPosiciones posiciones;                 // 1) Cola de posiciones
-    std::shared_ptr<ICFigura> parte;             // 2) Componente figura
-    std::shared_ptr<CE::ITransform> pos;      // 3) Componente transform. Usando la clase de CimaEngine
-    std::shared_ptr<ICTimer> timer;              // 4) Componente timer
-    bool hacerAccion;                            // 5) Booleano
+  MiColaPosiciones posiciones;     // 1) Cola de posiciones
+  std::shared_ptr<ICFigura> parte; // 2) Componente figura
+  std::shared_ptr<CE::ITransform>
+      pos; // 3) Componente transform. Usando la clase de CimaEngine
+  std::shared_ptr<ICTimer> timer; // 4) Componente timer
+  bool hacerAccion;               // 5) Booleano
 
-    // 3. Inicialización en el constructor
-    explicit ICParte() : hacerAccion(false) {
-        // Inicializamos los componentes atributos
-        // Nota: La figura específica se asignará desde fuera
-        parte = std::make_shared<ICFigura>(nullptr);
-        pos = std::make_shared<CE::ITransform>();
-        timer = std::make_shared<ICTimer>(10); // Tiempo de retraso (ej. 10 frames)
-    }
-    ~ICParte() override = default;
+  // 3. Inicialización en el constructor
+  explicit ICParte() : hacerAccion(false) {
+    // Inicializamos los componentes atributos
+    // Nota: La figura específica se asignará desde fuera
+    parte = std::make_shared<ICFigura>(nullptr);
+    pos = std::make_shared<CE::ITransform>();
+    timer = std::make_shared<ICTimer>(10); // Tiempo de retraso (ej. 10 frames)
+  }
+  ~ICParte() override = default;
 
-    std::shared_ptr<IComponentes> clonar() const override {
-        // Clonar este componente requiere cuidado con los punteros, 
-        // pero por simplicidad haremos una copia básica.
-        return std::make_shared<ICParte>(*this);
-    }
+  std::shared_ptr<IComponentes> clonar() const override {
+    // Clonar este componente requiere cuidado con los punteros,
+    // pero por simplicidad haremos una copia básica.
+    return std::make_shared<ICParte>(*this);
+  }
 };
 
 // --- 2. Componente 3: ICPartesCuerpo ---
 class ICPartesCuerpo : public CE::IComponentes {
 public:
-    std::vector<std::shared_ptr<ICParte>> partes; // 1) Vector de partes
-    int width;                                    // 2) Ancho
-    int height;                                   // 3) Alto
+  std::vector<std::shared_ptr<ICParte>> partes; // 1) Vector de partes
+  int width;                                    // 2) Ancho
+  int height;                                   // 3) Alto
 
-    explicit ICPartesCuerpo(int w, int h) : width(w), height(h) {}
-    ~ICPartesCuerpo() override = default;
+  explicit ICPartesCuerpo(int w, int h) : width(w), height(h) {}
+  ~ICPartesCuerpo() override = default;
 
-    std::shared_ptr<IComponentes> clonar() const override {
-        return std::make_shared<ICPartesCuerpo>(*this);
-    }
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<ICPartesCuerpo>(*this);
+  }
+};
+
+class IEstadoInterno : public CE::IComponentes {
+public:
+  enum class Estados {
+    BUSCAR,
+    ENMOVIMIENTOCOMIDA,
+    ENMOVIMIENTOCASA,
+    CONSUMIR,
+    REPRODUCIR // se agrego para reproducir
+  };
+
+public:
+  explicit IEstadoInterno(const IEstadoInterno::Estados &estado_inicial);
+  virtual ~IEstadoInterno() override {};
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<IEstadoInterno>(*this);
+  };
+
+  void setEstadoInterno(const IEstadoInterno::Estados &ne);
+  IEstadoInterno::Estados getEstadoInterno() const { return estado; };
+
+private:
+  IEstadoInterno::Estados estado;
+};
+
+class IInventarioComida : public CE::IComponentes {
+public:
+  virtual ~IInventarioComida() override {};
+  void guardarComida(const std::shared_ptr<Circulo> &c);
+  void sacarComida();
+  std::weak_ptr<Circulo> getComidaGuardada() const { return comida; };
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<IInventarioComida>(*this);
+  };
+
+private:
+  std::weak_ptr<Circulo> comida;
+};
+class ITargetComida : public CE::IComponentes {
+public:
+  virtual ~ITargetComida() override {};
+  void setTargetComida(const std::shared_ptr<Circulo> &c);
+  void quitarTarget();
+  std::weak_ptr<Circulo> getTargetComida() const { return target; };
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<ITargetComida>(*this);
+  };
+
+private:
+  std::weak_ptr<Circulo> target;
+};
+class IPosicionInicial : public CE::IComponentes {
+public:
+  explicit IPosicionInicial(float x, float y);
+  virtual ~IPosicionInicial() override {};
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<IPosicionInicial>(*this);
+  };
+
+public:
+  CE::Vector2D pos_init;
+};
+class ITieneDueño : public CE::IComponentes {
+public:
+  virtual ~ITieneDueño() override {};
+  std::shared_ptr<IComponentes> clonar() const override {
+    return std::make_shared<ITieneDueño>(*this);
+  };
+
+public:
+  bool tiene{false};
 };
 } // namespace IVJ

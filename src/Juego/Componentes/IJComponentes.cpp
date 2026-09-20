@@ -116,4 +116,28 @@ IVertical::IVertical(const float ang, const float r)
 IOnda::IOnda(const float ang, const float r, const int dir)
     : CE::IComponentes{}, angulo{ang}, radio{r}, direccion{dir} {}
 
+IEstadoInterno::IEstadoInterno(const IEstadoInterno::Estados &estado_inicial)
+    : CE::IComponentes{}, estado{estado_inicial} {}
+void IEstadoInterno::setEstadoInterno(const IEstadoInterno::Estados &ne) {
+  estado = ne;
+}
+void IInventarioComida::guardarComida(const std::shared_ptr<Circulo> &c) {
+  if (comida.lock() == nullptr)
+    comida = c;
+}
+
+void IInventarioComida::sacarComida() {
+  if (comida.lock() != nullptr)
+    comida.reset();
+}
+void ITargetComida::setTargetComida(const std::shared_ptr<Circulo> &c) {
+  if (target.lock() == nullptr)
+    target = c;
+}
+void ITargetComida::quitarTarget() {
+  if (target.lock() != nullptr)
+    target.reset();
+}
+IPosicionInicial::IPosicionInicial(float x, float y)
+    : CE::IComponentes{}, pos_init{x, y} {}
 } // namespace IVJ
