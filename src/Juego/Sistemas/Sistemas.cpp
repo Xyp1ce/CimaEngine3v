@@ -469,7 +469,7 @@ void SistemaConsumirComida(CE::Objeto &ente) {
   ente.getComponente<IScore>()->score++;
   // cambiar estado a buscar nueva comida
   ente.getComponente<IEstadoInterno>()->setEstadoInterno(
-      IEstadoInterno::Estados::BUSCAR);
+      IEstadoInterno::Estados::REPRODUCIR);
 }
 void SistemaReproducirEnte(CE::Objeto &ente, CE::Pool &pool) {
 
