@@ -471,4 +471,53 @@ void SistemaConsumirComida(CE::Objeto &ente) {
   ente.getComponente<IEstadoInterno>()->setEstadoInterno(
       IEstadoInterno::Estados::BUSCAR);
 }
+void SistemaReproducirEnte(CE::Objeto &ente, CE::Pool &pool) {
+
+  // no es ente
+  if (!ente.tieneComponente<IScore>() &&
+      !ente.tieneComponente<IEstadoInterno>())
+    return;
+
+  // es ente pero aún no esta en la fase de reproducirse
+  if (ente.getComponente<IEstadoInterno>()->getEstadoInterno() !=
+      IEstadoInterno::Estados::REPRODUCIR)
+    return;
+
+  // cambiar estado a buscar nueva comida
+  ente.getComponente<IEstadoInterno>()->setEstadoInterno(
+      IEstadoInterno::Estados::BUSCAR);
+
+  // no tiene suficiente score
+  if (ente.getComponente<IScore>()->score < 2)
+    return;
+
+  // tiene suficiente score pero no es multiplo de 2
+  if (ente.getComponente<IScore>()->score % 2 != 0)
+    return;
+  // si tiene un score mayor a 2 y es multiplo de 2 y es un ente, entonces lo
+  // reproducimos con los mismos stats y guardamos en el pool de la escena
+  auto nuevo =
+      std::make_shared<Pentagono>(15.f, sf::Color::Blue, sf::Color::Black);
+  nuevo->getStats()->hp_max = ente.getStats()->hp_max;
+  nuevo->getStats()->hp = ente.getStats()->hp;
+  nuevo->getStats()->agi = ente.getStats()->agi;
+  auto pos_init = ente.getComponente<IPosicionInicial>()->pos_init;
+  nuevo->getTransformada()->velocidad = ente.getTransformada()->velocidad;
+  nuevo->getTransformada()->angulo = ente.getTransformada()->angulo;
+  nuevo->getShape().setRotation(sf::degrees(nuevo->getTransformada()->angulo));
+  nuevo->setPosicion(pos_init.x, pos_init.y);
+  // componentes
+  nuevo
+      ->addComponente(
+          std::make_shared<IEstadoInterno>(IEstadoInterno::Estados::BUSCAR))
+      // agregar inventario
+      .addComponente(std::make_shared<IInventarioComida>())
+      // agregar target nulo
+      .addComponente(std::make_shared<ITargetComida>())
+      // agregar la posicion inicial
+      .addComponente(std::make_shared<IPosicionInicial>(pos_init.x, pos_init.y))
+      // agregar score
+      .addComponente(std::make_shared<IScore>());
+  pool.agregarPool(nuevo);
+}
 } // namespace IVJ

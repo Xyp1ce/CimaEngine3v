@@ -121,7 +121,7 @@ void Escena_Sim::onUpdate(float dt) {
       SistemaBuscarComida(*obj, objetos.getPool());
       SistemaMoveraComidaoCasa(*obj, dt);
       SistemaConsumirComida(*obj);
-      // SistemaReproducirEnte(*obj);
+      SistemaReproducirEnte(*obj, objetos);
     }
 
     timer_generacion.frame_actual++;
@@ -135,8 +135,10 @@ void Escena_Sim::onUpdate(float dt) {
       std::to_string(timer_generacion.frame_actual) + "/" +
           std::to_string(timer_generacion.frame_maximo),
       CE::GLogger::Niveles::LOG_SEVERO);
+  CE::GLogger::Get().agregarLog("Entes: " +
+                                    std::to_string(objetos.getPool().size()),
+                                CE::GLogger::Niveles::LOG_SEVERO);
 }
-
 void Escena_Sim::onInputs(const CE::Botones &accion) {
   switch (accion.getTipo()) {
   case CE::Botones::TipoAccion::OnPress: {
