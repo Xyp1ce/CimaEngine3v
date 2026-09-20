@@ -87,8 +87,8 @@ void Escena_Sim::onInit() {
     auto &vel = ente->getTransformada()->velocidad;
     vel.x = std::uniform_real_distribution(1.f, 10.f)(rand);
     vel.y = std::uniform_real_distribution(1.f, 10.f)(rand);
-    stats->hp_max = 100;
-    stats->hp = 100;
+    stats->hp_max = std::uniform_int_distribution(80, 200)(rand);
+    stats->hp = stats->hp_max;
     stats->agi = std::uniform_int_distribution(10, 255)(rand);
     ente->setPosicion(x, y);
     ente->getShape().setRotation(sf::degrees(angulo));
@@ -125,7 +125,7 @@ void Escena_Sim::onUpdate(float dt) {
           objetos
               .getPool()[i]; // Hacemos copia del shared_ptr para estar seguros
       obj->onUpdate(dt);
-      SistemaBuscarComida(*obj, objetos.getPool());
+      SistemaBuscarComida(*obj, objetos.getPool(), dt);
       SistemaMoveraComidaoCasa(*obj, dt);
       SistemaConsumirComida(*obj);
       SistemaReproducirEnte(*obj, objetos);
@@ -156,6 +156,10 @@ void Escena_Sim::onInputs(const CE::Botones &accion) {
 
     if (accion.getNombre() == "Ok" && generacion_termino == true) {
       generacion_termino = false;
+      if (comida_iniciales >= 10)
+        comida_iniciales -= 10;
+      else
+        comida_iniciales = 0;
       // borrar para la siguiente generación y resetear
       for (auto &obj : objetos.getPool()) {
         if (obj->tieneComponente<IEstadoInterno>() &&

@@ -11,6 +11,7 @@
 #include <memory>
 
 #include <Juego/Componentes/IJComponentes.hpp>
+#include <Juego/Figuras/Figuras.hpp>
 #include <string>
 
 namespace IVJ {
@@ -336,48 +337,89 @@ void SistemaOnda(CE::Objeto &ente, float dt) {
 }
 
 void SistemaBuscarComida(
-    CE::Objeto &ente, const std::vector<std::shared_ptr<CE::Objeto>> &objetos) {
-  // comida y mundo son un ente pero no tienen estos componentes, por eso salir
-  // temprano.
+    CE::Objeto &ente, const std::vector<std::shared_ptr<CE::Objeto>> &objetos,
+    float dt) {
+
   if (!ente.tieneComponente<IEstadoInterno>() &&
       !ente.tieneComponente<IInventarioComida>())
     return;
-  // si ya tiene una comida en mente, no ocupamos buscar
   if (ente.getComponente<ITargetComida>()->getTargetComida().lock() != nullptr)
     return;
-  // si no esta buscando que no busque
   if (ente.getComponente<IEstadoInterno>()->getEstadoInterno() !=
       IEstadoInterno::Estados::BUSCAR)
     return;
 
-  // ahora si buscamos una comida lo más cerca posible
   std::shared_ptr<Circulo> comida_mas_cerca = nullptr;
   float dist_min = 9999999999999.f;
+  float rango_vision = ente.getStats()->agi; // Usar AGI como rango
+
   for (auto &objeto : objetos) {
-    // verificamos si el objeto es Circulo, de lo contrario no nos interesa como
-    // comida usamos la libreria estandar para hacer este calculo
     std::shared_ptr<Circulo> comida =
         std::dynamic_pointer_cast<Circulo>(objeto);
-    // no es comida
     if (!comida)
       continue;
-    // tiene dueño
     if (comida->getComponente<ITieneDueño>()->tiene)
       continue;
-    // calculamos la distancia
+
     auto mi_pos = ente.getTransformada()->posicion;
     float dist = mi_pos.distancia(comida->getTransformada()->posicion);
-    if (dist < dist_min) {
+
+    // Condición: debe estar más cerca Y dentro del rango de visión
+    if (dist < dist_min && dist <= rango_vision) {
       dist_min = dist;
       comida_mas_cerca = comida;
     }
   }
-  // std::cout << "Ente  " << ente.getNombre()->nombre << " encontro: " <<
-  // comida_mas_cerca->getNombre()->nombre <<
-  // "\n";
-  ente.getComponente<ITargetComida>()->setTargetComida(comida_mas_cerca);
-  ente.getComponente<IEstadoInterno>()->setEstadoInterno(
-      IEstadoInterno::Estados::ENMOVIMIENTOCOMIDA);
+
+  if (comida_mas_cerca != nullptr) {
+    ente.getComponente<ITargetComida>()->setTargetComida(comida_mas_cerca);
+    ente.getComponente<IEstadoInterno>()->setEstadoInterno(
+        IEstadoInterno::Estados::ENMOVIMIENTOCOMIDA);
+  } else {
+    // Si no encontró comida en su rango, caminar hacia enfrente con
+    // comportamiento Wander
+    auto po = ente.getTransformada()->posicion;
+    auto vo = ente.getTransformada()->velocidad;
+
+    // 1. Variación aleatoria al ángulo (entre -15 y 15 grados) para que
+    // exploren en 2D
+    float variacion_angulo = (std::rand() % 31) - 15.f;
+    ente.getTransformada()->angulo += variacion_angulo;
+
+    // 2. Calcular la nueva posición con el ángulo actualizado
+    float angulo_rad = ente.getTransformada()->angulo * 3.14159265f / 180.f;
+    float dx = po.x + (std::cos(angulo_rad) * vo.x * dt);
+    float dy = po.y + (std::sin(angulo_rad) * vo.y * dt);
+
+    // 3. Restricciones del mundo (Rectángulo blanco: x de 50 a 1000, y de 50 a
+    // 650) Rebote horizontal
+    if (dx < 50.f) {
+      dx = 50.f;
+      ente.getTransformada()->angulo = 180.f - ente.getTransformada()->angulo;
+    } else if (dx > 1000.f) {
+      dx = 1000.f;
+      ente.getTransformada()->angulo = 180.f - ente.getTransformada()->angulo;
+    }
+
+    // Rebote vertical
+    if (dy < 50.f) {
+      dy = 50.f;
+      ente.getTransformada()->angulo = 360.f - ente.getTransformada()->angulo;
+    } else if (dy > 650.f) {
+      dy = 650.f;
+      ente.getTransformada()->angulo = 360.f - ente.getTransformada()->angulo;
+    }
+
+    ente.setPosicion(dx, dy);
+
+    // 4. Actualizar la rotación visual para que el pentágono "mire" a donde
+    // camina
+    auto pentagono = dynamic_cast<IVJ::Pentagono *>(&ente);
+    if (pentagono) {
+      pentagono->getShape().setRotation(
+          sf::degrees(ente.getTransformada()->angulo));
+    }
+  }
 }
 void SistemaMoveraComidaoCasa(CE::Objeto &ente, float dt) {
   // comida y mundo no tienen IEstadoInterno

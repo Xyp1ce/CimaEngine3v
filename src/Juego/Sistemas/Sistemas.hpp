@@ -44,8 +44,8 @@ bool revisarDistanciaInteraccion(CE::Objeto &jugador, CE::Objeto &npc,
 
 [[maybe_unused]] void
 SistemaBuscarComida(CE::Objeto &ente,
-                    const std::vector<std::shared_ptr<CE::Objeto>> &objetos);
-
+                    const std::vector<std::shared_ptr<CE::Objeto>> &objetos,
+                    float dt);
 [[maybe_unused]] void SistemaMoveraComidaoCasa(CE::Objeto &ente, float dt);
 [[maybe_unused]] void SistemaConsumirComida(CE::Objeto &ente);
 [[maybe_unused]] void SistemaReproducirEnte(CE::Objeto &ente, CE::Pool &pool);

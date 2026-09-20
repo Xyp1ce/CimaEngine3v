@@ -8,7 +8,7 @@ namespace CE {
 class GHistograma : public GLayer {
 public:
   struct Histograma {
-    std::vector<float> bins; // conteo por bin
+    std::vector<float> bins;
     float minVal = 0.0f;
     float maxVal = 1.0f;
     float binWidth = 0.0f;
@@ -23,10 +23,13 @@ public:
   void OnRender(void) override;
 
 private:
+  // Añadimos un booleano para distinguir qué atributo extraer
   GHistograma::Histograma
-  crearHistograma(const std::vector<std::shared_ptr<CE::Objeto>> &objetos,
-                  int bins);
-  GHistograma::Histograma histograma;
+  crearHistogramaStats(const std::vector<std::shared_ptr<CE::Objeto>> &objetos,
+                       int bins, bool isAgi);
+
+  GHistograma::Histograma hist_agi;
+  GHistograma::Histograma hist_hp;
   size_t total{0};
   size_t getEntesSim(const std::vector<std::shared_ptr<CE::Objeto>> &objetos);
 };
