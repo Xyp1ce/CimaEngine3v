@@ -116,7 +116,14 @@ void Escena_Sim::onFinal() {}
 
 void Escena_Sim::onUpdate(float dt) {
   if (!generacion_termino) {
-    for (auto &obj : objetos.getPool()) {
+    // Guardamos el tamaño exacto al inicio del frame para no iterar
+    // sobre los clones nuevos que nazcan en este mismo instante
+    size_t tamaño_actual = objetos.getPool().size();
+
+    for (size_t i = 0; i < tamaño_actual; i++) {
+      auto obj =
+          objetos
+              .getPool()[i]; // Hacemos copia del shared_ptr para estar seguros
       obj->onUpdate(dt);
       SistemaBuscarComida(*obj, objetos.getPool());
       SistemaMoveraComidaoCasa(*obj, dt);
@@ -167,6 +174,8 @@ void Escena_Sim::onInputs(const CE::Botones &accion) {
             obj->getStats()->hp = 0;
           }
           obj->getComponente<IScore>()->score = 0;
+        } else {
+          obj->getStats()->hp = 0;
         }
       }
       objetos.borrarPool();
