@@ -15,6 +15,7 @@
 #include <cstdlib>
 #include <ctime>
 
+#include <Juego/Escenas/Escena_Camara.hpp>
 #include <Juego/Escenas/Escena_Menu.hpp>
 #include <Juego/Escenas/Escena_Sim.hpp>
 #include <Juego/Escenas/Escena_Sistemas.hpp>
@@ -44,9 +45,24 @@ void Juego::OnInit(void) {
                                            std::make_shared<Escena_Vibora>());
   CE::GestorEscenas::Get().registrarEscena("Sim",
                                            std::make_shared<Escena_Sim>());
+  CE::GestorEscenas::Get().registrarEscena(
+      "ECamara", std::make_shared<Escena_Camara>(jugador));
 
   CE::GestorEscenas::Get().cambiarEscena("Menu"); // ejecuta onInit()A
   escena_actual = &CE::GestorEscenas::Get().getEscenaActual();
+  // creamos la Camara
+  CE::GestorCamaras::Get().agregarCamara(
+      std::make_shared<CE::CamaraLERP>(CE::Vector2D{0.f, 0.f}, // posición
+                                       CE::Vector2D{1024, 720} // dimensiones
+                                       ));
+  CE::GestorCamaras::Get().agregarCamara(
+      std::make_shared<CE::CamaraSnapVentana>(
+          CE::Vector2D{0.f, 0.f},  // posición
+          CE::Vector2D{1024, 720}, // dimensiones
+          CE::Vector2D{500, 300}   // ventana
+          ));
+  CE::GestorCamaras::Get().agregarCamara(std::make_shared<CE::CamaraSnapMario>(
+      CE::Vector2D{0.f, 0.f}, CE::Vector2D{1024, 720}, CE::Vector2D{500, 300}));
 }
 void Juego::OnInputs() {
   auto br = escena_actual->getBotonesRegistrados();
