@@ -203,5 +203,9 @@ public:
 
 private:
   bool lock{false};
+  float target_x{0.f}; // Variable para guardar el destino y deslizar la cámara
+  float last_jpos_x{0.f};
+  int necesita_ajuste{0};
+  bool moviendose_x{false};
 };
 } // namespace CE

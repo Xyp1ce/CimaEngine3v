@@ -133,45 +133,65 @@ void CamaraSnapMario::onUpdate(float dt) {
   Camara::onUpdate(dt);
   if (!m_lockObj.lock())
     return;
+
+  auto jpos = m_lockObj.lock()->getTransformada()->posicion;
+  float offset = 40.f; // Ajuste por el radio del jugador
+
   if (!lock) {
-    m_transform->posicion = m_lockObj.lock()->getTransformada()->posicion;
+    m_transform->posicion = jpos;
+    target_x = jpos.x;
+    last_jpos_x = jpos.x;
     lock = true;
   }
 
-  auto jpos = m_lockObj.lock()->getTransformada()->posicion;
+  float W = m_vdim.x / 2.f;
+  float w = m_vdim.x / 4.f;
 
-  // Offset basado en el radio del jugador (ITriangulo = 40.f)
-  float offset = 40.f;
+  // 1. Detección de movimiento
+  float delta_x = jpos.x - last_jpos_x;
+  bool moviendose_x = (std::abs(delta_x) > 0.01f);
+  last_jpos_x = jpos.x;
 
-  // Limites de la ventana de activación (Caja amarilla)
-  float ld = (m_transform->posicion.x + m_vdim.x / 2.f);
-  float li = (m_transform->posicion.x - m_vdim.x / 2.f);
-  float lup = (m_transform->posicion.y - m_vdim.y / 2.f);
-  float ldn = (m_transform->posicion.y + m_vdim.y / 2.f);
+  // Las líneas exteriores se calculan sobre el DESTINO de la cámara
+  float L1 = target_x - W;
+  float L4 = target_x + W;
 
-  // Eje X: Evaluamos colisión con los bordes del jugador, no su centro
-  if (jpos.x + offset >= ld) {
-    m_transform->posicion.x += ((jpos.x + offset) - ld);
-  } else if (jpos.x - offset <= li) {
-    m_transform->posicion.x += ((jpos.x - offset) - li);
+  // 2. Lógica de empuje y ajuste
+  if (moviendose_x) {
+    // ESTADO: EN MOVIMIENTO -> La cámara sigue al jugador de forma normal
+    if (jpos.x + offset >= L4) {
+      target_x = (jpos.x + offset) - W;
+      necesita_ajuste = 1; // Marcamos que requerirá ajuste al detenerse
+    } else if (jpos.x - offset <= L1) {
+      target_x = (jpos.x - offset) + W;
+      necesita_ajuste = -1; // Marcamos que requerirá ajuste al detenerse
+    } else {
+      // Si camina en la zona libre del centro, cancelamos el ajuste
+      necesita_ajuste = 0;
+    }
+  } else {
+    // ESTADO: DETENIDO -> Ejecutamos el reajuste a las líneas centrales (L2 o
+    // L3)
+    if (necesita_ajuste == 1) {
+      target_x =
+          (jpos.x + offset) + w; // Alinea la línea central izquierda (L2)
+      necesita_ajuste = 0;
+    } else if (necesita_ajuste == -1) {
+      target_x = (jpos.x - offset) - w; // Alinea la línea central derecha (L3)
+      necesita_ajuste = 0;
+    }
   }
 
-  // Restricción: El jugador no puede salir de la vista de la pantalla
-  // (También le aplicamos el offset para que no se corte por la mitad)
-  float limite_izq_pantalla =
-      m_transform->posicion.x - (cam_width / 2.f) + offset;
-  float limite_der_pantalla =
-      m_transform->posicion.x + (cam_width / 2.f) - offset;
+  // 3. DESLIZAMIENTO SUAVE (Lerp)
+  float velocidad_deslizamiento = 5.0f;
+  m_transform->posicion.x +=
+      (target_x - m_transform->posicion.x) * (velocidad_deslizamiento * dt);
 
-  if (jpos.x < limite_izq_pantalla) {
-    jpos.x = limite_izq_pantalla;
-    m_lockObj.lock()->setPosicion(jpos.x, jpos.y);
-  } else if (jpos.x > limite_der_pantalla) {
-    jpos.x = limite_der_pantalla;
-    m_lockObj.lock()->setPosicion(jpos.x, jpos.y);
-  }
+  // Eje Y: Comportamiento de ventana instantáneo original
+  float cy = m_transform->posicion.y;
+  float lup = (cy - m_vdim.y / 2.f);
+  float ldn = (cy + m_vdim.y / 2.f);
 
-  // Eje Y: Comportamiento normal de ventana con offset
   if (jpos.y + offset >= ldn) {
     m_transform->posicion.y += ((jpos.y + offset) - ldn);
   } else if (jpos.y - offset <= lup) {
