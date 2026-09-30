@@ -62,21 +62,6 @@ void Escena_Sprite::onInit() {
   jugador_ref->addComponente(sprite);
   jugador_ref->addComponente(std::make_shared<CE::IControl>());
 
-  // objetos para que se muestre el movimiento
-  int montes_count = 100;
-  float dstd = 20.f;
-  for (int i = 0; i < montes_count; i++) {
-    // gauss
-    double por =
-        std::exp(-0.5 * (((i - montes_count / 2.f) * (i - montes_count / 2.f)) /
-                         (dstd * dstd)));
-    int inc = 200;
-    auto monte = std::make_shared<Rectangulo>(
-        200.f, 200.f + (inc * por), sf::Color{184, 134, 11}, sf::Color::Black);
-    monte->setPosicion(100 + (i * 200), 100 - (inc * por / 2.f));
-    objetos.agregarPool(monte);
-  }
-
   inicializar = false;
 }
 void Escena_Sprite::onFinal() {
