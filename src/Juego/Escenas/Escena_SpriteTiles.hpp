@@ -1,5 +1,7 @@
 #pragma once
+#include <Juego/objetos/TileMap.hpp>
 #include <Motor/Primitivos/Escena.hpp>
+#include <vector>
 namespace IVJ {
 class Escena_Sprite : public CE::Escena {
 public:
@@ -15,5 +17,6 @@ public:
 private:
   int inicializar{1};
   std::shared_ptr<Entidad> &jugador_ref;
+  std::vector<TileMap> tiles_layers;
 };
 } // namespace IVJ

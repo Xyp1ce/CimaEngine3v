@@ -10,8 +10,10 @@
 #include <Motor/Primitivos/GestorAssets.hpp>
 #include <Motor/Render/Render.hpp>
 #include <cmath>
+#include <cstdlib>
 #include <memory>
 namespace IVJ {
+
 Escena_Sprite::Escena_Sprite(std::shared_ptr<Entidad> &pref)
     : CE::Escena{}, jugador_ref{pref} {}
 void Escena_Sprite::onInit() {
@@ -28,6 +30,18 @@ void Escena_Sprite::onInit() {
   registrarBotones(sf::Keyboard::Scancode::D, "derecha");
   registrarBotones(sf::Keyboard::Scancode::Right, "derecha");
   registrarBotones(sf::Keyboard::Scancode::Enter, "aceptar");
+
+  // Cargar mapa 3 layers
+  tiles_layers.push_back(TileMap());
+  tiles_layers.push_back(TileMap());
+  tiles_layers.push_back(TileMap());
+
+  if (!tiles_layers[0].loadTileMap(ASSETS "/mapas/playa_layer1.txt"))
+    exit(EXIT_FAILURE);
+  if (!tiles_layers[1].loadTileMap(ASSETS "/mapas/playa_layer2.txt"))
+    exit(EXIT_FAILURE);
+  if (!tiles_layers[2].loadTileMap(ASSETS "/mapas/playa_layer3.txt"))
+    exit(EXIT_FAILURE);
 
   // Cargar el sprite
   CE::GestorAssets::Get().agregarTextura(
@@ -115,6 +129,9 @@ void Escena_Sprite::onInputs(const CE::Botones &accion) {
 }
 
 void Escena_Sprite::onRender() {
+
+  for (auto &al : tiles_layers)
+    CE::Render::Get().AddToDraw(al);
   for (auto &obj : objetos.getPool())
     CE::Render::Get().AddToDraw(*obj);
   CE::Render::Get().AddToDraw(*jugador_ref);
