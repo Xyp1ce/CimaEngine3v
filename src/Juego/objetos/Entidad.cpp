@@ -91,10 +91,15 @@ void Entidad::draw(sf::RenderTarget &target, sf::RenderStates state) const {
     target.draw(box);
   }
 #endif
-  // Después del debug pintamos el triángulo
-  if (tieneComponente<ITriangulo>()) {
-    auto fig = getComponente<ITriangulo>();
-    target.draw(fig->tri_shape);
+  // // Después del debug pintamos el triángulo
+  // if (tieneComponente<ITriangulo>()) {
+  //   auto fig = getComponente<ITriangulo>();
+  //   target.draw(fig->tri_shape);
+  // }
+
+  if (tieneComponente<CE::ISprite>()) {
+    auto sprite = getComponente<CE::ISprite>();
+    target.draw(sprite->m_sprite);
   }
 }
 } // namespace IVJ

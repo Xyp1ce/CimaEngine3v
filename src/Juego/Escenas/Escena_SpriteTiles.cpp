@@ -67,7 +67,7 @@ void Escena_Sprite::onInit() {
 }
 void Escena_Sprite::onFinal() {
   // reseteamos la camara a la estática al salir/cambiar de escena
-  CE::GestorCamaras::Get().setCamaraActiva(3);
+  CE::GestorCamaras::Get().setCamaraActiva(2);
 }
 void Escena_Sprite::onUpdate(float dt) {
   jugador_ref->onUpdate(dt);
