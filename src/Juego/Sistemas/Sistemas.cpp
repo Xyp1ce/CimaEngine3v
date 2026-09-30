@@ -80,6 +80,7 @@ void SistemaMover(const std::shared_ptr<CE::Objeto> &objeto, float dt) {
 
   trans->posicion.suma(vel.escala(dt));
 }
+
 bool SistemaColAABB(CE::Objeto &A, CE::Objeto &B, bool resolucion) {
   if (!A.tieneComponente<CE::IBoundingBox>() ||
       !B.tieneComponente<CE::IBoundingBox>())
