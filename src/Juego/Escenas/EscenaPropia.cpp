@@ -1,4 +1,4 @@
-#include "Escena_SpriteTiles.hpp"
+#include "Juego/Escenas/EscenaPropia.hpp"
 #include "Motor/Utils/Vector2D.hpp"
 #include <Juego/Componentes/IJComponentes.hpp>
 #include <Juego/Figuras/Figuras.hpp>
@@ -13,11 +13,12 @@
 #include <memory>
 namespace IVJ {
 
-Escena_Sprite::Escena_Sprite(std::shared_ptr<Entidad> &pref)
-    : CE::Escena{}, jugador_ref{pref} {}
-void Escena_Sprite::onInit() {
+Escena_Propia::Escena_Propia(std::shared_ptr<Entidad> &pref)
+    : CE::Escena{}, jugador_soldier{pref} {}
+void Escena_Propia::onInit() {
+  jugador_soldier = std::make_shared<Entidad>();
   CE::GestorCamaras::Get().setCamaraActiva(2);
-  CE::GestorCamaras::Get().getCamaraActiva().lockEnObjeto(jugador_ref);
+  CE::GestorCamaras::Get().getCamaraActiva().lockEnObjeto(jugador_soldier);
   if (!inicializar)
     return;
   registrarBotones(sf::Keyboard::Scancode::W, "arriba");
@@ -31,78 +32,78 @@ void Escena_Sprite::onInit() {
   registrarBotones(sf::Keyboard::Scancode::Enter, "aceptar");
 
   // Cargar mapa 3 layers
-  tiles_layers.push_back(TileMap());
-  tiles_layers.push_back(TileMap());
-  tiles_layers.push_back(TileMap());
+  tiles_industrial.push_back(TileMap());
+  tiles_industrial.push_back(TileMap());
+  tiles_industrial.push_back(TileMap());
 
-  if (!tiles_layers[0].loadTileMap(ASSETS "/mapas/playa_layer1.txt"))
+  if (!tiles_industrial[0].loadTileMap(ASSETS "/mapas/playa_layer1.txt"))
     exit(EXIT_FAILURE);
-  if (!tiles_layers[1].loadTileMap(ASSETS "/mapas/playa_layer2.txt"))
+  if (!tiles_industrial[1].loadTileMap(ASSETS "/mapas/playa_layer2.txt"))
     exit(EXIT_FAILURE);
-  if (!tiles_layers[2].loadTileMap(ASSETS "/mapas/playa_layer3.txt"))
+  if (!tiles_industrial[2].loadTileMap(ASSETS "/mapas/playa_layer3.txt"))
     exit(EXIT_FAILURE);
 
   // Cargar el sprite
   CE::GestorAssets::Get().agregarTextura(
-      "naveb",                              // llave
-      ASSETS "/sprites/naves/player_b.png", // path del sprite
-      CE::Vector2D{0.f, 0.f},               // pos dentro de la hoja
-      CE::Vector2D{64.f, 64.f});            // dimensiones
+      "soldierP",                             // llave
+      ASSETS "/sprites/jugador/soldier1.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},                 // pos dentro de la hoja
+      CE::Vector2D{64.f, 85.f});              // dimensiones
 
-  auto trans = jugador_ref->getTransformada();
+  auto trans = jugador_soldier->getTransformada();
   trans->velocidad = CE::Vector2D{500.f, 500.f};
-  jugador_ref->setPosicion(300.f, 300.f);
+  jugador_soldier->setPosicion(300.f, 300.f);
 
   auto sprite = std::make_shared<CE::ISprite>(
-      CE::GestorAssets::Get().getTextura("naveb"), // textura
-      64, 64,                                      // dim
-      1.f);                                        // escala
+      CE::GestorAssets::Get().getTextura("soldierP"), // textura
+      64, 85,                                         // dim
+      1.f);                                           // escala
 
-  jugador_ref->addComponente(sprite);
-  jugador_ref->addComponente(std::make_shared<CE::IControl>());
+  jugador_soldier->addComponente(sprite);
+  jugador_soldier->addComponente(std::make_shared<CE::IControl>());
 
   inicializar = false;
 }
-void Escena_Sprite::onFinal() {
+void Escena_Propia::onFinal() {
   // reseteamos la camara a la estática al salir/cambiar de escena
   CE::GestorCamaras::Get().setCamaraActiva(2);
 }
-void Escena_Sprite::onUpdate(float dt) {
-  jugador_ref->onUpdate(dt);
-  SistemaMover(jugador_ref, dt);
+void Escena_Propia::onUpdate(float dt) {
+  jugador_soldier->onUpdate(dt);
+  SistemaMover(jugador_soldier, dt);
   for (auto &obj : objetos.getPool()) {
     obj->onUpdate(dt);
   }
 }
-void Escena_Sprite::onInputs(const CE::Botones &accion) {
+void Escena_Propia::onInputs(const CE::Botones &accion) {
   switch (accion.getTipo()) {
   case CE::Botones::TipoAccion::OnPress: {
     if (accion.getNombre() == "arriba") {
-      jugador_ref->getComponente<CE::IControl>()->arr = true;
+      jugador_soldier->getComponente<CE::IControl>()->arr = true;
     }
     if (accion.getNombre() == "abajo") {
-      jugador_ref->getComponente<CE::IControl>()->abj = true;
+      jugador_soldier->getComponente<CE::IControl>()->abj = true;
     }
     if (accion.getNombre() == "derecha") {
-      jugador_ref->getComponente<CE::IControl>()->der = true;
+      jugador_soldier->getComponente<CE::IControl>()->der = true;
     }
     if (accion.getNombre() == "izquierda") {
-      jugador_ref->getComponente<CE::IControl>()->izq = true;
+      jugador_soldier->getComponente<CE::IControl>()->izq = true;
     }
     break;
   }
   case CE::Botones::TipoAccion::OnRelease: {
     if (accion.getNombre() == "arriba") {
-      jugador_ref->getComponente<CE::IControl>()->arr = false;
+      jugador_soldier->getComponente<CE::IControl>()->arr = false;
     }
     if (accion.getNombre() == "abajo") {
-      jugador_ref->getComponente<CE::IControl>()->abj = false;
+      jugador_soldier->getComponente<CE::IControl>()->abj = false;
     }
     if (accion.getNombre() == "derecha") {
-      jugador_ref->getComponente<CE::IControl>()->der = false;
+      jugador_soldier->getComponente<CE::IControl>()->der = false;
     }
     if (accion.getNombre() == "izquierda") {
-      jugador_ref->getComponente<CE::IControl>()->izq = false;
+      jugador_soldier->getComponente<CE::IControl>()->izq = false;
     }
     break;
   }
@@ -112,13 +113,13 @@ void Escena_Sprite::onInputs(const CE::Botones &accion) {
   }
 }
 
-void Escena_Sprite::onRender() {
+void Escena_Propia::onRender() {
 
-  for (auto &al : tiles_layers)
+  for (auto &al : tiles_industrial)
     CE::Render::Get().AddToDraw(al);
   for (auto &obj : objetos.getPool())
     CE::Render::Get().AddToDraw(*obj);
-  CE::Render::Get().AddToDraw(*jugador_ref);
+  CE::Render::Get().AddToDraw(*jugador_soldier);
 
 #if DEBUG
   auto cam = &CE::GestorCamaras::Get().getCamaraActiva();

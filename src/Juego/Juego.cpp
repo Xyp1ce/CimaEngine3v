@@ -15,6 +15,7 @@
 #include <cstdlib>
 #include <ctime>
 
+#include <Juego/Escenas/EscenaPropia.hpp>
 #include <Juego/Escenas/Escena_Camara.hpp>
 #include <Juego/Escenas/Escena_Menu.hpp>
 #include <Juego/Escenas/Escena_Sim.hpp>
@@ -50,6 +51,8 @@ void Juego::OnInit(void) {
       "ECamara", std::make_shared<Escena_Camara>(jugador));
   CE::GestorEscenas::Get().registrarEscena(
       "Sprites", std::make_shared<Escena_Sprite>(jugador));
+  CE::GestorEscenas::Get().registrarEscena(
+      "Propia", std::make_shared<Escena_Propia>(jugador));
 
   CE::GestorEscenas::Get().cambiarEscena("Menu"); // ejecuta onInit()A
   escena_actual = &CE::GestorEscenas::Get().getEscenaActual();
