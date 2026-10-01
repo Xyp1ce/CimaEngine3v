@@ -33,14 +33,8 @@ void Escena_Propia::onInit() {
 
   // Cargar mapa 3 layers
   tiles_industrial.push_back(TileMap());
-  tiles_industrial.push_back(TileMap());
-  tiles_industrial.push_back(TileMap());
 
-  if (!tiles_industrial[0].loadTileMap(ASSETS "/mapas/playa_layer1.txt"))
-    exit(EXIT_FAILURE);
-  if (!tiles_industrial[1].loadTileMap(ASSETS "/mapas/playa_layer2.txt"))
-    exit(EXIT_FAILURE);
-  if (!tiles_industrial[2].loadTileMap(ASSETS "/mapas/playa_layer3.txt"))
+  if (!tiles_industrial[0].loadTileMap(ASSETS "/mapas/lab7/plataforma1.txt"))
     exit(EXIT_FAILURE);
 
   // Cargar el sprite

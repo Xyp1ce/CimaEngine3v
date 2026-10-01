@@ -145,9 +145,9 @@ void CamaraSnapMario::onUpdate(float dt) {
   }
 
   float W = m_vdim.x / 2.f;
-  float w = m_vdim.x / 4.f;
+  float w = m_vdim.x / 8.f;
 
-  // 1. Detección de movimiento
+  // Detección de movimiento
   float delta_x = jpos.x - last_jpos_x;
   bool moviendose_x = (std::abs(delta_x) > 0.01f);
   last_jpos_x = jpos.x;
@@ -156,9 +156,7 @@ void CamaraSnapMario::onUpdate(float dt) {
   float L1 = target_x - W;
   float L4 = target_x + W;
 
-  // 2. Lógica de empuje y ajuste
   if (moviendose_x) {
-    // ESTADO: EN MOVIMIENTO -> La cámara sigue al jugador de forma normal
     if (jpos.x + offset >= L4) {
       target_x = (jpos.x + offset) - W;
       necesita_ajuste = 1; // Marcamos que requerirá ajuste al detenerse
@@ -170,8 +168,6 @@ void CamaraSnapMario::onUpdate(float dt) {
       necesita_ajuste = 0;
     }
   } else {
-    // ESTADO: DETENIDO -> Ejecutamos el reajuste a las líneas centrales (L2 o
-    // L3)
     if (necesita_ajuste == 1) {
       target_x =
           (jpos.x + offset) + w; // Alinea la línea central izquierda (L2)
@@ -182,12 +178,11 @@ void CamaraSnapMario::onUpdate(float dt) {
     }
   }
 
-  // 3. DESLIZAMIENTO SUAVE (Lerp)
-  float velocidad_deslizamiento = 5.0f;
+  float velocidad_deslizamiento = 2.0f;
   m_transform->posicion.x +=
       (target_x - m_transform->posicion.x) * (velocidad_deslizamiento * dt);
 
-  // Eje Y: Comportamiento de ventana instantáneo original
+  // Comportamiento de ventana instantáneo original
   float cy = m_transform->posicion.y;
   float lup = (cy - m_vdim.y / 2.f);
   float ldn = (cy + m_vdim.y / 2.f);
