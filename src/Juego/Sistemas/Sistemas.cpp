@@ -51,14 +51,11 @@ void SistemaMoverBalas(const std::shared_ptr<CE::Objeto> &ente, float dt) {
 
 void SistemaMover(const std::shared_ptr<CE::Objeto> &objeto, float dt) {
   auto trans = objeto->getTransformada();
-  auto control = objeto->getComponente<CE::IControl>();
 
-  // Si no tiene control o el control no esta activo salir
+  auto control = objeto->getComponente<CE::IControl>();
   if (!control || !control->isActivo())
     return;
 
-  // definimos cual va ser la velocidad correcta dependiendo
-  // de que boton del control este presionado
   auto vel = CE::Vector2D{0.f, 0.f};
   if (control->arr)
     vel.y = -trans->velocidad.y;
@@ -69,16 +66,21 @@ void SistemaMover(const std::shared_ptr<CE::Objeto> &objeto, float dt) {
   if (control->izq)
     vel.x = -trans->velocidad.x;
 
-  // calculamos la dirección usando un triángulo rectángulo
-  if (objeto->getComponente<ITriangulo>()) {
+  if (objeto->getComponente<ITriangulo>() ||
+      objeto->getComponente<CE::ISprite>()) {
     auto n = vel;
     n.normalizacion();
-    if (vel.x != 0 || vel.y != 0)
-      objeto->getComponente<ITriangulo>()->angulo = std::atan2(n.x, -n.y);
+    auto trian = objeto->getComponente<ITriangulo>(); // nulo
+    if (vel.x != 0 || vel.y != 0) {
+      if (trian)
+        trian->angulo = std::atan2(n.x, -n.y);
+      trans->angulo = std::atan2(n.x, -n.y);
+    }
   }
-  // actualizamos la posición del ente.
+
   trans->posicion.suma(vel.escala(dt));
 }
+
 bool SistemaColAABB(CE::Objeto &A, CE::Objeto &B, bool resolucion) {
   if (!A.tieneComponente<CE::IBoundingBox>() ||
       !B.tieneComponente<CE::IBoundingBox>())
