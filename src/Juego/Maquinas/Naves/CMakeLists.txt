@@ -5,6 +5,6 @@ file(GLOB_RECURSE gl_cpp RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_S
 
 target_sources(CimaEngine3v PRIVATE ${gl_cpp})
 
-add_subdirectory(Naves)
-add_subdirectory(Bosses)
-# add_subdirectory(Balas)
+#add_subdirectory(Naves)
+#add_subdirectory(Bosses)
+#add_subdirectory(Balas)

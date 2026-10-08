@@ -49,5 +49,6 @@ SistemaBuscarComida(CE::Objeto &ente,
 [[maybe_unused]] void SistemaMoveraComidaoCasa(CE::Objeto &ente, float dt);
 [[maybe_unused]] void SistemaConsumirComida(CE::Objeto &ente);
 [[maybe_unused]] void SistemaReproducirEnte(CE::Objeto &ente, CE::Pool &pool);
-
+[[maybe_unused]] void SistemaNPCLookTarget(CE::Objeto &ente,
+                                           CE::Vector2D &target);
 } // namespace IVJ
