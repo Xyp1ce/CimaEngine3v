@@ -2,6 +2,8 @@
 #include "Motor/Utils/Vector2D.hpp"
 #include <Juego/Componentes/IJComponentes.hpp>
 #include <Juego/Figuras/Figuras.hpp>
+#include <Juego/Maquinas/Soldier/IdleSoldier.hpp>
+#include <Juego/Maquinas/Soldier/SoldierDown.hpp>
 #include <Juego/Sistemas/Sistemas.hpp>
 #include <Juego/objetos/Entidad.hpp>
 #include <Motor/Camaras/CamarasGestor.hpp>
@@ -30,6 +32,7 @@ void Escena_Propia::onInit() {
   registrarBotones(sf::Keyboard::Scancode::D, "derecha");
   registrarBotones(sf::Keyboard::Scancode::Right, "derecha");
   registrarBotones(sf::Keyboard::Scancode::Enter, "aceptar");
+  registrarBotones(sf::Keyboard::Scancode::E, "accion_secundaria");
 
   // Cargar mapa 3 layers
   tiles_industrial.push_back(TileMap());
@@ -39,22 +42,48 @@ void Escena_Propia::onInit() {
 
   // Cargar el sprite
   CE::GestorAssets::Get().agregarTextura(
-      "soldierP",                             // llave
-      ASSETS "/sprites/jugador/soldier1.png", // path del sprite
-      CE::Vector2D{0.f, 0.f},                 // pos dentro de la hoja
-      CE::Vector2D{64.f, 85.f});              // dimensiones
+      "soldier_down_sheet_K",                           // llave
+      ASSETS "/sprites/jugador/soldier_down_sheet.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},                           // pos dentro de la hoja
+      CE::Vector2D{256.f, 84.f});                       // dimensiones
+  CE::GestorAssets::Get().agregarTextura(
+      "soldier_up_sheet_K",                           // llave
+      ASSETS "/sprites/jugador/soldier_up_sheet.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},                         // pos dentro de la hoja
+      CE::Vector2D{256.f, 84.f});                     // dimensiones
+  CE::GestorAssets::Get().agregarTextura(
+      "soldier_right_sheet_K",                           // llave
+      ASSETS "/sprites/jugador/soldier_right_sheet.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},     // pos dentro de la hoja
+      CE::Vector2D{256.f, 84.f}); // dimensiones
+  CE::GestorAssets::Get().agregarTextura(
+      "soldier_left_sheet_K",                           // llave
+      ASSETS "/sprites/jugador/soldier_left_sheet.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},                           // pos dentro de la hoja
+      CE::Vector2D{256.f, 84.f});                       // dimensiones
+  CE::GestorAssets::Get().agregarTextura(
+      "soldier_right_spin_sheet_K",                           // llave
+      ASSETS "/sprites/jugador/soldier_right_spin_sheet.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},     // pos dentro de la hoja
+      CE::Vector2D{384.f, 84.f}); // dimensiones
 
   auto trans = jugador_soldier->getTransformada();
   trans->velocidad = CE::Vector2D{500.f, 500.f};
   jugador_soldier->setPosicion(300.f, 300.f);
 
   auto sprite = std::make_shared<CE::ISprite>(
-      CE::GestorAssets::Get().getTextura("soldierP"), // textura
-      64, 85,                                         // dim
-      1.f);                                           // escala
+      CE::GestorAssets::Get().getTextura("soldier_down_sheet_K"), // textura
+      64, 84,                                                     // dim
+      1.f);                                                       // escala
 
   jugador_soldier->addComponente(sprite);
+
   jugador_soldier->addComponente(std::make_shared<CE::IControl>());
+
+  auto me = std::make_shared<IMaquinaEstado>();
+  me->fsm = std::make_shared<IdleSoldier>();
+  jugador_soldier->addComponente(me);
+  jugador_soldier->setFSM(me->fsm);
 
   inicializar = false;
 }
@@ -63,6 +92,7 @@ void Escena_Propia::onFinal() {
   CE::GestorCamaras::Get().setCamaraActiva(2);
 }
 void Escena_Propia::onUpdate(float dt) {
+  jugador_soldier->inputFSM();
   jugador_soldier->onUpdate(dt);
   SistemaMover(jugador_soldier, dt);
   for (auto &obj : objetos.getPool()) {
@@ -84,6 +114,9 @@ void Escena_Propia::onInputs(const CE::Botones &accion) {
     if (accion.getNombre() == "izquierda") {
       jugador_soldier->getComponente<CE::IControl>()->izq = true;
     }
+    if (accion.getNombre() == "accion_secundaria") {
+      jugador_soldier->getComponente<CE::IControl>()->sacc = true;
+    }
     break;
   }
   case CE::Botones::TipoAccion::OnRelease: {
@@ -99,6 +132,9 @@ void Escena_Propia::onInputs(const CE::Botones &accion) {
     if (accion.getNombre() == "izquierda") {
       jugador_soldier->getComponente<CE::IControl>()->izq = false;
     }
+    if (accion.getNombre() == "accion_secundaria") {
+      jugador_soldier->getComponente<CE::IControl>()->sacc = false;
+    }
     break;
   }
   case CE::Botones::TipoAccion::None: {
@@ -108,7 +144,6 @@ void Escena_Propia::onInputs(const CE::Botones &accion) {
 }
 
 void Escena_Propia::onRender() {
-
   for (auto &al : tiles_industrial)
     CE::Render::Get().AddToDraw(al);
   for (auto &obj : objetos.getPool())

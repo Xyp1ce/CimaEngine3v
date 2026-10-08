@@ -1,5 +1,6 @@
 #include "Entidad.hpp"
 #include "../../Motor/Componentes/IComponentes.hpp"
+#include "../Maquinas/Bosses/FSMBoss.hpp"
 #include "Motor/Utils/Vector2D.hpp"
 #include <memory>
 #include <string>
@@ -50,8 +51,16 @@ void Entidad::inputFSM() {
   if (!getComponente<IMaquinaEstado>() || !getComponente<IMaquinaEstado>()->fsm)
     return;
   auto mq = getComponente<IMaquinaEstado>();
-
-  {
+  // Lab 8 Animaciones: Pequeño facade usando el nombre del nodo
+  if (mq->fsm->getNombre().find("Boss") != std::string::npos) {
+    auto target = getComponente<ITarget>()->pos;
+    // usar el nodo correcto de boss
+    auto n_estado =
+        std::static_pointer_cast<FSMBoss>(mq->fsm)->onInputs(*this, *target);
+    std::shared_ptr<FSM> estado(n_estado);
+    if (estado)
+      setFSM(estado);
+  } else {
     if (!getComponente<CE::IControl>())
       return;
     auto control = *getComponente<CE::IControl>();

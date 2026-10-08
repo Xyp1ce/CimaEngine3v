@@ -2,6 +2,7 @@
 #include "../../Motor/Primitivos/GestorAssets.hpp"
 #include "../../Motor/Render/Render.hpp"
 #include "Motor/Componentes/IComponentes.hpp"
+#include "Motor/Primitivos/Objetos.hpp"
 #include <Juego/Sistemas/Sistemas.hpp>
 #include <memory>
 #include <string>
@@ -140,4 +141,30 @@ void ITargetComida::quitarTarget() {
 }
 IPosicionInicial::IPosicionInicial(float x, float y)
     : CE::IComponentes{}, pos_init{x, y} {}
+
+ITarget::ITarget(CE::Objeto *target) : CE::IComponentes{}, pos(nullptr) {
+  if (target)
+    pos = &target->getTransformada()->posicion;
+}
+
+void ITarget::setTarget(CE::Objeto &t) {
+  pos = &(t.getTransformada()->posicion);
+}
+
+IRangoAggro::IRangoAggro(float radio)
+    : CE::IComponentes{}, radio{radio}, marcador{sf::CircleShape{radio}} {
+  marcador.setOrigin({radio, radio});
+  marcador.setFillColor(sf::Color{255, 0, 0, 128});
+}
+
+bool IRangoAggro::estaDentroRango(CE::Objeto &parent, CE::Vector2D &target) {
+  auto pos = parent.getTransformada()->posicion;
+  float r2 = radio * radio;
+  float diX = (target.x - pos.x);
+  float diY = (target.y - pos.y);
+  float dist = diX * diX + diY * diY;
+
+  return dist <= r2;
+}
+
 } // namespace IVJ
