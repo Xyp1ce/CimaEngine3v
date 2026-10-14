@@ -1,9 +1,11 @@
 #pragma once
 #include "../FSM.hpp"
+#include "Motor/Utils/Vector2D.hpp"
+
 namespace IVJ {
 class SoldierRightSpin : public FSM {
 public:
-  SoldierRightSpin(int max_frames, float frame_rate);
+  SoldierRightSpin(int max_frames = 6, float frame_rate = 0.055f, float mult_velocidad = 2.3f);
   ~SoldierRightSpin() override {};
   FSM *onInputs(const CE::IControl &control) override;
   void onEntrar(const Entidad &obj) override;
@@ -19,5 +21,7 @@ private:
   int max_frames;     // frames de animación
   int id_frame;       // frame actual de animación
   bool animacion_terminada{false};
+  float mult_velocidad{2.3f};
+  CE::Vector2D vel_original{0.f, 0.f};
 };
 } // namespace IVJ

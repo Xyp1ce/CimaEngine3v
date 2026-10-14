@@ -1,7 +1,13 @@
 #include "SoldierLeft.hpp"
 #include "IdleSoldier.hpp"
-#include "Motor/Primitivos/GestorAssets.hpp"
+#include "SoldierDown.hpp"
+#include "SoldierDownSpin.hpp"
+#include "SoldierLeftSpin.hpp"
+#include "SoldierRight.hpp"
 #include "SoldierRightSpin.hpp"
+#include "SoldierUp.hpp"
+#include "SoldierUpSpin.hpp"
+#include "Motor/Primitivos/GestorAssets.hpp"
 
 namespace IVJ {
 SoldierLeft::SoldierLeft(int max_frames, float frame_rate)
@@ -10,11 +16,24 @@ SoldierLeft::SoldierLeft(int max_frames, float frame_rate)
   nombre = "SoldierLeft";
 }
 FSM *SoldierLeft::onInputs(const CE::IControl &control) {
-  // si nada esta presionado regresar a idle
-  if (control.sacc)
-    return new SoldierRightSpin(6, 0.08f);
-  if (!control.izq)
+  if (control.sacc) {
+    if (control.abj)
+      return new SoldierDownSpin(6, 0.055f);
+    if (control.arr)
+      return new SoldierUpSpin(6, 0.055f);
+    if (control.der)
+      return new SoldierRightSpin(6, 0.055f);
+    return new SoldierLeftSpin(6, 0.055f);
+  }
+  if (!control.izq) {
+    if (control.abj)
+      return new SoldierDown(4, 0.1f);
+    if (control.arr)
+      return new SoldierUp(4, 0.1f);
+    if (control.der)
+      return new SoldierRight(4, 0.1f);
     return new IdleSoldier();
+  }
 
   return nullptr;
 }

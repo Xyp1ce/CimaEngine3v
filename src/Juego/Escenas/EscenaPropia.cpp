@@ -85,6 +85,21 @@ void Escena_Propia::onInit() {
       ASSETS "/sprites/jugador/soldier_right_spin_sheet.png", // path del sprite
       CE::Vector2D{0.f, 0.f},     // pos dentro de la hoja
       CE::Vector2D{384.f, 84.f}); // dimensiones
+  CE::GestorAssets::Get().agregarTextura(
+      "soldier_left_spin_sheet_K",                           // llave
+      ASSETS "/sprites/jugador/soldier_left_spin_sheet.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},     // pos dentro de la hoja
+      CE::Vector2D{384.f, 84.f}); // dimensiones
+  CE::GestorAssets::Get().agregarTextura(
+      "soldier_down_spin_sheet_K",                           // llave
+      ASSETS "/sprites/jugador/soldier_down_spin_sheet.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},     // pos dentro de la hoja
+      CE::Vector2D{384.f, 84.f}); // dimensiones
+  CE::GestorAssets::Get().agregarTextura(
+      "soldier_up_spin_sheet_K",                           // llave
+      ASSETS "/sprites/jugador/soldier_up_spin_sheet.png", // path del sprite
+      CE::Vector2D{0.f, 0.f},     // pos dentro de la hoja
+      CE::Vector2D{384.f, 84.f}); // dimensiones
 
   auto trans = jugador_soldier->getTransformada();
   trans->velocidad = CE::Vector2D{350.f, 350.f};
