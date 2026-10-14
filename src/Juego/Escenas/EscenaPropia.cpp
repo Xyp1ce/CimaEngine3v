@@ -68,7 +68,7 @@ void Escena_Propia::onInit() {
       CE::Vector2D{384.f, 84.f}); // dimensiones
 
   auto trans = jugador_soldier->getTransformada();
-  trans->velocidad = CE::Vector2D{500.f, 500.f};
+  trans->velocidad = CE::Vector2D{350.f, 350.f};
   jugador_soldier->setPosicion(300.f, 300.f);
 
   auto sprite = std::make_shared<CE::ISprite>(

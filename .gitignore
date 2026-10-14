@@ -18,3 +18,5 @@ src/Motor/.DS_Store
 
 src/Juego/**/**/*.cpp.swp
 src/Motor/**/**/*.cpp.swp
+
+markdown/*
