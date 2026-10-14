@@ -16,7 +16,9 @@
 namespace IVJ {
 
 Escena_Sprite::Escena_Sprite(std::shared_ptr<Entidad> &pref)
-    : CE::Escena{}, jugador_ref{pref} {}
+    : CE::Escena{}, jugador_ref{pref} {
+  nombre = "Sprites";
+}
 void Escena_Sprite::onInit() {
   CE::GestorCamaras::Get().setCamaraActiva(2);
   CE::GestorCamaras::Get().getCamaraActiva().lockEnObjeto(jugador_ref);
@@ -37,7 +39,8 @@ void Escena_Sprite::onInit() {
   tiles_layers.push_back(TileMap());
   tiles_layers.push_back(TileMap());
 
-  if (!tiles_layers[0].loadTileMap(ASSETS "/mapas/playa_layer1.txt"))
+  // Lab 9: cargar layer con colisiones y pasar el pool de objetos
+  if (!tiles_layers[0].loadTileMap(ASSETS "/mapas/playa_col_layer1.txt", objetos))
     exit(EXIT_FAILURE);
   if (!tiles_layers[1].loadTileMap(ASSETS "/mapas/playa_layer2.txt"))
     exit(EXIT_FAILURE);
@@ -68,6 +71,9 @@ void Escena_Sprite::onInit() {
 
   jugador_ref->addComponente(sprite);
   jugador_ref->addComponente(std::make_shared<CE::IControl>());
+  jugador_ref->addComponente(std::make_shared<CE::IBoundingBox>(
+      CE::Vector2D{64.f, 64.f} // dimensiones del sprite
+  ));
 
   // lab 8 animaciones
   auto me = std::make_shared<IMaquinaEstado>();
@@ -95,6 +101,40 @@ void Escena_Sprite::onInit() {
 
   objetos.agregarPool(boss);
 
+  // Lab 9 Colisiones: Atlas para objetos individuales
+  auto techo = std::make_shared<Entidad>();
+  techo->getNombre()->nombre = "Techo";
+  techo->getStats()->hp_max = 100;
+  techo->getStats()->hp = 100;
+  techo->getStats()->def = 150;
+
+  // Cargar todo el atlas para poder poner cosas individuales
+  CE::GestorAssets::Get().agregarTextura(
+      "atlas_playa",
+      ASSETS "/atlas/playa_atlas.png",
+      CE::Vector2D{0.f, 0.f},
+      CE::Vector2D{2048.f, 768.f});
+
+  auto techo_sprite = std::make_shared<CE::ISprite>(
+      CE::GestorAssets::Get().getTextura("atlas_playa"),
+      128, 256, // dim
+      1.f);     // escala
+  // Acomodar el sprite en el area deseada del atlas
+  techo_sprite->m_sprite.setTextureRect(
+      sf::IntRect{
+          {64 * 28, 64 * 6}, // 220 indice
+          {128, 256}         // dos tiles, 4 tiles en dimensiones
+      });
+  // Acomodar el pivote para centrar bien el bounding box en el centro
+  // 128/2 = 64, 256/2 = 128
+  techo_sprite->m_sprite.setOrigin({64.f, 128.f});
+  techo->addComponente(techo_sprite)
+      .addComponente(std::make_shared<CE::IBoundingBox>(CE::Vector2D{128.f, 256.f}));
+
+  techo->setPosicion(1300.f, 175.f);
+
+  objetos.agregarPool(techo);
+
   inicializar = false;
 }
 void Escena_Sprite::onFinal() {
@@ -113,6 +153,8 @@ void Escena_Sprite::onUpdate(float dt) {
       auto &tpos = *obj->getComponente<ITarget>()->pos;
       SistemaNPCLookTarget(*obj, tpos);
     }
+    // Lab 9 colisiones
+    SistemaColAABBMid(*jugador_ref, *obj, true);
   }
 }
 

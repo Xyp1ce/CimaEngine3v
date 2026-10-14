@@ -17,6 +17,5 @@ public:
 private:
   int inicializar{1};
   std::shared_ptr<Entidad> &jugador_ref;
-  std::vector<TileMap> tiles_layers;
 };
 } // namespace IVJ
