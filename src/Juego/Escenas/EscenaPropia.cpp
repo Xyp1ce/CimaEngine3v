@@ -16,10 +16,29 @@
 namespace IVJ {
 
 Escena_Propia::Escena_Propia(std::shared_ptr<Entidad> &pref)
-    : CE::Escena{}, jugador_soldier{pref} {}
+    : CE::Escena{}, jugador_soldier{pref} {
+  nombre = "Propia";
+}
 void Escena_Propia::onInit() {
   jugador_soldier = std::make_shared<Entidad>();
-  CE::GestorCamaras::Get().setCamaraActiva(2);
+
+  // Buscar o registrar CamaraFija con lock al centro
+  int id_camara = -1;
+  auto &camaras = CE::GestorCamaras::Get().getListaCamaras();
+  for (int i = 0; i < (int)camaras.size(); ++i) {
+    if (camaras[i]->nombre == "CamaraFija" || camaras[i]->nombre == "CamafaFija") {
+      id_camara = i;
+      break;
+    }
+  }
+  if (id_camara == -1) {
+    auto cam_fija = std::make_shared<CE::CamaraFija>(
+        CE::Vector2D{0.f, 0.f}, CE::Vector2D{1024, 720});
+    CE::GestorCamaras::Get().agregarCamara(cam_fija);
+    id_camara = (int)camaras.size() - 1;
+  }
+
+  CE::GestorCamaras::Get().setCamaraActiva(id_camara);
   CE::GestorCamaras::Get().getCamaraActiva().lockEnObjeto(jugador_soldier);
   if (!inicializar)
     return;
@@ -34,10 +53,10 @@ void Escena_Propia::onInit() {
   registrarBotones(sf::Keyboard::Scancode::Enter, "aceptar");
   registrarBotones(sf::Keyboard::Scancode::E, "accion_secundaria");
 
-  // Cargar mapa 3 layers
+  // Cargar mapa con colisiones en los bordes
   tiles_industrial.push_back(TileMap());
 
-  if (!tiles_industrial[0].loadTileMap(ASSETS "/mapas/lab7/plataforma1.txt"))
+  if (!tiles_industrial[0].loadTileMap(ASSETS "/mapas/lab7/plataforma1_col.txt", objetos))
     exit(EXIT_FAILURE);
 
   // Cargar el sprite
@@ -79,6 +98,9 @@ void Escena_Propia::onInit() {
   jugador_soldier->addComponente(sprite);
 
   jugador_soldier->addComponente(std::make_shared<CE::IControl>());
+  jugador_soldier->addComponente(std::make_shared<CE::IBoundingBox>(
+      CE::Vector2D{64.f, 84.f}
+  ));
 
   auto me = std::make_shared<IMaquinaEstado>();
   me->fsm = std::make_shared<IdleSoldier>();
@@ -89,7 +111,7 @@ void Escena_Propia::onInit() {
 }
 void Escena_Propia::onFinal() {
   // reseteamos la camara a la estática al salir/cambiar de escena
-  CE::GestorCamaras::Get().setCamaraActiva(2);
+  CE::GestorCamaras::Get().setCamaraActiva(0);
 }
 void Escena_Propia::onUpdate(float dt) {
   jugador_soldier->inputFSM();
@@ -97,6 +119,7 @@ void Escena_Propia::onUpdate(float dt) {
   SistemaMover(jugador_soldier, dt);
   for (auto &obj : objetos.getPool()) {
     obj->onUpdate(dt);
+    SistemaColAABBMid(*jugador_soldier, *obj, true);
   }
 }
 void Escena_Propia::onInputs(const CE::Botones &accion) {
@@ -152,16 +175,16 @@ void Escena_Propia::onRender() {
 
 #if DEBUG
   auto cam = &CE::GestorCamaras::Get().getCamaraActiva();
-  // Casteamos a nuestra nueva cámara
-  auto csm = (CE::CamaraSnapMario *)cam;
-  auto csvpos = csm->getTransformada().posicion;
-  sf::RectangleShape debugcam{{csm->m_vdim.x, csm->m_vdim.y}};
-  debugcam.setOrigin({csm->m_vdim.x / 2.f, csm->m_vdim.y / 2.f});
-  debugcam.setPosition({csvpos.x, csvpos.y});
-  debugcam.setOutlineThickness(3.f);
-  debugcam.setOutlineColor(sf::Color::Yellow);
-  debugcam.setFillColor(sf::Color::Transparent);
-  CE::Render::Get().AddToDraw(debugcam);
+  if (auto csm = dynamic_cast<CE::CamaraSnapMario *>(cam)) {
+    auto csvpos = csm->getTransformada().posicion;
+    sf::RectangleShape debugcam{{csm->m_vdim.x, csm->m_vdim.y}};
+    debugcam.setOrigin({csm->m_vdim.x / 2.f, csm->m_vdim.y / 2.f});
+    debugcam.setPosition({csvpos.x, csvpos.y});
+    debugcam.setOutlineThickness(3.f);
+    debugcam.setOutlineColor(sf::Color::Yellow);
+    debugcam.setFillColor(sf::Color::Transparent);
+    CE::Render::Get().AddToDraw(debugcam);
+  }
 #endif
 }
 } // namespace IVJ

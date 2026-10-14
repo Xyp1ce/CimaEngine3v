@@ -193,4 +193,22 @@ void CamaraSnapMario::onUpdate(float dt) {
     m_transform->posicion.y += ((jpos.y - offset) - lup);
   }
 }
+
+// Camara Fija (centrada directamente en el objeto lockeado)
+CamaraFija::CamaraFija(const Vector2D &pos, const Vector2D &dim)
+    : Camara{pos, dim} {
+  nombre = "CamaraFija";
+}
+
+CamaraFija::CamaraFija(float x, float y, float w, float h)
+    : Camara{x, y, w, h} {
+  nombre = "CamaraFija";
+}
+
+void CamaraFija::onUpdate(float dt) {
+  if (auto obj = m_lockObj.lock()) {
+    m_transform->posicion = obj->getTransformada()->posicion;
+  }
+  Camara::onUpdate(dt);
+}
 } // namespace CE

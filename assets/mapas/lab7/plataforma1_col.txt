@@ -1,0 +1,36 @@
+[Atlas_info]
+/atlas/EscenaSprites/tilemap2.png
+768 720 
+48 48
+30 30 
+[ID_Matrix]
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n 10 c 10 c 10 c 10 c 10 c 10 c 10 c 10 c 10 c 10 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n 10 c 10 c 10 c 10 c 0 n 0 n 0 n 0 n 16 n 0 n 0 n 0 n 10 c 10 c 10 c 10 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n 10 c 10 c 10 c 17 n 17 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c 10 c -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n 10 c 10 c 0 n 0 n 17 n 17 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 4 n 5 n 0 n 0 n 0 n 0 n 10 c 10 c -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n 10 c 10 c 0 n 0 n 0 n 0 n 17 n 17 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 4 n 5 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c -1 n -1 n -1 n
+-1 n -1 n 10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 17 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c -1 n -1 n
+-1 n -1 n 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c -1 n -1 n
+-1 n 10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c -1 n
+-1 n 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c -1 n
+-1 n 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c -1 n
+10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c
+10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c
+10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c
+10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c
+10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c
+10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c
+10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c
+10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 4 n 5 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c
+10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 4 n 5 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c
+10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c
+-1 n 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c -1 n
+-1 n 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c -1 n
+-1 n 10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c -1 n
+-1 n -1 n 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 4 n 5 n 0 n 0 n 0 n 0 n 0 n 10 c -1 n -1 n
+-1 n -1 n 10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 4 n 5 n 0 n 0 n 0 n 0 n 10 c 10 c -1 n -1 n
+-1 n -1 n -1 n 10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n 10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n 10 c 10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c 10 c -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n 10 c 10 c 10 c 10 c 0 n 0 n 0 n 0 n 0 n 0 n 0 n 0 n 10 c 10 c 10 c 10 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n 10 c 10 c 10 c 10 c 10 c 10 c 10 c 10 c 10 c 10 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n

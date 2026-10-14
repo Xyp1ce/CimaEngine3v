@@ -69,6 +69,8 @@ void Juego::OnInit(void) {
           ));
   CE::GestorCamaras::Get().agregarCamara(std::make_shared<CE::CamaraSnapMario>(
       CE::Vector2D{0.f, 0.f}, CE::Vector2D{1024, 720}, CE::Vector2D{500, 300}));
+  CE::GestorCamaras::Get().agregarCamara(std::make_shared<CE::CamaraFija>(
+      CE::Vector2D{0.f, 0.f}, CE::Vector2D{1024, 720}));
 }
 void Juego::OnInputs() {
   auto br = escena_actual->getBotonesRegistrados();

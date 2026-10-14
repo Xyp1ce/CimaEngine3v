@@ -208,4 +208,19 @@ private:
   int necesita_ajuste{0};
   bool moviendose_x{false};
 };
+
+/**
+ * @class CamaraFija
+ * @brief Cámara con seguimiento directo y rígido donde el objeto objetivo
+ * se mantiene bloqueado al centro de la vista.
+ */
+class CamaraFija : public Camara {
+public:
+  CamaraFija(const Vector2D &pos, const Vector2D &dim);
+  CamaraFija(float x, float y, float w, float h);
+  ~CamaraFija() override = default;
+  void onUpdate(float dt) override;
+};
+
+using CamafaFija = CamaraFija;
 } // namespace CE
