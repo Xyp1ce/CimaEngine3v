@@ -13,7 +13,7 @@ int main(int argc, char** argv)
     CE::MotorConfig config;
     config.vW=1080;
     config.vH=720;
-    config.titulo="CimaEngine3v";
+    config.titulo="Expendable";
     std::cout<<"Iniciando "<<config.titulo<<"\n";
 
     CE::Motor motor{config,std::make_unique<IVJ::Juego>()};

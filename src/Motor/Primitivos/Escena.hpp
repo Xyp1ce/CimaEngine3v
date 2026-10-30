@@ -2,6 +2,7 @@
 #include "../Inputs/Botones.hpp"
 #include "CEPool.hpp"
 #include <SFML/Graphics.hpp>
+#include <SFML/Window/Mouse.hpp>
 //shaders y tilemap mover el source a motor/mapas
 #include "../../Juego/objetos/TileMap.hpp"
 #include<vector>
@@ -28,6 +29,8 @@ namespace CE
     {
         /** @brief Tipo alias para mapeo de botones: scancode → nombre de acción */
         typedef std::map<sf::Keyboard::Scancode,std::string> HashBotones;
+        /** @brief Tipo alias para mapeo de botones de ratón: button → nombre de acción */
+        typedef std::map<sf::Mouse::Button,std::string> HashBotonesMouse;
         
         public:
             /** @brief Destructor virtual */
@@ -74,6 +77,16 @@ namespace CE
             {
                 botones[boton]=accion;
             }
+
+            /**
+             * @brief Registra un mapeo de botón de ratón a acción.
+             * @param boton Botón del ratón de SFML
+             * @param accion Nombre textual de la acción asignada
+             */
+            void registrarBotones(sf::Mouse::Button boton, const std::string &accion)
+            {
+                botones_mouse[boton]=accion;
+            }
             
             /**
              * @brief Obtiene el mapeo de botones a acciones.
@@ -82,6 +95,15 @@ namespace CE
             HashBotones &getBotones()
             {
                 return botones;
+            }
+
+            /**
+             * @brief Obtiene el mapeo de botones de ratón a acciones.
+             * @return Referencia mutable al mapa de botones de ratón
+             */
+            HashBotonesMouse &getBotonesMouse()
+            {
+                return botones_mouse;
             }
             
             /**
@@ -108,6 +130,22 @@ namespace CE
                 }
                 return b;
             }
+
+            /**
+             * @brief Obtiene todos los botones de ratón registrados como vector.
+             * @return Vector con los botones de ratón registrados
+             */
+            std::vector<sf::Mouse::Button>
+            getBotonesMouseRegistrados()
+            {
+                std::vector<sf::Mouse::Button> b;
+                b.reserve(botones_mouse.size());
+                for(auto k = botones_mouse.begin(); k != botones_mouse.end(); k++)
+                {
+                    b.emplace_back(k->first);
+                }
+                return b;
+            }
             
             /**
              * @brief Obtiene la entidad del jugador de la escena.
@@ -126,6 +164,9 @@ namespace CE
             /** @brief Mapeo de botones a nombres de acciones (público para acceso directo) */
             HashBotones botones;
             
+            /** @brief Mapeo de botones de ratón a nombres de acciones */
+            HashBotonesMouse botones_mouse;
+
             /** @brief Mapeo de botones GUI (interfaz gráfica) */
             HashBotones gui;
             

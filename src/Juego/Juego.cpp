@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Window/Mouse.hpp>
 #include <memory>
 #include <string>
 
@@ -18,6 +19,7 @@
 #include <Juego/Escenas/EscenaPropia.hpp>
 #include <Juego/Escenas/Escena_Camara.hpp>
 #include <Juego/Escenas/Escena_Menu.hpp>
+#include <Juego/Escenas/Escena_Menu_Principal.hpp>
 #include <Juego/Escenas/Escena_Sim.hpp>
 #include <Juego/Escenas/Escena_Sistemas.hpp>
 #include <Juego/Escenas/Escena_SpriteTiles.hpp>
@@ -51,10 +53,15 @@ void Juego::OnInit(void) {
       "ECamara", std::make_shared<Escena_Camara>(jugador));
   CE::GestorEscenas::Get().registrarEscena(
       "Sprites", std::make_shared<Escena_Sprite>(jugador));
-  CE::GestorEscenas::Get().registrarEscena(
-      "Propia", std::make_shared<Escena_Propia>(jugador));
+  auto esc_propia = std::make_shared<Escena_Propia>(jugador);
+  CE::GestorEscenas::Get().registrarEscena("Propia", esc_propia);
+  CE::GestorEscenas::Get().registrarEscena("Escena_Propia", esc_propia);
 
-  CE::GestorEscenas::Get().cambiarEscena("Menu"); // ejecuta onInit()A
+  auto esc_menu_principal = std::make_shared<Escena_Menu_Principal>();
+  CE::GestorEscenas::Get().registrarEscena("Menu_Principal", esc_menu_principal);
+  CE::GestorEscenas::Get().registrarEscena("Escena_Menu_Principal", esc_menu_principal);
+
+  CE::GestorEscenas::Get().cambiarEscena("Escena_Menu_Principal"); // ejecuta onInit()
   escena_actual = &CE::GestorEscenas::Get().getEscenaActual();
   // creamos la Camara
   CE::GestorCamaras::Get().agregarCamara(
@@ -84,6 +91,12 @@ void Juego::OnInputs() {
       tipo_accion = CE::Botones::TipoAccion::OnPress;
       scan = sk;
       strAccion = escena_actual->getBotones().at(scan);
+    }
+  }
+  for (auto &mb : escena_actual->getBotonesMouse()) {
+    if (sf::Mouse::isButtonPressed(mb.first)) {
+      tipo_accion = CE::Botones::TipoAccion::OnPress;
+      strAccion = mb.second;
     }
   }
   escena_actual->onInputs(CE::Botones(strAccion, tipo_accion, scan));
@@ -129,6 +142,27 @@ void Juego::OnInputs(CE::InputBuffer &buffer) {
         // se encontro el input del control
         std::string strAccion = iterador->second;
         escena_actual->onInputs(CE::Botones(strAccion, b_tipo, scan));
+      }
+    }
+
+    // procesar inputs de ratón
+    if (const auto *mouse_presionado =
+            evento.getIf<sf::Event::MouseButtonPressed>()) {
+      auto iterador =
+          escena_actual->getBotonesMouse().find(mouse_presionado->button);
+      if (iterador != escena_actual->getBotonesMouse().end()) {
+        std::string strAccion = iterador->second;
+        escena_actual->onInputs(CE::Botones(
+            strAccion, CE::Botones::TipoAccion::OnPress, sf::Keyboard::Scancode::Unknown));
+      }
+    } else if (const auto *mouse_liberado =
+                   evento.getIf<sf::Event::MouseButtonReleased>()) {
+      auto iterador =
+          escena_actual->getBotonesMouse().find(mouse_liberado->button);
+      if (iterador != escena_actual->getBotonesMouse().end()) {
+        std::string strAccion = iterador->second;
+        escena_actual->onInputs(CE::Botones(
+            strAccion, CE::Botones::TipoAccion::OnRelease, sf::Keyboard::Scancode::Unknown));
       }
     }
   }

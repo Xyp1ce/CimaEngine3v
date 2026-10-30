@@ -6,6 +6,7 @@
 #include "SoldierUp.hpp"
 #include "Motor/Primitivos/GestorAssets.hpp"
 #include <SFML/Window/Keyboard.hpp>
+#include <SFML/Window/Mouse.hpp>
 
 namespace IVJ {
 // Curva de velocidad por fotograma: despegue explosivo, velocidad máxima en el aire y desaceleración al aterrizar
@@ -71,7 +72,7 @@ void SoldierRightSpin::onSalir(const Entidad &obj) {
                    sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Left);
     control->der = sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::D) ||
                    sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right);
-    control->sacc = sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::E);
+    control->sacc = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
   }
 }
 

@@ -18,5 +18,11 @@ private:
   int inicializar{1};
   std::shared_ptr<Entidad> &jugador_soldier;
   std::vector<TileMap> tiles_industrial;
+
+  // Sistema de Pausa
+  bool en_pausa{false};
+  int opcion_pausa{0}; // 0: Reanudar, 1: Regresar al menu principal, 2: Regresar al escritorio
+  void limpiarControles();
+  void resincronizarControles();
 };
 } // namespace IVJ

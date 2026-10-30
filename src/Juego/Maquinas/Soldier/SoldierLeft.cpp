@@ -1,11 +1,15 @@
 #include "SoldierLeft.hpp"
 #include "IdleSoldier.hpp"
 #include "SoldierDown.hpp"
+#include "SoldierDownLeftSpin.hpp"
+#include "SoldierDownRightSpin.hpp"
 #include "SoldierDownSpin.hpp"
 #include "SoldierLeftSpin.hpp"
 #include "SoldierRight.hpp"
 #include "SoldierRightSpin.hpp"
 #include "SoldierUp.hpp"
+#include "SoldierUpLeftSpin.hpp"
+#include "SoldierUpRightSpin.hpp"
 #include "SoldierUpSpin.hpp"
 #include "Motor/Primitivos/GestorAssets.hpp"
 
@@ -17,6 +21,15 @@ SoldierLeft::SoldierLeft(int max_frames, float frame_rate)
 }
 FSM *SoldierLeft::onInputs(const CE::IControl &control) {
   if (control.sacc) {
+    if (control.arr && control.der)
+      return new SoldierUpRightSpin(6, 0.055f);
+    if (control.arr && control.izq)
+      return new SoldierUpLeftSpin(6, 0.055f);
+    if (control.abj && control.der)
+      return new SoldierDownRightSpin(6, 0.055f);
+    if (control.abj && control.izq)
+      return new SoldierDownLeftSpin(6, 0.055f);
+
     if (control.abj)
       return new SoldierDownSpin(6, 0.055f);
     if (control.arr)
