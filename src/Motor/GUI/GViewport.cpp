@@ -36,6 +36,9 @@ namespace CE
                     sf::Vector2f(vw,vh), 
                     sf::Color::White, 
                     sf::Color::Transparent);
+        ImVec2 rmin = ImGui::GetItemRectMin();
+        ImVec2 rsize = ImGui::GetItemRectSize();
+        Render::Get().setViewportRect(rmin.x, rmin.y, rsize.x, rsize.y);
         Render::Get().AutoResizeTextura(vw,vh);
         ImGui::End();
     }

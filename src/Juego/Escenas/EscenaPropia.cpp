@@ -16,6 +16,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include <cmath>
 #include <cstdlib>
 #include <memory>
 namespace IVJ {
@@ -27,6 +28,8 @@ Escena_Propia::Escena_Propia(std::shared_ptr<Entidad> &pref)
 void Escena_Propia::onInit() {
   en_pausa = false;
   opcion_pausa = 0;
+  proyectiles.clear();
+  tiempo_ultimo_disparo = 0.2f;
 
   if (inicializar) {
     jugador_soldier = std::make_shared<Entidad>();
@@ -43,6 +46,7 @@ void Escena_Propia::onInit() {
     registrarBotones(sf::Keyboard::Scancode::Space, "aceptar");
     registrarBotones(sf::Keyboard::Scancode::Escape, "pausa");
     registrarBotones(sf::Mouse::Button::Right, "accion_secundaria");
+    registrarBotones(sf::Mouse::Button::Left, "disparar");
 
     // Cargar mapa con colisiones en los bordes
     tiles_industrial.push_back(TileMap());
@@ -91,6 +95,24 @@ void Escena_Propia::onInit() {
         ASSETS "/sprites/jugador/soldier_up_spin_sheet.png", // path del sprite
         CE::Vector2D{0.f, 0.f},     // pos dentro de la hoja
         CE::Vector2D{384.f, 84.f}); // dimensiones
+
+    CE::GestorAssets::Get().agregarTextura(
+        "proyectil_azul_neon_K",
+        ASSETS "/sprites/proyectil_azul_neon.png",
+        CE::Vector2D{0.f, 0.f},
+        CE::Vector2D{64.f, 32.f});
+
+    CE::GestorAssets::Get().agregarTextura(
+        "proyectil_pixel_neon_K",
+        ASSETS "/sprites/proyectil_pixel_neon.png",
+        CE::Vector2D{0.f, 0.f},
+        CE::Vector2D{32.f, 16.f});
+
+    CE::GestorAssets::Get().agregarTextura(
+        "proyectil_neon_ai_K",
+        ASSETS "/sprites/proyectil_neon_ai.png",
+        CE::Vector2D{0.f, 0.f},
+        CE::Vector2D{64.f, 24.f});
 
     auto trans = jugador_soldier->getTransformada();
     trans->velocidad = CE::Vector2D{350.f, 350.f};
@@ -160,6 +182,7 @@ void Escena_Propia::onInit() {
 void Escena_Propia::onFinal() {
   en_pausa = false;
   limpiarControles();
+  proyectiles.clear();
   // reseteamos la camara a la estática al salir/cambiar de escena
   CE::GestorCamaras::Get().setCamaraActiva(0);
 }
@@ -168,12 +191,63 @@ void Escena_Propia::onUpdate(float dt) {
     // Si el juego está en pausa, no actualizamos lógica de juego ni físicas
     return;
   }
+
+  // Manejo de disparo continuo/sostenido
+  tiempo_ultimo_disparo += dt;
+  auto ctrl = jugador_soldier ? jugador_soldier->getComponente<CE::IControl>() : nullptr;
+  if (ctrl && ctrl->acc && tiempo_ultimo_disparo >= cadencia_disparo) {
+    dispararBala();
+  }
+
   jugador_soldier->inputFSM();
   jugador_soldier->onUpdate(dt);
   SistemaMover(jugador_soldier, dt);
   for (auto &obj : objetos.getPool()) {
     obj->onUpdate(dt);
     SistemaColAABBMid(*jugador_soldier, *obj, true);
+  }
+
+  // Actualizar proyectiles
+  for (auto it = proyectiles.begin(); it != proyectiles.end();) {
+    it->tiempo_transcurrido += dt;
+    if (it->tiempo_transcurrido >= it->tiempo_vida) {
+      it = proyectiles.erase(it);
+      continue;
+    }
+
+    auto trans = it->entidad->getTransformada();
+    trans->pos_prev = trans->posicion;
+    trans->posicion.x += it->direccion.x * it->velocidad * dt;
+    trans->posicion.y += it->direccion.y * it->velocidad * dt;
+    it->entidad->onUpdate(dt);
+
+    // Colisión con paredes del mapa después de unos milisegundos de gracia
+    bool colision = false;
+    if (it->tiempo_transcurrido > 0.05f) {
+      float bx = trans->posicion.x;
+      float by = trans->posicion.y;
+      for (auto &obj : objetos.getPool()) {
+        if (!obj->tieneComponente<CE::IBoundingBox>())
+          continue;
+        auto bound = obj->getComponente<CE::IBoundingBox>();
+        auto objPos = obj->getTransformada()->posicion;
+        float minX = objPos.x - bound->mitad.x - 6.f;
+        float maxX = objPos.x - bound->mitad.x + bound->tam.x + 6.f;
+        float minY = objPos.y - bound->mitad.y - 6.f;
+        float maxY = objPos.y - bound->mitad.y + bound->tam.y + 6.f;
+
+        if (bx >= minX && bx <= maxX && by >= minY && by <= maxY) {
+          colision = true;
+          break;
+        }
+      }
+    }
+
+    if (colision) {
+      it = proyectiles.erase(it);
+    } else {
+      ++it;
+    }
   }
 }
 void Escena_Propia::onInputs(const CE::Botones &accion) {
@@ -237,6 +311,12 @@ void Escena_Propia::onInputs(const CE::Botones &accion) {
     if (accion.getNombre() == "accion_secundaria") {
       ctrl->sacc = true;
     }
+    if (accion.getNombre() == "disparar") {
+      ctrl->acc = true;
+      if (tiempo_ultimo_disparo >= 0.12f) {
+        dispararBala();
+      }
+    }
     break;
   }
   case CE::Botones::TipoAccion::OnRelease: {
@@ -254,6 +334,9 @@ void Escena_Propia::onInputs(const CE::Botones &accion) {
     }
     if (accion.getNombre() == "accion_secundaria") {
       ctrl->sacc = false;
+    }
+    if (accion.getNombre() == "disparar") {
+      ctrl->acc = false;
     }
     break;
   }
@@ -273,6 +356,7 @@ void Escena_Propia::limpiarControles() {
     ctrl->izq = false;
     ctrl->der = false;
     ctrl->sacc = false;
+    ctrl->acc = false;
   }
 }
 
@@ -290,6 +374,7 @@ void Escena_Propia::resincronizarControles() {
     ctrl->der = sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::D) ||
                 sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right);
     ctrl->sacc = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
+    ctrl->acc = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
   }
 }
 
@@ -298,6 +383,8 @@ void Escena_Propia::onRender() {
     CE::Render::Get().AddToDraw(al);
   for (auto &obj : objetos.getPool())
     CE::Render::Get().AddToDraw(*obj);
+  for (auto &bala : proyectiles)
+    CE::Render::Get().AddToDraw(*bala.entidad);
   CE::Render::Get().AddToDraw(*jugador_soldier);
 
 #if DEBUG
@@ -432,4 +519,86 @@ void Escena_Propia::onRender() {
     tex.setView(prevView);
   }
 }
+
+void Escena_Propia::dispararBala() {
+  if (en_pausa || !jugador_soldier)
+    return;
+
+  if (!CE::Render::Get().isMouseInsideViewport())
+    return;
+
+  auto trans_jugador = jugador_soldier->getTransformada();
+  if (!trans_jugador)
+    return;
+
+  CE::Vector2D playerPos = trans_jugador->posicion;
+  sf::Vector2f mouseWorld = CE::Render::Get().getMouseWorldPos();
+
+  CE::Vector2D dir{mouseWorld.x - playerPos.x, mouseWorld.y - playerPos.y};
+  float len = std::sqrt(dir.x * dir.x + dir.y * dir.y);
+  if (len < 0.001f) {
+    dir = CE::Vector2D{0.f, 1.f};
+  } else {
+    dir.x /= len;
+    dir.y /= len;
+  }
+
+  float angulo = std::atan2(dir.y, dir.x);
+
+  // Si el soldado está en reposo (IdleSoldier), orientar su sprite hacia la dirección de disparo
+  auto me = jugador_soldier->getComponente<IMaquinaEstado>();
+  if (me && me->fsm && me->fsm->getNombre() == "IdleSoldier") {
+    auto sprite = jugador_soldier->getComponente<CE::ISprite>();
+    if (sprite) {
+      if (std::abs(dir.x) > std::abs(dir.y)) {
+        if (dir.x > 0) {
+          sprite->m_sprite.setTexture(
+              CE::GestorAssets::Get().getTextura("soldier_right_sheet_K"));
+        } else {
+          sprite->m_sprite.setTexture(
+              CE::GestorAssets::Get().getTextura("soldier_left_sheet_K"));
+        }
+      } else {
+        if (dir.y > 0) {
+          sprite->m_sprite.setTexture(
+              CE::GestorAssets::Get().getTextura("soldier_down_sheet_K"));
+        } else {
+          sprite->m_sprite.setTexture(
+              CE::GestorAssets::Get().getTextura("soldier_up_sheet_K"));
+        }
+      }
+      sprite->m_sprite.setTextureRect(
+          sf::IntRect{{0, 0}, {sprite->width, sprite->height}});
+    }
+  }
+
+  // Posición inicial del proyectil saliendo del soldado
+  CE::Vector2D spawnPos{playerPos.x + dir.x * 25.f, playerPos.y + dir.y * 25.f};
+
+  auto bala_entidad = std::make_shared<Entidad>();
+  bala_entidad->setPosicion(spawnPos.x, spawnPos.y);
+  auto trans_bala = bala_entidad->getTransformada();
+  trans_bala->posicion = spawnPos;
+  trans_bala->pos_prev = spawnPos;
+  trans_bala->angulo = angulo;
+  trans_bala->velocidad = CE::Vector2D{dir.x * 850.f, dir.y * 850.f};
+
+  auto sprite_bala = std::make_shared<CE::ISprite>(
+      CE::GestorAssets::Get().getTextura("proyectil_azul_neon_K"),
+      64, 32,
+      0.65f);
+  bala_entidad->addComponente(sprite_bala);
+  bala_entidad->onUpdate(0.f);
+
+  ProyectilBala p;
+  p.entidad = bala_entidad;
+  p.direccion = dir;
+  p.velocidad = 850.f;
+  p.tiempo_vida = 2.5f;
+  p.tiempo_transcurrido = 0.f;
+
+  proyectiles.push_back(p);
+  tiempo_ultimo_disparo = 0.f;
+}
+
 } // namespace IVJ

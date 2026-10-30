@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Window/Cursor.hpp>
 #include "../Utils/Utils.hpp"
 #include<memory>
+#include<optional>
 
 namespace CE
 {
@@ -84,6 +86,27 @@ namespace CE
              * @return Referencia mutable a RenderTexture
              */
             sf::RenderTexture& GetTextura(void);
+
+            /**
+             * @brief Configura la visibilidad del cursor del ratón.
+             * @param visible true para mostrar el cursor, false para ocultarlo
+             */
+            void setMouseCursorVisible(bool visible);
+
+            /**
+             * @brief Actualiza las dimensiones y posición del viewport en pantalla.
+             */
+            void setViewportRect(float x, float y, float w, float h);
+
+            /**
+             * @brief Obtiene las coordenadas en el mundo del juego del cursor del ratón.
+             */
+            sf::Vector2f getMouseWorldPos() const;
+
+            /**
+             * @brief Indica si el cursor está dentro del área visible del juego en el viewport.
+             */
+            bool isMouseInsideViewport() const;
             
         private:
             /**
@@ -96,6 +119,15 @@ namespace CE
             
             /** @brief Textura de renderizado SFML (gestión automática) */
             std::unique_ptr<sf::RenderTexture> r_textura;
+
+            /** @brief Cursor del sistema preservado en memoria */
+            std::optional<sf::Cursor> cursor_flecha;
+
+            /** @brief Posición y tamaño del viewport de ImGui */
+            float viewport_x{0.f};
+            float viewport_y{0.f};
+            float viewport_w{0.f};
+            float viewport_h{0.f};
             
             /** @brief Instancia singleton del renderizador */
             static inline Render* instancia =nullptr;

@@ -1,5 +1,8 @@
 #include "Render.hpp"
+#include "../Camaras/Camaras.hpp"
+#include "../Camaras/CamarasGestor.hpp"
 #include "SFML/Window/ContextSettings.hpp"
+#include <imgui.h>
 
 namespace CE
 {
@@ -40,6 +43,12 @@ namespace CE
         tw = motor_info.vW;
         th = motor_info.vH;
 #endif
+
+        cursor_flecha = sf::Cursor::createFromSystem(sf::Cursor::Type::Arrow);
+        if (cursor_flecha) {
+            r_ventana->setMouseCursor(*cursor_flecha);
+        }
+        r_ventana->setMouseCursorVisible(true);
 
         r_textura=std::make_unique<sf::RenderTexture>(
                 sf::Vector2u{tw,th},videosettings);
@@ -99,5 +108,54 @@ namespace CE
     sf::RenderTexture& Render::GetTextura(void)
     {
         return *r_textura;
+    }
+
+    void Render::setMouseCursorVisible(bool visible)
+    {
+        if (r_ventana)
+            r_ventana->setMouseCursorVisible(visible);
+    }
+
+    void Render::setViewportRect(float x, float y, float w, float h)
+    {
+        viewport_x = x;
+        viewport_y = y;
+        viewport_w = w;
+        viewport_h = h;
+    }
+
+    bool Render::isMouseInsideViewport() const
+    {
+        if (viewport_w <= 0.f || viewport_h <= 0.f)
+            return true;
+        ImVec2 mousePos = ImGui::GetIO().MousePos;
+        return (mousePos.x >= viewport_x && mousePos.x <= viewport_x + viewport_w &&
+                mousePos.y >= viewport_y && mousePos.y <= viewport_y + viewport_h);
+    }
+
+    sf::Vector2f Render::getMouseWorldPos() const
+    {
+        if (!r_ventana)
+            return sf::Vector2f{0.f, 0.f};
+
+        auto &cam = GestorCamaras::Get().getCamaraActiva();
+        ImVec2 mousePos = ImGui::GetIO().MousePos;
+
+        if (viewport_w > 0.f && viewport_h > 0.f && r_textura)
+        {
+            float relX = mousePos.x - viewport_x;
+            float relY = mousePos.y - viewport_y;
+
+            float normX = relX / viewport_w;
+            float normY = relY / viewport_h;
+
+            float texX = normX * (float)r_textura->getSize().x;
+            float texY = normY * (float)r_textura->getSize().y;
+
+            return r_textura->mapPixelToCoords(sf::Vector2i{(int)texX, (int)texY}, cam.getView());
+        }
+
+        auto mousePixel = sf::Mouse::getPosition(*r_ventana);
+        return r_ventana->mapPixelToCoords(mousePixel, cam.getView());
     }
 }

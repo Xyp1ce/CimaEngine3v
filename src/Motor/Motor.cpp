@@ -31,6 +31,7 @@ int Motor::OnRun(void) {
   while (mi_app->EstaCorriendo()) {
     OnEventFrame();
     ImGui::SFML::Update(Render::Get().GetVentana(), clock.restart());
+    Render::Get().setMouseCursorVisible(true);
     OnUpdateFrame(ms);
     OnRenderFrame();
 
@@ -58,7 +59,10 @@ void Motor::OnInit(void) {
   (void)io;
   io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
   io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+  io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
+  io.MouseDrawCursor = false;
   io.ConfigDockingWithShift = true;
+  Render::Get().setMouseCursorVisible(true);
 
   gui_layers.push_back(std::make_shared<GDock>());
   gui_layers.push_back(std::make_shared<GViewport>());
