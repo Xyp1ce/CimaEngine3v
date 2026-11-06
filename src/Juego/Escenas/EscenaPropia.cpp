@@ -114,6 +114,12 @@ void Escena_Propia::onInit() {
         CE::Vector2D{0.f, 0.f},
         CE::Vector2D{64.f, 24.f});
 
+    CE::GestorAssets::Get().agregarTextura(
+        "cursor_crosshair_K",
+        ASSETS "/sprites/cursor_crosshair.png",
+        CE::Vector2D{0.f, 0.f},
+        CE::Vector2D{32.f, 32.f});
+
     auto trans = jugador_soldier->getTransformada();
     trans->velocidad = CE::Vector2D{350.f, 350.f};
     jugador_soldier->setPosicion(300.f, 300.f);

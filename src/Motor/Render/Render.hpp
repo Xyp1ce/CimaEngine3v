@@ -94,6 +94,14 @@ namespace CE
             void setMouseCursorVisible(bool visible);
 
             /**
+             * @brief Establece un cursor personalizado desde un archivo de imagen.
+             * @param filepath Ruta al archivo de imagen
+             * @param hotspot Coordenadas del punto activo del cursor (por defecto al centro)
+             * @return true si se cargó y aplicó con éxito, false en caso contrario
+             */
+            bool setCustomCursor(const std::string& filepath, std::optional<sf::Vector2u> hotspot = std::nullopt);
+
+            /**
              * @brief Actualiza las dimensiones y posición del viewport en pantalla.
              */
             void setViewportRect(float x, float y, float w, float h);
@@ -120,8 +128,8 @@ namespace CE
             /** @brief Textura de renderizado SFML (gestión automática) */
             std::unique_ptr<sf::RenderTexture> r_textura;
 
-            /** @brief Cursor del sistema preservado en memoria */
-            std::optional<sf::Cursor> cursor_flecha;
+            /** @brief Cursor activo preservado en memoria */
+            std::optional<sf::Cursor> cursor_activo;
 
             /** @brief Posición y tamaño del viewport de ImGui */
             float viewport_x{0.f};

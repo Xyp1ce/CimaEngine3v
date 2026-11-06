@@ -44,9 +44,12 @@ namespace CE
         th = motor_info.vH;
 #endif
 
-        cursor_flecha = sf::Cursor::createFromSystem(sf::Cursor::Type::Arrow);
-        if (cursor_flecha) {
-            r_ventana->setMouseCursor(*cursor_flecha);
+        // Cargar cursor personalizado de mira (4 líneas con punto central)
+        if (!setCustomCursor(ASSETS "/sprites/cursor_crosshair.png")) {
+            cursor_activo = sf::Cursor::createFromSystem(sf::Cursor::Type::Arrow);
+            if (cursor_activo) {
+                r_ventana->setMouseCursor(*cursor_activo);
+            }
         }
         r_ventana->setMouseCursorVisible(true);
 
@@ -114,6 +117,27 @@ namespace CE
     {
         if (r_ventana)
             r_ventana->setMouseCursorVisible(visible);
+    }
+
+    bool Render::setCustomCursor(const std::string& filepath, std::optional<sf::Vector2u> hotspot)
+    {
+        if (!r_ventana)
+            return false;
+
+        sf::Image cursor_img;
+        if (!cursor_img.loadFromFile(filepath))
+            return false;
+
+        sf::Vector2u tam = cursor_img.getSize();
+        sf::Vector2u hs = hotspot.value_or(sf::Vector2u{tam.x / 2, tam.y / 2});
+
+        auto nuevo_cursor = sf::Cursor::createFromPixels(cursor_img.getPixelsPtr(), tam, hs);
+        if (!nuevo_cursor)
+            return false;
+
+        cursor_activo = std::move(nuevo_cursor);
+        r_ventana->setMouseCursor(*cursor_activo);
+        return true;
     }
 
     void Render::setViewportRect(float x, float y, float w, float h)
