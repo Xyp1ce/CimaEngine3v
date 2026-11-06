@@ -120,6 +120,18 @@ void Escena_Propia::onInit() {
         CE::Vector2D{0.f, 0.f},
         CE::Vector2D{32.f, 32.f});
 
+    CE::GestorAssets::Get().agregarTextura(
+        "orbe_verde_K",
+        ASSETS "/sprites/orbe_verde.png",
+        CE::Vector2D{0.f, 0.f},
+        CE::Vector2D{64.f, 64.f});
+
+    CE::GestorAssets::Get().agregarTextura(
+        "orbe_morado_K",
+        ASSETS "/sprites/orbe_morado.png",
+        CE::Vector2D{0.f, 0.f},
+        CE::Vector2D{64.f, 64.f});
+
     auto trans = jugador_soldier->getTransformada();
     trans->velocidad = CE::Vector2D{350.f, 350.f};
     jugador_soldier->setPosicion(300.f, 300.f);
@@ -198,14 +210,15 @@ void Escena_Propia::onUpdate(float dt) {
     return;
   }
 
-  // Manejo de disparo continuo/sostenido
+  jugador_soldier->inputFSM();
+
+  // Manejo de disparo continuo/sostenido (bloqueado durante la voltereta / esquive)
   tiempo_ultimo_disparo += dt;
   auto ctrl = jugador_soldier ? jugador_soldier->getComponente<CE::IControl>() : nullptr;
-  if (ctrl && ctrl->acc && tiempo_ultimo_disparo >= cadencia_disparo) {
+  if (ctrl && ctrl->acc && !estaRodando() && tiempo_ultimo_disparo >= cadencia_disparo) {
     dispararBala();
   }
 
-  jugador_soldier->inputFSM();
   jugador_soldier->onUpdate(dt);
   SistemaMover(jugador_soldier, dt);
   for (auto &obj : objetos.getPool()) {
@@ -319,7 +332,7 @@ void Escena_Propia::onInputs(const CE::Botones &accion) {
     }
     if (accion.getNombre() == "disparar") {
       ctrl->acc = true;
-      if (tiempo_ultimo_disparo >= 0.12f) {
+      if (!estaRodando() && tiempo_ultimo_disparo >= 0.12f) {
         dispararBala();
       }
     }
@@ -530,6 +543,10 @@ void Escena_Propia::dispararBala() {
   if (en_pausa || !jugador_soldier)
     return;
 
+  // Si el soldado está realizando una voltereta (esquive), el arma deja de disparar
+  if (estaRodando())
+    return;
+
   if (!CE::Render::Get().isMouseInsideViewport())
     return;
 
@@ -605,6 +622,18 @@ void Escena_Propia::dispararBala() {
 
   proyectiles.push_back(p);
   tiempo_ultimo_disparo = 0.f;
+}
+
+bool Escena_Propia::estaRodando() const {
+  if (!jugador_soldier)
+    return false;
+  auto ctrl = jugador_soldier->getComponente<CE::IControl>();
+  if (ctrl && ctrl->sacc)
+    return true;
+  auto me = jugador_soldier->getComponente<IMaquinaEstado>();
+  if (!me || !me->fsm)
+    return false;
+  return (me->fsm->getNombre().find("Spin") != std::string::npos);
 }
 
 } // namespace IVJ

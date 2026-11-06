@@ -39,5 +39,6 @@ private:
   void limpiarControles();
   void resincronizarControles();
   void dispararBala();
+  bool estaRodando() const;
 };
 } // namespace IVJ
