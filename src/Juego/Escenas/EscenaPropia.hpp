@@ -2,6 +2,7 @@
 #include <Juego/objetos/Entidad.hpp>
 #include <Juego/objetos/TileMap.hpp>
 #include <Motor/Primitivos/Escena.hpp>
+#include <optional>
 #include <vector>
 
 namespace IVJ {
@@ -32,6 +33,14 @@ private:
   std::vector<ProyectilBala> proyectiles;
   float tiempo_ultimo_disparo{0.2f};
   const float cadencia_disparo{0.18f};
+
+  // Sistema de Munición y Arma HUD
+  const int balas_cargador_max{24};
+  const int balas_reserva_max{360};
+  int balas_cargador{24};
+  int balas_reserva{360};
+  std::optional<sf::Sprite> sprite_arma_hud;
+  void recargarArma();
 
   // Sistema de Pausa
   bool en_pausa{false};

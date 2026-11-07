@@ -30,6 +30,8 @@ void Escena_Propia::onInit() {
   opcion_pausa = 0;
   proyectiles.clear();
   tiempo_ultimo_disparo = 0.2f;
+  balas_cargador = balas_cargador_max;
+  balas_reserva = balas_reserva_max;
 
   if (inicializar) {
     jugador_soldier = std::make_shared<Entidad>();
@@ -47,6 +49,7 @@ void Escena_Propia::onInit() {
     registrarBotones(sf::Keyboard::Scancode::Escape, "pausa");
     registrarBotones(sf::Mouse::Button::Right, "accion_secundaria");
     registrarBotones(sf::Mouse::Button::Left, "disparar");
+    registrarBotones(sf::Keyboard::Scancode::R, "recargar");
 
     // Cargar mapa con colisiones en los bordes
     tiles_industrial.push_back(TileMap());
@@ -132,6 +135,15 @@ void Escena_Propia::onInit() {
         CE::Vector2D{0.f, 0.f},
         CE::Vector2D{64.f, 64.f});
 
+    CE::GestorAssets::Get().agregarTextura(
+        "arma_soldado_K",
+        ASSETS "/sprites/arma_soldado.png",
+        CE::Vector2D{0.f, 0.f},
+        CE::Vector2D{240.f, 96.f});
+
+    sprite_arma_hud.emplace(CE::GestorAssets::Get().getTextura("arma_soldado_K"));
+    sprite_arma_hud->setScale({0.6f, 0.6f});
+
     auto trans = jugador_soldier->getTransformada();
     trans->velocidad = CE::Vector2D{350.f, 350.f};
     jugador_soldier->setPosicion(300.f, 300.f);
@@ -172,6 +184,10 @@ void Escena_Propia::onInit() {
       me->fsm = std::make_shared<IdleSoldier>();
       jugador_soldier->setFSM(me->fsm);
     }
+    balas_cargador = balas_cargador_max;
+    balas_reserva = balas_reserva_max;
+    sprite_arma_hud.emplace(CE::GestorAssets::Get().getTextura("arma_soldado_K"));
+    sprite_arma_hud->setScale({0.6f, 0.6f});
     limpiarControles();
   }
 
@@ -212,10 +228,10 @@ void Escena_Propia::onUpdate(float dt) {
 
   jugador_soldier->inputFSM();
 
-  // Manejo de disparo continuo/sostenido (bloqueado durante la voltereta / esquive)
+  // Manejo de disparo continuo/sostenido (bloqueado durante la voltereta o sin balas)
   tiempo_ultimo_disparo += dt;
   auto ctrl = jugador_soldier ? jugador_soldier->getComponente<CE::IControl>() : nullptr;
-  if (ctrl && ctrl->acc && !estaRodando() && tiempo_ultimo_disparo >= cadencia_disparo) {
+  if (ctrl && ctrl->acc && !estaRodando() && balas_cargador > 0 && tiempo_ultimo_disparo >= cadencia_disparo) {
     dispararBala();
   }
 
@@ -332,9 +348,12 @@ void Escena_Propia::onInputs(const CE::Botones &accion) {
     }
     if (accion.getNombre() == "disparar") {
       ctrl->acc = true;
-      if (!estaRodando() && tiempo_ultimo_disparo >= 0.12f) {
+      if (!estaRodando() && balas_cargador > 0 && tiempo_ultimo_disparo >= 0.12f) {
         dispararBala();
       }
+    }
+    if (accion.getNombre() == "recargar") {
+      recargarArma();
     }
     break;
   }
@@ -420,10 +439,84 @@ void Escena_Propia::onRender() {
   }
 #endif
 
+  // --- Renderizado del HUD en coordenadas de pantalla fija ---
+  auto &tex = CE::Render::Get().GetTextura();
+  sf::View prevView = tex.getView();
+  tex.setView(tex.getDefaultView());
+
+  float screenW = (float)tex.getSize().x;
+  float screenH = (float)tex.getSize().y;
+
+  // Panel contenedor en la esquina inferior derecha
+  float panelW = 320.f;
+  float panelH = 75.f;
+  float panelX = screenW - panelW - 20.f;
+  float panelY = screenH - panelH - 18.f;
+
+  // Fondo semi-transparente del HUD
+  sf::RectangleShape panelHUD{{panelW, panelH}};
+  panelHUD.setPosition({panelX, panelY});
+  panelHUD.setFillColor(sf::Color(14, 18, 28, 205));
+  panelHUD.setOutlineThickness(1.5f);
+  panelHUD.setOutlineColor(sf::Color(45, 65, 95, 210));
+  tex.draw(panelHUD);
+
+  // Línea decorativa superior neón cyan
+  sf::RectangleShape lineaNeon{{panelW, 2.f}};
+  lineaNeon.setPosition({panelX, panelY});
+  lineaNeon.setFillColor(sf::Color(0, 230, 255, 220));
+  tex.draw(lineaNeon);
+
+  // 1. Imagen del arma del soldado en la parte derecha del panel
+  if (sprite_arma_hud) {
+    sprite_arma_hud->setPosition({panelX + 165.f, panelY + 9.f});
+    tex.draw(*sprite_arma_hud);
+  }
+
+  // 2. Balas restantes al lado izquierdo de la imagen
+  const auto &font = CE::GestorAssets::Get().getFont("default_font");
+
+  // Número del cargador actual (más grande)
+  sf::Text txtBalas{font, std::to_string(balas_cargador), 36};
+  txtBalas.setStyle(sf::Text::Style::Bold);
+
+  if (balas_cargador > 6) {
+    txtBalas.setFillColor(sf::Color(255, 255, 255, 255));
+  } else if (balas_cargador > 0) {
+    txtBalas.setFillColor(sf::Color(255, 190, 40, 255)); // Ámbar
+  } else {
+    txtBalas.setFillColor(sf::Color(255, 50, 60, 255)); // Rojo crítico
+  }
+  txtBalas.setPosition({panelX + 20.f, panelY + 12.f});
+  tex.draw(txtBalas);
+
+  // Separador y reserva (ej. " / 360")
+  float wBalas = txtBalas.getLocalBounds().size.x;
+  sf::Text txtReserva{font, " / " + std::to_string(balas_reserva), 22};
+  txtReserva.setStyle(sf::Text::Style::Bold);
+  txtReserva.setFillColor(sf::Color(135, 150, 175, 210));
+  txtReserva.setPosition({panelX + 22.f + wBalas, panelY + 23.f});
+  tex.draw(txtReserva);
+
+  // Indicador inferior
+  if (balas_cargador == 0) {
+    sf::Text txtAlerta{font, "[ R ] RECARGAR", 13};
+    txtAlerta.setStyle(sf::Text::Style::Bold);
+    txtAlerta.setFillColor(sf::Color(255, 70, 70, 240));
+    txtAlerta.setPosition({panelX + 20.f, panelY + 52.f});
+    tex.draw(txtAlerta);
+  } else {
+    sf::Text txtEtiqueta{font, "MUNICION", 11};
+    txtEtiqueta.setFillColor(sf::Color(105, 125, 155, 180));
+    txtEtiqueta.setPosition({panelX + 20.f, panelY + 54.f});
+    tex.draw(txtEtiqueta);
+  }
+
+  tex.setView(prevView);
+
   // Renderizar menú de pausa cuando el juego esté pausado
   if (en_pausa) {
-    auto &tex = CE::Render::Get().GetTextura();
-    sf::View prevView = tex.getView();
+    prevView = tex.getView();
     tex.setView(tex.getDefaultView());
 
     float screenW = (float)tex.getSize().x;
@@ -547,6 +640,10 @@ void Escena_Propia::dispararBala() {
   if (estaRodando())
     return;
 
+  // Si el cargador está vacío, no se puede disparar (requiere recargar con 'R')
+  if (balas_cargador <= 0)
+    return;
+
   if (!CE::Render::Get().isMouseInsideViewport())
     return;
 
@@ -621,7 +718,27 @@ void Escena_Propia::dispararBala() {
   p.tiempo_transcurrido = 0.f;
 
   proyectiles.push_back(p);
+  balas_cargador--;
   tiempo_ultimo_disparo = 0.f;
+}
+
+void Escena_Propia::recargarArma() {
+  if (en_pausa || estaRodando())
+    return;
+
+  // Si el cargador ya está lleno o no hay munición en reserva, no recargar
+  if (balas_cargador >= balas_cargador_max || balas_reserva <= 0)
+    return;
+
+  // Se pierden las balas restantes del cargador actual dando pie a un nuevo cargador de 24
+  if (balas_reserva >= balas_cargador_max) {
+    balas_cargador = balas_cargador_max;
+    balas_reserva -= balas_cargador_max;
+  } else {
+    // Si la reserva tiene menos de 24 balas
+    balas_cargador = balas_reserva;
+    balas_reserva = 0;
+  }
 }
 
 bool Escena_Propia::estaRodando() const {
