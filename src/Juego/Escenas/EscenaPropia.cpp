@@ -16,6 +16,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <memory>
@@ -29,9 +30,11 @@ void Escena_Propia::onInit() {
   en_pausa = false;
   opcion_pausa = 0;
   proyectiles.clear();
-  tiempo_ultimo_disparo = 0.2f;
+  tiempo_ultimo_disparo = cadencia_disparo;
   balas_cargador = balas_cargador_max;
   balas_reserva = balas_reserva_max;
+  recargando = false;
+  tiempo_recarga_actual = 0.0f;
 
   if (inicializar) {
     jugador_soldier = std::make_shared<Entidad>();
@@ -186,6 +189,8 @@ void Escena_Propia::onInit() {
     }
     balas_cargador = balas_cargador_max;
     balas_reserva = balas_reserva_max;
+    recargando = false;
+    tiempo_recarga_actual = 0.0f;
     sprite_arma_hud.emplace(CE::GestorAssets::Get().getTextura("arma_soldado_K"));
     sprite_arma_hud->setScale({0.6f, 0.6f});
     limpiarControles();
@@ -215,6 +220,8 @@ void Escena_Propia::onInit() {
 }
 void Escena_Propia::onFinal() {
   en_pausa = false;
+  recargando = false;
+  tiempo_recarga_actual = 0.0f;
   limpiarControles();
   proyectiles.clear();
   // reseteamos la camara a la estática al salir/cambiar de escena
@@ -226,13 +233,29 @@ void Escena_Propia::onUpdate(float dt) {
     return;
   }
 
+  // Actualizar progreso de recarga
+  if (recargando) {
+    tiempo_recarga_actual += dt;
+    if (tiempo_recarga_actual >= tiempo_recarga_total) {
+      tiempo_recarga_actual = tiempo_recarga_total;
+      recargando = false;
+      recargarArma();
+    }
+  }
+
   jugador_soldier->inputFSM();
 
-  // Manejo de disparo continuo/sostenido (bloqueado durante la voltereta o sin balas)
+  // Manejo de disparo continuo/sostenido o recarga al continuar presionando con cargador vacío
   tiempo_ultimo_disparo += dt;
   auto ctrl = jugador_soldier ? jugador_soldier->getComponente<CE::IControl>() : nullptr;
-  if (ctrl && ctrl->acc && !estaRodando() && balas_cargador > 0 && tiempo_ultimo_disparo >= cadencia_disparo) {
-    dispararBala();
+  if (ctrl && ctrl->acc && !estaRodando() && !recargando) {
+    if (balas_cargador > 0) {
+      if (tiempo_ultimo_disparo >= cadencia_disparo) {
+        dispararBala();
+      }
+    } else if (tiempo_ultimo_disparo >= cadencia_disparo) {
+      iniciarRecarga();
+    }
   }
 
   jugador_soldier->onUpdate(dt);
@@ -348,12 +371,12 @@ void Escena_Propia::onInputs(const CE::Botones &accion) {
     }
     if (accion.getNombre() == "disparar") {
       ctrl->acc = true;
-      if (!estaRodando() && balas_cargador > 0 && tiempo_ultimo_disparo >= 0.12f) {
+      if (!estaRodando() && !recargando && balas_cargador > 0 && tiempo_ultimo_disparo >= cadencia_disparo) {
         dispararBala();
       }
     }
     if (accion.getNombre() == "recargar") {
-      recargarArma();
+      iniciarRecarga();
     }
     break;
   }
@@ -424,6 +447,36 @@ void Escena_Propia::onRender() {
   for (auto &bala : proyectiles)
     CE::Render::Get().AddToDraw(*bala.entidad);
   CE::Render::Get().AddToDraw(*jugador_soldier);
+
+  // Barra de progreso de recarga sobre el jugador
+  if (recargando && jugador_soldier) {
+    auto trans = jugador_soldier->getTransformada();
+    if (trans) {
+      auto pos = trans->posicion;
+      float ancho_barra = 48.f;
+      float alto_barra = 6.f;
+      float progreso = std::clamp(tiempo_recarga_actual / tiempo_recarga_total, 0.0f, 1.0f);
+
+      float barX = pos.x - (ancho_barra / 2.f);
+      float barY = pos.y - 56.f;
+
+      // Fondo oscuro con contorno
+      sf::RectangleShape barra_fondo{{ancho_barra, alto_barra}};
+      barra_fondo.setPosition({barX, barY});
+      barra_fondo.setFillColor(sf::Color(14, 18, 28, 220));
+      barra_fondo.setOutlineThickness(1.5f);
+      barra_fondo.setOutlineColor(sf::Color(45, 65, 95, 230));
+      CE::Render::Get().AddToDraw(barra_fondo);
+
+      // Barra de relleno según el progreso de la recarga
+      if (progreso > 0.001f) {
+        sf::RectangleShape barra_progreso{{ancho_barra * progreso, alto_barra}};
+        barra_progreso.setPosition({barX, barY});
+        barra_progreso.setFillColor(sf::Color(0, 230, 255, 240));
+        CE::Render::Get().AddToDraw(barra_progreso);
+      }
+    }
+  }
 
 #if DEBUG
   auto cam = &CE::GestorCamaras::Get().getCamaraActiva();
@@ -499,7 +552,13 @@ void Escena_Propia::onRender() {
   tex.draw(txtReserva);
 
   // Indicador inferior
-  if (balas_cargador == 0) {
+  if (recargando) {
+    sf::Text txtAlerta{font, "RECARGANDO...", 13};
+    txtAlerta.setStyle(sf::Text::Style::Bold);
+    txtAlerta.setFillColor(sf::Color(0, 230, 255, 240));
+    txtAlerta.setPosition({panelX + 20.f, panelY + 52.f});
+    tex.draw(txtAlerta);
+  } else if (balas_cargador == 0) {
     sf::Text txtAlerta{font, "[ R ] RECARGAR", 13};
     txtAlerta.setStyle(sf::Text::Style::Bold);
     txtAlerta.setFillColor(sf::Color(255, 70, 70, 240));
@@ -633,7 +692,7 @@ void Escena_Propia::onRender() {
 }
 
 void Escena_Propia::dispararBala() {
-  if (en_pausa || !jugador_soldier)
+  if (en_pausa || !jugador_soldier || recargando)
     return;
 
   // Si el soldado está realizando una voltereta (esquive), el arma deja de disparar
@@ -722,8 +781,21 @@ void Escena_Propia::dispararBala() {
   tiempo_ultimo_disparo = 0.f;
 }
 
+bool Escena_Propia::iniciarRecarga() {
+  if (recargando || en_pausa || estaRodando())
+    return false;
+
+  // Evita recargar si el cargador está completo o si no hay munición en reserva
+  if (balas_cargador >= balas_cargador_max || balas_reserva <= 0)
+    return false;
+
+  recargando = true;
+  tiempo_recarga_actual = 0.0f;
+  return true;
+}
+
 void Escena_Propia::recargarArma() {
-  if (en_pausa || estaRodando())
+  if (en_pausa)
     return;
 
   // Si el cargador ya está lleno o no hay munición en reserva, no recargar

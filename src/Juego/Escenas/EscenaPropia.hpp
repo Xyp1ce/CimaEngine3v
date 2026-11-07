@@ -31,8 +31,8 @@ private:
   std::shared_ptr<Entidad> &jugador_soldier;
   std::vector<TileMap> tiles_industrial;
   std::vector<ProyectilBala> proyectiles;
-  float tiempo_ultimo_disparo{0.2f};
-  const float cadencia_disparo{0.18f};
+  float tiempo_ultimo_disparo{1.0f / 3.0f};
+  const float cadencia_disparo{1.0f / 3.0f}; // 3 balas por segundo
 
   // Sistema de Munición y Arma HUD
   const int balas_cargador_max{24};
@@ -41,6 +41,12 @@ private:
   int balas_reserva{360};
   std::optional<sf::Sprite> sprite_arma_hud;
   void recargarArma();
+  bool iniciarRecarga();
+
+  // Sistema de Recarga
+  bool recargando{false};
+  float tiempo_recarga_actual{0.0f};
+  const float tiempo_recarga_total{2.0f};
 
   // Sistema de Pausa
   bool en_pausa{false};
