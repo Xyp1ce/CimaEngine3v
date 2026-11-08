@@ -4,6 +4,7 @@
 #include "Motor/Utils/Vector2D.hpp"
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <vector>
 /*TODO: Mover a Motor/Mapas para pasarlo a un dll el motor*/
 namespace IVJ
 {
@@ -23,6 +24,10 @@ class TileMap : public sf::Transformable, public sf::Drawable
     {
         return tilemap_shader.get();
     };
+    const std::vector<CE::Vector2D> &getCeldasLibres() const
+    {
+        return celdas_libres;
+    }
 
   private:
     int atlas_w{};
@@ -32,6 +37,7 @@ class TileMap : public sf::Transformable, public sf::Drawable
     int map_r{};
     int map_c{};
     std::string atlas_p{};
+    std::vector<CE::Vector2D> celdas_libres;
 
   public:
     sf::VertexArray tiles_vertex;

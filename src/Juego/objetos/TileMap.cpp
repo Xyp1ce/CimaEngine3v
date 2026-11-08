@@ -11,6 +11,7 @@ bool TileMap::loadTileMap(const std::string &atlas_path, CE::Pool &objetos) {
       map_c >> info;
   tiles_vertex.setPrimitiveType(sf::PrimitiveType::Triangles);
   tiles_vertex.resize(map_r * map_c * 6);
+  celdas_libres.clear();
   if (!atlas_texture.loadFromFile(ASSETS + atlas_p)) {
     std::cerr << "[TileMap] No se pudo cargar la imagen " << atlas_p << "\n";
     return false;
@@ -35,15 +36,17 @@ bool TileMap::loadTileMap(const std::string &atlas_path, CE::Pool &objetos) {
       int tV = id / max_col;
 
       // hay boundingbox
+      float hw = tile_w / 2.f;
+      float hh = tile_h / 2.f;
       if (col == 'c') {
-        float hw = tile_w / 2.f;
-        float hh = tile_h / 2.f;
         auto bloque = std::make_shared<Entidad>();
         bloque->getStats()->hp = 100;
         bloque->setPosicion(i * tile_w + hw, j * tile_h + hh);
         bloque->addComponente(std::make_shared<CE::IBoundingBox>(
             CE::Vector2D{(float)tile_w, (float)tile_h}));
         objetos.agregarPool(bloque);
+      } else {
+        celdas_libres.push_back(CE::Vector2D{i * tile_w + hw, j * tile_h + hh});
       }
 
       // vertices del triángulo
@@ -77,6 +80,7 @@ bool TileMap::loadTileMap(const std::string &atlas_path, CE::Pool &objetos,
       map_c >> info;
   tiles_vertex.setPrimitiveType(sf::PrimitiveType::Triangles);
   tiles_vertex.resize(map_r * map_c * 6);
+  celdas_libres.clear();
   if (!atlas_texture.loadFromFile(ASSETS + atlas_p)) {
     std::cerr << "[TileMap] No se pudo cargar la imagen " << atlas_p << "\n";
     return false;
@@ -140,6 +144,7 @@ bool TileMap::loadTileMap(const std::string &atlas_path) {
       map_c >> info;
   tiles_vertex.setPrimitiveType(sf::PrimitiveType::Triangles);
   tiles_vertex.resize(map_r * map_c * 6);
+  celdas_libres.clear();
   if (!atlas_texture.loadFromFile(ASSETS + atlas_p)) {
     std::cerr << "[TileMap] No se pudo cargar la imagen " << atlas_p << "\n";
     return false;

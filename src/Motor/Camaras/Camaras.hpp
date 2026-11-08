@@ -223,4 +223,35 @@ public:
 };
 
 using CamafaFija = CamaraFija;
+
+/**
+ * @class CamaraBulletHell
+ * @brief Cámara dinámica top-down para juegos Bullet Hell / Twin-Stick Shooter.
+ *
+ * Sigue al jugador desplazándose un porcentaje de la distancia hacia el cursor
+ * del ratón en coordenadas del mundo, restringida dentro de una "Caja Roja"
+ * (MaxOffsetX, MaxOffsetY) centrada en el jugador y suavizada mediante LERP.
+ */
+class CamaraBulletHell : public Camara {
+public:
+  CamaraBulletHell(const Vector2D &pos, const Vector2D &dim,
+                   const Vector2D &max_off = Vector2D{180.f, 120.f},
+                   float factor_dist = 0.30f, float vel_suavizado = 7.0f);
+  ~CamaraBulletHell() override = default;
+
+  void onUpdate(float dt) override;
+
+public:
+  /** @brief Límites máximos de desplazamiento en X e Y (mitad de ancho/alto de la Caja Roja) */
+  Vector2D max_offset;
+
+  /** @brief Multiplicador de distancia entre jugador y cursor (ej. 0.30 = 30%) */
+  float factor_distancia;
+
+  /** @brief Velocidad de interpolación (LERP) para suavizar el movimiento */
+  float suavizado;
+
+private:
+  bool inicializado{false};
+};
 } // namespace CE

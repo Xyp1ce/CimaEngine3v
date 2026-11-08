@@ -7,4 +7,5 @@ target_sources(CimaEngine3v PRIVATE ${gl_cpp})
 
 add_subdirectory(Naves)
 add_subdirectory(Bosses)
+add_subdirectory(yusm)
 # add_subdirectory(Balas)

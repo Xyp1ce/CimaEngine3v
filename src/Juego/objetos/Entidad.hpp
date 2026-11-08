@@ -19,6 +19,7 @@ public:
   void inputFSM() override;
 
   // versiones const
+  using CE::Objeto::getListaComponentes;
   const std::shared_ptr<CE::INombre> getNombre() const { return nombre; }
   const std::shared_ptr<CE::IStats> getStats() const { return stats; };
   const std::vector<std::shared_ptr<CE::IComponentes>> &

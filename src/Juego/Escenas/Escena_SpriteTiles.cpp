@@ -22,8 +22,25 @@ Escena_Sprite::Escena_Sprite(std::shared_ptr<Entidad> &pref)
 void Escena_Sprite::onInit() {
   CE::GestorCamaras::Get().setCamaraActiva(2);
   CE::GestorCamaras::Get().getCamaraActiva().lockEnObjeto(jugador_ref);
-  if (!inicializar)
+  if (!inicializar) {
+    if (jugador_ref->tieneComponente<CE::IShader>()) {
+      jugador_ref->getListaComponentes().clear();
+      auto trans = jugador_ref->getTransformada();
+      trans->velocidad = CE::Vector2D{500.f, 500.f};
+      jugador_ref->setPosicion(300.f, 300.f);
+      auto sprite = std::make_shared<CE::ISprite>(
+          CE::GestorAssets::Get().getTextura("nave_sheet"), 64, 64, 1.f);
+      jugador_ref->addComponente(sprite);
+      jugador_ref->addComponente(std::make_shared<CE::IControl>());
+      jugador_ref->addComponente(
+          std::make_shared<CE::IBoundingBox>(CE::Vector2D{64.f, 64.f}));
+      auto me = std::make_shared<IMaquinaEstado>();
+      me->fsm = std::make_shared<IdleJugadores>();
+      jugador_ref->addComponente(me);
+      jugador_ref->setFSM(me->fsm);
+    }
     return;
+  }
   registrarBotones(sf::Keyboard::Scancode::W, "arriba");
   registrarBotones(sf::Keyboard::Scancode::Up, "arriba");
   registrarBotones(sf::Keyboard::Scancode::S, "abajo");
@@ -63,6 +80,7 @@ void Escena_Sprite::onInit() {
   trans->velocidad = CE::Vector2D{500.f, 500.f};
   jugador_ref->setPosicion(300.f, 300.f);
 
+  jugador_ref->getListaComponentes().clear();
   // Lab 8 animaciones
   auto sprite = std::make_shared<CE::ISprite>(
       CE::GestorAssets::Get().getTextura("nave_sheet"), // textura
@@ -84,8 +102,15 @@ void Escena_Sprite::onInit() {
 
   // boss entidad
   auto boss = std::make_shared<Entidad>();
+  // lab9 colisiones
+  boss->getStats()->hp_max = 255;
+  boss->getStats()->hp = 255;
+  boss->getStats()->str = 150;
+  boss->getStats()->agi = 50;
+  boss->getStats()->def = 255;
+
   auto boss_sprite = std::make_shared<CE::ISprite>(
-      CE::GestorAssets::Get().getTextura("boss_sheet"), 154.f, 130.f, 1.f);
+      CE::GestorAssets::Get().getTextura("boss_sheet"), 154, 130, 1.f);
   auto boss_me = std::make_shared<IVJ::IMaquinaEstado>();
   // probar patch con nodo IdleBoss
   boss_me->fsm = std::make_shared<IVJ::IdleBoss>(6, 0.25f);
@@ -99,6 +124,16 @@ void Escena_Sprite::onInit() {
       .setPosicion(500.f, 500.f);
   boss->setFSM(boss_me->fsm);
 
+  /// shader
+  auto shader = std::make_shared<CE::IShader>(
+      "", ASSETS "/shaders/bossfrag.frag");
+
+  static sf::Texture boss_tex = boss_sprite->m_sprite.getTexture();
+
+  shader->setTextura("textura", &boss_tex);
+
+  boss->addComponente(shader);
+  // shader
   objetos.agregarPool(boss);
 
   // Lab 9 Colisiones: Atlas para objetos individuales
@@ -133,6 +168,20 @@ void Escena_Sprite::onInit() {
 
   techo->setPosicion(1300.f, 175.f);
 
+  // shaders
+  auto t_shader = std::make_shared<CE::IShader>("", ASSETS "/shaders/agua.frag");
+  static sf::Texture p_tex = techo_sprite->m_sprite.getTexture();
+  static float wescala = 0.01f;
+  static float vescala = 2.0f;
+  static float frec = 20.0f;
+
+  t_shader->setTextura("textura", &p_tex);
+  t_shader->setEscalar("escala_distorcion", &wescala);
+  t_shader->setEscalar("vel_distorcion", &vescala);
+  t_shader->setEscalar("frecuencia", &frec);
+
+  techo->addComponente(t_shader);
+  // fin shaders
   objetos.agregarPool(techo);
 
   inicializar = false;
@@ -156,6 +205,17 @@ void Escena_Sprite::onUpdate(float dt) {
     // Lab 9 colisiones
     SistemaColAABBMid(*jugador_ref, *obj, true);
   }
+  // shaders
+  static float acum_tiempo = 0;
+  acum_tiempo += dt;
+  if (objetos.getPool().size() > 117 &&
+      objetos.getPool()[117]->tieneComponente<CE::IShader>()) {
+    objetos.getPool()[117]->getComponente<CE::IShader>()->setEscalar(
+        "dt", &acum_tiempo);
+  }
+  // fin shaders
+  // lab9 borra toda entidad que esta en el pool que hp sea <=0
+  objetos.borrarPool();
 }
 
 void Escena_Sprite::onInputs(const CE::Botones &accion) {

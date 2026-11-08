@@ -12,9 +12,12 @@ IdleBoss::IdleBoss(int max_frames, float frame_rate)
 }
 FSM *IdleBoss::onInputs(Entidad &parent, CE::Vector2D &target) {
   auto pos = parent.getTransformada()->posicion;
-  float distancia = pos.distancia(target);
+  static float distancia = 0.f;
+  distancia = pos.distancia(target);
+  if (parent.tieneComponente<CE::IShader>())
+    parent.getComponente<CE::IShader>()->setEscalar("distancia", &distancia);
   if (distancia < 200.f)
-    return new AttackBoss(6, 0.25f);
+    return new AttackBoss(6, 0.15f);
   return nullptr;
 }
 void IdleBoss::onEntrar(const Entidad &obj) {

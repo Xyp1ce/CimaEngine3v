@@ -1,6 +1,8 @@
 #include "Camaras.hpp"
 #include "../GUI/GLogger.hpp"
+#include "../Render/Render.hpp"
 #include "../Utils/Lerp.hpp"
+#include <algorithm>
 
 namespace CE {
 int Camara::num_camaras = 0;
@@ -209,6 +211,57 @@ void CamaraFija::onUpdate(float dt) {
   if (auto obj = m_lockObj.lock()) {
     m_transform->posicion = obj->getTransformada()->posicion;
   }
+  Camara::onUpdate(dt);
+}
+
+// Camara BulletHell (seguimiento de jugador + desplazamiento al cursor con Caja Roja y LERP)
+CamaraBulletHell::CamaraBulletHell(const Vector2D &pos, const Vector2D &dim,
+                                   const Vector2D &max_off, float factor_dist,
+                                   float vel_suavizado)
+    : Camara{pos, dim}, max_offset{max_off}, factor_distancia{factor_dist},
+      suavizado{vel_suavizado} {
+  nombre = "CamaraBulletHell";
+}
+
+void CamaraBulletHell::onUpdate(float dt) {
+  auto obj = m_lockObj.lock();
+  if (!obj) {
+    Camara::onUpdate(dt);
+    return;
+  }
+
+  Vector2D pos_jugador = obj->getTransformada()->posicion;
+  if (!inicializado) {
+    m_transform->posicion = pos_jugador;
+    inicializado = true;
+  }
+
+  // 1. Vector de dirección desde el Jugador hacia el Cursor en coordenadas del mundo
+  sf::Vector2f cursor_mundo = Render::Get().getMouseWorldPos();
+  Vector2D dir_al_cursor{cursor_mundo.x - pos_jugador.x,
+                         cursor_mundo.y - pos_jugador.y};
+
+  // 2. Multiplicador de distancia (ej. 30% de la distancia entre jugador y cursor)
+  Vector2D desplazamiento = dir_al_cursor.escala(factor_distancia);
+
+  // 3. Clamp para restringir el desplazamiento dentro de la Caja Roja (MaxOffsetX, MaxOffsetY)
+  float offset_clamped_x =
+      std::clamp(desplazamiento.x, -max_offset.x, max_offset.x);
+  float offset_clamped_y =
+      std::clamp(desplazamiento.y, -max_offset.y, max_offset.y);
+
+  // 4. Posición objetivo final = PosiciónJugador + DesplazamientoClampeado
+  Vector2D pos_objetivo{pos_jugador.x + offset_clamped_x,
+                        pos_jugador.y + offset_clamped_y};
+
+  // 5. Interpolación suave (LERP) para evitar tirones ante movimientos bruscos del cursor
+  if (dt > 0.f) {
+    float t = std::clamp(suavizado * dt, 0.0f, 1.0f);
+    m_transform->posicion = lerp(m_transform->posicion, pos_objetivo, t);
+  } else {
+    m_transform->posicion = pos_objetivo;
+  }
+
   Camara::onUpdate(dt);
 }
 } // namespace CE

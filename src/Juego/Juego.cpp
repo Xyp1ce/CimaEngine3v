@@ -24,6 +24,7 @@
 #include <Juego/Escenas/Escena_Sistemas.hpp>
 #include <Juego/Escenas/Escena_SpriteTiles.hpp>
 #include <Juego/Escenas/Escena_Vibora.hpp>
+#include <Juego/Escenas/Escena_shaders.hpp>
 
 #include <Juego/objetos/Entidad.hpp>
 
@@ -53,6 +54,8 @@ void Juego::OnInit(void) {
       "ECamara", std::make_shared<Escena_Camara>(jugador));
   CE::GestorEscenas::Get().registrarEscena(
       "Sprites", std::make_shared<Escena_Sprite>(jugador));
+  CE::GestorEscenas::Get().registrarEscena(
+      "Shade", std::make_shared<Escena_shaders>(jugador));
   auto esc_propia = std::make_shared<Escena_Propia>(jugador);
   CE::GestorEscenas::Get().registrarEscena("Propia", esc_propia);
   CE::GestorEscenas::Get().registrarEscena("Escena_Propia", esc_propia);
@@ -61,7 +64,7 @@ void Juego::OnInit(void) {
   CE::GestorEscenas::Get().registrarEscena("Menu_Principal", esc_menu_principal);
   CE::GestorEscenas::Get().registrarEscena("Escena_Menu_Principal", esc_menu_principal);
 
-  CE::GestorEscenas::Get().cambiarEscena("Escena_Menu_Principal"); // ejecuta onInit()
+  CE::GestorEscenas::Get().cambiarEscena("Shade"); // ejecuta onInit()
   escena_actual = &CE::GestorEscenas::Get().getEscenaActual();
   // creamos la Camara
   CE::GestorCamaras::Get().agregarCamara(
@@ -78,6 +81,9 @@ void Juego::OnInit(void) {
       CE::Vector2D{0.f, 0.f}, CE::Vector2D{1024, 720}, CE::Vector2D{500, 300}));
   CE::GestorCamaras::Get().agregarCamara(std::make_shared<CE::CamaraFija>(
       CE::Vector2D{0.f, 0.f}, CE::Vector2D{1024, 720}));
+  CE::GestorCamaras::Get().agregarCamara(std::make_shared<CE::CamaraBulletHell>(
+      CE::Vector2D{0.f, 0.f}, CE::Vector2D{1024, 720},
+      CE::Vector2D{180.f, 120.f}, 0.30f, 7.0f));
 }
 void Juego::OnInputs() {
   auto br = escena_actual->getBotonesRegistrados();

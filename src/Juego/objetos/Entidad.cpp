@@ -108,7 +108,11 @@ void Entidad::draw(sf::RenderTarget &target, sf::RenderStates state) const {
 
   if (tieneComponente<CE::ISprite>()) {
     auto sprite = getComponente<CE::ISprite>();
-    target.draw(sprite->m_sprite);
+    if (tieneComponente<CE::IShader>()) {
+      target.draw(sprite->m_sprite, &getComponente<CE::IShader>()->m_shader);
+    } else {
+      target.draw(sprite->m_sprite);
+    }
   }
 }
 } // namespace IVJ
