@@ -1,7 +1,6 @@
 #pragma once
+#include <Juego/Sistemas/ConfigExpendable.hpp>
 #include <Motor/Primitivos/Escena.hpp>
-#include <Juego/objetos/Texto.hpp>
-#include <memory>
 
 namespace IVJ {
 class Escena_Menu_Principal : public CE::Escena {
@@ -16,17 +15,8 @@ public:
   void onRender() override;
 
 private:
-  void actualizarSeleccion();
-
-private:
   int inicializar{1};
-  unsigned int opcion{0}; // 0 = Iniciar (Jugar), 1 = Cerrar
+  int opcion{0}; // 0 = Iniciar, 1 = Cerrar
   float tiempo{0.f};
-
-  std::shared_ptr<Texto> strTitulo;
-  std::shared_ptr<Texto> strIniciar;
-  std::shared_ptr<Texto> strCerrar;
-  std::shared_ptr<Texto> strMarcador;
-  std::shared_ptr<Texto> strInstrucciones;
 };
 } // namespace IVJ

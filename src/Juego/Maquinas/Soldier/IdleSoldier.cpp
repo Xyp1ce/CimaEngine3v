@@ -39,11 +39,15 @@ FSM *IdleSoldier::onInputs(const CE::IControl &control) {
 
     if (sprite) {
       const auto &tex = sprite->getTexture();
-      if (&tex == &CE::GestorAssets::Get().getTextura("soldier_up_sheet_K"))
+      auto &assets = CE::GestorAssets::Get();
+      if (&tex == &assets.getTextura("soldier_up_sheet_K") ||
+          &tex == &assets.getTextura("soldier_idle_up_sheet_K"))
         return new SoldierUpSpin(6, 0.055f);
-      if (&tex == &CE::GestorAssets::Get().getTextura("soldier_left_sheet_K"))
+      if (&tex == &assets.getTextura("soldier_left_sheet_K") ||
+          &tex == &assets.getTextura("soldier_idle_left_sheet_K"))
         return new SoldierLeftSpin(6, 0.055f);
-      if (&tex == &CE::GestorAssets::Get().getTextura("soldier_right_sheet_K"))
+      if (&tex == &assets.getTextura("soldier_right_sheet_K") ||
+          &tex == &assets.getTextura("soldier_idle_right_sheet_K"))
         return new SoldierRightSpin(6, 0.055f);
     }
     return new SoldierDownSpin(6, 0.055f);
@@ -60,16 +64,39 @@ FSM *IdleSoldier::onInputs(const CE::IControl &control) {
 }
 void IdleSoldier::onEntrar(const Entidad &obj) {
   auto comp = obj.getComponente<CE::ISprite>();
-  // Mantiene la textura que ya tenía o la resetea a la textura frontal
   sprite = &comp->m_sprite;
   s_w = comp->width;
   s_h = comp->height;
+  id_frame = 0;
+  act_tiempo = max_tiempo;
+
+  // Mapear la dirección actual a su hoja de animación Idle respirando (4 frames)
+  auto &assets = CE::GestorAssets::Get();
+  const auto &tex = sprite->getTexture();
+  if (&tex == &assets.getTextura("soldier_up_sheet_K") ||
+      &tex == &assets.getTextura("soldier_idle_up_sheet_K")) {
+    sprite->setTexture(assets.getTextura("soldier_idle_up_sheet_K"));
+  } else if (&tex == &assets.getTextura("soldier_left_sheet_K") ||
+             &tex == &assets.getTextura("soldier_idle_left_sheet_K")) {
+    sprite->setTexture(assets.getTextura("soldier_idle_left_sheet_K"));
+  } else if (&tex == &assets.getTextura("soldier_right_sheet_K") ||
+             &tex == &assets.getTextura("soldier_idle_right_sheet_K")) {
+    sprite->setTexture(assets.getTextura("soldier_idle_right_sheet_K"));
+  } else {
+    sprite->setTexture(assets.getTextura("soldier_idle_down_sheet_K"));
+  }
+  sprite->setTextureRect(sf::IntRect{{0, 0}, {s_w, s_h}});
 }
 void IdleSoldier::onSalir(const Entidad &obj) { (void)obj; }
 void IdleSoldier::onUpdate(const Entidad &obj, float dt) {
   (void)obj;
-  (void)dt;
-  // Mostrar el primer frame (0) en reposo
-  sprite->setTextureRect(sf::IntRect{{0, 0}, {s_w, s_h}});
+  if (!sprite)
+    return;
+  act_tiempo -= dt;
+  if (act_tiempo <= 0.f) {
+    id_frame = (id_frame + 1) % max_frames;
+    sprite->setTextureRect(sf::IntRect{{s_w * id_frame, 0}, {s_w, s_h}});
+    act_tiempo = max_tiempo;
+  }
 }
 } // namespace IVJ

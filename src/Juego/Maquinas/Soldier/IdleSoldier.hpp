@@ -16,5 +16,9 @@ private:
   sf::Sprite *sprite;
   int s_w;
   int s_h;
+  int id_frame{0};
+  int max_frames{4};
+  float max_tiempo{0.19f};
+  float act_tiempo{0.19f};
 };
 } // namespace IVJ

@@ -83,7 +83,7 @@ void SoldierDownRightSpin::onSalir(const Entidad &obj) {
                    sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Left);
     control->der = sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::D) ||
                    sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right);
-    control->sacc = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
+    control->sacc = false;
   }
 }
 

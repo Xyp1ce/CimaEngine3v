@@ -1,0 +1,37 @@
+[Atlas_info]
+/atlas/EscenaSprites/tilemap2.png
+768 576
+48 48
+31 31
+[ID_Matrix]
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n 26 c 27 c 26 c 27 c 26 c 27 c 26 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n 11 c 10 c 11 c 10 c 11 c 10 c 11 c 10 c 11 c 10 c 11 c 10 c 11 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n 26 c 27 c 26 c 27 c 26 c 169 n 168 n 169 n 168 n 169 n 26 c 27 c 26 c 27 c 26 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n 10 c 11 c 10 c 11 c 152 n 153 n 152 n 55 n 48 n 57 n 48 n 55 n 152 n 153 n 152 n 11 c 10 c 11 c 10 c -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n 27 c 26 c 27 c 168 n 169 n 33 n 71 n 70 n 71 n 64 n 73 n 64 n 71 n 70 n 71 n 18 n 169 n 168 n 27 c 26 c 27 c -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n 10 c 11 c 10 c 153 n 152 n 17 n 54 n 55 n 2 n 3 n 48 n 57 n 48 n 55 n 2 n 3 n 54 n 55 n 152 n 153 n 10 c 11 c 10 c -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n 26 c 27 c 168 n 19 n 1 n 71 n 70 n 71 n 18 n 19 n 64 n 73 n 64 n 71 n 18 n 19 n 70 n 71 n 70 n 32 n 168 n 27 c 26 c -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n 11 c 10 c 153 n 152 n 33 n 54 n 55 n 2 n 49 n 48 n 49 n 48 n 57 n 48 n 49 n 48 n 49 n 54 n 55 n 2 n 3 n 152 n 153 n 10 c 11 c -1 n -1 n -1 n
+-1 n -1 n 26 c 27 c 26 c 169 n 17 n 71 n 70 n 71 n 20 n 65 n 70 n 71 n 64 n 73 n 64 n 19 n 70 n 65 n 20 n 0 n 18 n 19 n 70 n 169 n 26 c 27 c 26 c -1 n -1 n
+-1 n -1 n 10 c 11 c 152 n 1 n 54 n 55 n 2 n 5 n 4 n 55 n 54 n 55 n 48 n 57 n 48 n 55 n 54 n 55 n 4 n 5 n 54 n 55 n 54 n 33 n 152 n 11 c 10 c -1 n -1 n
+-1 n -1 n 26 c 27 c 168 n 71 n 70 n 71 n 64 n 65 n 70 n 71 n 70 n 71 n 64 n 73 n 64 n 71 n 70 n 16 n 18 n 65 n 64 n 71 n 17 n 71 n 168 n 27 c 26 c -1 n -1 n
+-1 n 11 c 10 c 11 c 152 n 55 n 2 n 3 n 48 n 55 n 54 n 55 n 2 n 3 n 52 n 53 n 52 n 55 n 2 n 3 n 54 n 55 n 48 n 1 n 2 n 3 n 152 n 11 c 10 c 11 c -1 n
+-1 n 27 c 26 c 169 n 70 n 71 n 18 n 19 n 64 n 71 n 70 n 71 n 18 n 69 n 64 n 65 n 64 n 69 n 18 n 19 n 70 n 71 n 64 n 71 n 18 n 19 n 70 n 169 n 26 c 27 c -1 n
+-1 n 11 c 10 c 153 n 48 n 49 n 48 n 49 n 48 n 49 n 48 n 49 n 52 n 49 n 4 n 5 n 4 n 49 n 52 n 49 n 48 n 49 n 48 n 49 n 48 n 49 n 48 n 153 n 10 c 11 c -1 n
+-1 n 27 c 26 c 169 n 72 n 73 n 72 n 73 n 72 n 73 n 72 n 73 n 68 n 65 n 20 n 21 n 20 n 65 n 68 n 73 n 72 n 73 n 72 n 73 n 72 n 73 n 72 n 169 n 26 c 27 c -1 n
+-1 n 11 c 10 c 153 n 48 n 49 n 48 n 49 n 48 n 49 n 48 n 49 n 52 n 49 n 4 n 5 n 4 n 49 n 52 n 49 n 48 n 49 n 48 n 49 n 48 n 49 n 48 n 153 n 10 c 11 c -1 n
+-1 n 27 c 26 c 169 n 70 n 71 n 70 n 71 n 64 n 19 n 70 n 71 n 70 n 69 n 64 n 65 n 64 n 69 n 17 n 71 n 18 n 19 n 64 n 32 n 70 n 71 n 18 n 169 n 26 c 27 c -1 n
+-1 n 11 c 10 c 11 c 152 n 55 n 2 n 3 n 48 n 55 n 54 n 55 n 2 n 3 n 52 n 53 n 52 n 1 n 2 n 3 n 54 n 55 n 48 n 55 n 2 n 3 n 152 n 11 c 10 c 11 c -1 n
+-1 n -1 n 26 c 27 c 168 n 71 n 18 n 19 n 64 n 65 n 70 n 32 n 18 n 19 n 64 n 73 n 64 n 71 n 18 n 19 n 70 n 65 n 64 n 71 n 18 n 19 n 168 n 27 c 26 c -1 n -1 n
+-1 n -1 n 10 c 11 c 152 n 3 n 54 n 55 n 54 n 5 n 4 n 3 n 54 n 55 n 48 n 57 n 48 n 3 n 54 n 55 n 4 n 5 n 2 n 3 n 54 n 33 n 152 n 11 c 10 c -1 n -1 n
+-1 n -1 n 26 c 27 c 26 c 169 n 70 n 71 n 70 n 0 n 20 n 65 n 70 n 71 n 64 n 73 n 64 n 19 n 70 n 65 n 20 n 71 n 18 n 19 n 17 n 169 n 26 c 27 c 26 c -1 n -1 n
+-1 n -1 n -1 n 11 c 10 c 153 n 152 n 55 n 2 n 3 n 54 n 49 n 48 n 49 n 48 n 57 n 48 n 49 n 48 n 49 n 2 n 3 n 54 n 1 n 152 n 153 n 10 c 11 c -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n 26 c 27 c 168 n 16 n 18 n 19 n 70 n 71 n 17 n 71 n 64 n 73 n 64 n 32 n 70 n 71 n 18 n 19 n 33 n 71 n 168 n 27 c 26 c -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n 10 c 11 c 10 c 153 n 152 n 55 n 54 n 1 n 2 n 3 n 54 n 55 n 54 n 55 n 2 n 3 n 54 n 17 n 152 n 153 n 10 c 11 c 10 c -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n 27 c 26 c 27 c 168 n 169 n 33 n 71 n 18 n 19 n 70 n 69 n 70 n 71 n 18 n 19 n 1 n 169 n 168 n 27 c 26 c 27 c -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n 10 c 11 c 10 c 11 c 152 n 153 n 152 n 55 n 54 n 55 n 54 n 3 n 152 n 153 n 152 n 11 c 10 c 11 c 10 c -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n 26 c 27 c 26 c 27 c 26 c 169 n 168 n 169 n 168 n 169 n 26 c 27 c 26 c 27 c 26 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n 11 c 10 c 11 c 10 c 11 c 10 c 11 c 10 c 11 c 10 c 11 c 10 c 11 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n 26 c 27 c 26 c 27 c 26 c 27 c 26 c -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
+-1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n -1 n
