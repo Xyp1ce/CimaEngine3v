@@ -61,10 +61,13 @@ void Juego::OnInit(void) {
   CE::GestorEscenas::Get().registrarEscena("Escena_Propia", esc_propia);
 
   auto esc_menu_principal = std::make_shared<Escena_Menu_Principal>();
-  CE::GestorEscenas::Get().registrarEscena("Menu_Principal", esc_menu_principal);
-  CE::GestorEscenas::Get().registrarEscena("Escena_Menu_Principal", esc_menu_principal);
+  CE::GestorEscenas::Get().registrarEscena("Menu_Principal",
+                                           esc_menu_principal);
+  CE::GestorEscenas::Get().registrarEscena("Escena_Menu_Principal",
+                                           esc_menu_principal);
 
-  CE::GestorEscenas::Get().cambiarEscena("Shade"); // ejecuta onInit()
+  CE::GestorEscenas::Get().cambiarEscena(
+      "Escena_Menu_Principal"); // ejecuta onInit()
   escena_actual = &CE::GestorEscenas::Get().getEscenaActual();
   // creamos la Camara
   CE::GestorCamaras::Get().agregarCamara(
@@ -158,8 +161,9 @@ void Juego::OnInputs(CE::InputBuffer &buffer) {
           escena_actual->getBotonesMouse().find(mouse_presionado->button);
       if (iterador != escena_actual->getBotonesMouse().end()) {
         std::string strAccion = iterador->second;
-        escena_actual->onInputs(CE::Botones(
-            strAccion, CE::Botones::TipoAccion::OnPress, sf::Keyboard::Scancode::Unknown));
+        escena_actual->onInputs(CE::Botones(strAccion,
+                                            CE::Botones::TipoAccion::OnPress,
+                                            sf::Keyboard::Scancode::Unknown));
       }
     } else if (const auto *mouse_liberado =
                    evento.getIf<sf::Event::MouseButtonReleased>()) {
@@ -167,8 +171,9 @@ void Juego::OnInputs(CE::InputBuffer &buffer) {
           escena_actual->getBotonesMouse().find(mouse_liberado->button);
       if (iterador != escena_actual->getBotonesMouse().end()) {
         std::string strAccion = iterador->second;
-        escena_actual->onInputs(CE::Botones(
-            strAccion, CE::Botones::TipoAccion::OnRelease, sf::Keyboard::Scancode::Unknown));
+        escena_actual->onInputs(CE::Botones(strAccion,
+                                            CE::Botones::TipoAccion::OnRelease,
+                                            sf::Keyboard::Scancode::Unknown));
       }
     }
   }
