@@ -51,14 +51,9 @@ void Escena_Propia::cargarAudio() {
       {"hit_jefe", ASSETS "/sonidos/expendable/hit_jefe.wav"},
       {"hit_jugador", ASSETS "/sonidos/expendable/hit_jugador.wav"},
       {"hit_orbe", ASSETS "/sonidos/expendable/hit_orbe.wav"},
-      {"spawn_orbe", ASSETS "/sonidos/expendable/spawn_orbe.wav"},
-      {"pickup_verde", ASSETS "/sonidos/expendable/pickup_verde.wav"},
       {"pickup_morado", ASSETS "/sonidos/expendable/pickup_morado.wav"},
       {"boss_telegraph", ASSETS "/sonidos/expendable/boss_telegraph.wav"},
-      {"boss_disparo", ASSETS "/sonidos/expendable/boss_disparo.wav"},
-      {"boss_fase2", ASSETS "/sonidos/expendable/boss_fase2.wav"},
-      {"victoria", ASSETS "/sonidos/expendable/victoria.wav"},
-      {"derrota", ASSETS "/sonidos/expendable/derrota.wav"}};
+      {"boss_disparo", ASSETS "/sonidos/expendable/boss_disparo.wav"}};
 
   for (const auto &par : sonidos) {
     sf::SoundBuffer buf;
@@ -529,7 +524,6 @@ void Escena_Propia::onUpdate(float dt) {
     reproducirSFX("boss_disparo", 42.f, 0.92f + (std::rand() % 18) * 0.01f);
   }
   if (ev_boss.sfx_fase2) {
-    reproducirSFX("boss_fase2", 75.f, 1.0f);
     spawnOnda(boss.getPosicion(), 40.f, 440.f, sf::Color(255, 110, 20, 240),
               0.75f);
     spawnParticulas(boss.getPosicion(), 36, sf::Color(255, 140, 35, 255), 110.f,
@@ -738,7 +732,6 @@ void Escena_Propia::onUpdate(float dt) {
           opcion_fin = 0;
           limpiarControles();
           proyectiles_boss.clear();
-          reproducirSFX("victoria", 75.f, 1.0f);
           spawnOnda(bpos, 30.f, 520.f, sf::Color(255, 145, 35, 245), 0.9f);
           spawnOnda(bpos, 20.f, 320.f, sf::Color(80, 235, 255, 235), 0.7f);
           spawnParticulas(bpos, 65, sf::Color(255, 130, 30, 255), 80.f, 440.f,
@@ -1032,7 +1025,6 @@ void Escena_Propia::daniarJugador(int cantidad, const std::string &etiqueta) {
     frame_muerte_jugador = 0;
     timer_muerte_jugador = 0.f;
     limpiarControles();
-    reproducirSFX("derrota", 75.f, 1.0f);
   }
 }
 
@@ -1429,8 +1421,6 @@ void Escena_Propia::generarOrbe(TipoOrbe tipo) {
                       : sf::Color(205, 85, 255);
   spawnOnda(nuevo.pos, 10.f, 75.f, col, 0.45f);
   spawnParticulas(nuevo.pos, 14, col, 55.f, 175.f, 3.8f, 0.45f);
-  reproducirSFX("spawn_orbe", 58.f,
-                tipo == TipoOrbe::PERMANENTE_VERDE ? 1.08f : 0.94f);
 }
 
 void Escena_Propia::reclamarOrbe(const OrbeMejora &orbe) {
@@ -1450,7 +1440,6 @@ void Escena_Propia::reclamarOrbe(const OrbeMejora &orbe) {
   bool es_verde = (orbe.tipo == TipoOrbe::PERMANENTE_VERDE);
   sf::Color col = es_verde ? sf::Color(60, 255, 130) : sf::Color(215, 95, 255);
 
-  reproducirSFX(es_verde ? "pickup_verde" : "pickup_morado", 68.f, 1.0f);
   spawnOnda(orbe.pos, 14.f, 115.f, col, 0.45f);
   spawnParticulas(orbe.pos, 22, col, 70.f, 240.f, 4.2f, 0.50f);
 

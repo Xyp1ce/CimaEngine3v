@@ -712,6 +712,7 @@ void BossAegis::actualizarAnimacion(float dt) {
 
 void BossAegis::dibujarTelegraph(sf::RenderTarget &target,
                                  const CE::Vector2D &pos_jugador) const {
+  (void)pos_jugador;
   if (!estaVivo())
     return;
 
@@ -803,31 +804,8 @@ void BossAegis::dibujarTelegraph(sf::RenderTarget &target,
   anillo.setOutlineColor(sf::Color(255, 130, 25, alpha));
   target.draw(anillo);
 
-  // Guías específicas según el patrón que viene
-  if (ataque_actual == AtaqueBossId::ESCOPETA_TACTICA) {
-    float dx = pos_jugador.x - pos.x;
-    float dy = pos_jugador.y - pos.y;
-    float ang = std::atan2(dy, dx);
-    for (int k = -1; k <= 1; ++k) {
-      float a = ang + k * 0.52f;
-      sf::RectangleShape linea{{460.f, k == 0 ? 2.5f : 1.5f}};
-      linea.setOrigin({0.f, linea.getSize().y * 0.5f});
-      linea.setPosition({pos.x, pos.y - 6.f});
-      linea.setRotation(sf::radians(a));
-      linea.setFillColor(sf::Color(255, 120, 20, static_cast<std::uint8_t>(alpha * 0.65f)));
-      target.draw(linea);
-    }
-  } else if (ataque_actual == AtaqueBossId::CRUZ_Y_MORTERO) {
-    for (int i = 0; i < 4; ++i) {
-      float a = angulo_patron + i * (PI * 0.5f);
-      sf::RectangleShape haz{{520.f, 3.0f}};
-      haz.setOrigin({0.f, 1.5f});
-      haz.setPosition({pos.x, pos.y - 6.f});
-      haz.setRotation(sf::radians(a));
-      haz.setFillColor(sf::Color(255, 110, 20, static_cast<std::uint8_t>(alpha * 0.60f)));
-      target.draw(haz);
-    }
-  } else if (ataque_actual == AtaqueBossId::JAULA_HEXAGONAL) {
+  // Guías específicas según el patrón que viene (sin líneas previas de disparo)
+  if (ataque_actual == AtaqueBossId::JAULA_HEXAGONAL) {
     sf::CircleShape hex{105.f + prog * 25.f, 6};
     hex.setOrigin({hex.getRadius(), hex.getRadius()});
     hex.setPosition({pos.x, pos.y});
